@@ -1,0 +1,78 @@
+---
+title: Configuration
+description: Environment variables and configuration options
+---
+
+msgraph-skill is configured through environment variables. All settings have sensible defaults.
+
+## Environment Variables
+
+| Variable | Description | Default |
+|---|---|---|
+| `MSGRAPH_CLIENT_ID` | Azure AD app registration client ID | `14d82eec-204b-4c2f-b7e8-296a70dab67e` |
+| `MSGRAPH_TENANT_ID` | Target tenant ID | `common` |
+| `MSGRAPH_API_VERSION` | Default Graph API version | `beta` |
+| `MSGRAPH_INDEX_PATH` | Path to the OpenAPI index JSON | Auto-detected |
+
+## Client ID
+
+The default client ID (`14d82eec-204b-4c2f-b7e8-296a70dab67e`) is the **Microsoft Graph Command Line Tools** app. This is a first-party Microsoft app that is pre-registered in most Microsoft 365 tenants.
+
+### When to use a custom client ID
+
+- Your organization blocks the default app
+- You need app-specific consent policies
+- You want to track usage separately
+
+### Setting up a custom app
+
+1. Go to [Azure Portal > App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+2. Click "New registration"
+3. Set redirect URI to `http://localhost` (Mobile and desktop applications)
+4. Note the Application (client) ID
+5. Under API Permissions, add Microsoft Graph delegated permissions
+6. Set the environment variable:
+
+```bash
+export MSGRAPH_CLIENT_ID="your-app-id"
+```
+
+## Tenant ID
+
+The default tenant (`common`) allows sign-in to any Azure AD tenant. To restrict to a specific tenant:
+
+```bash
+export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
+# or use the tenant GUID
+export MSGRAPH_TENANT_ID="12345678-1234-1234-1234-123456789012"
+```
+
+## API Version
+
+| Version | Description |
+|---|---|
+| `beta` (default) | Latest features, may change without notice |
+| `v1.0` | Stable, production-ready |
+
+Override per-session:
+```bash
+export MSGRAPH_API_VERSION="v1.0"
+```
+
+Or per-request:
+```bash
+msgraph-skill graph-call GET /me --api-version v1.0
+```
+
+## OpenAPI Index Path
+
+The tool searches for the index file in these locations (in order):
+
+1. `MSGRAPH_INDEX_PATH` environment variable
+2. `references/graph-api-index.json` (relative to the binary location)
+3. Relative to the binary location
+
+Override if the index is in a non-standard location:
+```bash
+export MSGRAPH_INDEX_PATH="/path/to/graph-api-index.json"
+```

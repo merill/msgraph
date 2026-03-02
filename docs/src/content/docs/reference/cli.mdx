@@ -1,0 +1,139 @@
+---
+title: CLI Reference
+description: Complete command-line reference for msgraph-skill
+---
+
+## Global Flags
+
+| Flag | Description |
+|---|---|
+| `-h, --help` | Show help for any command |
+
+## Commands
+
+### `auth signin`
+
+Sign in to a Microsoft 365 tenant.
+
+```bash
+msgraph-skill auth signin [flags]
+```
+
+**Flags:**
+
+| Flag | Type | Description |
+|---|---|---|
+| `--device-code` | bool | Use device code flow instead of browser |
+| `--scopes` | strings | Permission scopes to request (default: User.Read) |
+
+**Output:** JSON with sign-in status.
+
+---
+
+### `auth signout`
+
+Clear the current authentication session and token cache.
+
+```bash
+msgraph-skill auth signout
+```
+
+**Output:** JSON confirmation.
+
+---
+
+### `auth status`
+
+Show the current authentication state.
+
+```bash
+msgraph-skill auth status
+```
+
+**Output:**
+
+```json
+{
+  "signedIn": true,
+  "username": "user@contoso.com",
+  "tenantId": "common",
+  "clientId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+  "environment": "login.microsoftonline.com"
+}
+```
+
+---
+
+### `auth switch-tenant`
+
+Sign out and sign in to a different tenant.
+
+```bash
+msgraph-skill auth switch-tenant <tenant-id> [flags]
+```
+
+**Args:**
+
+| Arg | Description |
+|---|---|
+| `tenant-id` | The Azure AD tenant ID to switch to |
+
+**Flags:** Same as `auth signin`.
+
+---
+
+### `graph-call`
+
+Execute a Microsoft Graph API HTTP request.
+
+```bash
+msgraph-skill graph-call <METHOD> <URL> [flags]
+```
+
+**Args:**
+
+| Arg | Description |
+|---|---|
+| `METHOD` | HTTP method: GET, POST, PUT, PATCH |
+| `URL` | Full URL or relative path (e.g., `/me`) |
+
+**Flags:**
+
+| Flag | Type | Description | Default |
+|---|---|---|---|
+| `--allow-writes` | bool | Enable POST/PUT/PATCH | false |
+| `--body` | string | JSON request body | — |
+| `--headers` | strings | Custom headers (key:value) | — |
+| `--api-version` | string | v1.0 or beta | beta |
+| `--select` | string | OData $select | — |
+| `--filter` | string | OData $filter | — |
+| `--top` | int | OData $top | 0 |
+| `--expand` | string | OData $expand | — |
+| `--orderby` | string | OData $orderby | — |
+| `--scopes` | strings | Additional scopes | — |
+| `--output` | string | json or raw | json |
+
+**Output:** JSON with `statusCode` and `body`.
+
+---
+
+### `openapi-search`
+
+Search the Microsoft Graph OpenAPI index.
+
+```bash
+msgraph-skill openapi-search [flags]
+```
+
+At least one of `--query`, `--resource`, or `--method` is required.
+
+**Flags:**
+
+| Flag | Type | Description | Default |
+|---|---|---|---|
+| `--query` | string | Free-text search | — |
+| `--resource` | string | Filter by resource | — |
+| `--method` | string | Filter by HTTP method | — |
+| `--limit` | int | Max results | 20 |
+
+**Output:** JSON with `count` and `results` array.

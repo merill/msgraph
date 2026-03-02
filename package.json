@@ -1,0 +1,5 @@
+{
+  "name": "msgraph-skill-monorepo",
+  "private": true,
+  "workspaces": ["docs"]
+}

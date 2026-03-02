@@ -1,0 +1,85 @@
+---
+title: Skill Setup
+description: How to install msgraph-skill as an agent skill
+---
+
+msgraph-skill follows the [Agent Skills specification](https://agentskills.io/specification). This page explains how to install it for different AI agents.
+
+## Directory Structure
+
+The skill is contained in the `skills/msgraph/` directory of the repository. When installed, the `msgraph/` directory is placed in your agent's skill folder:
+
+```
+msgraph/
+├── SKILL.md                          # Skill definition (required)
+├── scripts/
+│   ├── run.sh                        # macOS/Linux launcher
+│   ├── run.ps1                       # Windows launcher
+│   └── bin/                          # Binary cache (auto-populated)
+└── references/
+    ├── REFERENCE.md                  # API reference for agents
+    └── graph-api-index.json          # Pre-processed OpenAPI index
+```
+
+No monorepo files (docs, CI, Go source) are included in the installed skill.
+
+## Installation
+
+### Option 1: Using skills.sh (Recommended)
+
+```bash
+npx skills add merill/msgraph-skill
+```
+
+This automatically discovers the skill and installs it into your agent's skill directory.
+
+### Option 2: Download from GitHub Releases
+
+Download `msgraph-skill.zip` from the [latest release](https://github.com/merill/msgraph-skill/releases/latest) and extract it:
+
+```bash
+curl -fsSL -o msgraph-skill.zip https://github.com/merill/msgraph-skill/releases/latest/download/msgraph-skill.zip
+unzip msgraph-skill.zip -d ~/.agent/skills/
+```
+
+### Option 3: Manual Symlink (for contributors)
+
+If you've cloned the repo for development:
+
+```bash
+ln -s /path/to/msgraph-skill/skills/msgraph ~/.agent/skills/msgraph
+```
+
+## How the Agent Uses It
+
+1. **Discovery**: The agent reads the `SKILL.md` frontmatter (name + description) at startup
+2. **Activation**: When the user asks about Microsoft 365 data, the agent loads the full `SKILL.md`
+3. **Execution**: The agent runs CLI commands via the launcher scripts or binary
+4. **Reference**: If needed, the agent reads `references/REFERENCE.md` for API details
+
+## Launcher Scripts
+
+The launcher scripts (`run.sh` / `run.ps1`) handle binary management:
+
+- Detect the platform (OS + architecture)
+- Download the correct binary from GitHub Releases on first run
+- Cache the binary in `scripts/bin/`
+- Forward all arguments to the binary
+
+```bash
+# Via launcher script
+./msgraph/scripts/run.sh auth status
+
+# Or directly with the binary
+msgraph-skill auth status
+```
+
+## Custom Client ID
+
+If your organization requires a specific Azure AD app registration, set the environment variable before the agent runs:
+
+```bash
+export MSGRAPH_CLIENT_ID="your-custom-app-id"
+```
+
+The agent skill automatically picks this up.

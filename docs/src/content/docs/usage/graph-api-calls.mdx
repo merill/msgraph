@@ -1,0 +1,111 @@
+---
+title: Graph API Calls
+description: How to make Microsoft Graph API calls
+---
+
+The `graph-call` command executes HTTP requests against the Microsoft Graph API.
+
+## Basic Usage
+
+```bash
+msgraph-skill graph-call <METHOD> <URL> [flags]
+```
+
+The URL can be a full URL or a relative path starting with `/`.
+
+## Read Operations
+
+GET requests work by default without any special flags:
+
+```bash
+# Current user profile
+msgraph-skill graph-call GET /me
+
+# List users
+msgraph-skill graph-call GET /users --select "displayName,mail" --top 10
+
+# Get user's unread messages
+msgraph-skill graph-call GET /me/messages --filter "isRead eq false" --top 5
+
+# List groups
+msgraph-skill graph-call GET /groups --select "displayName,description"
+
+# Get team channels
+msgraph-skill graph-call GET /teams/{team-id}/channels
+```
+
+## Write Operations
+
+POST, PUT, and PATCH requests require the `--allow-writes` flag:
+
+```bash
+# Send mail
+msgraph-skill graph-call POST /me/sendMail \
+  --body '{"message":{"subject":"Hello","body":{"content":"Hi"},"toRecipients":[{"emailAddress":{"address":"user@example.com"}}]}}' \
+  --allow-writes
+
+# Update user
+msgraph-skill graph-call PATCH /me \
+  --body '{"jobTitle":"Engineer"}' \
+  --allow-writes
+```
+
+DELETE requests are **always blocked** for safety.
+
+## Query Parameters
+
+| Flag | OData Parameter | Example |
+|---|---|---|
+| `--select` | `$select` | `--select "displayName,mail"` |
+| `--filter` | `$filter` | `--filter "isRead eq false"` |
+| `--top` | `$top` | `--top 10` |
+| `--expand` | `$expand` | `--expand "members"` |
+| `--orderby` | `$orderby` | `--orderby "displayName desc"` |
+
+## Other Flags
+
+| Flag | Description |
+|---|---|
+| `--api-version` | Use `v1.0` or `beta` (default: beta) |
+| `--body` | JSON request body for POST/PUT/PATCH |
+| `--headers` | Custom headers as `key:value` |
+| `--scopes` | Additional permission scopes to request |
+| `--output` | Output format: `json` (default) or `raw` |
+
+## Response Format
+
+Responses are returned as JSON:
+
+```json
+{
+  "statusCode": 200,
+  "body": {
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#users/$entity",
+    "displayName": "John Doe",
+    "mail": "john@contoso.com"
+  }
+}
+```
+
+## Advanced Headers
+
+Some queries require the `ConsistencyLevel` header:
+
+```bash
+# Count users
+msgraph-skill graph-call GET /users/\$count \
+  --headers "ConsistencyLevel:eventual"
+
+# Search users
+msgraph-skill graph-call GET '/users?$search="displayName:John"' \
+  --headers "ConsistencyLevel:eventual"
+```
+
+## Error Handling
+
+The tool handles common errors:
+
+- **401**: Token expired — run `auth signin` again
+- **403**: Insufficient permissions — automatic incremental consent is attempted
+- **404**: Resource not found — check the URL
+- **429**: Rate limited — wait and retry

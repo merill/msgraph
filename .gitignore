@@ -1,0 +1,45 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+msgraph-skill
+skills/msgraph/scripts/bin/*
+!skills/msgraph/scripts/bin/.gitkeep
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Dependency directories
+vendor/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (docs site)
+node_modules/
+docs/dist/
+docs/.astro/
+
+# Build output
+dist/
+
+# Temp files
+*.tmp
+*.log

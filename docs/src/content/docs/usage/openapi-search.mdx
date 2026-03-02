@@ -1,0 +1,85 @@
+---
+title: OpenAPI Search
+description: Search the Microsoft Graph OpenAPI index
+---
+
+The `openapi-search` command searches a pre-processed index of the Microsoft Graph OpenAPI specification. This helps agents (and humans) find the right endpoint when they're unsure of the URL.
+
+## Usage
+
+```bash
+msgraph-skill openapi-search [flags]
+```
+
+At least one of `--query`, `--resource`, or `--method` is required.
+
+## Search by Keyword
+
+```bash
+msgraph-skill openapi-search --query "send mail"
+```
+
+Searches path, summary, and description fields.
+
+## Search by Resource
+
+```bash
+msgraph-skill openapi-search --resource users
+msgraph-skill openapi-search --resource messages
+msgraph-skill openapi-search --resource groups
+```
+
+## Search by Method
+
+```bash
+msgraph-skill openapi-search --resource users --method POST
+```
+
+## Combined Search
+
+```bash
+msgraph-skill openapi-search --query "calendar" --method GET --limit 5
+```
+
+## Response Format
+
+```json
+{
+  "count": 3,
+  "results": [
+    {
+      "path": "/me/sendMail",
+      "method": "POST",
+      "summary": "Send mail",
+      "description": "Send the message specified in the request body...",
+      "scopes": ["Mail.Send"],
+      "resource": "me",
+      "matchReason": "summary match"
+    }
+  ]
+}
+```
+
+## How the Index is Built
+
+The index is pre-generated from the official [Microsoft Graph OpenAPI metadata](https://github.com/microsoftgraph/msgraph-metadata) using the included indexer tool:
+
+```bash
+go run ./tools/openapi-indexer -version beta -output skills/msgraph/references/graph-api-index.json
+```
+
+The index contains ~27,000 endpoints from the beta API, each with:
+- Path
+- HTTP method
+- Summary and description
+- Required permission scopes
+- Resource category
+
+## Flags
+
+| Flag | Description | Default |
+|---|---|---|
+| `--query` | Free-text search | — |
+| `--resource` | Filter by resource name | — |
+| `--method` | Filter by HTTP method | — |
+| `--limit` | Max results | 20 |

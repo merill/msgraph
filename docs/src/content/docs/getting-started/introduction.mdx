@@ -1,0 +1,52 @@
+---
+title: Introduction
+description: Microsoft Graph API agent skill for AI coding assistants
+---
+
+**msgraph-skill** is an [Agent Skill](https://agentskills.io) that enables AI coding assistants to query and manage Microsoft 365 data through the Microsoft Graph API.
+
+## What it does
+
+- **Authenticates** to Microsoft 365 tenants using MSAL (interactive browser or device code flow)
+- **Executes** Microsoft Graph API REST calls (GET, POST, PUT, PATCH)
+- **Searches** a pre-processed OpenAPI index to find the right endpoints
+- **Handles incremental consent** automatically when permissions are insufficient
+- **Enforces safety** — read-only by default, writes require explicit opt-in, DELETE is always blocked
+
+## How agents use it
+
+When an agent loads this skill, it gets instructions and a CLI binary to:
+
+1. Check authentication status
+2. Sign in if needed
+3. Construct and execute Graph API calls
+4. Search for endpoints when unsure of the right URL
+5. Parse responses and handle errors
+
+## Architecture
+
+```
+┌─────────────┐     ┌──────────────────┐     ┌──────────────┐
+│   AI Agent   │────▶│  msgraph-skill   │────▶│ Microsoft    │
+│  (Claude,    │     │  CLI binary      │     │ Graph API    │
+│   Copilot,   │◀────│  (Go, static)    │◀────│              │
+│   etc.)      │     └──────────────────┘     └──────────────┘
+└─────────────┘              │
+                             ▼
+                    ┌──────────────────┐
+                    │  MSAL Auth       │
+                    │  (browser/device │
+                    │   code flow)     │
+                    └──────────────────┘
+```
+
+## Key design choices
+
+| Choice | Rationale |
+|---|---|
+| **Go static binary** | Zero runtime dependencies, works everywhere |
+| **Delegated auth only** | Operates as the signed-in user, not as an app |
+| **Beta API by default** | Access to the latest Graph features |
+| **GET-only by default** | Safety first — writes need `--allow-writes` |
+| **DELETE always blocked** | Irreversible operations are never allowed |
+| **In-memory token cache** | No persistent credential storage on disk |

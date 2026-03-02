@@ -1,0 +1,78 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Verify build
+        run: |
+          CGO_ENABLED=0 go build -o /dev/null .
+          go vet ./...
+
+      - name: Determine next version
+        id: version
+        run: |
+          # Get the latest v* tag (or default to v0.0.0 if none exist)
+          LATEST_TAG=$(git tag --list 'v*' --sort=-v:refname | head -n1)
+          if [ -z "$LATEST_TAG" ]; then
+            LATEST_TAG="v0.0.0"
+          fi
+          echo "Latest tag: $LATEST_TAG"
+
+          # Parse major.minor.patch
+          VERSION="${LATEST_TAG#v}"
+          MAJOR=$(echo "$VERSION" | cut -d. -f1)
+          MINOR=$(echo "$VERSION" | cut -d. -f2)
+          PATCH=$(echo "$VERSION" | cut -d. -f3 | cut -d- -f1)
+
+          # Bump patch
+          PATCH=$((PATCH + 1))
+          NEXT_TAG="v${MAJOR}.${MINOR}.${PATCH}"
+
+          echo "Next tag: $NEXT_TAG"
+          echo "tag=$NEXT_TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Create tag
+        run: |
+          git tag ${{ steps.version.outputs.tag }}
+          git push origin ${{ steps.version.outputs.tag }}
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          version: latest
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Package skill directory
+        run: |
+          cd skills
+          zip -r ../msgraph-skill.zip msgraph/
+          cd ..
+          echo "Skill zip contents:"
+          unzip -l msgraph-skill.zip
+
+      - name: Upload skill zip to release
+        run: |
+          gh release upload ${{ steps.version.outputs.tag }} msgraph-skill.zip --clobber
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

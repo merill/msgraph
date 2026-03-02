@@ -1,0 +1,88 @@
+---
+title: How It Works
+description: Technical details of how the agent skill operates
+---
+
+This page explains the technical internals of msgraph-skill for those who want to understand or extend it.
+
+## Authentication Flow
+
+```
+Agent                    msgraph-skill              MSAL              Azure AD
+  │                           │                       │                  │
+  │── auth signin ──────────▶│                       │                  │
+  │                           │── AcquireToken ──────▶│                  │
+  │                           │                       │── Auth Request ─▶│
+  │                           │                       │                  │
+  │                           │                       │   (browser/      │
+  │                           │                       │    device code)  │
+  │                           │                       │                  │
+  │                           │◀── Token ────────────│◀── Token ───────│
+  │◀── JSON status ──────────│                       │                  │
+```
+
+### Silent Token Acquisition
+
+After initial sign-in, tokens are cached. Subsequent calls use silent acquisition:
+
+1. Check the in-memory/file cache for a valid token
+2. If expired, MSAL automatically refreshes using the refresh token
+3. Only if refresh fails does it prompt for interactive auth
+
+### Incremental Consent
+
+When a 403 Forbidden occurs:
+
+1. Parse the error message for required scope names (regex: `[A-Z][a-zA-Z]+\.[A-Z][a-zA-Z]+`)
+2. Merge new scopes with existing scopes
+3. Re-authenticate with the combined scope set
+4. Retry the original request with the new token
+
+## Safety Enforcement
+
+Safety is enforced at the CLI level before any HTTP request is made:
+
+| Method | Default | With --allow-writes |
+|---|---|---|
+| GET | Allowed | Allowed |
+| HEAD | Allowed | Allowed |
+| OPTIONS | Allowed | Allowed |
+| POST | **Blocked** | Allowed |
+| PUT | **Blocked** | Allowed |
+| PATCH | **Blocked** | Allowed |
+| DELETE | **Blocked** | **Blocked** |
+
+DELETE is blocked unconditionally — there is no flag to enable it.
+
+## Token Cache
+
+The token cache uses MSAL's `ExportReplace` interface:
+
+- **Export**: After any token acquisition, serialize the cache to a temp file
+- **Replace**: Before any token lookup, deserialize from the temp file
+- **Path**: `{os.TempDir()}/msgraph-skill-session-{hash}.json`
+- **Hash**: SHA-256 of `clientID:tenantID`, truncated to 8 bytes
+
+The temp file allows multiple CLI invocations in the same session to share tokens without re-authenticating.
+
+## OpenAPI Index
+
+The index is built by `tools/openapi-indexer/`:
+
+1. Downloads the [official Graph OpenAPI YAML](https://github.com/microsoftgraph/msgraph-metadata) (~60MB)
+2. Parses using `gopkg.in/yaml.v3` with flexible `interface{}` unmarshaling
+3. Extracts path, method, summary, description, and security scopes
+4. Outputs a compact JSON file (~8MB, ~27,000 endpoints)
+
+The search algorithm:
+- Filters by method (exact match)
+- Filters by resource (path segment match)
+- Filters by query (all words must appear in path, summary, description, or scopes)
+- Returns results with match reason
+
+## Build System
+
+- **Go binary**: Built with `CGO_ENABLED=0` for fully static binaries
+- **Cross-compilation**: 6 targets via GoReleaser (darwin/linux/windows × amd64/arm64)
+- **Docs site**: Astro + Starlight, deployed to GitHub Pages
+- **Monorepo**: Go module at root, npm workspace for docs

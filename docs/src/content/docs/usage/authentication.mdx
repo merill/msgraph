@@ -1,0 +1,96 @@
+---
+title: Authentication
+description: How authentication works in msgraph-skill
+---
+
+msgraph-skill uses the Microsoft Authentication Library (MSAL) for Go to authenticate users via delegated (user) authentication.
+
+## Auth Flows
+
+### Interactive Browser (default)
+
+Opens the system browser for sign-in. This is the default when a browser is available.
+
+```bash
+msgraph-skill auth signin
+```
+
+### Device Code
+
+For headless environments (SSH, containers, CI), use device code flow:
+
+```bash
+msgraph-skill auth signin --device-code
+```
+
+The tool prints a URL and code to stderr. Open the URL in any browser, enter the code, and authenticate.
+
+Auto-detection: if the tool detects an SSH session or no display server, it automatically falls back to device code.
+
+## Managing Sessions
+
+### Check status
+
+```bash
+msgraph-skill auth status
+```
+
+Returns JSON:
+```json
+{
+  "signedIn": true,
+  "username": "user@contoso.com",
+  "tenantId": "common",
+  "clientId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+  "environment": "login.microsoftonline.com"
+}
+```
+
+### Sign out
+
+```bash
+msgraph-skill auth signout
+```
+
+### Switch tenant
+
+```bash
+msgraph-skill auth switch-tenant <tenant-id>
+```
+
+## Custom Client ID
+
+By default, msgraph-skill uses the **Microsoft Graph Command Line Tools** app ID (`14d82eec-204b-4c2f-b7e8-296a70dab67e`). This is a first-party Microsoft app pre-registered in most M365 tenants.
+
+To use your own Azure AD app registration:
+
+```bash
+export MSGRAPH_CLIENT_ID="your-app-id"
+msgraph-skill auth signin
+```
+
+## Incremental Consent
+
+When a Graph API call returns 403 Forbidden, the tool:
+
+1. Parses the error message to extract required permission scopes
+2. Re-authenticates with the additional scopes
+3. Retries the original request
+
+This happens transparently — no manual scope management needed.
+
+## Token Cache
+
+Tokens are cached in a session-scoped temporary file (`os.TempDir()`) for the duration of the session. The cache is keyed by client ID and tenant ID. No credentials are persisted permanently.
+
+The cache file is automatically cleaned up on sign-out.
+
+## Requesting Specific Scopes
+
+You can request specific scopes at sign-in:
+
+```bash
+msgraph-skill auth signin --scopes "Mail.Read,Calendars.Read"
+```
+
+This is useful when you know upfront what permissions you'll need.
