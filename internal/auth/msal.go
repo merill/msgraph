@@ -11,22 +11,22 @@ import (
 
 	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/cache"
 	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
-	"github.com/merill/msgraph-skill/internal/config"
+	"github.com/merill/msgraph/internal/config"
 )
 
 // SessionData stores the current auth session state.
 type SessionData struct {
-	Account    public.Account `json:"account"`
-	TenantID   string         `json:"tenantId"`
-	ClientID   string         `json:"clientId"`
-	Scopes     []string       `json:"scopes"`
+	Account  public.Account `json:"account"`
+	TenantID string         `json:"tenantId"`
+	ClientID string         `json:"clientId"`
+	Scopes   []string       `json:"scopes"`
 }
 
 // Client wraps the MSAL public client application with session management.
 type Client struct {
-	app     public.Client
-	cfg     *config.Config
-	session *SessionData
+	app       public.Client
+	cfg       *config.Config
+	session   *SessionData
 	cachePath string
 }
 
@@ -194,7 +194,7 @@ func (c *Client) GetAccounts(ctx context.Context) ([]public.Account, error) {
 // sessionCachePath returns the path to the session-scoped token cache file.
 func sessionCachePath(clientID, tenantID string) string {
 	h := sha256.Sum256([]byte(clientID + ":" + tenantID))
-	filename := fmt.Sprintf("msgraph-skill-session-%x.json", h[:8])
+	filename := fmt.Sprintf("msgraph-session-%x.json", h[:8])
 	return filepath.Join(os.TempDir(), filename)
 }
 

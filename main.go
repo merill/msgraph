@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/merill/msgraph-skill/cmd"
+	"github.com/merill/msgraph/cmd"
 )
 
 func main() {

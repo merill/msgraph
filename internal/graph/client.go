@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/merill/msgraph-skill/internal/auth"
-	"github.com/merill/msgraph-skill/internal/config"
+	"github.com/merill/msgraph/internal/auth"
+	"github.com/merill/msgraph/internal/config"
 )
 
 // Client is the Graph API HTTP client.

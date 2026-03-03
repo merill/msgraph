@@ -1,0 +1,88 @@
+---
+/*
+ * MermaidDiagram.astro
+ * Renders a Mermaid diagram client-side using default Mermaid styling.
+ *
+ * The chart definition is base64-encoded into a data attribute to avoid
+ * Astro/MDX escaping HTML entities (e.g. <b>, <br/>) inside Mermaid syntax.
+ *
+ * Usage in MDX:
+ *   import MermaidDiagram from '../../../components/MermaidDiagram.astro';
+ *   <MermaidDiagram chart={`graph LR; A-->B`} />
+ */
+interface Props {
+  chart: string;
+}
+const { chart } = Astro.props;
+const encoded = Buffer.from(chart).toString('base64');
+---
+
+<div class="mermaid-diagram">
+  <pre class="mermaid" data-chart={encoded}>Loading diagram…</pre>
+</div>
+
+<style>
+  .mermaid-diagram {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+</style>
+
+<script>
+  import mermaid from 'mermaid';
+
+  function getTheme(): 'dark' | 'default' {
+    return document.documentElement.dataset.theme === 'light' ? 'default' : 'dark';
+  }
+
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: getTheme(),
+  });
+
+  // Decode base64 chart data and render
+  const nodes: Element[] = [];
+  document.querySelectorAll('pre.mermaid[data-chart]').forEach((el) => {
+    const encoded = el.getAttribute('data-chart');
+    if (!encoded) return;
+    try {
+      const chart = atob(encoded);
+      el.textContent = chart;
+      el.setAttribute('data-original', chart);
+      nodes.push(el);
+    } catch (e) {
+      console.error('Failed to decode mermaid chart:', e);
+      el.textContent = 'Error decoding diagram';
+    }
+  });
+
+  if (nodes.length > 0) {
+    try {
+      await mermaid.run({ nodes });
+    } catch (e) {
+      console.error('Mermaid render failed:', e);
+    }
+  }
+
+  // Re-render on theme change
+  new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.attributeName === 'data-theme') {
+        mermaid.initialize({ startOnLoad: false, theme: getTheme() });
+
+        const reNodes: Element[] = [];
+        document.querySelectorAll('pre.mermaid[data-original]').forEach((el) => {
+          const original = el.getAttribute('data-original');
+          if (!original) return;
+          el.removeAttribute('data-processed');
+          el.textContent = original;
+          reNodes.push(el);
+        });
+
+        if (reNodes.length > 0) {
+          mermaid.run({ nodes: reNodes });
+        }
+      }
+    }
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+</script>

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/merill/msgraph-skill/internal/auth"
-	"github.com/merill/msgraph-skill/internal/config"
+	"github.com/merill/msgraph/internal/auth"
+	"github.com/merill/msgraph/internal/config"
 	"github.com/spf13/cobra"
 )
 

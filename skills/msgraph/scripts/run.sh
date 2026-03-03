@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Launcher script for msgraph-skill binary.
-# Downloads the correct pre-compiled binary on first run, then executes it.
+# Launcher script for msgraph CLI.
+# Executes the pre-bundled binary for the detected platform.
 set -euo pipefail
 
-REPO="merill/msgraph-skill"
-BINARY_NAME="msgraph-skill"
+BINARY_NAME="msgraph"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BIN_DIR="${SCRIPT_DIR}/bin"
 
@@ -27,64 +26,21 @@ detect_platform() {
     echo "${os}_${arch}"
 }
 
-# Get the latest release version from GitHub
-get_latest_version() {
-    local version
-    if command -v curl &>/dev/null; then
-        version=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases/latest" 2>/dev/null | grep '"tag_name"' | sed -E 's/.*"tag_name": *"([^"]+)".*/\1/')
-    elif command -v wget &>/dev/null; then
-        version=$(wget -qO- "https://api.github.com/repos/${REPO}/releases/latest" 2>/dev/null | grep '"tag_name"' | sed -E 's/.*"tag_name": *"([^"]+)".*/\1/')
-    else
-        echo "Error: curl or wget is required" >&2
-        exit 1
-    fi
-
-    if [ -z "$version" ]; then
-        echo "Error: Could not determine latest version" >&2
-        exit 1
-    fi
-
-    echo "$version"
-}
-
-# Download the binary for the given platform and version
-download_binary() {
-    local platform="$1"
-    local version="$2"
-    local url="https://github.com/${REPO}/releases/download/${version}/${BINARY_NAME}_${platform}"
-    local target="${BIN_DIR}/${BINARY_NAME}"
-
-    mkdir -p "${BIN_DIR}"
-
-    echo "Downloading ${BINARY_NAME} ${version} for ${platform}..." >&2
-
-    if command -v curl &>/dev/null; then
-        curl -fsSL -o "${target}" "${url}"
-    elif command -v wget &>/dev/null; then
-        wget -qO "${target}" "${url}"
-    fi
-
-    chmod +x "${target}"
-    echo "Downloaded to ${target}" >&2
-
-    # Save version for future checks
-    echo "${version}" > "${BIN_DIR}/.version"
-}
-
 # Main logic
 main() {
-    local platform version binary_path
+    local platform binary_path
 
     platform=$(detect_platform)
-    binary_path="${BIN_DIR}/${BINARY_NAME}"
+    binary_path="${BIN_DIR}/${BINARY_NAME}_${platform}"
 
-    # Download if binary doesn't exist
-    if [ ! -x "${binary_path}" ]; then
-        version=$(get_latest_version)
-        download_binary "${platform}" "${version}"
+    if [ ! -f "${binary_path}" ]; then
+        echo "Error: Binary not found: ${binary_path}" >&2
+        echo "Expected a pre-bundled binary for platform '${platform}'." >&2
+        echo "Please reinstall the skill or download the correct release." >&2
+        exit 1
     fi
 
-    # Execute the binary with all arguments passed through
+    chmod +x "${binary_path}"
     exec "${binary_path}" "$@"
 }
 

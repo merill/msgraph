@@ -1,6 +1,6 @@
 ---
 title: CLI Reference
-description: Complete command-line reference for msgraph-skill
+description: Complete command-line reference for msgraph
 ---
 
 ## Global Flags
@@ -16,7 +16,7 @@ description: Complete command-line reference for msgraph-skill
 Sign in to a Microsoft 365 tenant.
 
 ```bash
-msgraph-skill auth signin [flags]
+msgraph auth signin [flags]
 ```
 
 **Flags:**
@@ -35,7 +35,7 @@ msgraph-skill auth signin [flags]
 Clear the current authentication session and token cache.
 
 ```bash
-msgraph-skill auth signout
+msgraph auth signout
 ```
 
 **Output:** JSON confirmation.
@@ -47,7 +47,7 @@ msgraph-skill auth signout
 Show the current authentication state.
 
 ```bash
-msgraph-skill auth status
+msgraph auth status
 ```
 
 **Output:**
@@ -69,14 +69,14 @@ msgraph-skill auth status
 Sign out and sign in to a different tenant.
 
 ```bash
-msgraph-skill auth switch-tenant <tenant-id> [flags]
+msgraph auth switch-tenant <tenant-id> [flags]
 ```
 
 **Args:**
 
 | Arg | Description |
 |---|---|
-| `tenant-id` | The Azure AD tenant ID to switch to |
+| `tenant-id` | The Entra ID tenant ID to switch to |
 
 **Flags:** Same as `auth signin`.
 
@@ -87,7 +87,7 @@ msgraph-skill auth switch-tenant <tenant-id> [flags]
 Execute a Microsoft Graph API HTTP request.
 
 ```bash
-msgraph-skill graph-call <METHOD> <URL> [flags]
+msgraph graph-call <METHOD> <URL> [flags]
 ```
 
 **Args:**
@@ -122,7 +122,7 @@ msgraph-skill graph-call <METHOD> <URL> [flags]
 Search the Microsoft Graph OpenAPI index.
 
 ```bash
-msgraph-skill openapi-search [flags]
+msgraph openapi-search [flags]
 ```
 
 At least one of `--query`, `--resource`, or `--method` is required.

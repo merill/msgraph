@@ -3,13 +3,13 @@ title: Configuration
 description: Environment variables and configuration options
 ---
 
-msgraph-skill is configured through environment variables. All settings have sensible defaults.
+msgraph is configured through environment variables. All settings have sensible defaults.
 
 ## Environment Variables
 
 | Variable | Description | Default |
 |---|---|---|
-| `MSGRAPH_CLIENT_ID` | Azure AD app registration client ID | `14d82eec-204b-4c2f-b7e8-296a70dab67e` |
+| `MSGRAPH_CLIENT_ID` | Entra ID app registration client ID | `14d82eec-204b-4c2f-b7e8-296a70dab67e` |
 | `MSGRAPH_TENANT_ID` | Target tenant ID | `common` |
 | `MSGRAPH_API_VERSION` | Default Graph API version | `beta` |
 | `MSGRAPH_INDEX_PATH` | Path to the OpenAPI index JSON | Auto-detected |
@@ -39,7 +39,7 @@ export MSGRAPH_CLIENT_ID="your-app-id"
 
 ## Tenant ID
 
-The default tenant (`common`) allows sign-in to any Azure AD tenant. To restrict to a specific tenant:
+The default tenant (`common`) allows sign-in to any Entra ID tenant. To restrict to a specific tenant:
 
 ```bash
 export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
@@ -61,7 +61,7 @@ export MSGRAPH_API_VERSION="v1.0"
 
 Or per-request:
 ```bash
-msgraph-skill graph-call GET /me --api-version v1.0
+msgraph graph-call GET /me --api-version v1.0
 ```
 
 ## OpenAPI Index Path
@@ -69,8 +69,8 @@ msgraph-skill graph-call GET /me --api-version v1.0
 The tool searches for the index file in these locations (in order):
 
 1. `MSGRAPH_INDEX_PATH` environment variable
-2. `references/graph-api-index.json` (relative to the binary location)
-3. Relative to the binary location
+2. `references/graph-api-index.json` (relative to the CLI location)
+3. Relative to the CLI location
 
 Override if the index is in a non-standard location:
 ```bash

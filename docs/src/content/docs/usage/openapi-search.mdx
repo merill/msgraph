@@ -8,7 +8,7 @@ The `openapi-search` command searches a pre-processed index of the Microsoft Gra
 ## Usage
 
 ```bash
-msgraph-skill openapi-search [flags]
+msgraph openapi-search [flags]
 ```
 
 At least one of `--query`, `--resource`, or `--method` is required.
@@ -16,7 +16,7 @@ At least one of `--query`, `--resource`, or `--method` is required.
 ## Search by Keyword
 
 ```bash
-msgraph-skill openapi-search --query "send mail"
+msgraph openapi-search --query "send mail"
 ```
 
 Searches path, summary, and description fields.
@@ -24,21 +24,21 @@ Searches path, summary, and description fields.
 ## Search by Resource
 
 ```bash
-msgraph-skill openapi-search --resource users
-msgraph-skill openapi-search --resource messages
-msgraph-skill openapi-search --resource groups
+msgraph openapi-search --resource users
+msgraph openapi-search --resource messages
+msgraph openapi-search --resource groups
 ```
 
 ## Search by Method
 
 ```bash
-msgraph-skill openapi-search --resource users --method POST
+msgraph openapi-search --resource users --method POST
 ```
 
 ## Combined Search
 
 ```bash
-msgraph-skill openapi-search --query "calendar" --method GET --limit 5
+msgraph openapi-search --query "calendar" --method GET --limit 5
 ```
 
 ## Response Format

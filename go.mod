@@ -1,4 +1,4 @@
-module github.com/merill/msgraph-skill
+module github.com/merill/msgraph
 
 go 1.25.0
 

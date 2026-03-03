@@ -10,23 +10,23 @@ metadata:
 
 # Microsoft Graph Agent Skill
 
-You can query and manage Microsoft 365 data through the Microsoft Graph API using the `msgraph-skill` binary.
+You can query and manage Microsoft 365 data through the Microsoft Graph API using the `msgraph` CLI.
 
 ## Quick Start
 
 1. **Check auth status** before making any Graph call:
    ```
-   msgraph-skill auth status
+   msgraph auth status
    ```
 
 2. **Sign in** if not authenticated:
    ```
-   msgraph-skill auth signin
+   msgraph auth signin
    ```
 
 3. **Make Graph API calls**:
    ```
-   msgraph-skill graph-call GET /me
+   msgraph graph-call GET /me
    ```
 
 ## Authentication
@@ -42,37 +42,37 @@ The tool handles authentication automatically using Microsoft's identity platfor
 
 | Command | Description |
 |---|---|
-| `msgraph-skill auth signin` | Sign in to Microsoft 365 |
-| `msgraph-skill auth signin --device-code` | Sign in using device code flow |
-| `msgraph-skill auth signin --scopes "Mail.Read,Calendars.Read"` | Sign in requesting specific scopes |
-| `msgraph-skill auth signout` | Clear the current session |
-| `msgraph-skill auth status` | Check if signed in and show account info |
-| `msgraph-skill auth switch-tenant <tenant-id>` | Switch to a different M365 tenant |
+| `msgraph auth signin` | Sign in to Microsoft 365 |
+| `msgraph auth signin --device-code` | Sign in using device code flow |
+| `msgraph auth signin --scopes "Mail.Read,Calendars.Read"` | Sign in requesting specific scopes |
+| `msgraph auth signout` | Clear the current session |
+| `msgraph auth status` | Check if signed in and show account info |
+| `msgraph auth switch-tenant <tenant-id>` | Switch to a different M365 tenant |
 
 ## Making Graph API Calls
 
-Use `msgraph-skill graph-call <METHOD> <URL>` to execute REST calls against the Graph API.
+Use `msgraph graph-call <METHOD> <URL>` to execute REST calls against the Graph API.
 
 ### Read Operations (default)
 
 ```bash
 # Get current user profile
-msgraph-skill graph-call GET /me
+msgraph graph-call GET /me
 
 # List users with selected fields
-msgraph-skill graph-call GET /users --select "displayName,mail,userPrincipalName" --top 10
+msgraph graph-call GET /users --select "displayName,mail,userPrincipalName" --top 10
 
 # Get user's mail with filtering
-msgraph-skill graph-call GET /me/messages --filter "isRead eq false" --top 5 --select "subject,from,receivedDateTime"
+msgraph graph-call GET /me/messages --filter "isRead eq false" --top 5 --select "subject,from,receivedDateTime"
 
 # List groups
-msgraph-skill graph-call GET /groups --select "displayName,description" --top 25
+msgraph graph-call GET /groups --select "displayName,description" --top 25
 
 # Get team channels
-msgraph-skill graph-call GET /teams/{team-id}/channels
+msgraph graph-call GET /teams/{team-id}/channels
 
 # Search users
-msgraph-skill graph-call GET /users --filter "startsWith(displayName,'John')"
+msgraph graph-call GET /users --filter "startsWith(displayName,'John')"
 ```
 
 ### Write Operations (requires --allow-writes)
@@ -81,10 +81,10 @@ msgraph-skill graph-call GET /users --filter "startsWith(displayName,'John')"
 
 ```bash
 # Send a message (ask user first!)
-msgraph-skill graph-call POST /me/sendMail --body '{"message":{"subject":"Hello","body":{"content":"Hi there"},"toRecipients":[{"emailAddress":{"address":"user@example.com"}}]}}' --allow-writes
+msgraph graph-call POST /me/sendMail --body '{"message":{"subject":"Hello","body":{"content":"Hi there"},"toRecipients":[{"emailAddress":{"address":"user@example.com"}}]}}' --allow-writes
 
 # Update user properties (ask user first!)
-msgraph-skill graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
+msgraph graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
 ```
 
 **DELETE operations are always blocked** for safety regardless of flags.
@@ -117,9 +117,9 @@ msgraph-skill graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writ
 
 2. **If unsure**: Use the OpenAPI search command to find endpoints:
    ```
-   msgraph-skill openapi-search --query "send mail"
-   msgraph-skill openapi-search --resource users --method GET
-   msgraph-skill openapi-search --query "calendar events" --method POST
+   msgraph openapi-search --query "send mail"
+   msgraph openapi-search --resource users --method GET
+   msgraph openapi-search --query "calendar events" --method POST
    ```
 
 3. **Check the reference** for detailed API documentation:
@@ -129,13 +129,13 @@ msgraph-skill graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writ
 
 ```bash
 # Search by keyword
-msgraph-skill openapi-search --query "list users"
+msgraph openapi-search --query "list users"
 
 # Search by resource and method
-msgraph-skill openapi-search --resource messages --method GET
+msgraph openapi-search --resource messages --method GET
 
 # Combined search
-msgraph-skill openapi-search --query "create" --resource groups --method POST
+msgraph openapi-search --query "create" --resource groups --method POST
 ```
 
 ## Important Rules
@@ -150,7 +150,7 @@ msgraph-skill openapi-search --query "create" --resource groups --method POST
 
 ## Error Handling
 
-- **401 Unauthorized**: Token expired. Run `msgraph-skill auth signin` again.
+- **401 Unauthorized**: Token expired. Run `msgraph auth signin` again.
 - **403 Forbidden**: Insufficient permissions. The tool automatically attempts incremental consent. If it still fails, the user may need admin consent for those permissions.
 - **404 Not Found**: The resource doesn't exist or the URL is incorrect. Verify the endpoint path.
 - **429 Too Many Requests**: Rate limited. Wait and retry.
@@ -159,7 +159,7 @@ msgraph-skill openapi-search --query "create" --resource groups --method POST
 
 | Variable | Description | Default |
 |---|---|---|
-| `MSGRAPH_CLIENT_ID` | Custom Azure AD app registration client ID | Microsoft Graph CLI Tools app |
+| `MSGRAPH_CLIENT_ID` | Custom Entra ID app registration client ID | Microsoft Graph CLI Tools app |
 | `MSGRAPH_TENANT_ID` | Target tenant ID | `common` (multi-tenant) |
 | `MSGRAPH_API_VERSION` | Default API version | `beta` |
 | `MSGRAPH_INDEX_PATH` | Path to OpenAPI index JSON | Auto-detected |

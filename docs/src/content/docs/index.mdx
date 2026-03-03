@@ -1,15 +1,38 @@
 ---
-title: msgraph-skill
+title: Microsoft Graph Agent Skill
 description: Microsoft Graph API agent skill for AI coding assistants
 template: splash
 hero:
-  tagline: An Agent Skill that enables AI coding assistants to query and manage Microsoft 365 data through the Microsoft Graph API.
+  tagline: An Agent Skill that enables AI agents to authenticate to Microsoft 365 and query the Microsoft Graph API.
   actions:
     - text: Get Started
       link: /getting-started/introduction/
       icon: right-arrow
     - text: View on GitHub
-      link: https://github.com/merill/msgraph-skill
+      link: https://github.com/merill/msgraph
       icon: github
       variant: minimal
 ---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="MSAL Authentication" icon="setting">
+    Interactive browser sign-in with automatic device code fallback for headless environments. Incremental consent handles 403 errors automatically.
+  </Card>
+  <Card title="Graph API Calls" icon="rocket">
+    Execute REST calls against Microsoft Graph with full OData support — `$select`, `$filter`, `$top`, `$expand`, and more.
+  </Card>
+  <Card title="Safe by Default" icon="approve-check">
+    GET-only by default. Write operations require explicit `--allow-writes`. DELETE is always blocked.
+  </Card>
+  <Card title="OpenAPI Search" icon="magnifier">
+    Pre-processed index of 27,000+ Graph API endpoints. Find the right endpoint without leaving your terminal.
+  </Card>
+  <Card title="Zero Dependencies" icon="laptop">
+    Cross-platform. Works on macOS, Linux, and Windows with no runtime installation needed.
+  </Card>
+  <Card title="Agent Skills Spec" icon="document">
+    Follows the open [Agent Skills specification](https://agentskills.io). Install with `npx skills add merill/msgraph`.
+  </Card>
+</CardGrid>

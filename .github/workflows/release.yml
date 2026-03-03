@@ -63,16 +63,33 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Bundle binaries into skill directory
+        run: |
+          mkdir -p skills/msgraph/scripts/bin
+          # Copy the 6 raw binaries produced by GoReleaser into the skill package.
+          # GoReleaser binary archives use the template: msgraph_<os>_<arch>[.exe]
+          for f in dist/msgraph_darwin_amd64 dist/msgraph_darwin_arm64 \
+                   dist/msgraph_linux_amd64 dist/msgraph_linux_arm64 \
+                   dist/msgraph_windows_amd64.exe dist/msgraph_windows_arm64.exe; do
+            if [ -f "$f" ]; then
+              cp "$f" skills/msgraph/scripts/bin/
+              echo "Copied $(basename $f)"
+            else
+              echo "Warning: $f not found" >&2
+            fi
+          done
+          ls -lh skills/msgraph/scripts/bin/
+
       - name: Package skill directory
         run: |
           cd skills
-          zip -r ../msgraph-skill.zip msgraph/
+          zip -r ../msgraph.zip msgraph/
           cd ..
           echo "Skill zip contents:"
-          unzip -l msgraph-skill.zip
+          unzip -l msgraph.zip
 
       - name: Upload skill zip to release
         run: |
-          gh release upload ${{ steps.version.outputs.tag }} msgraph-skill.zip --clobber
+          gh release upload ${{ steps.version.outputs.tag }} msgraph.zip --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

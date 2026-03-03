@@ -1,4 +1,4 @@
-// Package config provides configuration management for the msgraph-skill CLI.
+// Package config provides configuration management for the msgraph CLI.
 package config
 
 import (

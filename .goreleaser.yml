@@ -1,19 +1,19 @@
 version: 2
 
-project_name: msgraph-skill
+project_name: msgraph
 
 before:
   hooks:
     - go mod tidy
 
 builds:
-  - id: msgraph-skill
+  - id: msgraph
     main: .
-    binary: msgraph-skill
+    binary: msgraph
     env:
       - CGO_ENABLED=0
     ldflags:
-      - -s -w -X github.com/merill/msgraph-skill/internal/config.Version={{.Version}}
+      - -s -w -X github.com/merill/msgraph/internal/config.Version={{.Version}}
     goos:
       - darwin
       - linux
@@ -39,7 +39,7 @@ checksum:
 release:
   github:
     owner: merill
-    name: msgraph-skill
+    name: msgraph
   draft: false
   prerelease: auto
 

@@ -3,23 +3,36 @@ title: How It Works
 description: Technical details of how the agent skill operates
 ---
 
-This page explains the technical internals of msgraph-skill for those who want to understand or extend it.
+import MermaidDiagram from '../../../components/MermaidDiagram.astro';
+
+This page explains the technical internals of msgraph for those who want to understand or extend it.
 
 ## Authentication Flow
 
-```
-Agent                    msgraph-skill              MSAL              Azure AD
-  │                           │                       │                  │
-  │── auth signin ──────────▶│                       │                  │
-  │                           │── AcquireToken ──────▶│                  │
-  │                           │                       │── Auth Request ─▶│
-  │                           │                       │                  │
-  │                           │                       │   (browser/      │
-  │                           │                       │    device code)  │
-  │                           │                       │                  │
-  │                           │◀── Token ────────────│◀── Token ───────│
-  │◀── JSON status ──────────│                       │                  │
-```
+<MermaidDiagram chart={`
+sequenceDiagram
+    participant Agent as AI Agent
+    participant CLI as msgraph CLI
+    participant MSAL as MSAL Library
+    participant Entra as Microsoft Entra ID
+    participant Graph as Graph API
+
+    Agent->>CLI: msgraph auth signin
+    CLI->>MSAL: Acquire token (interactive)
+    MSAL->>Entra: Authorization request
+    Entra-->>MSAL: Auth code (via browser)
+    MSAL->>Entra: Exchange code for tokens
+    Entra-->>MSAL: Access + refresh tokens
+    MSAL-->>CLI: Token cached
+    CLI-->>Agent: Signed in ✓
+
+    Agent->>CLI: msgraph graph-call GET /me
+    CLI->>MSAL: Acquire token (silent)
+    MSAL-->>CLI: Cached token
+    CLI->>Graph: GET /me (Bearer token)
+    Graph-->>CLI: 200 OK (user profile)
+    CLI-->>Agent: JSON response
+`} />
 
 ### Silent Token Acquisition
 
@@ -60,7 +73,7 @@ The token cache uses MSAL's `ExportReplace` interface:
 
 - **Export**: After any token acquisition, serialize the cache to a temp file
 - **Replace**: Before any token lookup, deserialize from the temp file
-- **Path**: `{os.TempDir()}/msgraph-skill-session-{hash}.json`
+- **Path**: `{os.TempDir()}/msgraph-session-{hash}.json`
 - **Hash**: SHA-256 of `clientID:tenantID`, truncated to 8 bytes
 
 The temp file allows multiple CLI invocations in the same session to share tokens without re-authenticating.
@@ -82,7 +95,7 @@ The search algorithm:
 
 ## Build System
 
-- **Go binary**: Built with `CGO_ENABLED=0` for fully static binaries
-- **Cross-compilation**: 6 targets via GoReleaser (darwin/linux/windows × amd64/arm64)
+- **Cross-platform**: Pre-built for macOS, Linux, and Windows (amd64 and arm64)
+- **Cross-compilation**: 6 platform targets (darwin/linux/windows × amd64/arm64)
 - **Docs site**: Astro + Starlight, deployed to GitHub Pages
-- **Monorepo**: Go module at root, npm workspace for docs
+- **Monorepo**: CLI source at root, npm workspace for docs

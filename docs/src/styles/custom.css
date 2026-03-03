@@ -1,0 +1,210 @@
+/* Custom theme for msgraph docs
+   Inspired by agentskills.io — neutral gray, dark-first, minimal */
+
+/* ===== Color palette override ===== */
+/* Starlight uses CSS custom properties for theming.
+   We replace the default blue/purple accent with neutral grays.
+   Accent colors MUST be set per-theme since Starlight uses:
+     - accent-high for readable text (needs contrast with bg)
+     - accent-low for subtle backgrounds (needs contrast with text)
+     - accent for links/highlights */
+
+/* Dark mode gray scale — very dark background like agentskills.io */
+:root[data-theme='dark'] {
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #eeeeee;
+  --sl-color-gray-2: #c2c2c2;
+  --sl-color-gray-3: #8b8b8b;
+  --sl-color-gray-4: #585858;
+  --sl-color-gray-5: #383838;
+  --sl-color-gray-6: #272727;
+  --sl-color-black: #0d0d0f;
+  --sl-color-accent-low: #1a1a1e;
+  --sl-color-accent: #9a9a9a;
+  --sl-color-accent-high: #e8e8e8;
+  --sl-color-bg: #0d0d0f;
+  --sl-color-bg-nav: #111113;
+  --sl-color-bg-sidebar: #0d0d0f;
+  --sl-color-hairline-shade: rgba(255, 255, 255, 0.06);
+  --sl-color-hairline-light: rgba(255, 255, 255, 0.04);
+}
+
+/* Light mode — inverted grays for readability on white backgrounds.
+   Starlight uses gray-2 for body text and white/black for contrast.
+   We MUST mirror the dark-mode scale so text is dark on light bg. */
+:root[data-theme='light'] {
+  --sl-color-white: #0d0d0f;
+  --sl-color-gray-1: #272727;
+  --sl-color-gray-2: #383838;
+  --sl-color-gray-3: #585858;
+  --sl-color-gray-4: #8b8b8b;
+  --sl-color-gray-5: #c2c2c2;
+  --sl-color-gray-6: #eeeeee;
+  --sl-color-black: #ffffff;
+  --sl-color-accent-low: #f0f0f0;
+  --sl-color-accent: #4a4a4a;
+  --sl-color-accent-high: #1a1a1a;
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #fafafa;
+  --sl-color-hairline-shade: rgba(0, 0, 0, 0.08);
+  --sl-color-hairline-light: rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Typography ===== */
+:root {
+  --sl-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+}
+
+/* ===== Sidebar styling ===== */
+/* Cleaner sidebar — no background tint, subtle borders */
+nav.sidebar {
+  border-right: 1px solid var(--sl-color-hairline-shade);
+}
+
+starlight-menu-button + nav {
+  border-right: 1px solid var(--sl-color-hairline-shade);
+}
+
+/* Sidebar links — rounder, subtler active state */
+.sidebar-content a[aria-current='page'] {
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-accent-high);
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+/* ===== Content area ===== */
+/* Slightly more breathing room */
+.content-panel {
+  max-width: 52rem;
+}
+
+/* Heading styles — tighter, bolder */
+.sl-markdown-content h1 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.sl-markdown-content h2 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 2.5rem;
+}
+
+/* Code blocks — darker, more contrast in dark mode */
+:root[data-theme='dark'] .expressive-code {
+  --ec-codeBg: #111113;
+  --ec-codeBoxShdCssVal: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --ec-frm-edTabBg: #111113;
+  --ec-frm-edActTabBg: #1a1a1e;
+  --ec-frm-edActTabIndBtm: #7f7f7f;
+}
+
+:root[data-theme='light'] .expressive-code {
+  --ec-codeBg: #f6f6f6;
+  --ec-frm-edTabBg: #f6f6f6;
+  --ec-frm-edActTabBg: #ffffff;
+  --ec-frm-edActTabIndBtm: #7f7f7f;
+}
+
+/* ===== Hero / splash page ===== */
+.hero {
+  padding-block: 4rem;
+  text-align: center;
+}
+
+.hero .tagline {
+  color: var(--sl-color-gray-2);
+  font-size: var(--sl-text-lg);
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+/* Hero buttons */
+.hero .action a[data-type='primary'] {
+  background: var(--sl-color-white);
+  color: var(--sl-color-black);
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  transition: opacity 0.15s ease;
+}
+
+.hero .action a[data-type='primary']:hover {
+  opacity: 0.85;
+}
+
+/* Minimal variant button */
+.hero .action a[data-type='minimal'] {
+  color: var(--sl-color-gray-2);
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.5rem;
+  transition: color 0.15s ease;
+}
+
+.hero .action a[data-type='minimal']:hover {
+  color: var(--sl-color-white);
+}
+
+/* ===== Tables ===== */
+/* Cleaner table borders */
+.sl-markdown-content table {
+  border-collapse: collapse;
+}
+
+.sl-markdown-content th {
+  font-weight: 600;
+  font-size: var(--sl-text-sm);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.sl-markdown-content td,
+.sl-markdown-content th {
+  border-color: var(--sl-color-hairline-shade);
+}
+
+/* ===== Inline code ===== */
+.sl-markdown-content :not(pre) > code {
+  background: var(--sl-color-accent-low);
+  border: 1px solid var(--sl-color-hairline-shade);
+  border-radius: 0.375rem;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875em;
+}
+
+/* ===== Nav bar ===== */
+/* Make site header match the dark BG */
+header.header {
+  backdrop-filter: blur(12px);
+}
+
+/* Site title — clean text like agentskills.io */
+.site-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ===== Scrollbar ===== */
+:root[data-theme='dark'] ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+:root[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:root[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+:root[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

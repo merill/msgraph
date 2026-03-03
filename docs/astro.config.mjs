@@ -4,11 +4,17 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'msgraph-skill',
+      title: 'Microsoft Graph Agent Skill',
       description: 'Microsoft Graph API agent skill for AI coding assistants',
+      favicon: '/favicon.ico',
+      logo: {
+        src: './src/assets/msgraph-skill.svg',
+        alt: 'msgraph logo',
+      },
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/merill/msgraph-skill' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/merill/msgraph' },
       ],
+      customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
           label: 'Getting Started',
@@ -38,6 +44,10 @@ export default defineConfig({
             { label: 'CLI Reference', slug: 'reference/cli' },
             { label: 'Configuration', slug: 'reference/configuration' },
           ],
+        },
+        {
+          label: 'FAQ',
+          slug: 'faq',
         },
       ],
     }),

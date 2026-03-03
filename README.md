@@ -1,4 +1,4 @@
-# msgraph-skill
+# msgraph
 
 An [Agent Skill](https://agentskills.io) for the Microsoft Graph API. Enables AI agents to authenticate to Microsoft 365 tenants and make Graph API calls.
 
@@ -9,8 +9,8 @@ An [Agent Skill](https://agentskills.io) for the Microsoft Graph API. Enables AI
 - **Read-Only by Default** - GET operations allowed; write operations require explicit confirmation
 - **Incremental Consent** - Automatically requests additional permissions when needed
 - **OpenAPI Lookup** - Pre-processed Graph API index for endpoint discovery
-- **Cross-Platform** - Pre-compiled Go binaries for macOS, Linux, and Windows (amd64/arm64)
-- **Zero Runtime Dependencies** - Static Go binaries, no runtime installation needed
+- **Cross-Platform** - Cross-platform CLI for macOS, Linux, and Windows (amd64/arm64)
+- **Zero Runtime Dependencies** - No runtime installation needed
 
 ## Quick Start
 
@@ -19,17 +19,17 @@ An [Agent Skill](https://agentskills.io) for the Microsoft Graph API. Enables AI
 **Using [skills.sh](https://skills.sh) (recommended):**
 
 ```bash
-npx skills add merill/msgraph-skill
+npx skills add merill/msgraph
 ```
 
 **Or download from GitHub Releases:**
 
-Download `msgraph-skill.zip` from the [latest release](https://github.com/merill/msgraph-skill/releases/latest), then extract it into your agent's skills directory:
+Download `msgraph.zip` from the [latest release](https://github.com/merill/msgraph/releases/latest), then extract it into your agent's skills directory:
 
 ```bash
 # Download and extract
-curl -fsSL -o msgraph-skill.zip https://github.com/merill/msgraph-skill/releases/latest/download/msgraph-skill.zip
-unzip msgraph-skill.zip -d ~/.claude/skills/
+curl -fsSL -o msgraph.zip https://github.com/merill/msgraph/releases/latest/download/msgraph.zip
+unzip msgraph.zip -d ~/.claude/skills/
 ```
 
 ### First Run
@@ -50,13 +50,13 @@ powershell ~/.claude/skills/msgraph/scripts/run.ps1 auth signin
 
 ```bash
 # Get current user profile
-msgraph-skill graph-call GET /me
+msgraph graph-call GET /me
 
 # List messages
-msgraph-skill graph-call GET /me/messages --top 10
+msgraph graph-call GET /me/messages --top 10
 
 # Search the OpenAPI index
-msgraph-skill openapi-search --query "send mail"
+msgraph openapi-search --query "send mail"
 ```
 
 ## Configuration
@@ -69,7 +69,7 @@ msgraph-skill openapi-search --query "send mail"
 
 ## Building from Source
 
-Requires [Go 1.22+](https://go.dev/dl/).
+Requires [Go 1.22+](https://go.dev/dl/) to build from source.
 
 ```bash
 # Build for current platform
@@ -85,13 +85,13 @@ make index
 ## Project Structure
 
 ```
-msgraph-skill/
+msgraph/
 ├── skills/msgraph/   # The installable Agent Skill
 │   ├── SKILL.md      # Agent Skills spec entry point
 │   ├── scripts/      # Launcher scripts + binary cache
 │   └── references/   # OpenAPI index + reference docs
 ├── cmd/              # CLI subcommands (Cobra)
-├── internal/         # Go internal packages
+├── internal/         # Internal packages
 ├── tools/            # Build-time tools (OpenAPI indexer)
 ├── docs/             # Documentation site (Astro + Starlight)
 └── .github/          # CI/CD workflows

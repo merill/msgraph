@@ -3,7 +3,9 @@ title: Introduction
 description: Microsoft Graph API agent skill for AI coding assistants
 ---
 
-**msgraph-skill** is an [Agent Skill](https://agentskills.io) that enables AI coding assistants to query and manage Microsoft 365 data through the Microsoft Graph API.
+import MermaidDiagram from '../../../components/MermaidDiagram.astro';
+
+**msgraph** is an [Agent Skill](https://agentskills.io) that enables AI coding assistants to query and manage Microsoft 365 data through the Microsoft Graph API.
 
 ## What it does
 
@@ -15,7 +17,7 @@ description: Microsoft Graph API agent skill for AI coding assistants
 
 ## How agents use it
 
-When an agent loads this skill, it gets instructions and a CLI binary to:
+When an agent loads this skill, it gets instructions and a CLI to:
 
 1. Check authentication status
 2. Sign in if needed
@@ -25,26 +27,25 @@ When an agent loads this skill, it gets instructions and a CLI binary to:
 
 ## Architecture
 
-```
-┌─────────────┐     ┌──────────────────┐     ┌──────────────┐
-│   AI Agent   │────▶│  msgraph-skill   │────▶│ Microsoft    │
-│  (Claude,    │     │  CLI binary      │     │ Graph API    │
-│   Copilot,   │◀────│  (Go, static)    │◀────│              │
-│   etc.)      │     └──────────────────┘     └──────────────┘
-└─────────────┘              │
-                             ▼
-                    ┌──────────────────┐
-                    │  MSAL Auth       │
-                    │  (browser/device │
-                    │   code flow)     │
-                    └──────────────────┘
-```
+<MermaidDiagram chart={`
+graph LR
+    Agent["<b>AI Agent</b><br/><i>Claude, Copilot, etc.</i>"]
+    CLI["<b>msgraph CLI</b>"]
+    Graph["<b>Microsoft<br/>Graph API</b>"]
+    MSAL["<b>MSAL Auth</b><br/><i>browser / device code</i>"]
+
+    Agent -- "CLI commands" --> CLI
+    CLI -- "REST calls" --> Graph
+    CLI -. "tokens" .-> MSAL
+
+    style CLI fill:#0ea5e9,stroke:#38bdf8,stroke-width:2px,color:#fff
+`} />
 
 ## Key design choices
 
 | Choice | Rationale |
 |---|---|
-| **Go static binary** | Zero runtime dependencies, works everywhere |
+| **Cross-platform CLI** | No runtime installation needed, works on macOS, Linux, and Windows |
 | **Delegated auth only** | Operates as the signed-in user, not as an app |
 | **Beta API by default** | Access to the latest Graph features |
 | **GET-only by default** | Safety first — writes need `--allow-writes` |

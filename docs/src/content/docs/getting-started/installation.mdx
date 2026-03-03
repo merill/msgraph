@@ -1,89 +1,58 @@
 ---
 title: Installation
-description: How to install and set up msgraph-skill
+description: How to install and set up msgraph
 ---
 
 ## As an Agent Skill (Recommended)
 
 ### Using skills.sh
 
-The easiest way to install msgraph-skill is via [skills.sh](https://skills.sh):
+The easiest way to install msgraph is via [skills.sh](https://skills.sh):
 
 ```bash
-npx skills add merill/msgraph-skill
+npx skills add merill/msgraph
 ```
 
 This automatically discovers the skill in the repository and installs it into your agent's skill directory.
 
 ### From GitHub Releases
 
-Download `msgraph-skill.zip` from the [latest release](https://github.com/merill/msgraph-skill/releases/latest) and extract it into your agent's skill directory:
+Download `msgraph.zip` from the [latest release](https://github.com/merill/msgraph/releases/latest) and extract it into your agent's skill directory:
 
 ```bash
 # macOS/Linux
-curl -fsSL -o msgraph-skill.zip https://github.com/merill/msgraph-skill/releases/latest/download/msgraph-skill.zip
-unzip msgraph-skill.zip -d ~/.claude/skills/
+curl -fsSL -o msgraph.zip https://github.com/merill/msgraph/releases/latest/download/msgraph.zip
+unzip msgraph.zip -d ~/.claude/skills/
 ```
 
 ```powershell
 # Windows (PowerShell)
-Invoke-WebRequest -Uri "https://github.com/merill/msgraph-skill/releases/latest/download/msgraph-skill.zip" -OutFile msgraph-skill.zip
-Expand-Archive msgraph-skill.zip -DestinationPath "$env:USERPROFILE\.claude\skills"
+Invoke-WebRequest -Uri "https://github.com/merill/msgraph/releases/latest/download/msgraph.zip" -OutFile msgraph.zip
+Expand-Archive msgraph.zip -DestinationPath "$env:USERPROFILE\.claude\skills"
 ```
 
-The zip contains just the `msgraph/` skill directory — no source code, docs, or CI files are included.
-
-The launcher scripts in `msgraph/scripts/` will automatically download the correct binary for your platform on first use.
+The skill package includes pre-built binaries for all supported platforms (macOS, Linux, Windows — amd64 and arm64). No additional downloads are needed.
 
 ## Manual Installation
 
-### From GitHub Releases (Binary Only)
-
-If you just want the compiled binary (without the agent skill wrapper), download it from the [GitHub Releases](https://github.com/merill/msgraph-skill/releases) page. Binaries are available for all platforms:
-
-- `msgraph-skill_darwin_amd64` (macOS Intel)
-- `msgraph-skill_darwin_arm64` (macOS Apple Silicon)
-- `msgraph-skill_linux_amd64`
-- `msgraph-skill_linux_arm64`
-- `msgraph-skill_windows_amd64.exe`
-- `msgraph-skill_windows_arm64.exe`
-
 ### From Source
 
-Requires Go 1.22 or later:
-
 ```bash
-git clone https://github.com/merill/msgraph-skill.git
-cd msgraph-skill
+git clone https://github.com/merill/msgraph.git
+cd msgraph
 make build
 ```
 
-The binary is built to `./msgraph-skill`. Copy it somewhere on your PATH:
+The CLI is built to `./msgraph`. Copy it somewhere on your PATH:
 
 ```bash
 make install  # Installs to skills/msgraph/scripts/bin/
 ```
 
-### Cross-compilation
-
-Build for all supported platforms:
-
-```bash
-make build-all
-```
-
-This produces binaries in `dist/` for:
-- `darwin/amd64` (macOS Intel)
-- `darwin/arm64` (macOS Apple Silicon)
-- `linux/amd64`
-- `linux/arm64`
-- `windows/amd64`
-- `windows/arm64`
-
 ## Verify Installation
 
 ```bash
-msgraph-skill --help
+msgraph --help
 ```
 
 You should see the available commands: `auth`, `graph-call`, and `openapi-search`.

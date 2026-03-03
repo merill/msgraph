@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/merill/msgraph-skill/internal/auth"
-	"github.com/merill/msgraph-skill/internal/graph"
+	"github.com/merill/msgraph/internal/auth"
+	"github.com/merill/msgraph/internal/graph"
 	"github.com/spf13/cobra"
 )
 
@@ -24,9 +24,9 @@ By default, only GET requests are allowed. Use --allow-writes to enable
 POST, PUT, and PATCH requests. DELETE is always blocked for safety.
 
 Examples:
-  msgraph-skill graph-call GET /me
-  msgraph-skill graph-call GET /me/messages --select "subject,from" --top 10
-  msgraph-skill graph-call POST /me/messages --body '{"subject":"Hello"}' --allow-writes`,
+  msgraph graph-call GET /me
+  msgraph graph-call GET /me/messages --select "subject,from" --top 10
+  msgraph graph-call POST /me/messages --body '{"subject":"Hello"}' --allow-writes`,
 	Args: cobra.ExactArgs(2),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx := context.Background()

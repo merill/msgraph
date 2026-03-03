@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/merill/msgraph-skill/internal/openapi"
+	"github.com/merill/msgraph/internal/openapi"
 	"github.com/spf13/cobra"
 )
 
@@ -17,9 +17,9 @@ var searchCmd = &cobra.Command{
 to find available endpoints, required scopes, and API details.
 
 Examples:
-  msgraph-skill openapi-search --query "list users"
-  msgraph-skill openapi-search --resource users --method GET
-  msgraph-skill openapi-search --query "send mail" --method POST`,
+  msgraph openapi-search --query "list users"
+  msgraph openapi-search --resource users --method GET
+  msgraph openapi-search --query "send mail" --method POST`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		query, _ := cmd.Flags().GetString("query")
 		resource, _ := cmd.Flags().GetString("resource")

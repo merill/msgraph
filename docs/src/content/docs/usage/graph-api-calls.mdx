@@ -8,7 +8,7 @@ The `graph-call` command executes HTTP requests against the Microsoft Graph API.
 ## Basic Usage
 
 ```bash
-msgraph-skill graph-call <METHOD> <URL> [flags]
+msgraph graph-call <METHOD> <URL> [flags]
 ```
 
 The URL can be a full URL or a relative path starting with `/`.
@@ -19,19 +19,19 @@ GET requests work by default without any special flags:
 
 ```bash
 # Current user profile
-msgraph-skill graph-call GET /me
+msgraph graph-call GET /me
 
 # List users
-msgraph-skill graph-call GET /users --select "displayName,mail" --top 10
+msgraph graph-call GET /users --select "displayName,mail" --top 10
 
 # Get user's unread messages
-msgraph-skill graph-call GET /me/messages --filter "isRead eq false" --top 5
+msgraph graph-call GET /me/messages --filter "isRead eq false" --top 5
 
 # List groups
-msgraph-skill graph-call GET /groups --select "displayName,description"
+msgraph graph-call GET /groups --select "displayName,description"
 
 # Get team channels
-msgraph-skill graph-call GET /teams/{team-id}/channels
+msgraph graph-call GET /teams/{team-id}/channels
 ```
 
 ## Write Operations
@@ -40,12 +40,12 @@ POST, PUT, and PATCH requests require the `--allow-writes` flag:
 
 ```bash
 # Send mail
-msgraph-skill graph-call POST /me/sendMail \
+msgraph graph-call POST /me/sendMail \
   --body '{"message":{"subject":"Hello","body":{"content":"Hi"},"toRecipients":[{"emailAddress":{"address":"user@example.com"}}]}}' \
   --allow-writes
 
 # Update user
-msgraph-skill graph-call PATCH /me \
+msgraph graph-call PATCH /me \
   --body '{"jobTitle":"Engineer"}' \
   --allow-writes
 ```
@@ -93,11 +93,11 @@ Some queries require the `ConsistencyLevel` header:
 
 ```bash
 # Count users
-msgraph-skill graph-call GET /users/\$count \
+msgraph graph-call GET /users/\$count \
   --headers "ConsistencyLevel:eventual"
 
 # Search users
-msgraph-skill graph-call GET '/users?$search="displayName:John"' \
+msgraph graph-call GET '/users?$search="displayName:John"' \
   --headers "ConsistencyLevel:eventual"
 ```
 
