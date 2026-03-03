@@ -631,26 +631,26 @@ header.header {
 .sb-btn-contribute {
   white-space: nowrap;
   text-decoration: none;
-  background: #3b82f6;
+  background: #1a1a1e;
   color: #fff;
-  border-color: #3b82f6;
+  border-color: #1a1a1e;
   flex-shrink: 0;
 }
 
 :root[data-theme='light'] .sb-btn-contribute {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: #1a1a1a;
+  border-color: #1a1a1a;
 }
 
 .sb-btn-contribute:hover {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: #2d2d32;
+  border-color: #2d2d32;
   color: #fff;
 }
 
 :root[data-theme='light'] .sb-btn-contribute:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
+  background: #333333;
+  border-color: #333333;
 }
 
 /* ── Submit section (standalone page) ── */
