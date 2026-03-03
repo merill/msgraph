@@ -66,18 +66,42 @@ jobs:
       - name: Bundle binaries into skill directory
         run: |
           mkdir -p skills/msgraph/scripts/bin
-          # Copy the 6 raw binaries produced by GoReleaser into the skill package.
-          # GoReleaser binary archives use the template: msgraph_<os>_<arch>[.exe]
-          for f in dist/msgraph_darwin_amd64 dist/msgraph_darwin_arm64 \
-                   dist/msgraph_linux_amd64 dist/msgraph_linux_arm64 \
-                   dist/msgraph_windows_amd64.exe dist/msgraph_windows_arm64.exe; do
-            if [ -f "$f" ]; then
-              cp "$f" skills/msgraph/scripts/bin/
-              echo "Copied $(basename $f)"
+
+          # Debug: show what GoReleaser produced
+          echo "=== GoReleaser dist structure ==="
+          ls -la dist/
+
+          # GoReleaser v2 build output goes to dist/<id>_<os>_<arch><variant>/binary
+          # Variants: amd64 → _v1, arm64 → _v8 (may vary by GoReleaser version)
+          # Use globs to handle any variant suffix.
+          PLATFORMS=(
+            "darwin_amd64:msgraph"
+            "darwin_arm64:msgraph"
+            "linux_amd64:msgraph"
+            "linux_arm64:msgraph"
+            "windows_amd64:msgraph.exe"
+            "windows_arm64:msgraph.exe"
+          )
+
+          for entry in "${PLATFORMS[@]}"; do
+            platform="${entry%%:*}"
+            binary="${entry##*:}"
+            target="skills/msgraph/scripts/bin/msgraph_${platform}${binary##msgraph}"
+
+            # Find the build output directory matching this platform
+            src=$(find dist -maxdepth 2 -name "${binary}" -path "*/msgraph_${platform}*" -type f | head -n1)
+
+            if [ -n "$src" ]; then
+              cp "$src" "$target"
+              echo "Copied $src → $(basename $target)"
             else
-              echo "Warning: $f not found" >&2
+              echo "ERROR: No binary found for platform ${platform}" >&2
+              exit 1
             fi
           done
+
+          echo ""
+          echo "=== Bundled binaries ==="
           ls -lh skills/msgraph/scripts/bin/
 
       - name: Stamp version in SKILL.md
