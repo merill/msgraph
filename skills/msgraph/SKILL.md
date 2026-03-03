@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires network access to login.microsoftonline.com and graph.microsoft.com. A system browser is used for interactive auth; falls back to device code flow in headless environments.
 metadata:
   author: merill
-  version: "1.0"
+  version: "1.0.8"
 ---
 
 # Microsoft Graph Agent Skill
