@@ -1,32 +1,32 @@
 ---
 /**
- * SampleBrowser — client-side interactive component that:
+ * SampleBrowser — browse-only component that:
  * 1. Fetches samples-index.json from graph.pm
- * 2. Shows a searchable, filterable table of community query samples
- * 3. Provides a "Submit New Sample" form with GitHub OAuth
+ * 2. Shows a searchable, filterable list of community query samples
+ * 3. Each sample has an edit link to the GitHub file
+ * 4. Product filter is populated dynamically from the index
  */
 ---
 
 <div class="sample-browser" id="sample-browser">
-  <!-- Search + Filter bar -->
-  <div class="sb-controls">
-    <input
-      type="text"
-      id="sb-search"
-      class="sb-search-input"
-      placeholder="Search samples (e.g. conditional access, send email, managed devices)..."
-      autocomplete="off"
-    />
-    <select id="sb-product-filter" class="sb-select">
-      <option value="">All products</option>
-      <option value="entra">Entra ID</option>
-      <option value="exchange">Exchange</option>
-      <option value="general">General</option>
-      <option value="intune">Intune</option>
-      <option value="security">Security</option>
-      <option value="sharepoint">SharePoint</option>
-      <option value="teams">Teams</option>
-    </select>
+  <!-- Top bar — search + filter + contribute button -->
+  <div class="sb-topbar">
+    <div class="sb-controls">
+      <input
+        type="text"
+        id="sb-search"
+        class="sb-search-input"
+        placeholder="Search samples (e.g. conditional access, send email, managed devices)..."
+        autocomplete="off"
+      />
+      <select id="sb-product-filter" class="sb-select">
+        <option value="">All products</option>
+      </select>
+    </div>
+    <a href="/improve/add-sample/" class="sb-btn sb-btn-contribute">
+      <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2Z"/></svg>
+      Add a Sample
+    </a>
   </div>
 
   <!-- Results count -->
@@ -34,95 +34,42 @@
 
   <!-- Sample cards -->
   <div class="sb-results" id="sb-results"></div>
-
-  <!-- Submit section -->
-  <div class="sb-submit-section" id="sb-submit-section">
-    <h2>Submit a New Sample</h2>
-    <p class="sb-submit-desc">
-      Help the community by contributing a Graph API query sample. Your submission
-      will create a pull request on GitHub for review.
-    </p>
-
-    <div id="sb-auth-status" class="sb-auth-status">
-      <button id="sb-github-login" class="sb-btn sb-btn-github">
-        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        Sign in with GitHub to submit
-      </button>
-    </div>
-
-    <form id="sb-submit-form" class="sb-form" style="display: none;">
-      <div class="sb-form-group">
-        <label for="sb-form-product">Product</label>
-        <select id="sb-form-product" class="sb-select" required>
-          <option value="">Select a product...</option>
-          <option value="entra">Entra ID</option>
-          <option value="exchange">Exchange</option>
-          <option value="general">General</option>
-          <option value="intune">Intune</option>
-          <option value="security">Security</option>
-          <option value="sharepoint">SharePoint</option>
-          <option value="teams">Teams</option>
-        </select>
-      </div>
-
-      <div class="sb-form-group">
-        <label for="sb-form-intent">Intent</label>
-        <input
-          type="text"
-          id="sb-form-intent"
-          class="sb-input"
-          placeholder="e.g. List all Conditional Access policies"
-          required
-        />
-        <span class="sb-form-hint">Describe what the query does in plain English</span>
-      </div>
-
-      <div class="sb-form-group">
-        <label for="sb-form-query">Query</label>
-        <div id="sb-query-steps">
-          <div class="sb-query-step">
-            <input
-              type="text"
-              class="sb-input sb-query-input"
-              placeholder="e.g. GET /beta/identity/conditionalAccess/policies"
-              required
-            />
-          </div>
-        </div>
-        <button type="button" id="sb-add-step" class="sb-btn sb-btn-small">+ Add step</button>
-        <span class="sb-form-hint">HTTP method + Graph API path. Add steps for multi-step queries.</span>
-      </div>
-
-      <div class="sb-form-actions">
-        <button type="submit" id="sb-submit-btn" class="sb-btn sb-btn-primary">Submit Sample</button>
-        <span id="sb-submit-status" class="sb-submit-status"></span>
-      </div>
-    </form>
-  </div>
 </div>
 
 <script>
   const SAMPLES_INDEX_URL = 'https://graph.pm/samples-index.json';
-  const GITHUB_CLIENT_ID = 'Ov23liQUr6CpfzfYARKi'; // Set after creating GitHub OAuth App
-  const OAUTH_PROXY_URL = 'https://msgraph-github-oauth.merill.workers.dev'; // Set after deploying Cloudflare Worker
+  const GITHUB_EDIT_BASE = 'https://github.com/merill/msgraph/edit/main/skills/msgraph/samples/';
 
   let allSamples = [];
-  let githubToken = null;
 
   // ── Load samples ──
   async function loadSamples() {
     const status = document.getElementById('sb-status');
-    const results = document.getElementById('sb-results');
 
     try {
       const resp = await fetch(SAMPLES_INDEX_URL);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       allSamples = data.samples || [];
+      populateProductFilter(allSamples);
       renderSamples(allSamples);
     } catch (err) {
       if (status) status.textContent = 'Failed to load samples. Try refreshing the page.';
       console.error('Failed to load samples:', err);
+    }
+  }
+
+  // ── Populate product filter dynamically ──
+  function populateProductFilter(samples) {
+    const select = document.getElementById('sb-product-filter');
+    if (!select) return;
+
+    const products = [...new Set(samples.map(s => s.product))].sort();
+    for (const p of products) {
+      const opt = document.createElement('option');
+      opt.value = p;
+      opt.textContent = p.charAt(0).toUpperCase() + p.slice(1);
+      select.appendChild(opt);
     }
   }
 
@@ -148,11 +95,16 @@
         return `<div class="sb-query-line">${label}<code>${escapeHtml(q)}</code></div>`;
       }).join('');
 
+      const editUrl = GITHUB_EDIT_BASE + s.file;
+
       return `
         <div class="sb-card">
           <div class="sb-card-header">
             <span class="sb-card-product">${escapeHtml(s.product)}</span>
             ${isMultiStep ? '<span class="sb-card-badge">multi-step</span>' : ''}
+            <a href="${editUrl}" target="_blank" rel="noopener" class="sb-edit-link" title="Edit this sample on GitHub">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm1.414 1.06a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.264a.25.25 0 0 0 0-.354l-1.086-1.086ZM11.189 6.25l-1.44-1.439-6.486 6.487a.25.25 0 0 0-.064.108l-.558 1.953 1.953-.558a.25.25 0 0 0 .108-.064l6.487-6.487Z"/></svg>
+            </a>
           </div>
           <div class="sb-card-intent">${escapeHtml(s.intent)}</div>
           <div class="sb-card-queries">${queryHtml}</div>
@@ -187,168 +139,6 @@
     renderSamples(filtered);
   }
 
-  // ── GitHub OAuth ──
-  function handleGitHubLogin() {
-    if (!GITHUB_CLIENT_ID) {
-      alert('GitHub OAuth is not configured yet. Please contribute via pull request on GitHub instead.');
-      return;
-    }
-    const state = crypto.randomUUID();
-    sessionStorage.setItem('gh_oauth_state', state);
-    const redirectUri = encodeURIComponent(window.location.origin + window.location.pathname);
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${redirectUri}&scope=public_repo&state=${state}`;
-  }
-
-  async function exchangeCodeForToken(code, state) {
-    const savedState = sessionStorage.getItem('gh_oauth_state');
-    if (state !== savedState) {
-      console.error('OAuth state mismatch');
-      return;
-    }
-    sessionStorage.removeItem('gh_oauth_state');
-
-    if (!OAUTH_PROXY_URL) return;
-
-    try {
-      const resp = await fetch(OAUTH_PROXY_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code }),
-      });
-      const data = await resp.json();
-      if (data.access_token) {
-        githubToken = data.access_token;
-        showSubmitForm();
-      }
-    } catch (err) {
-      console.error('Token exchange failed:', err);
-    }
-  }
-
-  function showSubmitForm() {
-    const authStatus = document.getElementById('sb-auth-status');
-    const form = document.getElementById('sb-submit-form');
-    if (authStatus) authStatus.style.display = 'none';
-    if (form) form.style.display = 'block';
-  }
-
-  // ── Submit sample via GitHub API ──
-  async function submitSample(e) {
-    e.preventDefault();
-    const submitBtn = document.getElementById('sb-submit-btn');
-    const submitStatus = document.getElementById('sb-submit-status');
-    if (!submitBtn || !submitStatus) return;
-
-    const productEl = document.getElementById('sb-form-product');
-    const intentEl = document.getElementById('sb-form-intent');
-    if (!productEl || !intentEl) return;
-
-    const product = productEl.value;
-    const intent = intentEl.value.trim();
-    const queryInputs = document.querySelectorAll('.sb-query-input');
-    const queries = Array.from(queryInputs).map(el => el.value.trim()).filter(Boolean);
-
-    if (!product || !intent || queries.length === 0) {
-      submitStatus.textContent = 'Please fill in all fields.';
-      return;
-    }
-
-    // Check for duplicates
-    const intentLower = intent.toLowerCase();
-    const duplicate = allSamples.find(s => s.intent.toLowerCase() === intentLower);
-    if (duplicate) {
-      submitStatus.textContent = `A similar sample already exists: "${duplicate.intent}"`;
-      submitStatus.className = 'sb-submit-status sb-error';
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitStatus.textContent = 'Creating pull request...';
-    submitStatus.className = 'sb-submit-status';
-
-    // Build YAML content
-    const slug = intent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
-    let yamlContent;
-    if (queries.length === 1) {
-      yamlContent = `intent: ${intent}\nquery: ${queries[0]}\n`;
-    } else {
-      yamlContent = `intent: ${intent}\nquery:\n${queries.map(q => `  - ${q}`).join('\n')}\n`;
-    }
-
-    const filePath = `skills/msgraph/samples/${product}/${slug}.yaml`;
-    const branchName = `sample/${slug}`;
-
-    try {
-      // 1. Get default branch SHA
-      const repoResp = await ghApi('GET', '/repos/merill/msgraph/git/ref/heads/main');
-      const baseSha = repoResp.object.sha;
-
-      // 2. Create branch
-      await ghApi('POST', '/repos/merill/msgraph/git/refs', {
-        ref: `refs/heads/${branchName}`,
-        sha: baseSha,
-      });
-
-      // 3. Create file
-      await ghApi('PUT', `/repos/merill/msgraph/contents/${filePath}`, {
-        message: `Add sample: ${intent}`,
-        content: btoa(unescape(encodeURIComponent(yamlContent))),
-        branch: branchName,
-      });
-
-      // 4. Create PR
-      const prResp = await ghApi('POST', '/repos/merill/msgraph/pulls', {
-        title: `Add sample: ${intent}`,
-        head: branchName,
-        base: 'main',
-        body: `## New Sample\n\n**Product:** ${product}\n**Intent:** ${intent}\n**Query:**\n${queries.map(q => '`' + q + '`').join('\n')}\n\n---\n*Submitted via [graph.pm/samples](https://graph.pm/samples)*`,
-      });
-
-      submitStatus.innerHTML = `Pull request created! <a href="${prResp.html_url}" target="_blank">View PR #${prResp.number}</a>`;
-      submitStatus.className = 'sb-submit-status sb-success';
-
-      // Reset form
-      productEl.value = '';
-      intentEl.value = '';
-      queryInputs.forEach(el => { el.value = ''; });
-    } catch (err) {
-      submitStatus.textContent = `Failed: ${err.message}`;
-      submitStatus.className = 'sb-submit-status sb-error';
-    } finally {
-      submitBtn.disabled = false;
-    }
-  }
-
-  async function ghApi(method, path, body) {
-    const resp = await fetch(`https://api.github.com${path}`, {
-      method,
-      headers: {
-        Authorization: `Bearer ${githubToken}`,
-        Accept: 'application/vnd.github+json',
-        'Content-Type': 'application/json',
-      },
-      body: body ? JSON.stringify(body) : undefined,
-    });
-    if (!resp.ok) {
-      const err = await resp.json().catch(() => ({}));
-      throw new Error(err.message || `GitHub API error ${resp.status}`);
-    }
-    return resp.json();
-  }
-
-  // ── Add step button ──
-  function addQueryStep() {
-    const container = document.getElementById('sb-query-steps');
-    if (!container) return;
-    const stepDiv = document.createElement('div');
-    stepDiv.className = 'sb-query-step';
-    stepDiv.innerHTML = `
-      <input type="text" class="sb-input sb-query-input" placeholder="e.g. GET /v1.0/users/{id}" required />
-      <button type="button" class="sb-btn sb-btn-remove" onclick="this.parentElement.remove()">&times;</button>
-    `;
-    container.appendChild(stepDiv);
-  }
-
   function escapeHtml(str) {
     const div = document.createElement('div');
     div.textContent = str;
@@ -363,24 +153,5 @@
     const productEl = document.getElementById('sb-product-filter');
     if (searchEl) searchEl.addEventListener('input', filterSamples);
     if (productEl) productEl.addEventListener('change', filterSamples);
-
-    const loginBtn = document.getElementById('sb-github-login');
-    if (loginBtn) loginBtn.addEventListener('click', handleGitHubLogin);
-
-    const addStepBtn = document.getElementById('sb-add-step');
-    if (addStepBtn) addStepBtn.addEventListener('click', addQueryStep);
-
-    const submitForm = document.getElementById('sb-submit-form');
-    if (submitForm) submitForm.addEventListener('submit', submitSample);
-
-    // Check for OAuth callback
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-    const state = params.get('state');
-    if (code && state) {
-      // Clean URL
-      window.history.replaceState({}, '', window.location.pathname);
-      exchangeCodeForToken(code, state);
-    }
   });
 </script>

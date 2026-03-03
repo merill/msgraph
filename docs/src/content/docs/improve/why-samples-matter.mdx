@@ -1,0 +1,89 @@
+---
+title: Why Your Samples Matter
+description: Learn why community-contributed Graph API samples are essential for making AI agents smarter and how you can help.
+---
+
+## The problem
+
+Large language models like Claude, ChatGPT, and Gemini are trained on data that is months — sometimes over a year — old. They don't know about the latest Microsoft Graph APIs, recent endpoint changes, or newly released features. On top of that, the Graph API documentation isn't always clear, and some endpoints behave in ways that aren't obvious from the docs alone.
+
+The result: **your AI agent will struggle with some Graph API calls**. It might hallucinate endpoints that don't exist, use deprecated paths, or miss the right `$filter` syntax for a query that actually works.
+
+## How you can fix this
+
+Every sample you contribute goes directly into the skill's search index. When an agent needs to "list Conditional Access policies" or "get Intune managed devices," it searches this index *first* — before guessing. Your sample becomes the authoritative answer.
+
+A sample is just two fields in a YAML file:
+
+```yaml
+intent: List all Conditional Access policies
+query: GET /beta/identity/conditionalAccess/policies
+```
+
+That's it. You describe **what the query does** in plain English, and you provide the **working REST API call**. The agent does the rest.
+
+For multi-step queries that require calling multiple endpoints:
+
+```yaml
+intent: Get users assigned to the Global Administrator role
+query:
+  - GET /v1.0/roleManagement/directory/roleDefinitions?$filter=displayName eq 'Global Administrator'
+  - GET /v1.0/roleManagement/directory/roleAssignments?$filter=roleDefinitionId eq '{id from step 1}'&$expand=principal
+```
+
+## When to contribute
+
+The best time to add a sample is when an AI agent struggles to find the right query. If you had to manually construct a Graph API call that wasn't obvious — that's a perfect candidate.
+
+Common scenarios:
+- The agent used a v1.0 endpoint but the feature only works in beta
+- The agent couldn't figure out the right `$filter` or `$expand` syntax
+- The endpoint is new and the agent's training data doesn't include it
+- The Graph docs were ambiguous and you found the working call through trial and error
+
+## How to contribute
+
+### Option 1: Submit via the website (easiest)
+
+Go to [Add a Sample](/improve/add-sample/) and use the form. Sign in with your GitHub account and the form will create a pull request automatically.
+
+### Option 2: Submit via pull request
+
+1. Fork the [merill/msgraph](https://github.com/merill/msgraph) repository
+2. Create a new `.yaml` file in the appropriate product directory:
+   ```
+   skills/msgraph/samples/{product}/{descriptive-name}.yaml
+   ```
+3. Add your `intent` and `query` fields
+4. Submit a pull request
+
+You can also [browse existing samples](/improve/browse-samples/) to see what's already there and find samples to improve.
+
+## Product categories
+
+Samples are organized by Microsoft product. The current categories are:
+
+| Directory | Product |
+|---|---|
+| `entra/` | Entra ID (identity, conditional access, roles, apps) |
+| `exchange/` | Exchange Online (mail, calendar, mailbox) |
+| `general/` | Cross-product (licensing, organization, domains) |
+| `intune/` | Intune (device management, compliance, apps) |
+| `security/` | Microsoft Security (Defender, alerts, hunting) |
+| `sharepoint/` | SharePoint Online (sites, lists, documents) |
+| `teams/` | Microsoft Teams (teams, channels, messages) |
+
+Need a new category? Just use it — when you submit a sample with a product name that doesn't exist yet, a new directory will be created automatically.
+
+## Guidelines
+
+- **One sample per file** — this eliminates merge conflicts
+- **Use descriptive file names** — e.g. `list-conditional-access-policies.yaml`, not `sample1.yaml`
+- **Be specific in the intent** — "List all Conditional Access policies" is better than "Get policies"
+- **Include the full query path** — e.g. `GET /beta/identity/conditionalAccess/policies`, not just `/policies`
+- **Use `$select` where appropriate** — helps agents return only needed fields
+- **Test your query** — make sure it works against the Graph API before submitting
+
+## Validation
+
+A daily build compiles all sample YAML files into a single `samples-index.json` that is published to [graph.pm/samples-index.json](https://graph.pm/samples-index.json) and bundled with the skill. If your YAML has syntax errors, the build will fail and the PR checks will report the issue.

@@ -44,6 +44,14 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Improve the Skill',
+          items: [
+            { label: 'Why Your Samples Matter', slug: 'improve/why-samples-matter' },
+            { label: 'Browse Samples', slug: 'improve/browse-samples' },
+            { label: 'Add a Sample', slug: 'improve/add-sample' },
+          ],
+        },
+        {
           label: 'Usage',
           items: [
             { label: 'Authentication', slug: 'usage/authentication' },
@@ -68,13 +76,6 @@ export default defineConfig({
         {
           label: 'FAQ',
           slug: 'faq',
-        },
-        {
-          label: 'Community',
-          items: [
-            { label: 'Query Samples', slug: 'samples' },
-            { label: 'Contributing', slug: 'contributing' },
-          ],
         },
       ],
     }),

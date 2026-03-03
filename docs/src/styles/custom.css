@@ -452,11 +452,25 @@ header.header {
 }
 
 /* ===== Sample Browser ===== */
+/* Top bar — search/filter row + contribute button */
+.sb-topbar {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 40rem) {
+  .sb-topbar {
+    flex-direction: column;
+  }
+}
+
 /* Controls bar — search + product filter side by side */
 .sb-controls {
   display: flex;
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  flex: 1;
 }
 
 @media (max-width: 30rem) {
@@ -546,6 +560,26 @@ header.header {
   color: var(--sl-color-gray-3);
 }
 
+/* Edit link — pencil icon, pushed to right side of header */
+.sb-edit-link {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  color: var(--sl-color-gray-4);
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  border: none;
+}
+
+.sb-card:hover .sb-edit-link {
+  opacity: 1;
+}
+
+.sb-edit-link:hover {
+  color: var(--sl-color-white);
+}
+
 .sb-card-badge {
   font-size: 0.65rem;
   font-weight: 600;
@@ -593,11 +627,35 @@ header.header {
   white-space: nowrap;
 }
 
-/* ── Submit section ── */
+/* Contribute button — prominent link to Add a Sample page */
+.sb-btn-contribute {
+  white-space: nowrap;
+  text-decoration: none;
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+  flex-shrink: 0;
+}
+
+:root[data-theme='light'] .sb-btn-contribute {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.sb-btn-contribute:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+:root[data-theme='light'] .sb-btn-contribute:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+/* ── Submit section (standalone page) ── */
 .sb-submit-section {
-  border-top: 1px solid var(--sl-color-hairline-shade);
-  padding-top: 2rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .sb-submit-section h2 {
