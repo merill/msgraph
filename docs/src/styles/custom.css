@@ -253,13 +253,6 @@ header.header {
   backdrop-filter: blur(12px);
 }
 
-/* Widen the search button in the header */
-@media (min-width: 50rem) {
-  .right-group button[data-open-modal] {
-    max-width: 32rem;
-  }
-}
-
 /* Site title — clean text like agentskills.io */
 .site-title {
   font-weight: 700;
@@ -456,4 +449,324 @@ header.header {
 /* Left-align text inside capability cards (overrides splash page center) */
 [data-has-hero] .capabilities-grid .card {
   text-align: left;
+}
+
+/* ===== Sample Browser ===== */
+/* Controls bar — search + product filter side by side */
+.sb-controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 30rem) {
+  .sb-controls {
+    flex-direction: column;
+  }
+}
+
+.sb-search-input {
+  flex: 1;
+  padding: 0.625rem 0.875rem;
+  font-size: var(--sl-text-sm);
+  font-family: var(--sl-font);
+  color: var(--sl-color-white);
+  background: var(--sl-color-accent-low);
+  border: 1px solid var(--sl-color-hairline-shade);
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.sb-search-input:focus {
+  border-color: var(--sl-color-accent);
+}
+
+.sb-search-input::placeholder {
+  color: var(--sl-color-gray-3);
+}
+
+.sb-select {
+  padding: 0.625rem 0.875rem;
+  font-size: var(--sl-text-sm);
+  font-family: var(--sl-font);
+  color: var(--sl-color-white);
+  background: var(--sl-color-accent-low);
+  border: 1px solid var(--sl-color-hairline-shade);
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  min-width: 10rem;
+}
+
+.sb-select:focus {
+  border-color: var(--sl-color-accent);
+}
+
+/* Status line (result count) */
+.sb-status {
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+  margin-bottom: 1rem;
+}
+
+/* Results grid — single column of cards */
+.sb-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+/* Individual sample card */
+.sb-card {
+  background: var(--sl-color-accent-low);
+  border: 1px solid var(--sl-color-hairline-shade);
+  border-radius: 0.625rem;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.15s ease;
+}
+
+.sb-card:hover {
+  border-color: var(--sl-color-accent);
+}
+
+.sb-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.375rem;
+}
+
+.sb-card-product {
+  font-size: var(--sl-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sl-color-gray-3);
+}
+
+.sb-card-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  background: var(--sl-color-hairline-shade);
+  color: var(--sl-color-gray-3);
+}
+
+.sb-card-intent {
+  font-size: var(--sl-text-body);
+  font-weight: 500;
+  color: var(--sl-color-white);
+  margin-bottom: 0.5rem;
+}
+
+.sb-card-queries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sb-query-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sb-query-line code {
+  font-family: var(--sl-font-mono);
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-2);
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.sb-step-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--sl-color-gray-4);
+  white-space: nowrap;
+}
+
+/* ── Submit section ── */
+.sb-submit-section {
+  border-top: 1px solid var(--sl-color-hairline-shade);
+  padding-top: 2rem;
+  margin-top: 1rem;
+}
+
+.sb-submit-section h2 {
+  font-size: var(--sl-text-xl);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.sb-submit-desc {
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Auth status / GitHub login */
+.sb-auth-status {
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons — shared base */
+.sb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: var(--sl-text-sm);
+  font-family: var(--sl-font);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid var(--sl-color-hairline-shade);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-white);
+}
+
+.sb-btn:hover {
+  border-color: var(--sl-color-accent);
+}
+
+.sb-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sb-btn-github {
+  background: var(--sl-color-accent-low);
+}
+
+.sb-btn-github svg {
+  flex-shrink: 0;
+}
+
+.sb-btn-primary {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+:root[data-theme='light'] .sb-btn-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.sb-btn-primary:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+:root[data-theme='light'] .sb-btn-primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.sb-btn-small {
+  padding: 0.25rem 0.75rem;
+  font-size: var(--sl-text-xs);
+}
+
+.sb-btn-remove {
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--sl-color-gray-3);
+  border: none;
+  background: none;
+}
+
+.sb-btn-remove:hover {
+  color: #ef4444;
+  background: none;
+  border: none;
+}
+
+/* Form layout */
+.sb-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 36rem;
+}
+
+.sb-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.sb-form-group label {
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+  color: var(--sl-color-white);
+}
+
+.sb-input {
+  padding: 0.625rem 0.875rem;
+  font-size: var(--sl-text-sm);
+  font-family: var(--sl-font);
+  color: var(--sl-color-white);
+  background: var(--sl-color-accent-low);
+  border: 1px solid var(--sl-color-hairline-shade);
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.sb-input:focus {
+  border-color: var(--sl-color-accent);
+}
+
+.sb-form-hint {
+  font-size: var(--sl-text-xs);
+  color: var(--sl-color-gray-4);
+}
+
+/* Query steps — input + remove button in a row */
+.sb-query-step {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.375rem;
+}
+
+.sb-query-step .sb-input {
+  flex: 1;
+}
+
+/* Form actions */
+.sb-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Submit status messages */
+.sb-submit-status {
+  font-size: var(--sl-text-sm);
+}
+
+.sb-submit-status.sb-success {
+  color: #22c55e;
+}
+
+.sb-submit-status.sb-error {
+  color: #ef4444;
+}
+
+.sb-submit-status a {
+  color: #3b82f6;
+  text-decoration: underline;
 }

@@ -118,11 +118,19 @@ msgraph graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
 | `--headers` | Custom HTTP headers | `--headers "ConsistencyLevel:eventual"` |
 | `--output` | Output format (json or raw) | `--output raw` |
 
-## Finding the Right Endpoint
+## Finding the Right Query
 
 ### Strategy
 
-1. **First**: Try constructing the Graph API call from your training knowledge. The Microsoft Graph API follows consistent patterns:
+1. **First**: Search curated community samples — these map real-world tasks to exact Graph API queries:
+   ```
+   msgraph sample-search --query "conditional access policies"
+   msgraph sample-search --query "send email"
+   msgraph sample-search --product intune
+   ```
+   Samples include multi-step workflows (e.g. "get Global Admin role assignments" requires two calls).
+
+2. **If no sample matches**: Try constructing the call from your training knowledge. Common patterns:
    - `/me` — current user
    - `/users` — all users
    - `/users/{id}` — specific user
@@ -130,15 +138,34 @@ msgraph graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
    - `/groups` — all groups
    - `/teams/{id}/channels` — team channels
 
-2. **If unsure**: Use the OpenAPI search command to find endpoints:
+3. **If still unsure**: Use the OpenAPI search to find endpoints across all 27,000+ Graph API paths:
    ```
    msgraph openapi-search --query "send mail"
    msgraph openapi-search --resource users --method GET
-   msgraph openapi-search --query "calendar events" --method POST
    ```
 
-3. **Check the reference** for detailed API documentation:
+4. **Check the reference** for detailed API documentation:
    See [references/REFERENCE.md](references/REFERENCE.md) for common Graph API patterns and endpoint details.
+
+### Sample Search Command
+
+Search community-contributed query samples that map natural-language tasks to exact Graph API calls:
+
+```bash
+# Search by task description
+msgraph sample-search --query "conditional access policies"
+
+# Filter by product
+msgraph sample-search --product entra
+msgraph sample-search --product intune
+
+# Combined search
+msgraph sample-search --query "managed devices" --product intune
+```
+
+Products: `entra`, `intune`, `exchange`, `teams`, `sharepoint`, `security`, `general`
+
+Results include the intent, the exact Graph API query (or queries for multi-step), and the product category.
 
 ### OpenAPI Search Command
 
@@ -178,6 +205,7 @@ msgraph openapi-search --query "create" --resource groups --method POST
 | `MSGRAPH_TENANT_ID` | Target tenant ID (required for app-only auth) | `common` (multi-tenant) |
 | `MSGRAPH_API_VERSION` | Default API version | `beta` |
 | `MSGRAPH_INDEX_PATH` | Path to OpenAPI index JSON | Auto-detected |
+| `MSGRAPH_SAMPLES_PATH` | Path to samples index JSON | Auto-detected |
 | `MSGRAPH_CLIENT_SECRET` | App registration client secret | — |
 | `MSGRAPH_CLIENT_CERTIFICATE_PATH` | Path to PEM certificate file | — |
 | `MSGRAPH_CLIENT_CERTIFICATE_PASSWORD` | Password for encrypted certificate key | — |

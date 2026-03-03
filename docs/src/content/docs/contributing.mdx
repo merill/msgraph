@@ -1,0 +1,75 @@
+---
+title: Contributing
+description: How to contribute query samples and help improve the Microsoft Graph Skill for AI Agents.
+---
+
+## Contributing Query Samples
+
+The Microsoft Graph Skill uses a community-contributed library of query samples that help AI agents find the right Graph API call for any task. You can help by adding new samples.
+
+### What is a sample?
+
+Each sample is a small YAML file with two fields:
+
+```yaml
+intent: List all Conditional Access policies
+query: GET /beta/identity/conditionalAccess/policies
+```
+
+For multi-step queries that require calling multiple endpoints:
+
+```yaml
+intent: Get users assigned to the Global Administrator role
+query:
+  - GET /v1.0/roleManagement/directory/roleDefinitions?$filter=displayName eq 'Global Administrator'
+  - GET /v1.0/roleManagement/directory/roleAssignments?$filter=roleDefinitionId eq '{id from step 1}'&$expand=principal
+```
+
+That's it. Two fields. Maximum simplicity.
+
+### How to contribute
+
+#### Option 1: Submit via the website (Recommended)
+
+Visit the [Query Samples](/samples/) page and use the **Submit New Sample** form. Sign in with your GitHub account and the form will create a pull request automatically.
+
+#### Option 2: Submit via pull request
+
+1. Fork the [merill/msgraph](https://github.com/merill/msgraph) repository
+2. Create a new `.yaml` file in the appropriate product directory:
+   ```
+   skills/msgraph/samples/{product}/{descriptive-name}.yaml
+   ```
+3. Add your `intent` and `query` fields
+4. Submit a pull request
+
+### Product categories
+
+Samples are organized by Microsoft product:
+
+| Directory | Product |
+|---|---|
+| `entra/` | Entra ID (identity, conditional access, roles, apps) |
+| `exchange/` | Exchange Online (mail, calendar, mailbox) |
+| `general/` | Cross-product (licensing, organization, domains) |
+| `intune/` | Intune (device management, compliance, apps) |
+| `security/` | Microsoft Security (Defender, alerts, hunting) |
+| `sharepoint/` | SharePoint Online (sites, lists, documents) |
+| `teams/` | Microsoft Teams (teams, channels, messages) |
+
+### Guidelines
+
+- **One sample per file** — this eliminates merge conflicts
+- **Use descriptive file names** — e.g. `list-conditional-access-policies.yaml`, not `sample1.yaml`
+- **Be specific in the intent** — "List all Conditional Access policies" is better than "Get policies"
+- **Include the full query path** — e.g. `GET /beta/identity/conditionalAccess/policies`, not just `/policies`
+- **Use `$select` where appropriate** — helps agents return only needed fields
+- **Test your query** — make sure it works against the Graph API before submitting
+
+### When to contribute
+
+The best time to add a sample is when an AI agent struggles to find the right query. If you had to manually construct a Graph API call that wasn't obvious, that's a perfect candidate for a sample.
+
+### Validation
+
+A daily build process compiles all sample YAML files into a single `samples-index.json` that is published to [graph.pm/samples-index.json](https://graph.pm/samples-index.json) and bundled with the skill. If your YAML file has syntax errors, the build will fail and the PR checks will report the issue.

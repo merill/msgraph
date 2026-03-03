@@ -5,8 +5,8 @@ export default defineConfig({
   site: 'https://graph.pm',
   integrations: [
     starlight({
-      title: 'Microsoft Graph Agent Skill',
-      description: 'An agent skill that enables AI coding assistants to authenticate to Microsoft 365 and query the Microsoft Graph API. Supports delegated and app-only auth with client secret, certificate, managed identity, and workload identity federation.',
+      title: 'Microsoft Graph Skill',
+      description: 'Give your AI agent access to Microsoft 365. Manage email, calendar, OneDrive, Teams, contacts, Planner, To Do, SharePoint, and more. Administer Entra ID, Intune, Exchange, security, compliance, and Power Platform — all through the Microsoft Graph API.',
       favicon: '/favicon.ico',
       logo: {
         src: './src/assets/msgraph-skill.svg',
@@ -19,7 +19,7 @@ export default defineConfig({
         { tag: 'meta', attrs: { property: 'og:image:height', content: '840' } },
         { tag: 'meta', attrs: { property: 'og:image:type', content: 'image/png' } },
         { tag: 'meta', attrs: { property: 'og:type', content: 'website' } },
-        { tag: 'meta', attrs: { property: 'og:site_name', content: 'Microsoft Graph Agent Skill' } },
+        { tag: 'meta', attrs: { property: 'og:site_name', content: 'Microsoft Graph Skill for AI Agents' } },
         // Twitter Card
         { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
         { tag: 'meta', attrs: { name: 'twitter:image', content: 'https://graph.pm/og-image.png' } },
@@ -34,6 +34,7 @@ export default defineConfig({
         ThemeSelect: './src/components/ThemeToggle.astro',
       },
       customCss: ['./src/styles/custom.css'],
+      pagefind: false,
       sidebar: [
         {
           label: 'Getting Started',
@@ -67,6 +68,13 @@ export default defineConfig({
         {
           label: 'FAQ',
           slug: 'faq',
+        },
+        {
+          label: 'Community',
+          items: [
+            { label: 'Query Samples', slug: 'samples' },
+            { label: 'Contributing', slug: 'contributing' },
+          ],
         },
       ],
     }),

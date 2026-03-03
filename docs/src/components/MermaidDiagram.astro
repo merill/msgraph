@@ -1,10 +1,10 @@
 ---
 /*
  * MermaidDiagram.astro
- * Renders a Mermaid diagram client-side using default Mermaid styling.
+ * Renders a Mermaid diagram client-side using mermaid.render().
  *
  * The chart definition is base64-encoded into a data attribute to avoid
- * Astro/MDX escaping HTML entities (e.g. <b>, <br/>) inside Mermaid syntax.
+ * Astro/MDX escaping issues with Mermaid syntax characters.
  *
  * Usage in MDX:
  *   import MermaidDiagram from '../../../components/MermaidDiagram.astro';
@@ -17,14 +17,21 @@ const { chart } = Astro.props;
 const encoded = Buffer.from(chart).toString('base64');
 ---
 
-<div class="mermaid-diagram">
-  <pre class="mermaid" data-chart={encoded}>Loading diagram…</pre>
-</div>
+<div class="mermaid-diagram" data-chart={encoded}></div>
 
 <style>
   .mermaid-diagram {
     margin: 1.5rem 0;
     text-align: center;
+  }
+  .mermaid-diagram svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .mermaid-error {
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+    font-style: italic;
   }
 </style>
 
@@ -35,53 +42,38 @@ const encoded = Buffer.from(chart).toString('base64');
     return document.documentElement.dataset.theme === 'light' ? 'default' : 'dark';
   }
 
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: getTheme(),
-  });
+  async function renderAll() {
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: getTheme(),
+      securityLevel: 'loose',
+    });
 
-  // Decode base64 chart data and render
-  const nodes: Element[] = [];
-  document.querySelectorAll('pre.mermaid[data-chart]').forEach((el) => {
-    const encoded = el.getAttribute('data-chart');
-    if (!encoded) return;
-    try {
-      const chart = atob(encoded);
-      el.textContent = chart;
-      el.setAttribute('data-original', chart);
-      nodes.push(el);
-    } catch (e) {
-      console.error('Failed to decode mermaid chart:', e);
-      el.textContent = 'Error decoding diagram';
-    }
-  });
-
-  if (nodes.length > 0) {
-    try {
-      await mermaid.run({ nodes });
-    } catch (e) {
-      console.error('Mermaid render failed:', e);
+    const elements = document.querySelectorAll<HTMLElement>('.mermaid-diagram[data-chart]');
+    let index = 0;
+    for (const el of elements) {
+      const encoded = el.getAttribute('data-chart');
+      if (!encoded) continue;
+      try {
+        const chart = atob(encoded);
+        const id = `mermaid-${Date.now()}-${index++}`;
+        const { svg } = await mermaid.render(id, chart);
+        el.innerHTML = svg;
+      } catch (e) {
+        console.error('Mermaid render error:', e);
+        el.innerHTML = '<p class="mermaid-error">Failed to render diagram</p>';
+      }
     }
   }
+
+  // Initial render
+  renderAll();
 
   // Re-render on theme change
   new MutationObserver((mutations) => {
     for (const m of mutations) {
       if (m.attributeName === 'data-theme') {
-        mermaid.initialize({ startOnLoad: false, theme: getTheme() });
-
-        const reNodes: Element[] = [];
-        document.querySelectorAll('pre.mermaid[data-original]').forEach((el) => {
-          const original = el.getAttribute('data-original');
-          if (!original) return;
-          el.removeAttribute('data-processed');
-          el.textContent = original;
-          reNodes.push(el);
-        });
-
-        if (reNodes.length > 0) {
-          mermaid.run({ nodes: reNodes });
-        }
+        renderAll();
       }
     }
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });

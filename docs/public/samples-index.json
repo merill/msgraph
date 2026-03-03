@@ -1,0 +1,108 @@
+{
+  "generated": "2026-03-03T12:20:58Z",
+  "count": 16,
+  "samples": [
+    {
+      "intent": "Get the authentication methods policy including method configurations and migration state",
+      "query": "GET /beta/policies/authenticationMethodsPolicy",
+      "product": "entra",
+      "file": "entra/get-auth-methods-policy.yaml"
+    },
+    {
+      "intent": "Get the authorization policy for guest access, app registration, and guest invitations",
+      "query": "GET /v1.0/policies/authorizationPolicy",
+      "product": "entra",
+      "file": "entra/get-authorization-policy.yaml"
+    },
+    {
+      "intent": "List all application registrations with their secrets and certificate credentials to find expiring ones",
+      "query": "GET /v1.0/applications?$select=id,displayName,appId,passwordCredentials,keyCredentials",
+      "product": "entra",
+      "file": "entra/list-apps-with-expiring-secrets.yaml"
+    },
+    {
+      "intent": "List all Conditional Access policies",
+      "query": "GET /beta/identity/conditionalAccess/policies",
+      "product": "entra",
+      "file": "entra/list-conditional-access-policies.yaml"
+    },
+    {
+      "intent": "Get all users assigned to the Global Administrator role",
+      "query": [
+        "GET /v1.0/roleManagement/directory/roleDefinitions?$filter=displayName eq 'Global Administrator'",
+        "GET /v1.0/roleManagement/directory/roleAssignmentScheduleInstances?$filter=roleDefinitionId eq '{id from step 1}' and assignmentType eq 'Assigned'\u0026$expand=principal"
+      ],
+      "product": "entra",
+      "file": "entra/list-global-admin-role-assignments.yaml"
+    },
+    {
+      "intent": "List all member users in the tenant (excluding guests)",
+      "query": "GET /beta/users?$select=id,userPrincipalName,displayName,userType\u0026$filter=userType eq 'Member'\u0026$top=999",
+      "product": "entra",
+      "file": "entra/list-member-users.yaml"
+    },
+    {
+      "intent": "List unread emails in the signed-in user's mailbox",
+      "query": "GET /v1.0/me/messages?$filter=isRead eq false\u0026$select=subject,from,receivedDateTime\u0026$orderby=receivedDateTime desc\u0026$top=25",
+      "product": "exchange",
+      "file": "exchange/list-unread-messages.yaml"
+    },
+    {
+      "intent": "Send an email on behalf of the signed-in user",
+      "query": "POST /v1.0/me/sendMail",
+      "product": "exchange",
+      "file": "exchange/send-mail.yaml"
+    },
+    {
+      "intent": "Get organization details including tenant name and verified domains",
+      "query": "GET /v1.0/organization?$select=id,displayName,verifiedDomains,tenantType",
+      "product": "general",
+      "file": "general/get-organization-info.yaml"
+    },
+    {
+      "intent": "List all license SKUs and their assigned counts in the tenant",
+      "query": "GET /v1.0/subscribedSkus?$select=skuPartNumber,consumedUnits,prepaidUnits",
+      "product": "general",
+      "file": "general/list-subscribed-skus.yaml"
+    },
+    {
+      "intent": "Get Intune device management compliance settings",
+      "query": "GET /beta/deviceManagement/settings",
+      "product": "intune",
+      "file": "intune/get-device-compliance-settings.yaml"
+    },
+    {
+      "intent": "Get the mobile device management authority for the organization",
+      "query": [
+        "GET /v1.0/organization?$select=id",
+        "GET /beta/organization/{id from step 1}?$select=mobileDeviceManagementAuthority"
+      ],
+      "product": "intune",
+      "file": "intune/get-mdm-authority.yaml"
+    },
+    {
+      "intent": "List all Intune managed devices with their compliance status",
+      "query": "GET /v1.0/deviceManagement/managedDevices?$select=id,deviceName,operatingSystem,complianceState,userPrincipalName",
+      "product": "intune",
+      "file": "intune/list-managed-devices.yaml"
+    },
+    {
+      "intent": "Run an advanced hunting query in Microsoft 365 Defender",
+      "query": "POST /beta/security/runHuntingQuery",
+      "product": "security",
+      "file": "security/run-advanced-hunting-query.yaml"
+    },
+    {
+      "intent": "Search for SharePoint sites by keyword",
+      "query": "GET /v1.0/sites?search={keyword}\u0026$select=id,displayName,webUrl",
+      "product": "sharepoint",
+      "file": "sharepoint/list-sharepoint-sites.yaml"
+    },
+    {
+      "intent": "List all Teams the signed-in user is a member of",
+      "query": "GET /v1.0/me/joinedTeams?$select=id,displayName,description",
+      "product": "teams",
+      "file": "teams/list-joined-teams.yaml"
+    }
+  ]
+}

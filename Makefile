@@ -6,7 +6,7 @@ CGO_ENABLED := 0
 PLATFORMS := darwin/amd64 darwin/arm64 linux/amd64 linux/arm64 windows/amd64 windows/arm64
 SKILL_BIN_DIR := skills/msgraph/scripts/bin
 
-.PHONY: build build-all clean test lint index help
+.PHONY: build build-all clean test lint index samples help
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -40,6 +40,9 @@ lint: ## Run linter
 
 index: ## Run the OpenAPI indexer to generate graph-api-index.json
 	go run ./tools/openapi-indexer/... -output skills/msgraph/references/graph-api-index.json
+
+samples: ## Build the samples index from YAML source files
+	go run . build-samples-index --samples-dir skills/msgraph/samples --output skills/msgraph/references/samples-index.json
 
 clean: ## Clean build artifacts
 	rm -f $(BINARY_NAME)

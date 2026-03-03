@@ -1,0 +1,63 @@
+name: Daily Index Build
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # 6 AM UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-indexes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Rebuild OpenAPI index
+        run: |
+          echo "Downloading and indexing Microsoft Graph OpenAPI spec..."
+          go run ./tools/openapi-indexer/... -version beta -output skills/msgraph/references/graph-api-index.json
+          echo "OpenAPI index rebuilt"
+
+      - name: Rebuild samples index
+        run: |
+          echo "Building samples index from YAML source files..."
+          go run . build-samples-index \
+            --samples-dir skills/msgraph/samples \
+            --output skills/msgraph/references/samples-index.json
+          echo "Samples index rebuilt"
+
+      - name: Copy indexes to docs/public for static hosting
+        run: |
+          cp skills/msgraph/references/graph-api-index.json docs/public/graph-api-index.json
+          cp skills/msgraph/references/samples-index.json docs/public/samples-index.json
+          echo "Indexes copied to docs/public/"
+          ls -lh docs/public/*.json
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected:"
+            git diff --cached --stat
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: rebuild OpenAPI and samples indexes [daily]"
+          git push

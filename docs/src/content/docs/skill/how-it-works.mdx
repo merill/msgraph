@@ -3,76 +3,7 @@ title: How It Works
 description: Technical details of how the agent skill operates
 ---
 
-import MermaidDiagram from '../../../components/MermaidDiagram.astro';
-
 This page explains the technical internals of msgraph for those who want to understand or extend it.
-
-## Authentication Flow
-
-### Delegated Auth
-
-<MermaidDiagram chart={`
-sequenceDiagram
-    participant Agent as AI Agent
-    participant CLI as msgraph CLI
-    participant MSAL as MSAL Library
-    participant Entra as Microsoft Entra ID
-    participant Graph as Graph API
-
-    Agent->>CLI: msgraph auth signin
-    CLI->>MSAL: Acquire token (interactive)
-    MSAL->>Entra: Authorization request
-    Entra-->>MSAL: Auth code (via browser)
-    MSAL->>Entra: Exchange code for tokens
-    Entra-->>MSAL: Access + refresh tokens
-    MSAL-->>CLI: Token cached
-    CLI-->>Agent: Signed in ✓
-
-    Agent->>CLI: msgraph graph-call GET /me
-    CLI->>MSAL: Acquire token (silent)
-    MSAL-->>CLI: Cached token
-    CLI->>Graph: GET /me (Bearer token)
-    Graph-->>CLI: 200 OK (user profile)
-    CLI-->>Agent: JSON response
-`} />
-
-### App-Only Auth
-
-<MermaidDiagram chart={`
-sequenceDiagram
-    participant Agent as AI Agent
-    participant CLI as msgraph CLI
-    participant MSAL as MSAL Library
-    participant Entra as Microsoft Entra ID
-    participant Graph as Graph API
-
-    Note over CLI: Auto-detect auth method from env vars
-
-    Agent->>CLI: msgraph auth signin
-    alt Client Secret
-        CLI->>MSAL: Acquire token by credential
-        MSAL->>Entra: POST /token (client_credentials)
-    else Certificate
-        CLI->>MSAL: Acquire token by credential
-        MSAL->>Entra: POST /token (client_assertion JWT)
-    else Managed Identity
-        CLI->>MSAL: Acquire token (resource)
-        MSAL->>Entra: Token from IMDS endpoint
-    else Workload Identity
-        CLI->>MSAL: Acquire token by assertion
-        MSAL->>Entra: POST /token (federated token)
-    end
-    Entra-->>MSAL: Access token
-    MSAL-->>CLI: Token cached
-    CLI-->>Agent: Signed in ✓
-
-    Agent->>CLI: msgraph graph-call GET /users
-    CLI->>MSAL: Acquire token (silent/credential)
-    MSAL-->>CLI: Cached or fresh token
-    CLI->>Graph: GET /users (Bearer token)
-    Graph-->>CLI: 200 OK
-    CLI-->>Agent: JSON response
-`} />
 
 ### Auth Method Detection
 
@@ -118,17 +49,6 @@ Safety is enforced at the CLI level before any HTTP request is made:
 | DELETE | **Blocked** | **Blocked** |
 
 DELETE is blocked unconditionally — there is no flag to enable it.
-
-## Token Cache
-
-The token cache uses MSAL's `ExportReplace` interface:
-
-- **Export**: After any token acquisition, serialize the cache to a temp file
-- **Replace**: Before any token lookup, deserialize from the temp file
-- **Path**: `{os.TempDir()}/msgraph-session-{hash}.json`
-- **Hash**: SHA-256 of `clientID:tenantID`, truncated to 8 bytes
-
-The temp file allows multiple CLI invocations in the same session to share tokens without re-authenticating.
 
 ## OpenAPI Index
 

@@ -1,34 +1,23 @@
 ---
-import config from 'virtual:starlight/user-config';
-
 import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
-import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
-
-/**
- * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
- */
-const shouldRenderSearch =
-	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
 ---
 
 <div class="header">
 	<div class="title-wrapper sl-flex">
 		<SiteTitle />
 	</div>
-	{/* Mobile: search stays in its own grid column */}
-	<div class="sl-flex search-mobile md:sl-hidden print:hidden">
-		{shouldRenderSearch && <Search />}
-	</div>
-	{/* Desktop: search moves into the right-group, before GitHub icon */}
 	<div class="sl-hidden md:sl-flex print:hidden right-group">
-		{shouldRenderSearch && (
-			<div class="sl-flex search-desktop">
-				<Search />
-			</div>
-		)}
+		<nav class="sl-flex nav-links">
+			<a href="https://merill.net" target="_blank" rel="noopener noreferrer">merill.net</a>
+			<a href="https://entra.news" target="_blank" rel="noopener noreferrer">Entra News</a>
+			<a href="https://entra.chat" target="_blank" rel="noopener noreferrer">Entra Chat</a>
+			<a href="https://graphxray.merill.net/" target="_blank" rel="noopener noreferrer">Graph X-Ray</a>
+			<a href="https://maester.dev" target="_blank" rel="noopener noreferrer">Maester</a>
+			<a href="https://lokka.dev" target="_blank" rel="noopener noreferrer">Lokka</a>
+		</nav>
 		<div class="sl-flex social-icons">
 			<SocialIcons />
 		</div>
@@ -48,9 +37,7 @@ const shouldRenderSearch =
 		}
 
 		.title-wrapper {
-			/* Prevent long titles overflowing and covering the search and menu buttons on narrow viewports. */
 			overflow: clip;
-			/* Avoid clipping focus ring around link inside title wrapper. */
 			padding: 0.25rem;
 			margin: -0.25rem;
 			min-width: 0;
@@ -61,10 +48,24 @@ const shouldRenderSearch =
 			gap: 1rem;
 			align-items: center;
 		}
-		/* Constrain search width when inside the right-group on desktop */
-		.search-desktop {
-			max-width: 28rem;
-			flex-shrink: 1;
+
+		.nav-links {
+			gap: 1.25rem;
+			align-items: center;
+			margin-inline-end: 0.5rem;
+		}
+
+		.nav-links a {
+			color: var(--sl-color-gray-2);
+			font-size: var(--sl-text-sm);
+			font-weight: 500;
+			text-decoration: none;
+			white-space: nowrap;
+			transition: color 0.15s ease;
+		}
+
+		.nav-links a:hover {
+			color: var(--sl-color-white);
 		}
 
 		@media (min-width: 50rem) {
@@ -85,12 +86,10 @@ const shouldRenderSearch =
 				);
 				display: grid;
 				grid-template-columns:
-					/* 1 (site title): expands to fill available space */
 					minmax(
 						calc(var(--__sidebar-width) + max(0rem, var(--__main-column-fr) - var(--sl-nav-gap))),
 						auto
 					)
-					/* 2 (right items): search + social + theme grouped together */
 					auto;
 				align-content: center;
 			}
