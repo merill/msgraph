@@ -1,0 +1,2 @@
+intent: List all devices
+query: GET /devices
