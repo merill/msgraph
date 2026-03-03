@@ -31,22 +31,37 @@ You can query and manage Microsoft 365 data through the Microsoft Graph API usin
 
 ## Authentication
 
-The tool handles authentication automatically using Microsoft's identity platform (MSAL).
+The tool supports both **delegated (user)** and **app-only (application)** authentication via Microsoft's identity platform (MSAL). The auth method is auto-detected from environment variables.
+
+### Delegated Auth (default)
+
+Used when no app-only env vars are set. A user signs in interactively.
 
 - **Interactive browser auth** is the default — a browser window opens for sign-in
 - **Device code flow** is used automatically when no browser is detected (SSH sessions, containers) or can be forced with `--device-code`
 - **Incremental consent** is handled automatically — if a 403 Forbidden is returned, the tool re-authenticates with the required scopes and retries
 - **Session-scoped cache** — tokens are cached in a temp file for the session only; no persistent credential storage
 
+### App-Only Auth
+
+For automation, CI/CD, and service-to-service scenarios. The auth method is auto-detected from environment variables in this priority order:
+
+1. **Client secret** — `MSGRAPH_CLIENT_SECRET` is set
+2. **Client certificate** — `MSGRAPH_CLIENT_CERTIFICATE_PATH` is set
+3. **Workload identity federation** — `MSGRAPH_FEDERATED_TOKEN_FILE` (or `AZURE_FEDERATED_TOKEN_FILE` / `AWS_WEB_IDENTITY_TOKEN_FILE`) is set
+4. **Managed identity** — `MSGRAPH_AUTH_METHOD=managed-identity` is set
+
+**Important**: App-only auth requires `MSGRAPH_TENANT_ID` set to a specific tenant (not `common`). The tool uses `https://graph.microsoft.com/.default` scope which grants all pre-assigned application permissions. Incremental consent is not available for app-only auth.
+
 ### Auth Commands
 
 | Command | Description |
 |---|---|
-| `msgraph auth signin` | Sign in to Microsoft 365 |
-| `msgraph auth signin --device-code` | Sign in using device code flow |
-| `msgraph auth signin --scopes "Mail.Read,Calendars.Read"` | Sign in requesting specific scopes |
+| `msgraph auth signin` | Sign in to Microsoft 365 (delegated) or verify credentials (app-only) |
+| `msgraph auth signin --device-code` | Sign in using device code flow (delegated only) |
+| `msgraph auth signin --scopes "Mail.Read,Calendars.Read"` | Sign in requesting specific scopes (delegated only) |
 | `msgraph auth signout` | Clear the current session |
-| `msgraph auth status` | Check if signed in and show account info |
+| `msgraph auth status` | Check if signed in and show account/auth method info |
 | `msgraph auth switch-tenant <tenant-id>` | Switch to a different M365 tenant |
 
 ## Making Graph API Calls
@@ -160,6 +175,14 @@ msgraph openapi-search --query "create" --resource groups --method POST
 | Variable | Description | Default |
 |---|---|---|
 | `MSGRAPH_CLIENT_ID` | Custom Entra ID app registration client ID | Microsoft Graph CLI Tools app |
-| `MSGRAPH_TENANT_ID` | Target tenant ID | `common` (multi-tenant) |
+| `MSGRAPH_TENANT_ID` | Target tenant ID (required for app-only auth) | `common` (multi-tenant) |
 | `MSGRAPH_API_VERSION` | Default API version | `beta` |
 | `MSGRAPH_INDEX_PATH` | Path to OpenAPI index JSON | Auto-detected |
+| `MSGRAPH_CLIENT_SECRET` | App registration client secret | — |
+| `MSGRAPH_CLIENT_CERTIFICATE_PATH` | Path to PEM certificate file | — |
+| `MSGRAPH_CLIENT_CERTIFICATE_PASSWORD` | Password for encrypted certificate key | — |
+| `MSGRAPH_AUTH_METHOD` | Set to `managed-identity` to use Azure managed identity | — |
+| `MSGRAPH_MANAGED_IDENTITY_CLIENT_ID` | Client ID for user-assigned managed identity | — |
+| `MSGRAPH_FEDERATED_TOKEN_FILE` | Path to federated token file (workload identity) | — |
+
+Also auto-reads: `AZURE_FEDERATED_TOKEN_FILE`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`.

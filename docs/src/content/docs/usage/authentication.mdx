@@ -3,9 +3,11 @@ title: Authentication
 description: How authentication works in msgraph
 ---
 
-msgraph uses the Microsoft Authentication Library (MSAL) to authenticate users via delegated (user) authentication.
+msgraph supports both **delegated (user)** and **app-only (application)** authentication via the Microsoft Authentication Library (MSAL). The auth method is auto-detected from environment variables.
 
-## Auth Flows
+## Delegated Auth (default)
+
+Used when no app-only environment variables are set. A user signs in interactively.
 
 ### Interactive Browser (default)
 
@@ -27,6 +29,131 @@ The tool prints a URL and code to stderr. Open the URL in any browser, enter the
 
 Auto-detection: if the tool detects an SSH session or no display server, it automatically falls back to device code.
 
+### Incremental Consent
+
+When a Graph API call returns 403 Forbidden, the tool:
+
+1. Parses the error message to extract required permission scopes
+2. Re-authenticates with the additional scopes
+3. Retries the original request
+
+This happens transparently — no manual scope management needed.
+
+### Requesting Specific Scopes
+
+You can request specific scopes at sign-in:
+
+```bash
+msgraph auth signin --scopes "Mail.Read,Calendars.Read"
+```
+
+This is useful when you know upfront what permissions you'll need.
+
+## App-Only Auth
+
+For automation, CI/CD pipelines, and service-to-service scenarios. The auth method is **auto-detected** from environment variables in this priority order:
+
+1. **Client secret** — `MSGRAPH_CLIENT_SECRET` is set
+2. **Client certificate** — `MSGRAPH_CLIENT_CERTIFICATE_PATH` is set
+3. **Workload identity** — `MSGRAPH_FEDERATED_TOKEN_FILE` is set
+4. **Managed identity** — `MSGRAPH_AUTH_METHOD=managed-identity` is set
+
+If none of these are set, delegated auth is used.
+
+**Important notes for all app-only methods:**
+- `MSGRAPH_TENANT_ID` must be set to a specific tenant (not `common`). The tool errors early with a clear message if this is missing.
+- All pre-granted application permissions are used via the `https://graph.microsoft.com/.default` scope.
+- Incremental consent is not available — permissions must be pre-configured in the Entra ID app registration.
+- `auth signin` verifies credentials work (acquires a token and shows status). The `--device-code` and `--scopes` flags are ignored.
+
+### Client Secret
+
+The simplest app-only method. Set the secret from your Entra ID app registration:
+
+```bash
+export MSGRAPH_CLIENT_ID="your-app-id"
+export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
+export MSGRAPH_CLIENT_SECRET="your-secret-value"
+msgraph auth signin
+```
+
+**Setup in Entra ID:**
+1. Go to **App Registrations** > your app > **Certificates & secrets**
+2. Add a new client secret
+3. Copy the secret value (it is only shown once)
+4. Under **API permissions**, add the Microsoft Graph **Application** permissions you need and grant admin consent
+
+### Client Certificate
+
+More secure than client secrets — uses a certificate for authentication:
+
+```bash
+export MSGRAPH_CLIENT_ID="your-app-id"
+export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
+export MSGRAPH_CLIENT_CERTIFICATE_PATH="/path/to/cert.pem"
+msgraph auth signin
+```
+
+The PEM file must contain both the certificate and private key. RSA, ECDSA, and PKCS#8 private keys are supported.
+
+If the private key is encrypted:
+
+```bash
+export MSGRAPH_CLIENT_CERTIFICATE_PASSWORD="key-password"
+```
+
+**Setup in Entra ID:**
+1. Go to **App Registrations** > your app > **Certificates & secrets**
+2. Upload the public certificate (.cer or .pem)
+3. Under **API permissions**, add the Microsoft Graph **Application** permissions you need and grant admin consent
+
+### Managed Identity
+
+For workloads running on Azure (VMs, App Service, Azure Functions, AKS):
+
+```bash
+export MSGRAPH_AUTH_METHOD="managed-identity"
+msgraph auth signin
+```
+
+For **user-assigned** managed identities, also set the client ID:
+
+```bash
+export MSGRAPH_AUTH_METHOD="managed-identity"
+export MSGRAPH_MANAGED_IDENTITY_CLIENT_ID="your-managed-identity-client-id"
+msgraph auth signin
+```
+
+No client secret or certificate is needed — Azure handles credential management automatically.
+
+**Setup:**
+1. Enable managed identity on your Azure resource
+2. In the Entra ID enterprise application for the managed identity, assign the Microsoft Graph app roles you need (via PowerShell or Azure CLI)
+
+### Workload Identity Federation
+
+For workloads running outside Azure (GitHub Actions, GCP, AWS, Kubernetes) that exchange a platform token for a Microsoft Entra ID token:
+
+```bash
+export MSGRAPH_CLIENT_ID="your-app-id"
+export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
+export MSGRAPH_FEDERATED_TOKEN_FILE="/var/run/secrets/token"
+msgraph auth signin
+```
+
+The tool also auto-reads these standard environment variables:
+- `AZURE_FEDERATED_TOKEN_FILE` — set by AKS workload identity
+- `AWS_WEB_IDENTITY_TOKEN_FILE` — set by AWS IRSA / EKS
+
+For AKS workload identity, `AZURE_CLIENT_ID` and `AZURE_TENANT_ID` are used as fallbacks if `MSGRAPH_CLIENT_ID` / `MSGRAPH_TENANT_ID` are not set.
+
+The token file is re-read on each token acquisition, so token rotation is handled automatically.
+
+**Setup in Entra ID:**
+1. Go to **App Registrations** > your app > **Certificates & secrets** > **Federated credentials**
+2. Add a federated credential for your platform (GitHub Actions, Kubernetes, etc.)
+3. Under **API permissions**, add the Microsoft Graph **Application** permissions you need and grant admin consent
+
 ## Managing Sessions
 
 ### Check status
@@ -35,16 +162,19 @@ Auto-detection: if the tool detects an SSH session or no display server, it auto
 msgraph auth status
 ```
 
-Returns JSON:
+Returns JSON with auth method info:
 ```json
 {
   "signedIn": true,
   "username": "user@contoso.com",
-  "tenantId": "common",
+  "tenantId": "contoso.onmicrosoft.com",
   "clientId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+  "authMethod": "delegated",
   "environment": "login.microsoftonline.com"
 }
 ```
+
+For app-only auth, `username` reflects the auth method (e.g., "client-secret", "managed-identity").
 
 ### Sign out
 
@@ -69,28 +199,8 @@ export MSGRAPH_CLIENT_ID="your-app-id"
 msgraph auth signin
 ```
 
-## Incremental Consent
-
-When a Graph API call returns 403 Forbidden, the tool:
-
-1. Parses the error message to extract required permission scopes
-2. Re-authenticates with the additional scopes
-3. Retries the original request
-
-This happens transparently — no manual scope management needed.
-
 ## Token Cache
 
 Tokens are cached in a session-scoped temporary file (`os.TempDir()`) for the duration of the session. The cache is keyed by client ID and tenant ID. No credentials are persisted permanently.
 
 The cache file is automatically cleaned up on sign-out.
-
-## Requesting Specific Scopes
-
-You can request specific scopes at sign-in:
-
-```bash
-msgraph auth signin --scopes "Mail.Read,Calendars.Read"
-```
-
-This is useful when you know upfront what permissions you'll need.

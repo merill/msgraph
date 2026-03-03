@@ -112,42 +112,111 @@ starlight-menu-button + nav {
 }
 
 /* ===== Hero / splash page ===== */
-.hero {
-  padding-block: 4rem;
+
+/* Remove narrow max-width constraints on the splash page so content
+   can spread full-width and center naturally. */
+[data-has-hero] .content-panel {
+  max-width: none;
+}
+
+[data-has-hero] .sl-container {
+  max-width: none;
+  margin-inline: auto;
+}
+
+/* Center all MDX content below the hero */
+[data-has-hero] .sl-markdown-content {
   text-align: center;
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+/* Center the card grid within the splash page */
+[data-has-hero] .card-grid {
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.hero {
+  padding-block: 5rem 2rem;
+  text-align: center;
+  /* Force single-column layout so the hero stays centered when there's no image */
+  grid-template-columns: 1fr !important;
+}
+
+.hero .stack {
+  text-align: center;
+}
+
+.hero .copy {
+  align-items: center;
+}
+
+.hero .actions {
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 3.75rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
 }
 
 .hero .tagline {
   color: var(--sl-color-gray-2);
   font-size: var(--sl-text-lg);
-  max-width: 36rem;
+  max-width: 38rem;
   margin-inline: auto;
+  line-height: 1.6;
 }
 
-/* Hero buttons */
-.hero .action a[data-type='primary'] {
-  background: var(--sl-color-white);
-  color: var(--sl-color-black);
+/* Hero buttons — accent color with glow for visibility */
+:root[data-theme='dark'] .hero a.primary {
+  background: #3b82f6;
+  color: #ffffff;
   border: none;
   border-radius: 0.75rem;
-  font-weight: 600;
-  padding: 0.625rem 1.5rem;
-  transition: opacity 0.15s ease;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  font-size: 1.05rem;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.15);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.hero .action a[data-type='primary']:hover {
-  opacity: 0.85;
+:root[data-theme='light'] .hero a.primary {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  font-size: 1.05rem;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3), 0 0 40px rgba(37, 99, 235, 0.1);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hero a.primary:hover {
+  transform: translateY(-1px);
+}
+
+:root[data-theme='dark'] .hero a.primary:hover {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.55), 0 0 50px rgba(59, 130, 246, 0.2);
+}
+
+:root[data-theme='light'] .hero a.primary:hover {
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.45), 0 0 50px rgba(37, 99, 235, 0.15);
 }
 
 /* Minimal variant button */
-.hero .action a[data-type='minimal'] {
+.hero a.minimal {
   color: var(--sl-color-gray-2);
   border-radius: 0.75rem;
   padding: 0.625rem 1.5rem;
   transition: color 0.15s ease;
 }
 
-.hero .action a[data-type='minimal']:hover {
+.hero a.minimal:hover {
   color: var(--sl-color-white);
 }
 
@@ -184,6 +253,13 @@ header.header {
   backdrop-filter: blur(12px);
 }
 
+/* Widen the search button in the header */
+@media (min-width: 50rem) {
+  .right-group button[data-open-modal] {
+    max-width: 32rem;
+  }
+}
+
 /* Site title — clean text like agentskills.io */
 .site-title {
   font-weight: 700;
@@ -207,4 +283,177 @@ header.header {
 
 :root[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Landing page — Logo carousel ===== */
+/* Infinite scrolling marquee of agent platform logos, matching agentskills.io */
+
+.logo-carousel-section {
+  text-align: center;
+  padding: 0 0 2rem;
+}
+
+.logo-carousel-label {
+  font-size: var(--sl-text-xs);
+  color: var(--sl-color-gray-3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.logo-carousel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.logo-carousel {
+  overflow: hidden;
+  width: 100%;
+  /* Fade edges for a smooth scroll look */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.logo-carousel-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 3rem;
+  padding: 0.75rem 0;
+  will-change: transform;
+}
+
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 1.5rem)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-carousel-track {
+    animation: none !important;
+  }
+}
+
+.logo-carousel-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  border: none;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.logo-carousel-link:hover {
+  opacity: 0.85;
+}
+
+.logo-carousel-img {
+  display: block;
+  object-fit: contain;
+  height: 28px;
+}
+
+/* Dark/light logo switching via Starlight's data-theme attribute */
+:root[data-theme='light'] .logo-dark,
+:root:not([data-theme='dark']) .logo-dark {
+  display: none !important;
+}
+
+:root[data-theme='dark'] .logo-light {
+  display: none !important;
+}
+
+:root[data-theme='dark'] .logo-dark {
+  display: block !important;
+}
+
+.logo-carousel-note {
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+  margin-top: 1rem;
+}
+
+.logo-carousel-note a {
+  color: var(--sl-color-gray-2);
+  text-decoration: underline;
+  text-decoration-color: var(--sl-color-gray-4);
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.logo-carousel-note a:hover {
+  color: var(--sl-color-white);
+}
+
+/* Divider between logos and feature cards */
+.landing-divider {
+  width: 4rem;
+  height: 1px;
+  background: var(--sl-color-hairline-shade);
+  margin: 1.5rem auto 2.5rem;
+}
+
+/* ===== Capabilities section — 3-column compact cards ===== */
+.capabilities-grid {
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+/* Override CardGrid: 3 columns on desktop, reduced gap */
+.capabilities-grid .card-grid {
+  max-width: none;
+}
+
+@media (min-width: 50rem) {
+  .capabilities-grid .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 49.999rem) {
+  .capabilities-grid .card-grid {
+    gap: 0.5rem;
+  }
+}
+
+/* Compact card styling — smaller padding, fonts, and icon */
+.capabilities-grid .card {
+  padding: 0.75rem 1rem;
+  gap: 0.25rem;
+}
+
+.capabilities-grid .card .title {
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+}
+
+.capabilities-grid .card .icon {
+  font-size: 1em;
+  padding: 0.1em;
+}
+
+.capabilities-grid .card .body {
+  font-size: var(--sl-text-xs);
+  line-height: 1.4;
+}
+
+/* Left-align text inside capability cards (overrides splash page center) */
+[data-has-hero] .capabilities-grid .card {
+  text-align: left;
 }

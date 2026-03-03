@@ -1,4 +1,3 @@
-// Package auth provides MSAL-based authentication for Microsoft Graph.
 package auth
 
 import (
@@ -14,6 +13,15 @@ import (
 	"github.com/merill/msgraph/internal/config"
 )
 
+// DelegatedClient implements TokenProvider using MSAL public client (interactive + device code).
+// This is the default auth method for user-delegated authentication.
+type DelegatedClient struct {
+	app       public.Client
+	cfg       *config.Config
+	session   *SessionData
+	cachePath string
+}
+
 // SessionData stores the current auth session state.
 type SessionData struct {
 	Account  public.Account `json:"account"`
@@ -22,16 +30,8 @@ type SessionData struct {
 	Scopes   []string       `json:"scopes"`
 }
 
-// Client wraps the MSAL public client application with session management.
-type Client struct {
-	app       public.Client
-	cfg       *config.Config
-	session   *SessionData
-	cachePath string
-}
-
-// NewClient creates a new MSAL auth client.
-func NewClient(cfg *config.Config) (*Client, error) {
+// NewDelegatedClient creates a new MSAL public client for delegated auth.
+func NewDelegatedClient(cfg *config.Config) (*DelegatedClient, error) {
 	cachePath := sessionCachePath(cfg.ClientID, cfg.TenantID)
 
 	app, err := public.New(cfg.ClientID,
@@ -42,17 +42,52 @@ func NewClient(cfg *config.Config) (*Client, error) {
 		return nil, fmt.Errorf("failed to create MSAL client: %w", err)
 	}
 
-	c := &Client{
+	return &DelegatedClient{
 		app:       app,
 		cfg:       cfg,
 		cachePath: cachePath,
+	}, nil
+}
+
+// AcquireToken attempts silent auth first, then falls back to interactive/device code.
+func (c *DelegatedClient) AcquireToken(ctx context.Context, scopes []string) (string, error) {
+	// Try silent first
+	token, err := c.AcquireTokenSilent(ctx, scopes)
+	if err == nil {
+		return token, nil
 	}
 
-	return c, nil
+	// Fall back to interactive or device code
+	if !isBrowserAvailable() {
+		return c.AcquireTokenDeviceCode(ctx, scopes)
+	}
+	return c.AcquireTokenInteractive(ctx, scopes)
+}
+
+// AcquireTokenWithExtraScopes re-authenticates with additional scopes for incremental consent.
+func (c *DelegatedClient) AcquireTokenWithExtraScopes(ctx context.Context, existingScopes, extraScopes []string) (string, error) {
+	// Merge scopes
+	scopeSet := make(map[string]bool)
+	for _, s := range existingScopes {
+		scopeSet[s] = true
+	}
+	for _, s := range extraScopes {
+		scopeSet[s] = true
+	}
+	merged := make([]string, 0, len(scopeSet))
+	for s := range scopeSet {
+		merged = append(merged, s)
+	}
+
+	// Must do interactive auth for consent
+	if !isBrowserAvailable() {
+		return c.AcquireTokenDeviceCode(ctx, merged)
+	}
+	return c.AcquireTokenInteractive(ctx, merged)
 }
 
 // AcquireTokenSilent attempts to get a token from the cache without user interaction.
-func (c *Client) AcquireTokenSilent(ctx context.Context, scopes []string) (string, error) {
+func (c *DelegatedClient) AcquireTokenSilent(ctx context.Context, scopes []string) (string, error) {
 	accounts, err := c.app.Accounts(ctx)
 	if err != nil {
 		return "", fmt.Errorf("failed to get accounts: %w", err)
@@ -70,7 +105,7 @@ func (c *Client) AcquireTokenSilent(ctx context.Context, scopes []string) (strin
 }
 
 // AcquireTokenInteractive opens the system browser for authentication.
-func (c *Client) AcquireTokenInteractive(ctx context.Context, scopes []string) (string, error) {
+func (c *DelegatedClient) AcquireTokenInteractive(ctx context.Context, scopes []string) (string, error) {
 	result, err := c.app.AcquireTokenInteractive(ctx, scopes,
 		public.WithRedirectURI(config.RedirectURL),
 	)
@@ -89,7 +124,7 @@ func (c *Client) AcquireTokenInteractive(ctx context.Context, scopes []string) (
 }
 
 // AcquireTokenDeviceCode uses the device code flow for authentication.
-func (c *Client) AcquireTokenDeviceCode(ctx context.Context, scopes []string) (string, error) {
+func (c *DelegatedClient) AcquireTokenDeviceCode(ctx context.Context, scopes []string) (string, error) {
 	dc, err := c.app.AcquireTokenByDeviceCode(ctx, scopes)
 	if err != nil {
 		return "", fmt.Errorf("device code auth failed: %w", err)
@@ -114,45 +149,8 @@ func (c *Client) AcquireTokenDeviceCode(ctx context.Context, scopes []string) (s
 	return result.AccessToken, nil
 }
 
-// AcquireToken attempts silent auth first, then falls back to interactive/device code.
-func (c *Client) AcquireToken(ctx context.Context, scopes []string, forceDeviceCode bool) (string, error) {
-	// Try silent first
-	token, err := c.AcquireTokenSilent(ctx, scopes)
-	if err == nil {
-		return token, nil
-	}
-
-	// Fall back to interactive or device code
-	if forceDeviceCode || !isBrowserAvailable() {
-		return c.AcquireTokenDeviceCode(ctx, scopes)
-	}
-	return c.AcquireTokenInteractive(ctx, scopes)
-}
-
-// AcquireTokenWithExtraScopes re-authenticates with additional scopes for incremental consent.
-func (c *Client) AcquireTokenWithExtraScopes(ctx context.Context, existingScopes, extraScopes []string, forceDeviceCode bool) (string, error) {
-	// Merge scopes
-	scopeSet := make(map[string]bool)
-	for _, s := range existingScopes {
-		scopeSet[s] = true
-	}
-	for _, s := range extraScopes {
-		scopeSet[s] = true
-	}
-	merged := make([]string, 0, len(scopeSet))
-	for s := range scopeSet {
-		merged = append(merged, s)
-	}
-
-	// Must do interactive auth for consent
-	if forceDeviceCode || !isBrowserAvailable() {
-		return c.AcquireTokenDeviceCode(ctx, merged)
-	}
-	return c.AcquireTokenInteractive(ctx, merged)
-}
-
 // SignOut clears the session cache.
-func (c *Client) SignOut() error {
+func (c *DelegatedClient) SignOut() error {
 	if err := os.Remove(c.cachePath); err != nil && !os.IsNotExist(err) {
 		return fmt.Errorf("failed to remove session cache: %w", err)
 	}
@@ -161,7 +159,7 @@ func (c *Client) SignOut() error {
 }
 
 // Status returns information about the current auth state.
-func (c *Client) Status(ctx context.Context) (map[string]interface{}, error) {
+func (c *DelegatedClient) Status(ctx context.Context) (map[string]interface{}, error) {
 	accounts, err := c.app.Accounts(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get accounts: %w", err)
@@ -169,26 +167,40 @@ func (c *Client) Status(ctx context.Context) (map[string]interface{}, error) {
 
 	if len(accounts) == 0 {
 		return map[string]interface{}{
-			"signedIn": false,
-			"message":  "Not signed in. Run 'auth signin' to authenticate.",
+			"signedIn":   false,
+			"authMethod": string(config.AuthMethodDelegated),
+			"message":    "Not signed in. Run 'auth signin' to authenticate.",
 		}, nil
 	}
 
 	acct := accounts[0]
-	info := map[string]interface{}{
+	return map[string]interface{}{
 		"signedIn":    true,
+		"authMethod":  string(config.AuthMethodDelegated),
 		"username":    acct.PreferredUsername,
 		"tenantId":    c.cfg.TenantID,
 		"clientId":    c.cfg.ClientID,
 		"environment": acct.Environment,
-	}
+	}, nil
+}
 
-	return info, nil
+// IsAppOnly returns false — delegated auth has a user context.
+func (c *DelegatedClient) IsAppOnly() bool {
+	return false
 }
 
 // GetAccounts returns the accounts currently in the cache.
-func (c *Client) GetAccounts(ctx context.Context) ([]public.Account, error) {
+func (c *DelegatedClient) GetAccounts(ctx context.Context) ([]public.Account, error) {
 	return c.app.Accounts(ctx)
+}
+
+// StatusJSON returns the status as JSON bytes.
+func StatusJSON(ctx context.Context, provider TokenProvider) ([]byte, error) {
+	status, err := provider.Status(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return json.MarshalIndent(status, "", "  ")
 }
 
 // sessionCachePath returns the path to the session-scoped token cache file.
@@ -200,20 +212,12 @@ func sessionCachePath(clientID, tenantID string) string {
 
 // isBrowserAvailable does a basic check to see if we can open a browser.
 func isBrowserAvailable() bool {
-	// Check for common indicators that a browser is NOT available:
-	// - SSH_CONNECTION or SSH_CLIENT set (remote session)
-	// - DISPLAY not set on Linux (no X server)
-	// - TERM_PROGRAM not set and no DISPLAY
 	if os.Getenv("SSH_CONNECTION") != "" || os.Getenv("SSH_CLIENT") != "" {
 		return false
 	}
-	// On Linux, check for display server
 	if goos := os.Getenv("GOOS"); goos == "linux" || goos == "" {
 		if os.Getenv("DISPLAY") == "" && os.Getenv("WAYLAND_DISPLAY") == "" {
-			// Could be Linux without a display, but we might be on macOS/Windows
-			// where these aren't relevant. Check runtime OS.
 			if _, err := os.Stat("/proc/version"); err == nil {
-				// We're on Linux
 				return false
 			}
 		}
@@ -230,7 +234,7 @@ func (t *tokenCache) Replace(ctx context.Context, cache cache.Unmarshaler, hints
 	data, err := os.ReadFile(t.path)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return nil // No cache file yet, that's fine
+			return nil
 		}
 		return err
 	}
@@ -243,13 +247,4 @@ func (t *tokenCache) Export(ctx context.Context, cache cache.Marshaler, hints ca
 		return err
 	}
 	return os.WriteFile(t.path, data, 0600)
-}
-
-// StatusJSON returns the status as JSON bytes.
-func StatusJSON(ctx context.Context, client *Client) ([]byte, error) {
-	status, err := client.Status(ctx)
-	if err != nil {
-		return nil, err
-	}
-	return json.MarshalIndent(status, "", "  ")
 }

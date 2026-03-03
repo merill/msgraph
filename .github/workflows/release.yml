@@ -30,22 +30,22 @@ jobs:
       - name: Determine next version
         id: version
         run: |
-          # Get the latest v* tag (or default to v0.0.0 if none exist)
-          LATEST_TAG=$(git tag --list 'v*' --sort=-v:refname | head -n1)
+          # Get the latest v1.* tag (or default to v1.0.0 for first release)
+          LATEST_TAG=$(git tag --list 'v1.*' --sort=-v:refname | head -n1)
           if [ -z "$LATEST_TAG" ]; then
-            LATEST_TAG="v0.0.0"
+            # No v1.x tag yet — start the 1.0 series
+            NEXT_TAG="v1.0.0"
+          else
+            echo "Latest tag: $LATEST_TAG"
+            # Parse major.minor.patch
+            VERSION="${LATEST_TAG#v}"
+            MAJOR=$(echo "$VERSION" | cut -d. -f1)
+            MINOR=$(echo "$VERSION" | cut -d. -f2)
+            PATCH=$(echo "$VERSION" | cut -d. -f3 | cut -d- -f1)
+            # Bump patch
+            PATCH=$((PATCH + 1))
+            NEXT_TAG="v${MAJOR}.${MINOR}.${PATCH}"
           fi
-          echo "Latest tag: $LATEST_TAG"
-
-          # Parse major.minor.patch
-          VERSION="${LATEST_TAG#v}"
-          MAJOR=$(echo "$VERSION" | cut -d. -f1)
-          MINOR=$(echo "$VERSION" | cut -d. -f2)
-          PATCH=$(echo "$VERSION" | cut -d. -f3 | cut -d- -f1)
-
-          # Bump patch
-          PATCH=$((PATCH + 1))
-          NEXT_TAG="v${MAJOR}.${MINOR}.${PATCH}"
 
           echo "Next tag: $NEXT_TAG"
           echo "tag=$NEXT_TAG" >> "$GITHUB_OUTPUT"
@@ -79,6 +79,15 @@ jobs:
             fi
           done
           ls -lh skills/msgraph/scripts/bin/
+
+      - name: Stamp version in SKILL.md
+        run: |
+          # Strip the 'v' prefix to get the semver (e.g., v1.0.1 -> 1.0.1)
+          SKILL_VERSION="${{ steps.version.outputs.tag }}"
+          SKILL_VERSION="${SKILL_VERSION#v}"
+          sed -i "s/^version: .*/version: \"${SKILL_VERSION}\"/" skills/msgraph/SKILL.md
+          echo "SKILL.md version set to: $SKILL_VERSION"
+          grep '^version:' skills/msgraph/SKILL.md
 
       - name: Package skill directory
         run: |

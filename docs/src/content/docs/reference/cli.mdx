@@ -13,7 +13,7 @@ description: Complete command-line reference for msgraph
 
 ### `auth signin`
 
-Sign in to a Microsoft 365 tenant.
+Sign in to a Microsoft 365 tenant. For delegated auth, opens a browser or uses device code flow. For app-only auth, verifies that credentials work by acquiring a token.
 
 ```bash
 msgraph auth signin [flags]
@@ -23,8 +23,10 @@ msgraph auth signin [flags]
 
 | Flag | Type | Description |
 |---|---|---|
-| `--device-code` | bool | Use device code flow instead of browser |
-| `--scopes` | strings | Permission scopes to request (default: User.Read) |
+| `--device-code` | bool | Use device code flow instead of browser (delegated only) |
+| `--scopes` | strings | Permission scopes to request (delegated only, default: User.Read) |
+
+**App-only behavior:** When app-only auth is detected (via environment variables), `auth signin` acquires a token to verify credentials and shows the auth status. The `--device-code` and `--scopes` flags are ignored.
 
 **Output:** JSON with sign-in status.
 
@@ -58,9 +60,12 @@ msgraph auth status
   "username": "user@contoso.com",
   "tenantId": "common",
   "clientId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+  "authMethod": "delegated",
   "environment": "login.microsoftonline.com"
 }
 ```
+
+For app-only auth, `authMethod` shows the detected method (e.g., `client-secret`, `certificate`, `managed-identity`, `workload-identity`) and `username` reflects the auth type.
 
 ---
 

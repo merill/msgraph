@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: Microsoft Graph API agent skill for AI coding assistants
+description: An agent skill that enables AI coding assistants to authenticate to Microsoft 365 using delegated or app-only auth and query the Microsoft Graph API.
 ---
 
 import MermaidDiagram from '../../../components/MermaidDiagram.astro';
@@ -9,10 +9,10 @@ import MermaidDiagram from '../../../components/MermaidDiagram.astro';
 
 ## What it does
 
-- **Authenticates** to Microsoft 365 tenants using MSAL (interactive browser or device code flow)
+- **Authenticates** to Microsoft 365 tenants using MSAL — delegated (interactive browser / device code) and app-only (client secret, certificate, managed identity, workload identity federation)
 - **Executes** Microsoft Graph API REST calls (GET, POST, PUT, PATCH)
 - **Searches** a pre-processed OpenAPI index to find the right endpoints
-- **Handles incremental consent** automatically when permissions are insufficient
+- **Handles incremental consent** automatically when permissions are insufficient (delegated auth)
 - **Enforces safety** — read-only by default, writes require explicit opt-in, DELETE is always blocked
 
 ## How agents use it
@@ -25,29 +25,10 @@ When an agent loads this skill, it gets instructions and a CLI to:
 4. Search for endpoints when unsure of the right URL
 5. Parse responses and handle errors
 
-## Architecture
+## Quick Install
 
-<MermaidDiagram chart={`
-graph LR
-    Agent["<b>AI Agent</b><br/><i>Claude, Copilot, etc.</i>"]
-    CLI["<b>msgraph CLI</b>"]
-    Graph["<b>Microsoft<br/>Graph API</b>"]
-    MSAL["<b>MSAL Auth</b><br/><i>browser / device code</i>"]
+```bash
+npx skills add merill/msgraph
+```
 
-    Agent -- "CLI commands" --> CLI
-    CLI -- "REST calls" --> Graph
-    CLI -. "tokens" .-> MSAL
-
-    style CLI fill:#0ea5e9,stroke:#38bdf8,stroke-width:2px,color:#fff
-`} />
-
-## Key design choices
-
-| Choice | Rationale |
-|---|---|
-| **Cross-platform CLI** | No runtime installation needed, works on macOS, Linux, and Windows |
-| **Delegated auth only** | Operates as the signed-in user, not as an app |
-| **Beta API by default** | Access to the latest Graph features |
-| **GET-only by default** | Safety first — writes need `--allow-writes` |
-| **DELETE always blocked** | Irreversible operations are never allowed |
-| **In-memory token cache** | No persistent credential storage on disk |
+See the [Installation](/getting-started/installation/) page for manual installation and per-platform instructions.

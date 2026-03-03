@@ -1,0 +1,116 @@
+---
+/*
+  LogoCarousel component for the msgraph docs site.
+  Ported from agentskills.io's React component to Astro.
+
+  Features:
+  - Two rows scrolling in opposite directions (CSS marquee)
+  - Shuffled on each page load for fair exposure
+  - Light/dark mode logo variants via data-theme attribute
+  - Reduced motion support
+
+  To add a new logo:
+  1. Add light.svg and dark.svg to docs/public/logos/[brand]/
+  2. Add entry to the logos array below
+*/
+
+const logos = [
+  { name: "Junie", url: "https://junie.jetbrains.com/", lightSrc: "/logos/junie/light.svg", darkSrc: "/logos/junie/dark.svg" },
+  { name: "Gemini CLI", url: "https://geminicli.com", lightSrc: "/logos/gemini-cli/light.svg", darkSrc: "/logos/gemini-cli/dark.svg" },
+  { name: "Autohand Code CLI", url: "https://autohand.ai/", lightSrc: "/logos/autohand/light.svg", darkSrc: "/logos/autohand/dark.svg", width: "120px" },
+  { name: "OpenCode", url: "https://opencode.ai/", lightSrc: "/logos/opencode/light.svg", darkSrc: "/logos/opencode/dark.svg" },
+  { name: "OpenHands", url: "https://www.all-hands.dev/", lightSrc: "/logos/openhands/light.svg", darkSrc: "/logos/openhands/dark.svg" },
+  { name: "Mux", url: "https://mux.coder.com/", lightSrc: "/logos/mux/light.svg", darkSrc: "/logos/mux/dark.svg", width: "120px" },
+  { name: "Cursor", url: "https://cursor.com/", lightSrc: "/logos/cursor/light.svg", darkSrc: "/logos/cursor/dark.svg" },
+  { name: "Amp", url: "https://ampcode.com/", lightSrc: "/logos/amp/light.svg", darkSrc: "/logos/amp/dark.svg", width: "120px" },
+  { name: "Letta", url: "https://www.letta.com/", lightSrc: "/logos/letta/light.svg", darkSrc: "/logos/letta/dark.svg" },
+  { name: "Firebender", url: "https://firebender.com/", lightSrc: "/logos/firebender/light.svg", darkSrc: "/logos/firebender/dark.svg" },
+  { name: "Goose", url: "https://block.github.io/goose/", lightSrc: "/logos/goose/light.png", darkSrc: "/logos/goose/dark.png" },
+  { name: "GitHub", url: "https://github.com/", lightSrc: "/logos/github/light.svg", darkSrc: "/logos/github/dark.svg" },
+  { name: "VS Code", url: "https://code.visualstudio.com/", lightSrc: "/logos/vscode/light.svg", darkSrc: "/logos/vscode/dark.svg" },
+  { name: "Claude Code", url: "https://claude.ai/code", lightSrc: "/logos/claude-code/light.svg", darkSrc: "/logos/claude-code/dark.svg" },
+  { name: "Claude", url: "https://claude.ai/", lightSrc: "/logos/claude-ai/light.svg", darkSrc: "/logos/claude-ai/dark.svg" },
+  { name: "OpenAI Codex", url: "https://developers.openai.com/codex", lightSrc: "/logos/oai-codex/light.svg", darkSrc: "/logos/oai-codex/dark.svg" },
+  { name: "Piebald", url: "https://piebald.ai", lightSrc: "/logos/piebald/light.svg", darkSrc: "/logos/piebald/dark.svg" },
+  { name: "Factory", url: "https://factory.ai/", lightSrc: "/logos/factory/light.svg", darkSrc: "/logos/factory/dark.svg" },
+  { name: "pi", url: "https://shittycodingagent.ai/", lightSrc: "/logos/pi/light.svg", darkSrc: "/logos/pi/dark.svg", width: "80px" },
+  { name: "Databricks", url: "https://databricks.com/", lightSrc: "/logos/databricks/light.svg", darkSrc: "/logos/databricks/dark.svg" },
+  { name: "Agentman", url: "https://agentman.ai/", lightSrc: "/logos/agentman/light.svg", darkSrc: "/logos/agentman/dark.svg" },
+  { name: "TRAE", url: "https://trae.ai/", lightSrc: "/logos/trae/light.svg", darkSrc: "/logos/trae/dark.svg" },
+  { name: "Spring AI", url: "https://docs.spring.io/spring-ai/reference", lightSrc: "/logos/spring-ai/light.svg", darkSrc: "/logos/spring-ai/dark.svg" },
+  { name: "Roo Code", url: "https://roocode.com", lightSrc: "/logos/roo-code/light.svg", darkSrc: "/logos/roo-code/dark.svg" },
+  { name: "Mistral AI Vibe", url: "https://github.com/mistralai/mistral-vibe", lightSrc: "/logos/mistral-vibe/light.svg", darkSrc: "/logos/mistral-vibe/dark.svg", width: "80px" },
+  { name: "Command Code", url: "https://commandcode.ai/", lightSrc: "/logos/command-code/light.svg", darkSrc: "/logos/command-code/dark.svg", width: "200px" },
+  { name: "Ona", url: "https://ona.com", lightSrc: "/logos/ona/light.svg", darkSrc: "/logos/ona/dark.svg", width: "120px" },
+  { name: "VT Code", url: "https://github.com/vinhnx/vtcode", lightSrc: "/logos/vtcode/light.svg", darkSrc: "/logos/vtcode/dark.svg" },
+  { name: "Qodo", url: "https://www.qodo.ai/", lightSrc: "/logos/qodo/light.png", darkSrc: "/logos/qodo/dark.svg" },
+  { name: "Laravel Boost", url: "https://github.com/laravel/boost", lightSrc: "/logos/laravel-boost/light.svg", darkSrc: "/logos/laravel-boost/dark.svg" },
+  { name: "Emdash", url: "https://emdash.sh", lightSrc: "/logos/emdash/light.svg", darkSrc: "/logos/emdash/dark.svg" },
+  { name: "Snowflake", url: "https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code", lightSrc: "/logos/snowflake/light.svg", darkSrc: "/logos/snowflake/dark.svg" },
+];
+
+// Split into two rows (server-side — will be shuffled client-side)
+const row1 = logos.filter((_, i) => i % 2 === 0);
+const row2 = logos.filter((_, i) => i % 2 === 1);
+
+// Helper to render a logo link
+function renderLogoHTML(logo: typeof logos[0]) {
+  const w = logo.width || '150px';
+  return `<a href="${logo.url}" target="_blank" rel="noopener noreferrer" class="logo-carousel-link" style="text-decoration:none;border:none;">
+    <img class="logo-carousel-img logo-light" style="width:${w};max-width:100%;" src="${logo.lightSrc}" alt="${logo.name}" loading="lazy" />
+    <img class="logo-carousel-img logo-dark" style="width:${w};max-width:100%;" src="${logo.darkSrc}" alt="${logo.name}" loading="lazy" />
+  </a>`;
+}
+---
+
+<div class="logo-carousel-container">
+  <div class="logo-carousel" id="logo-carousel-row1">
+    <div class="logo-carousel-track" data-direction="normal" data-speed="50">
+      {row1.map((logo) => (
+        <a href={logo.url} target="_blank" rel="noopener noreferrer" class="logo-carousel-link" data-logo={JSON.stringify(logo)}>
+          <img class="logo-carousel-img logo-light" style={`width:${logo.width || '150px'};max-width:100%;`} src={logo.lightSrc} alt={logo.name} loading="lazy" />
+          <img class="logo-carousel-img logo-dark" style={`width:${logo.width || '150px'};max-width:100%;`} src={logo.darkSrc} alt={logo.name} loading="lazy" />
+        </a>
+      ))}
+    </div>
+  </div>
+  <div class="logo-carousel" id="logo-carousel-row2">
+    <div class="logo-carousel-track" data-direction="reverse" data-speed="60">
+      {row2.map((logo) => (
+        <a href={logo.url} target="_blank" rel="noopener noreferrer" class="logo-carousel-link" data-logo={JSON.stringify(logo)}>
+          <img class="logo-carousel-img logo-light" style={`width:${logo.width || '150px'};max-width:100%;`} src={logo.lightSrc} alt={logo.name} loading="lazy" />
+          <img class="logo-carousel-img logo-dark" style={`width:${logo.width || '150px'};max-width:100%;`} src={logo.darkSrc} alt={logo.name} loading="lazy" />
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Shuffle logos and duplicate for seamless infinite scroll
+  function initCarousel() {
+    document.querySelectorAll('.logo-carousel-track').forEach((track) => {
+      const links = Array.from(track.querySelectorAll('.logo-carousel-link'));
+      const direction = track.getAttribute('data-direction') || 'normal';
+      const speed = track.getAttribute('data-speed') || '50';
+
+      // Fisher-Yates shuffle
+      for (let i = links.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [links[i], links[j]] = [links[j], links[i]];
+      }
+
+      // Clear and re-append shuffled + duplicated
+      track.innerHTML = '';
+      links.forEach((link) => track.appendChild(link.cloneNode(true)));
+      links.forEach((link) => track.appendChild(link.cloneNode(true)));
+
+      // Apply animation
+      (track as HTMLElement).style.animation = `logo-scroll ${speed}s linear infinite ${direction}`;
+    });
+  }
+
+  // Run on load and on Astro page transitions
+  initCarousel();
+  document.addEventListener('astro:after-swap', initCarousel);
+</script>

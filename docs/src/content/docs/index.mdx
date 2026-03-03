@@ -1,9 +1,9 @@
 ---
-title: Microsoft Graph Agent Skill
-description: Microsoft Graph API agent skill for AI coding assistants
+title: Microsoft Graph for AI Agents
+description: An agent skill that enables AI coding assistants to authenticate to Microsoft 365 and query the Microsoft Graph API. Supports delegated and app-only auth including client secret, certificate, managed identity, and workload identity federation.
 template: splash
 hero:
-  tagline: An Agent Skill that enables AI agents to authenticate to Microsoft 365 and query the Microsoft Graph API.
+  tagline: Connect your AI coding agents to Microsoft 365. Authenticate, query, and manage organizational data through the Microsoft Graph API.
   actions:
     - text: Get Started
       link: /getting-started/introduction/
@@ -15,10 +15,21 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import LogoCarousel from '../../components/LogoCarousel.astro';
+
+<div class="logo-carousel-section">
+  <p class="logo-carousel-label">Works with your favorite AI coding agent</p>
+  <LogoCarousel />
+  <p class="logo-carousel-note">
+    Compatible with any agent that supports the <a href="https://agentskills.io">Agent Skills specification</a>
+  </p>
+</div>
+
+<div class="landing-divider"></div>
 
 <CardGrid>
-  <Card title="MSAL Authentication" icon="setting">
-    Interactive browser sign-in with automatic device code fallback for headless environments. Incremental consent handles 403 errors automatically.
+  <Card title="Flexible Authentication" icon="setting">
+    Delegated (interactive browser / device code) and app-only auth (client secret, certificate, managed identity, workload identity federation) via MSAL.
   </Card>
   <Card title="Graph API Calls" icon="rocket">
     Execute REST calls against Microsoft Graph with full OData support — `$select`, `$filter`, `$top`, `$expand`, and more.
@@ -36,3 +47,93 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     Follows the open [Agent Skills specification](https://agentskills.io). Install with `npx skills add merill/msgraph`.
   </Card>
 </CardGrid>
+
+<div class="landing-divider"></div>
+
+## What Your Agent Can Access
+
+### Personal Account Tools
+
+<div class="capabilities-grid">
+<CardGrid>
+  <Card title="Email (Outlook)" icon="email">
+    Read, send, and manage emails, attachments, and mail folders.
+  </Card>
+  <Card title="Calendar" icon="star">
+    Create, update, and query calendar events and meeting schedules.
+  </Card>
+  <Card title="OneDrive Files" icon="cloud-download">
+    Browse, upload, download, and manage files stored in OneDrive.
+  </Card>
+  <Card title="Excel Operations" icon="list-format">
+    Read and write Excel workbook data, ranges, tables, and charts.
+  </Card>
+  <Card title="OneNote" icon="open-book">
+    Access notebooks, sections, and pages in OneNote.
+  </Card>
+  <Card title="To Do Tasks" icon="approve-check">
+    Create, update, and manage tasks and task lists.
+  </Card>
+  <Card title="Planner" icon="approve-check-circle">
+    Manage plans, buckets, and tasks across teams.
+  </Card>
+  <Card title="Contacts" icon="comment">
+    Query and manage personal and organizational contacts.
+  </Card>
+  <Card title="User Profile" icon="information">
+    Read user profile information, photos, and org hierarchy.
+  </Card>
+  <Card title="Search" icon="magnifier">
+    Search across mail, files, sites, and people using Microsoft Search.
+  </Card>
+  <Card title="Teams & Chats" icon="comment-alt">
+    Access teams, channels, chat messages, and memberships.
+  </Card>
+  <Card title="SharePoint Sites" icon="document">
+    Browse sites, lists, document libraries, and site pages.
+  </Card>
+  <Card title="Shared Mailboxes" icon="email">
+    Read and manage shared mailbox messages and folders.
+  </Card>
+  <Card title="User Management" icon="pen">
+    List, create, update, and manage user accounts.
+  </Card>
+  <Card title="Group Management" icon="puzzle">
+    Manage Microsoft 365 groups, security groups, and memberships.
+  </Card>
+</CardGrid>
+</div>
+
+### Administration Tools
+
+<div class="capabilities-grid">
+<CardGrid>
+  <Card title="Security & Compliance" icon="approve-check-circle">
+    Query alerts, incidents, secure scores, and compliance policies.
+  </Card>
+  <Card title="Entra" icon="setting">
+    Manage app registrations, service principals, conditional access, and identity governance.
+  </Card>
+  <Card title="Intune" icon="laptop">
+    Manage devices, compliance policies, and app deployments.
+  </Card>
+  <Card title="Power Platform" icon="rocket">
+    Access environments, connectors, and management APIs.
+  </Card>
+  <Card title="Power BI" icon="star">
+    Query workspaces, datasets, reports, and dashboards.
+  </Card>
+  <Card title="Exchange" icon="email">
+    Manage mailbox settings, transport rules, and mail flow.
+  </Card>
+  <Card title="eDiscovery" icon="magnifier">
+    Create and manage eDiscovery cases, holds, and searches.
+  </Card>
+  <Card title="Threat Intelligence" icon="warning">
+    Query threat indicators, vulnerability data, and security recommendations.
+  </Card>
+  <Card title="Advanced Hunting" icon="error">
+    Run custom Kusto queries across security event data.
+  </Card>
+</CardGrid>
+</div>

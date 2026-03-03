@@ -62,12 +62,12 @@ Examples:
 			}
 		}
 
-		authClient, err := auth.NewClient(cfg)
+		provider, err := auth.NewTokenProvider(cfg)
 		if err != nil {
 			return err
 		}
 
-		graphClient := graph.NewClient(authClient, cfg, allowWrites)
+		graphClient := graph.NewClient(provider, cfg, allowWrites)
 
 		resp, err := graphClient.Call(ctx, graph.CallOptions{
 			Method:     method,

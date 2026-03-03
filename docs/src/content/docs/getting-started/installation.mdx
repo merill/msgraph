@@ -1,11 +1,11 @@
 ---
 title: Installation
-description: How to install and set up msgraph
+description: How to install and set up the Microsoft Graph agent skill
 ---
 
-## As an Agent Skill (Recommended)
+import { FileTree } from '@astrojs/starlight/components';
 
-### Using skills.sh
+## Using skills.sh (Recommended)
 
 The easiest way to install msgraph is via [skills.sh](https://skills.sh):
 
@@ -15,27 +15,113 @@ npx skills add merill/msgraph
 
 This automatically discovers the skill in the repository and installs it into your agent's skill directory.
 
-### From GitHub Releases
+## Manual Installation
 
-Download `msgraph.zip` from the [latest release](https://github.com/merill/msgraph/releases/latest) and extract it into your agent's skill directory:
-
-```bash
-# macOS/Linux
-curl -fsSL -o msgraph.zip https://github.com/merill/msgraph/releases/latest/download/msgraph.zip
-unzip msgraph.zip -d ~/.claude/skills/
-```
-
-```powershell
-# Windows (PowerShell)
-Invoke-WebRequest -Uri "https://github.com/merill/msgraph/releases/latest/download/msgraph.zip" -OutFile msgraph.zip
-Expand-Archive msgraph.zip -DestinationPath "$env:USERPROFILE\.claude\skills"
-```
+1. Download `msgraph.zip` from the [latest release](https://github.com/merill/msgraph/releases/latest)
+2. Unzip the archive
+3. Copy the `msgraph` folder into your agent platform's skill directory
 
 The skill package includes pre-built binaries for all supported platforms (macOS, Linux, Windows — amd64 and arm64). No additional downloads are needed.
 
-## Manual Installation
+The extracted folder structure looks like this:
 
-### From Source
+<FileTree>
+- msgraph/
+  - SKILL.md
+  - scripts/
+    - run.sh
+    - run.ps1
+    - bin/
+      - msgraph_darwin_amd64
+      - msgraph_darwin_arm64
+      - msgraph_linux_amd64
+      - msgraph_linux_arm64
+      - msgraph_windows_amd64.exe
+      - msgraph_windows_arm64.exe
+  - references/
+    - REFERENCE.md
+    - graph-api-index.json
+</FileTree>
+
+### Agent Platform Instructions
+
+<details>
+<summary>Claude Code</summary>
+
+Copy the `msgraph` folder to `~/.claude/skills/`:
+
+```bash
+unzip msgraph.zip -d ~/.claude/skills/
+```
+
+Claude Code automatically discovers skills in `~/.claude/skills/`.
+
+</details>
+
+<details>
+<summary>VS Code (GitHub Copilot)</summary>
+
+Copy the `msgraph` folder into your workspace's `.github/skills/` directory:
+
+```bash
+unzip msgraph.zip -d your-project/.github/skills/
+```
+
+Or install it globally to `~/.github/skills/` so it's available across all projects.
+
+</details>
+
+<details>
+<summary>Cursor</summary>
+
+Copy the `msgraph` folder into your workspace's `.cursor/skills/` directory:
+
+```bash
+unzip msgraph.zip -d your-project/.cursor/skills/
+```
+
+Cursor discovers skills from the `.cursor/skills/` directory in your workspace root.
+
+</details>
+
+<details>
+<summary>OpenCode</summary>
+
+Copy the `msgraph` folder into your workspace's `.opencode/skills/` directory:
+
+```bash
+unzip msgraph.zip -d your-project/.opencode/skills/
+```
+
+Or install globally to `~/.opencode/skills/`.
+
+</details>
+
+<details>
+<summary>Goose</summary>
+
+Copy the `msgraph` folder into your Goose skills directory:
+
+```bash
+unzip msgraph.zip -d ~/.config/goose/skills/
+```
+
+Goose discovers skills from `~/.config/goose/skills/`.
+
+</details>
+
+<details>
+<summary>Other agent platforms</summary>
+
+Most agent platforms that support the [Agent Skills specification](https://agentskills.io) look for skills in a `skills/` directory, either in the workspace root or in a platform-specific config folder.
+
+Copy the `msgraph` folder to whichever location your agent platform uses. The key requirement is that the `SKILL.md` file is discoverable by the agent.
+
+Refer to your agent platform's documentation for the exact skill directory path.
+
+</details>
+
+## Install from Source
 
 ```bash
 git clone https://github.com/merill/msgraph.git

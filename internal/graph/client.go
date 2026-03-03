@@ -18,14 +18,14 @@ import (
 // Client is the Graph API HTTP client.
 type Client struct {
 	httpClient  *http.Client
-	authClient  *auth.Client
+	authClient  auth.TokenProvider
 	cfg         *config.Config
 	allowWrites bool
 	scopes      []string
 }
 
 // NewClient creates a new Graph API client.
-func NewClient(authClient *auth.Client, cfg *config.Config, allowWrites bool) *Client {
+func NewClient(authClient auth.TokenProvider, cfg *config.Config, allowWrites bool) *Client {
 	return &Client{
 		httpClient: &http.Client{
 			Timeout: 60 * time.Second,
@@ -79,7 +79,7 @@ func (c *Client) Call(ctx context.Context, opts CallOptions) (*Response, error) 
 	}
 
 	// Get access token
-	token, err := c.authClient.AcquireToken(ctx, scopes, false)
+	token, err := c.authClient.AcquireToken(ctx, scopes)
 	if err != nil {
 		return nil, fmt.Errorf("authentication failed: %w", err)
 	}
@@ -90,11 +90,11 @@ func (c *Client) Call(ctx context.Context, opts CallOptions) (*Response, error) 
 		return nil, err
 	}
 
-	// If 403, try incremental consent
-	if resp.StatusCode == http.StatusForbidden {
+	// If 403 and not app-only, try incremental consent
+	if resp.StatusCode == http.StatusForbidden && !c.authClient.IsAppOnly() {
 		extraScopes := ParseRequiredScopes(resp.Body)
 		if len(extraScopes) > 0 {
-			newToken, authErr := c.authClient.AcquireTokenWithExtraScopes(ctx, scopes, extraScopes, false)
+			newToken, authErr := c.authClient.AcquireTokenWithExtraScopes(ctx, scopes, extraScopes)
 			if authErr != nil {
 				// Return the original 403 response — auth retry failed
 				return resp, nil

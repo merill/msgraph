@@ -7,12 +7,48 @@ msgraph is configured through environment variables. All settings have sensible 
 
 ## Environment Variables
 
+### Core
+
 | Variable | Description | Default |
 |---|---|---|
 | `MSGRAPH_CLIENT_ID` | Entra ID app registration client ID | `14d82eec-204b-4c2f-b7e8-296a70dab67e` |
 | `MSGRAPH_TENANT_ID` | Target tenant ID | `common` |
 | `MSGRAPH_API_VERSION` | Default Graph API version | `beta` |
 | `MSGRAPH_INDEX_PATH` | Path to the OpenAPI index JSON | Auto-detected |
+
+### App-Only Auth
+
+| Variable | Description | Required for |
+|---|---|---|
+| `MSGRAPH_CLIENT_SECRET` | App registration client secret | Client secret auth |
+| `MSGRAPH_CLIENT_CERTIFICATE_PATH` | Path to PEM certificate file (cert + key) | Certificate auth |
+| `MSGRAPH_CLIENT_CERTIFICATE_PASSWORD` | Password for encrypted private key | Certificate auth (optional) |
+| `MSGRAPH_AUTH_METHOD` | Set to `managed-identity` to use managed identity | Managed identity auth |
+| `MSGRAPH_MANAGED_IDENTITY_CLIENT_ID` | Client ID for user-assigned managed identity | Managed identity (optional) |
+| `MSGRAPH_FEDERATED_TOKEN_FILE` | Path to federated token file | Workload identity auth |
+
+### Auto-Read Variables
+
+These standard environment variables are also read as fallbacks:
+
+| Variable | Used by | Fallback for |
+|---|---|---|
+| `AZURE_FEDERATED_TOKEN_FILE` | AKS workload identity | `MSGRAPH_FEDERATED_TOKEN_FILE` |
+| `AWS_WEB_IDENTITY_TOKEN_FILE` | AWS IRSA / EKS | `MSGRAPH_FEDERATED_TOKEN_FILE` |
+| `AZURE_CLIENT_ID` | AKS workload identity | `MSGRAPH_CLIENT_ID` |
+| `AZURE_TENANT_ID` | AKS workload identity | `MSGRAPH_TENANT_ID` |
+
+## Auth Method Detection
+
+The auth method is auto-detected from environment variables in this priority order:
+
+1. **Client secret** — `MSGRAPH_CLIENT_SECRET` is set
+2. **Client certificate** — `MSGRAPH_CLIENT_CERTIFICATE_PATH` is set
+3. **Workload identity** — `MSGRAPH_FEDERATED_TOKEN_FILE` (or `AZURE_FEDERATED_TOKEN_FILE` / `AWS_WEB_IDENTITY_TOKEN_FILE`) is set
+4. **Managed identity** — `MSGRAPH_AUTH_METHOD=managed-identity`
+5. **Delegated** (default) — none of the above
+
+There is no need to explicitly set an auth method variable (except for managed identity which requires `MSGRAPH_AUTH_METHOD=managed-identity`).
 
 ## Client ID
 
@@ -23,15 +59,22 @@ The default client ID (`14d82eec-204b-4c2f-b7e8-296a70dab67e`) is the **Microsof
 - Your organization blocks the default app
 - You need app-specific consent policies
 - You want to track usage separately
+- You are using app-only auth (client secret, certificate, or workload identity)
 
 ### Setting up a custom app
 
 1. Go to [Azure Portal > App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
 2. Click "New registration"
-3. Set redirect URI to `http://localhost` (Mobile and desktop applications)
+3. Set redirect URI to `http://localhost` (Mobile and desktop applications) — for delegated auth only
 4. Note the Application (client) ID
-5. Under API Permissions, add Microsoft Graph delegated permissions
-6. Set the environment variable:
+5. Under API Permissions:
+   - For delegated auth: add **Delegated** permissions
+   - For app-only auth: add **Application** permissions and grant admin consent
+6. Under Certificates & secrets:
+   - For client secret auth: add a client secret
+   - For certificate auth: upload a public certificate
+   - For workload identity: add a federated credential
+7. Set the environment variable:
 
 ```bash
 export MSGRAPH_CLIENT_ID="your-app-id"
@@ -46,6 +89,8 @@ export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
 # or use the tenant GUID
 export MSGRAPH_TENANT_ID="12345678-1234-1234-1234-123456789012"
 ```
+
+**Important**: App-only auth requires a specific tenant ID. Using `common`, `organizations`, or `consumers` with app-only auth will produce an error.
 
 ## API Version
 

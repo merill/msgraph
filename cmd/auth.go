@@ -20,7 +20,7 @@ var authCmd = &cobra.Command{
 var signinCmd = &cobra.Command{
 	Use:   "signin",
 	Short: "Sign in to Microsoft 365",
-	Long:  "Authenticate to a Microsoft 365 tenant using interactive browser or device code flow.",
+	Long:  "Authenticate to a Microsoft 365 tenant. For delegated auth, uses interactive browser or device code flow. For app-only auth (client secret, certificate, managed identity, workload identity), verifies that credentials are valid.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx := context.Background()
 
@@ -30,23 +30,25 @@ var signinCmd = &cobra.Command{
 			scopes = []string{config.DefaultScope}
 		}
 
-		client, err := auth.NewClient(cfg)
+		provider, err := auth.NewTokenProvider(cfg)
 		if err != nil {
 			return err
 		}
 
 		var token string
-		if deviceCode {
-			token, err = client.AcquireTokenDeviceCode(ctx, scopes)
+
+		// For delegated auth, support --device-code flag
+		if dc, ok := provider.(*auth.DelegatedClient); ok && deviceCode {
+			token, err = dc.AcquireTokenDeviceCode(ctx, scopes)
 		} else {
-			token, err = client.AcquireToken(ctx, scopes, false)
+			token, err = provider.AcquireToken(ctx, scopes)
 		}
 		if err != nil {
 			return err
 		}
 
 		// Output success status as JSON
-		status, err := client.Status(ctx)
+		status, err := provider.Status(ctx)
 		if err != nil {
 			return err
 		}
@@ -62,12 +64,12 @@ var signoutCmd = &cobra.Command{
 	Short: "Sign out of Microsoft 365",
 	Long:  "Clear the current authentication session and token cache.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		client, err := auth.NewClient(cfg)
+		provider, err := auth.NewTokenProvider(cfg)
 		if err != nil {
 			return err
 		}
 
-		if err := client.SignOut(); err != nil {
+		if err := provider.SignOut(); err != nil {
 			return err
 		}
 
@@ -81,16 +83,16 @@ var signoutCmd = &cobra.Command{
 var statusCmd = &cobra.Command{
 	Use:   "status",
 	Short: "Show authentication status",
-	Long:  "Display the current sign-in state, including the signed-in user and tenant.",
+	Long:  "Display the current sign-in state, including the signed-in user/app and tenant.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx := context.Background()
 
-		client, err := auth.NewClient(cfg)
+		provider, err := auth.NewTokenProvider(cfg)
 		if err != nil {
 			return err
 		}
 
-		status, err := client.Status(ctx)
+		status, err := provider.Status(ctx)
 		if err != nil {
 			return err
 		}
@@ -109,15 +111,15 @@ var switchTenantCmd = &cobra.Command{
 		tenantID := args[0]
 
 		// Sign out of current session
-		client, err := auth.NewClient(cfg)
+		provider, err := auth.NewTokenProvider(cfg)
 		if err != nil {
 			return err
 		}
-		_ = client.SignOut()
+		_ = provider.SignOut()
 
 		// Update config with new tenant and sign in
 		cfg.TenantID = tenantID
-		client, err = auth.NewClient(cfg)
+		provider, err = auth.NewTokenProvider(cfg)
 		if err != nil {
 			return err
 		}
@@ -129,17 +131,17 @@ var switchTenantCmd = &cobra.Command{
 		}
 
 		var token string
-		if deviceCode {
-			token, err = client.AcquireTokenDeviceCode(ctx, scopes)
+		if dc, ok := provider.(*auth.DelegatedClient); ok && deviceCode {
+			token, err = dc.AcquireTokenDeviceCode(ctx, scopes)
 		} else {
-			token, err = client.AcquireToken(ctx, scopes, false)
+			token, err = provider.AcquireToken(ctx, scopes)
 		}
 		if err != nil {
 			return err
 		}
 		_ = token
 
-		status, err := client.Status(ctx)
+		status, err := provider.Status(ctx)
 		if err != nil {
 			return err
 		}
@@ -151,11 +153,11 @@ var switchTenantCmd = &cobra.Command{
 
 func init() {
 	// Add flags
-	signinCmd.Flags().Bool("device-code", false, "Use device code flow instead of browser")
-	signinCmd.Flags().StringSlice("scopes", nil, "Permission scopes to request (default: User.Read)")
+	signinCmd.Flags().Bool("device-code", false, "Use device code flow instead of browser (delegated auth only)")
+	signinCmd.Flags().StringSlice("scopes", nil, "Permission scopes to request (default: User.Read, delegated auth only)")
 
-	switchTenantCmd.Flags().Bool("device-code", false, "Use device code flow instead of browser")
-	switchTenantCmd.Flags().StringSlice("scopes", nil, "Permission scopes to request (default: User.Read)")
+	switchTenantCmd.Flags().Bool("device-code", false, "Use device code flow instead of browser (delegated auth only)")
+	switchTenantCmd.Flags().StringSlice("scopes", nil, "Permission scopes to request (default: User.Read, delegated auth only)")
 
 	// Build command tree
 	authCmd.AddCommand(signinCmd, signoutCmd, statusCmd, switchTenantCmd)
