@@ -17,58 +17,13 @@ import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 			<a href="https://maester.dev" target="_blank" rel="noopener noreferrer">Maester</a>
 			<a href="https://lokka.dev" target="_blank" rel="noopener noreferrer">Lokka</a>
 		</nav>
-		<div id="gh-profile-header" class="gh-profile-header"></div>
+		<a href="https://github.com/merill/msgraph" target="_blank" rel="noopener noreferrer" class="gh-repo-link" title="GitHub">
+			<svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+		</a>
 		<ThemeSelect />
 		<LanguageSelect />
 	</div>
 </div>
-
-<script>
-	function renderHeaderProfile() {
-		const container = document.getElementById('gh-profile-header');
-		if (!container) return;
-
-		const userJson = sessionStorage.getItem('gh_user');
-		const token = sessionStorage.getItem('gh_token');
-
-		if (!token || !userJson) {
-			container.innerHTML = '';
-			return;
-		}
-
-		let user;
-		try {
-			user = JSON.parse(userJson);
-		} catch {
-			container.innerHTML = '';
-			return;
-		}
-
-		container.innerHTML = `
-			<div class="gh-profile-pill">
-				<img src="${user.avatar_url}" alt="${user.login}" class="gh-profile-avatar" width="24" height="24" />
-				<span class="gh-profile-name">@${user.login}</span>
-				<button class="gh-profile-signout" id="gh-header-signout" title="Sign out of GitHub">
-					<svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 010 1.5h-2.5a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 010 1.5h-2.5A1.75 1.75 0 012 13.25zm10.44 4.5H6.75a.75.75 0 000 1.5h5.69l-1.97 1.97a.749.749 0 101.06 1.06l3.25-3.25a.749.749 0 000-1.06l-3.25-3.25a.749.749 0 10-1.06 1.06z"/></svg>
-				</button>
-			</div>
-		`;
-
-		const signoutBtn = document.getElementById('gh-header-signout');
-		if (signoutBtn) {
-			signoutBtn.addEventListener('click', () => {
-				sessionStorage.removeItem('gh_token');
-				sessionStorage.removeItem('gh_user');
-				window.location.reload();
-			});
-		}
-	}
-
-	// Run on initial load
-	document.addEventListener('DOMContentLoaded', renderHeaderProfile);
-	// Re-run on Astro client-side navigation
-	document.addEventListener('astro:after-swap', renderHeaderProfile);
-</script>
 
 <style>
 	@layer starlight.core {
@@ -108,6 +63,17 @@ import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 		}
 
 		.nav-links a:hover {
+			color: var(--sl-color-white);
+		}
+
+		.gh-repo-link {
+			display: flex;
+			align-items: center;
+			color: var(--sl-color-gray-2);
+			transition: color 0.15s ease;
+		}
+
+		.gh-repo-link:hover {
 			color: var(--sl-color-white);
 		}
 

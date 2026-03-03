@@ -242,10 +242,20 @@
       const baseSha = repoResp.object.sha;
 
       // 2. Create branch
-      await ghApi('POST', '/repos/merill/msgraph/git/refs', {
-        ref: `refs/heads/${branchName}`,
-        sha: baseSha,
-      });
+      try {
+        await ghApi('POST', '/repos/merill/msgraph/git/refs', {
+          ref: `refs/heads/${branchName}`,
+          sha: baseSha,
+        });
+      } catch (branchErr) {
+        if (branchErr.message && branchErr.message.includes('Reference already exists')) {
+          const existingFileUrl = `https://github.com/merill/msgraph/blob/main/${filePath}`;
+          submitStatus.innerHTML = `A sample with a similar intent may already exist or is pending review. <a href="${existingFileUrl}" target="_blank">Review the existing sample</a> and update your intent to be unique.`;
+          submitStatus.className = 'sb-submit-status sb-error';
+          return;
+        }
+        throw branchErr;
+      }
 
       // 3. Create file
       await ghApi('PUT', `/repos/merill/msgraph/contents/${filePath}`, {
