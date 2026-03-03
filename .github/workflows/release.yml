@@ -85,9 +85,10 @@ jobs:
           # Strip the 'v' prefix to get the semver (e.g., v1.0.1 -> 1.0.1)
           SKILL_VERSION="${{ steps.version.outputs.tag }}"
           SKILL_VERSION="${SKILL_VERSION#v}"
-          sed -i "s/^version: .*/version: \"${SKILL_VERSION}\"/" skills/msgraph/SKILL.md
+          # version is indented under metadata: in the YAML frontmatter
+          sed -i "s/^  version: .*/  version: \"${SKILL_VERSION}\"/" skills/msgraph/SKILL.md
           echo "SKILL.md version set to: $SKILL_VERSION"
-          grep '^version:' skills/msgraph/SKILL.md
+          grep 'version:' skills/msgraph/SKILL.md
 
       - name: Package skill directory
         run: |
