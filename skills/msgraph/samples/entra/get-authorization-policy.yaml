@@ -1,0 +1,2 @@
+intent: Get the authorization policy for guest access, app registration, and guest invitations
+query: GET /v1.0/policies/authorizationPolicy

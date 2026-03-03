@@ -1,0 +1,2 @@
+intent: Get organization details including tenant name and verified domains
+query: GET /v1.0/organization?$select=id,displayName,verifiedDomains,tenantType

@@ -1,0 +1,2 @@
+intent: Run an advanced hunting query in Microsoft 365 Defender
+query: POST /beta/security/runHuntingQuery

@@ -4,7 +4,7 @@
 *.dll
 *.so
 *.dylib
-msgraph
+/msgraph
 skills/msgraph/scripts/bin/
 
 # Test binary, build with `go test -c`

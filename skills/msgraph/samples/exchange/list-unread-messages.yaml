@@ -1,0 +1,2 @@
+intent: List unread emails in the signed-in user's mailbox
+query: GET /v1.0/me/messages?$filter=isRead eq false&$select=subject,from,receivedDateTime&$orderby=receivedDateTime desc&$top=25

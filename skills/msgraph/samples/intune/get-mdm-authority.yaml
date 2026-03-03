@@ -1,0 +1,4 @@
+intent: Get the mobile device management authority for the organization
+query:
+  - GET /v1.0/organization?$select=id
+  - GET /beta/organization/{id from step 1}?$select=mobileDeviceManagementAuthority

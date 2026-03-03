@@ -1,0 +1,2 @@
+intent: Get Intune device management compliance settings
+query: GET /beta/deviceManagement/settings

@@ -1,0 +1,2 @@
+intent: Send an email on behalf of the signed-in user
+query: POST /v1.0/me/sendMail

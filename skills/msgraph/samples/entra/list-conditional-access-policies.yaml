@@ -1,0 +1,2 @@
+intent: List all Conditional Access policies
+query: GET /beta/identity/conditionalAccess/policies

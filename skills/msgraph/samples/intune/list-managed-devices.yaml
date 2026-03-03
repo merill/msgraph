@@ -1,0 +1,2 @@
+intent: List all Intune managed devices with their compliance status
+query: GET /v1.0/deviceManagement/managedDevices?$select=id,deviceName,operatingSystem,complianceState,userPrincipalName

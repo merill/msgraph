@@ -1,0 +1,4 @@
+intent: Get all users assigned to the Global Administrator role
+query:
+  - GET /v1.0/roleManagement/directory/roleDefinitions?$filter=displayName eq 'Global Administrator'
+  - GET /v1.0/roleManagement/directory/roleAssignmentScheduleInstances?$filter=roleDefinitionId eq '{id from step 1}' and assignmentType eq 'Assigned'&$expand=principal

@@ -1,0 +1,2 @@
+intent: List all license SKUs and their assigned counts in the tenant
+query: GET /v1.0/subscribedSkus?$select=skuPartNumber,consumedUnits,prepaidUnits

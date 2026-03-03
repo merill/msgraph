@@ -1,0 +1,2 @@
+intent: List all member users in the tenant (excluding guests)
+query: GET /beta/users?$select=id,userPrincipalName,displayName,userType&$filter=userType eq 'Member'&$top=999

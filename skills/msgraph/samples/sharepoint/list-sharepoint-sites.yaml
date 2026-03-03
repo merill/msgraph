@@ -1,0 +1,2 @@
+intent: Search for SharePoint sites by keyword
+query: GET /v1.0/sites?search={keyword}&$select=id,displayName,webUrl

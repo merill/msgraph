@@ -1,0 +1,2 @@
+intent: Get the authentication methods policy including method configurations and migration state
+query: GET /beta/policies/authenticationMethodsPolicy

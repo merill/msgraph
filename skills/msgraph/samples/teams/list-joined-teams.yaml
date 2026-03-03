@@ -1,0 +1,2 @@
+intent: List all Teams the signed-in user is a member of
+query: GET /v1.0/me/joinedTeams?$select=id,displayName,description
