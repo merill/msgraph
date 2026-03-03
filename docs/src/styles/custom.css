@@ -259,6 +259,54 @@ header.header {
   letter-spacing: -0.02em;
 }
 
+/* ── Header GitHub profile pill ── */
+.gh-profile-header {
+  display: flex;
+  align-items: center;
+}
+
+.gh-profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+  border-radius: 9999px;
+  border: 1px solid var(--sl-color-hairline-shade);
+  background: var(--sl-color-accent-low);
+  font-size: var(--sl-text-xs);
+  white-space: nowrap;
+}
+
+.gh-profile-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.gh-profile-name {
+  color: var(--sl-color-gray-2);
+  font-weight: 500;
+}
+
+.gh-profile-signout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--sl-color-gray-3);
+  cursor: pointer;
+  padding: 0.125rem;
+  border-radius: 4px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.gh-profile-signout:hover {
+  color: var(--sl-color-white);
+  background: var(--sl-color-hairline-shade);
+}
+
 /* ===== Scrollbar ===== */
 :root[data-theme='dark'] ::-webkit-scrollbar {
   width: 6px;

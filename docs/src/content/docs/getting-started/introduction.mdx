@@ -7,6 +7,14 @@ import MermaidDiagram from '../../../components/MermaidDiagram.astro';
 
 **msgraph** is an [Agent Skill](https://agentskills.io) that enables AI coding assistants to query and manage Microsoft 365 data through the Microsoft Graph API.
 
+## Quick Install
+
+```bash
+npx skills add merill/msgraph
+```
+
+See the [Installation](/getting-started/installation/) page for manual installation and per-platform instructions.
+
 ## What it does
 
 - **Authenticates** to Microsoft 365 tenants using MSAL — delegated (interactive browser / device code) and app-only (client secret, certificate, managed identity, workload identity federation)
@@ -24,14 +32,6 @@ When an agent loads this skill, it gets instructions and a CLI to:
 3. Construct and execute Graph API calls
 4. Search for endpoints when unsure of the right URL
 5. Parse responses and handle errors
-
-## Quick Install
-
-```bash
-npx skills add merill/msgraph
-```
-
-See the [Installation](/getting-started/installation/) page for manual installation and per-platform instructions.
 
 ## What you can ask your agent
 

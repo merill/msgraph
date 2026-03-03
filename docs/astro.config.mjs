@@ -26,9 +26,6 @@ export default defineConfig({
         // SEO
         { tag: 'meta', attrs: { name: 'keywords', content: 'Microsoft Graph, agent skill, AI agent, Microsoft 365, Entra ID, MSAL, Graph API, coding assistant, CLI, OpenAPI, delegated auth, app-only auth, managed identity, workload identity, client certificate' } },
       ],
-      social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/merill/msgraph' },
-      ],
       components: {
         Header: './src/components/Header.astro',
         ThemeSelect: './src/components/ThemeToggle.astro',
@@ -76,6 +73,16 @@ export default defineConfig({
         {
           label: 'FAQ',
           slug: 'faq',
+        },
+        {
+          label: 'GitHub',
+          link: 'https://github.com/merill/msgraph',
+          attrs: { target: '_blank', rel: 'noopener noreferrer' },
+        },
+        {
+          label: 'Report an Issue',
+          link: 'https://github.com/merill/msgraph/issues',
+          attrs: { target: '_blank', rel: 'noopener noreferrer' },
         },
       ],
     }),

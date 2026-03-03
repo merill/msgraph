@@ -1,7 +1,7 @@
 ---
 /**
  * SubmitSample — client-side component for submitting new Graph API samples.
- * 1. GitHub OAuth login
+ * 1. GitHub OAuth login (persisted in sessionStorage)
  * 2. Form with dynamic product list (input + datalist) + intent + query steps
  * 3. Duplicate detection against samples-index.json
  * 4. Creates branch + file + PR via GitHub API
@@ -93,11 +93,50 @@
     const datalist = document.getElementById('sb-product-list');
     if (!datalist) return;
 
-    const products = [...new Set(samples.map(s => s.product))].sort();
+    const products = [...new Set(samples.map((s: any) => s.product))].sort();
     for (const p of products) {
       const opt = document.createElement('option');
       opt.value = p;
       datalist.appendChild(opt);
+    }
+  }
+
+  // ── Session persistence ──
+  function saveSession(token, user) {
+    sessionStorage.setItem('gh_token', token);
+    sessionStorage.setItem('gh_user', JSON.stringify(user));
+  }
+
+  function loadSession() {
+    const token = sessionStorage.getItem('gh_token');
+    if (!token) return false;
+    githubToken = token;
+    return true;
+  }
+
+  // ── Fetch GitHub user profile and cache it ──
+  async function fetchAndCacheUser() {
+    try {
+      const resp = await fetch('https://api.github.com/user', {
+        headers: {
+          Authorization: `Bearer ${githubToken}`,
+          Accept: 'application/vnd.github+json',
+        },
+      });
+      if (!resp.ok) {
+        // Token is invalid/expired — clear session
+        sessionStorage.removeItem('gh_token');
+        sessionStorage.removeItem('gh_user');
+        githubToken = null;
+        return false;
+      }
+      const user = await resp.json();
+      saveSession(githubToken!, { login: user.login, avatar_url: user.avatar_url });
+      // Notify header to re-render profile
+      window.dispatchEvent(new CustomEvent('gh-auth-change'));
+      return true;
+    } catch {
+      return false;
     }
   }
 
@@ -132,7 +171,11 @@
       const data = await resp.json();
       if (data.access_token) {
         githubToken = data.access_token;
-        showSubmitForm();
+        // Fetch user profile, save session, then show form
+        const ok = await fetchAndCacheUser();
+        if (ok) {
+          showSubmitForm();
+        }
       }
     } catch (err) {
       console.error('Token exchange failed:', err);
@@ -265,7 +308,7 @@
   }
 
   // ── Init ──
-  document.addEventListener('DOMContentLoaded', () => {
+  async function initSubmitSample() {
     loadSamplesForForm();
 
     const loginBtn = document.getElementById('sb-github-login');
@@ -277,13 +320,25 @@
     const submitForm = document.getElementById('sb-submit-form');
     if (submitForm) submitForm.addEventListener('submit', submitSample);
 
-    // Check for OAuth callback
+    // Check for OAuth callback first
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     const state = params.get('state');
     if (code && state) {
       window.history.replaceState({}, '', window.location.pathname);
-      exchangeCodeForToken(code, state);
+      await exchangeCodeForToken(code, state);
+      return;
     }
-  });
+
+    // Check for existing session
+    if (loadSession()) {
+      // Validate the token is still good by fetching user profile
+      const ok = await fetchAndCacheUser();
+      if (ok) {
+        showSubmitForm();
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initSubmitSample);
 </script>
