@@ -1,0 +1,2 @@
+intent: List all product licenses
+query: GET /license/skus
