@@ -127,3 +127,15 @@ jobs:
           gh release upload ${{ steps.version.outputs.tag }} msgraph.zip --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit binaries and version stamp to repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f skills/msgraph/scripts/bin/ skills/msgraph/SKILL.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update skill binaries and version (${{ steps.version.outputs.tag }}) [skip ci]"
+            git push origin main
+          fi

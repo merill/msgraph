@@ -5,7 +5,10 @@
 *.so
 *.dylib
 /msgraph
-skills/msgraph/scripts/bin/
+
+# Skill binaries (committed by release workflow, needed for npx skills add)
+!skills/msgraph/scripts/bin/
+!skills/msgraph/scripts/bin/**
 
 # Test binary, build with `go test -c`
 *.test
