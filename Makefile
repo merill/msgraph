@@ -5,8 +5,9 @@ CGO_ENABLED := 0
 
 PLATFORMS := darwin/amd64 darwin/arm64 linux/amd64 linux/arm64 windows/amd64 windows/arm64
 SKILL_BIN_DIR := skills/msgraph/scripts/bin
+DEV_SKILL_DIR := dev-skill-test/.opencode/skills/msgraph
 
-.PHONY: build build-all clean test lint index samples api-docs concept-docs help
+.PHONY: build build-all clean test lint index samples api-docs concept-docs dev dev-clean help
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -50,6 +51,25 @@ api-docs: ## Generate api-docs-index.json from Graph API documentation
 
 concept-docs: ## Rebuild curated concept docs from Microsoft Graph docs repo
 	go run ./tools/concept-docs-builder/... -output skills/msgraph/references/docs
+
+dev: build ## Build skill and install to dev-skill-test/, then open OpenCode
+	@rm -rf dev-skill-test
+	@mkdir -p $(DEV_SKILL_DIR)/scripts/bin
+	@cp skills/msgraph/SKILL.md $(DEV_SKILL_DIR)/
+	@cp -R skills/msgraph/references $(DEV_SKILL_DIR)/
+	@cp -R skills/msgraph/samples $(DEV_SKILL_DIR)/
+	@cp skills/msgraph/scripts/run.sh $(DEV_SKILL_DIR)/scripts/
+	@cp skills/msgraph/scripts/run.ps1 $(DEV_SKILL_DIR)/scripts/
+	@OS=$$(uname -s | tr '[:upper:]' '[:lower:]') ; \
+	ARCH=$$(uname -m) ; \
+	case $$ARCH in x86_64) ARCH=amd64 ;; aarch64|arm64) ARCH=arm64 ;; esac ; \
+	cp $(BINARY_NAME) $(DEV_SKILL_DIR)/scripts/bin/$(BINARY_NAME)_$${OS}_$${ARCH}
+	@echo "Skill installed to dev-skill-test/"
+	@echo "Launching OpenCode..."
+	opencode dev-skill-test
+
+dev-clean: ## Remove dev-skill-test/ directory
+	rm -rf dev-skill-test
 
 clean: ## Clean build artifacts
 	rm -f $(BINARY_NAME)

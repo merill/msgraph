@@ -14,6 +14,15 @@ Query and manage Microsoft 365 data through the Microsoft Graph REST API using t
 
 The Graph API is updated weekly. Your training data may be stale. Use the lookup tools below to verify endpoints, permissions, and syntax before making calls.
 
+## How to Run
+
+The `msgraph` CLI is bundled with this skill. Run all commands through the launcher script in this skill's directory:
+
+- **macOS / Linux**: `bash <path-to-this-skill>/scripts/run.sh <command> [args...]`
+- **Windows**: `powershell <path-to-this-skill>/scripts/run.ps1 <command> [args...]`
+
+In all examples below, `msgraph` is shorthand for the full launcher invocation.
+
 ## Quick Start
 
 ```

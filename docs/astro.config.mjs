@@ -84,6 +84,12 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Contribute',
+          items: [
+            { label: 'Contributor Guide', slug: 'contribute/guide' },
+          ],
+        },
+        {
           label: 'FAQ',
           slug: 'faq',
         },

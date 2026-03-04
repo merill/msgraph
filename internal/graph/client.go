@@ -125,7 +125,7 @@ func (c *Client) doRequest(ctx context.Context, opts CallOptions, reqURL, token 
 
 	// Set standard headers
 	req.Header.Set("Authorization", "Bearer "+token)
-	req.Header.Set("Accept", "application/json")
+	req.Header.Set("Accept", "application/json, text/plain;q=0.9")
 	if opts.Body != "" {
 		req.Header.Set("Content-Type", "application/json")
 	}

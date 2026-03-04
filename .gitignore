@@ -45,3 +45,6 @@ dist/
 # Temp files
 *.tmp
 *.log
+
+# Local skill testing (created by make dev)
+dev-skill-test/

@@ -1,0 +1,156 @@
+---
+title: Contributor Guide
+description: How to set up the project for local development and contribute to the Microsoft Graph Agent Skill.
+---
+
+Contributions are welcome — whether it's adding samples, fixing bugs, improving docs, or building new features. This guide walks you through setting up the project and the development workflow.
+
+## Prerequisites
+
+You need the following installed on your machine:
+
+| Tool | Version | Install |
+|---|---|---|
+| **Go** | 1.22+ | [go.dev/dl](https://go.dev/dl/) |
+| **Git** | Any recent | [git-scm.com](https://git-scm.com/downloads) |
+| **Node.js** | 20+ (docs site only) | [nodejs.org](https://nodejs.org/) |
+| **OpenCode** | Latest (recommended) | [opencode.ai](https://opencode.ai/) |
+
+OpenCode is an AI coding agent that runs in your terminal. The development workflow is built around it — `make dev` builds the skill and launches OpenCode so you can test changes interactively.
+
+:::tip
+Using a coding agent like OpenCode or Claude Code? Ask it to install the prerequisites for you. For example: *"Install Go 1.22 and Node.js 20 on my machine"*.
+:::
+
+## Clone and Build
+
+```bash
+git clone https://github.com/merill/msgraph.git
+cd msgraph
+make build
+```
+
+Verify it worked:
+
+```bash
+./msgraph --version
+```
+
+## Project Structure
+
+```
+msgraph/
+├── cmd/                        # CLI commands (Cobra)
+├── internal/
+│   ├── auth/                   # MSAL authentication
+│   ├── config/                 # Configuration management
+│   ├── graph/                  # Graph API HTTP client
+│   ├── openapi/                # OpenAPI search logic
+│   ├── samples/                # Sample search + index builder
+│   └── apidocs/                # API docs search logic
+├── tools/
+│   ├── openapi-indexer/        # Builds graph-api-index.json from OpenAPI spec
+│   ├── api-docs-indexer/       # Builds api-docs-index.json from Graph docs repo
+│   └── concept-docs-builder/   # Builds curated concept docs from Graph docs repo
+├── skills/msgraph/             # The agent skill package
+│   ├── SKILL.md                # Skill definition (loaded by AI agents)
+│   ├── references/             # Index files + concept docs
+│   ├── samples/                # YAML sample files by product
+│   └── scripts/                # Launcher scripts + platform binaries
+├── docs/                       # This docs site (Astro + Starlight)
+└── Makefile                    # All build targets
+```
+
+## Development Workflow
+
+### Test the Skill Locally
+
+The fastest way to test changes is with `make dev`. This single command:
+
+1. Builds the `msgraph` binary for your platform
+2. Assembles a clean skill package in `dev-skill-test/`
+3. Launches OpenCode with the skill auto-loaded
+
+```bash
+make dev
+```
+
+OpenCode starts and discovers the skill automatically. Ask it to do something with the Graph API — for example, *"list users in my tenant"* — and it will use your local build.
+
+When you quit OpenCode, you're back in the repo root. The inner loop is:
+
+1. Edit Go code, SKILL.md, samples, or reference files
+2. Run `make dev`
+3. Test in the OpenCode session
+4. Quit OpenCode, repeat
+
+To clean up the test directory:
+
+```bash
+make dev-clean
+```
+
+### Run Tests
+
+```bash
+make test
+```
+
+### Rebuild Indexes
+
+The skill ships with prebuilt index files. Rebuild them when the upstream data changes:
+
+```bash
+make samples        # Rebuild samples-index.json from YAML source files
+make api-docs       # Rebuild api-docs-index.json (clones Graph docs repo)
+make concept-docs   # Rebuild concept docs (clones Graph docs repo)
+make index          # Rebuild graph-api-index.json (downloads ~60MB OpenAPI spec)
+```
+
+### Docs Site
+
+```bash
+make docs-dev       # Start local dev server at localhost:4321
+make docs-build     # Full production build
+```
+
+## Add a Sample
+
+The simplest way to contribute is adding a Graph API sample. See [Add a Sample](/improve/add-sample/) for the full guide.
+
+Quick version:
+
+1. Create a YAML file in `skills/msgraph/samples/<product>/`
+2. Add `intent` and `query` fields
+3. Run `make samples` to rebuild the index
+4. Test with `make dev`, then ask the agent to search for your sample
+
+## Submit a Pull Request
+
+1. Fork the repo and create a branch
+2. Make your changes
+3. Run `make test` to verify
+4. Push and open a pull request against `main`
+
+Keep PRs focused — one feature or fix per PR.
+
+## Makefile Reference
+
+Run `make help` to see all targets:
+
+| Target | Description |
+|---|---|
+| `make build` | Build for current platform |
+| `make build-all` | Build all platform binaries into skill scripts/bin/ |
+| `make install` | Build and copy binary to skill scripts/bin/ |
+| `make test` | Run tests |
+| `make lint` | Run linter |
+| `make dev` | Build skill, assemble into dev-skill-test/, launch OpenCode |
+| `make dev-clean` | Remove dev-skill-test/ directory |
+| `make index` | Rebuild OpenAPI index (graph-api-index.json) |
+| `make samples` | Rebuild samples index (samples-index.json) |
+| `make api-docs` | Rebuild API docs index (api-docs-index.json) |
+| `make concept-docs` | Rebuild curated concept docs |
+| `make docs-dev` | Start docs dev server |
+| `make docs-build` | Build docs site |
+| `make clean` | Clean build artifacts |
