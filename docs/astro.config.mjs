@@ -44,8 +44,21 @@ export default defineConfig({
           label: 'Improve the Skill',
           items: [
             { label: 'Why Your Samples Matter', slug: 'improve/why-samples-matter' },
-            { label: 'Browse Samples', slug: 'improve/browse-samples' },
             { label: 'Add a Sample', slug: 'improve/add-sample' },
+            { label: 'Browse Samples', slug: 'improve/browse-samples' },
+            {
+              label: 'Samples by Product',
+              collapsed: true,
+              items: [
+                { label: 'Entra ID', slug: 'improve/samples/entra' },
+                { label: 'Exchange', slug: 'improve/samples/exchange' },
+                { label: 'General', slug: 'improve/samples/general' },
+                { label: 'Intune', slug: 'improve/samples/intune' },
+                { label: 'Security', slug: 'improve/samples/security' },
+                { label: 'SharePoint', slug: 'improve/samples/sharepoint' },
+                { label: 'Teams', slug: 'improve/samples/teams' },
+              ],
+            },
           ],
         },
         {

@@ -34,10 +34,23 @@ jobs:
             --output skills/msgraph/references/samples-index.json
           echo "Samples index rebuilt"
 
+      - name: Rebuild API docs index
+        run: |
+          echo "Cloning Graph docs repo and building API docs index..."
+          go run ./tools/api-docs-indexer/... -version beta -output skills/msgraph/references/api-docs-index.json
+          echo "API docs index rebuilt"
+
+      - name: Rebuild concept docs
+        run: |
+          echo "Rebuilding curated concept docs from Microsoft Graph docs repo..."
+          go run ./tools/concept-docs-builder/... -output skills/msgraph/references/docs
+          echo "Concept docs rebuilt"
+
       - name: Copy indexes to docs/public for static hosting
         run: |
           cp skills/msgraph/references/graph-api-index.json docs/public/graph-api-index.json
           cp skills/msgraph/references/samples-index.json docs/public/samples-index.json
+          cp skills/msgraph/references/api-docs-index.json docs/public/api-docs-index.json
           echo "Indexes copied to docs/public/"
           ls -lh docs/public/*.json
 
@@ -59,5 +72,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: rebuild OpenAPI and samples indexes [daily]"
+          git commit -m "chore: rebuild indexes and concept docs [daily]"
           git push

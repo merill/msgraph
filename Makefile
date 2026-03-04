@@ -6,7 +6,7 @@ CGO_ENABLED := 0
 PLATFORMS := darwin/amd64 darwin/arm64 linux/amd64 linux/arm64 windows/amd64 windows/arm64
 SKILL_BIN_DIR := skills/msgraph/scripts/bin
 
-.PHONY: build build-all clean test lint index samples help
+.PHONY: build build-all clean test lint index samples api-docs concept-docs help
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -43,6 +43,13 @@ index: ## Run the OpenAPI indexer to generate graph-api-index.json
 
 samples: ## Build the samples index from YAML source files
 	go run . build-samples-index --samples-dir skills/msgraph/samples --output skills/msgraph/references/samples-index.json
+
+api-docs: ## Generate api-docs-index.json from Graph API documentation
+	go run ./tools/api-docs-indexer/... -version beta -output skills/msgraph/references/api-docs-index.json
+	cp skills/msgraph/references/api-docs-index.json docs/public/api-docs-index.json
+
+concept-docs: ## Rebuild curated concept docs from Microsoft Graph docs repo
+	go run ./tools/concept-docs-builder/... -output skills/msgraph/references/docs
 
 clean: ## Clean build artifacts
 	rm -f $(BINARY_NAME)

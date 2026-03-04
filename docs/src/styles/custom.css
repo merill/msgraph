@@ -77,6 +77,12 @@ starlight-menu-button + nav {
   font-weight: 600;
 }
 
+/* Nested sidebar groups — match sibling link size, no bold */
+details details > summary .group-label .large {
+  font-size: var(--sl-text-sm);
+  font-weight: normal;
+}
+
 /* ===== Content area ===== */
 /* Slightly more breathing room */
 .content-panel {
@@ -628,7 +634,7 @@ header.header {
 }
 
 /* Contribute button — prominent link to Add a Sample page */
-.sb-btn-contribute {
+.sb-btn.sb-btn-contribute {
   white-space: nowrap;
   text-decoration: none;
   background: #1a1a1e;
@@ -637,20 +643,22 @@ header.header {
   flex-shrink: 0;
 }
 
-:root[data-theme='light'] .sb-btn-contribute {
+:root[data-theme='light'] .sb-btn.sb-btn-contribute {
   background: #1a1a1a;
+  color: #fff;
   border-color: #1a1a1a;
 }
 
-.sb-btn-contribute:hover {
+.sb-btn.sb-btn-contribute:hover {
   background: #2d2d32;
   border-color: #2d2d32;
   color: #fff;
 }
 
-:root[data-theme='light'] .sb-btn-contribute:hover {
+:root[data-theme='light'] .sb-btn.sb-btn-contribute:hover {
   background: #333333;
   border-color: #333333;
+  color: #fff;
 }
 
 /* ── Submit section (standalone page) ── */

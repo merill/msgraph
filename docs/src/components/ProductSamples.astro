@@ -1,0 +1,138 @@
+---
+/**
+ * ProductSamples — server-side component that renders a static list of samples
+ * for a given product. Data is read from samples-index.json at build time,
+ * so the output is fully static HTML (good for SEO).
+ */
+interface Props {
+  product: string;
+  productLabel: string;
+}
+
+import fs from 'node:fs';
+import path from 'node:path';
+
+const { product, productLabel } = Astro.props;
+
+const indexPath = path.join(process.cwd(), 'public', 'samples-index.json');
+const raw = fs.readFileSync(indexPath, 'utf-8');
+const data = JSON.parse(raw);
+const samples = (data.samples || []).filter((s: any) => s.product === product);
+---
+
+<div class="ps-product-page">
+  <p class="ps-summary">
+    {samples.length} sample{samples.length !== 1 ? 's' : ''} for <strong>{productLabel}</strong>
+  </p>
+
+  {samples.length === 0 ? (
+    <p class="ps-empty">No samples yet for this product. <a href="/improve/add-sample/">Be the first to add one!</a></p>
+  ) : (
+    <div class="ps-list">
+      {samples.map((s: any) => (
+        <div class="ps-card">
+          <div class="ps-card-intent">{s.intent}</div>
+          <div class="ps-card-query">
+            {Array.isArray(s.query) ? (
+              <ol class="ps-steps">
+                {s.query.map((q: string, i: number) => (
+                  <li><code>{q}</code></li>
+                ))}
+              </ol>
+            ) : (
+              <code>{s.query}</code>
+            )}
+          </div>
+          <div class="ps-card-footer">
+            <a
+              href={`https://github.com/merill/msgraph/edit/main/skills/msgraph/samples/${s.file}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ps-edit-link"
+              title="Edit this sample on GitHub"
+            >
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L3.462 11.1a.25.25 0 00-.064.108l-.631 2.208 2.208-.63a.25.25 0 00.108-.064l8.61-8.61a.25.25 0 000-.354l-1.086-1.086z"/></svg>
+              Edit
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .ps-product-page {
+    margin-top: 1rem;
+  }
+
+  .ps-summary {
+    color: var(--sl-color-gray-2);
+    margin-bottom: 1.5rem;
+  }
+
+  .ps-empty {
+    color: var(--sl-color-gray-3);
+  }
+
+  .ps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ps-card {
+    border: 1px solid var(--sl-color-hairline-shade);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--sl-color-accent-low);
+  }
+
+  .ps-card-intent {
+    font-weight: 600;
+    color: var(--sl-color-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .ps-card-query code {
+    font-size: 0.85em;
+    color: var(--sl-color-gray-2);
+    background: var(--sl-color-bg);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--sl-color-hairline-shade);
+  }
+
+  .ps-steps {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .ps-steps li {
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+  }
+
+  .ps-card-footer {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .ps-edit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .ps-edit-link:hover {
+    color: var(--sl-color-white);
+  }
+</style>
