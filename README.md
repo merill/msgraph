@@ -1,16 +1,32 @@
 # msgraph
 
-An [Agent Skill](https://agentskills.io) for the Microsoft Graph API. Enables AI agents to authenticate to Microsoft 365 tenants and make Graph API calls.
+An [Agent Skill](https://agentskills.io) that gives AI agents up-to-date knowledge of the complete Microsoft Graph API — and optionally executes calls directly.
+
+## The Problem
+
+LLMs are trained on data that is months old. The Microsoft Graph API has **27,700+ endpoints** across **4,200+ resource types** and is updated weekly. Without current API knowledge, agents hallucinate endpoints, use deprecated paths, and miss required permissions.
+
+## The Solution
+
+This skill bundles the complete Microsoft Graph API surface as local indexes — searchable instantly with zero network calls.
+
+| Index | Count |
+|---|---|
+| OpenAPI endpoints | **27,700+** |
+| Endpoint docs (permissions, query params, headers) | **6,200+** |
+| Resource schemas (properties, types, filter operators) | **4,200+** |
+| Community samples | **Growing** |
 
 ## Features
 
-- **MSAL Authentication** - Interactive browser flow with device code fallback
-- **Graph API Calls** - Execute REST API calls against Microsoft Graph (beta and v1.0)
-- **Read-Only by Default** - GET operations allowed; write operations require explicit confirmation
-- **Incremental Consent** - Automatically requests additional permissions when needed
-- **OpenAPI Lookup** - Pre-processed Graph API index for endpoint discovery
-- **Cross-Platform** - Cross-platform CLI for macOS, Linux, and Windows (amd64/arm64)
-- **Zero Runtime Dependencies** - No runtime installation needed
+- **Complete Microsoft Graph API Knowledge** — 27,700+ endpoints, 6,200+ endpoint docs, 4,200+ resource schemas, all indexed locally
+- **Instant Local Search** — All lookups run locally in milliseconds, no network calls needed
+- **Community Samples** — Curated, hand-verified samples mapping tasks to exact API queries
+- **MCP Server Compatible** — Works with [lokka.dev](https://lokka.dev) or any Microsoft Graph MCP server for execution
+- **Direct API Execution** — Authenticate and call the Microsoft Graph API directly when no MCP server is available
+- **MSAL Authentication** — Interactive browser flow with device code fallback, plus app-only auth
+- **Safe by Default** — GET operations allowed; write operations require explicit confirmation
+- **Cross-Platform** — Works on macOS, Linux, and Windows (amd64/arm64) with zero runtime dependencies
 
 ## Quick Start
 
@@ -32,31 +48,33 @@ curl -fsSL -o msgraph.zip https://github.com/merill/msgraph/releases/latest/down
 unzip msgraph.zip -d ~/.claude/skills/
 ```
 
-### First Run
-
-The launcher script automatically downloads the correct binary for your platform on first run.
-
-**macOS/Linux:**
-```bash
-bash ~/.claude/skills/msgraph/scripts/run.sh auth signin
-```
-
-**Windows:**
-```powershell
-powershell ~/.claude/skills/msgraph/scripts/run.ps1 auth signin
-```
-
-### Make API Calls
+### Search the Microsoft Graph API (no auth needed)
 
 ```bash
+# Search curated samples
+msgraph sample-search --query "conditional access policies"
+
+# Look up endpoint docs with permissions
+msgraph api-docs-search --endpoint /users --method GET
+
+# Search 27,700+ OpenAPI endpoints
+msgraph openapi-search --query "send mail"
+
+# Look up resource schema and filter operators
+msgraph api-docs-search --resource user
+```
+
+### Execute Microsoft Graph API Calls (auth required)
+
+```bash
+# Sign in
+msgraph auth signin
+
 # Get current user profile
 msgraph graph-call GET /me
 
 # List messages
 msgraph graph-call GET /me/messages --top 10
-
-# Search the OpenAPI index
-msgraph openapi-search --query "send mail"
 ```
 
 ## Configuration
@@ -89,7 +107,7 @@ msgraph/
 ├── skills/msgraph/   # The installable Agent Skill
 │   ├── SKILL.md      # Agent Skills spec entry point
 │   ├── scripts/      # Launcher scripts + binary cache
-│   └── references/   # OpenAPI index + reference docs
+│   └── references/   # OpenAPI index, API docs index, samples, reference docs
 ├── cmd/              # CLI subcommands (Cobra)
 ├── internal/         # Internal packages
 ├── tools/            # Build-time tools (OpenAPI indexer)

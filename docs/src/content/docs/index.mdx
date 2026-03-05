@@ -1,9 +1,9 @@
 ---
 title: Microsoft Graph Skill for AI Agents
-description: Give your AI agent access to Microsoft 365. Manage email, calendar, OneDrive, Teams, contacts, Planner, To Do, SharePoint, and more. Administer Entra ID, Intune, Exchange, security, compliance, and Power Platform — all through the Microsoft Graph API.
+description: Give your AI agent up-to-date knowledge of the complete Microsoft Graph API. Search 27,700+ endpoints, 6,200+ endpoint docs, 4,200+ resource schemas, and curated samples — all locally, in milliseconds. Authenticate and call the Microsoft Graph API directly when needed.
 template: splash
 hero:
-  tagline: Connect your AI coding agents to Microsoft 365. Authenticate, query, and manage organizational data through the Microsoft Graph API.
+  tagline: Bridge the gap between your LLM's training cutoff and the latest Microsoft Graph API. Search 27,700+ endpoints, 6,200+ endpoint docs, 4,200+ resource schemas, and curated samples — all locally, in milliseconds. Authenticate and call the Microsoft Graph API directly when needed.
   actions:
     - text: Get Started
       link: /getting-started/introduction/
@@ -27,23 +27,46 @@ import LogoCarousel from '../../components/LogoCarousel.astro';
 
 <div class="landing-divider"></div>
 
+## The Problem
+
+Large language models are trained on data that is **months — sometimes over a year — old**. They don't know about the latest Microsoft Graph API endpoints, recent changes, or newly released features. The Microsoft Graph API has **27,700+ endpoints** across **4,200+ resource types** and is **updated weekly**.
+
+The result: your AI agent will **hallucinate endpoints** that don't exist, use **deprecated paths**, miss **required permissions**, or get the **`$filter` syntax** wrong.
+
+**This skill fixes that.** It bundles the complete Microsoft Graph API surface as local indexes — searchable instantly with zero network calls. Every lookup runs locally, returning results in milliseconds.
+
+| What's included | Count |
+|---|---|
+| OpenAPI endpoints (path, method, summary, permissions) | **27,700+** |
+| Endpoint docs (permissions, query params, headers, properties) | **6,200+** |
+| Resource schemas (properties, types, filter operators) | **4,200+** |
+| Community samples (verified queries for common tasks) | **Growing** |
+
+<div class="landing-divider"></div>
+
 <CardGrid>
-  <Card title="Flexible Authentication" icon="setting">
-    Delegated (interactive browser / device code) and app-only auth (client secret, certificate, managed identity, workload identity federation) via MSAL.
+  <Card title="Complete Microsoft Graph API Knowledge" icon="open-book">
+    Instant access to 27,700+ OpenAPI endpoints, 6,200+ endpoint docs, and 4,200+ resource schemas. Always up to date with the latest Microsoft Graph API.
   </Card>
-  <Card title="Graph API Calls" icon="rocket">
-    Execute REST calls against Microsoft Graph with full OData support — `$select`, `$filter`, `$top`, `$expand`, and more.
+  <Card title="Instant Local Search" icon="magnifier">
+    All indexes are bundled locally. Search the entire Microsoft Graph API surface in milliseconds — no network calls needed for lookups.
+  </Card>
+  <Card title="Community Samples" icon="document">
+    Curated, hand-verified samples that map natural-language tasks to exact Microsoft Graph API queries. Contribute your own at [graph.pm/improve/add-sample](https://graph.pm/improve/add-sample/).
+  </Card>
+  <Card title="Works with MCP Servers" icon="puzzle">
+    Use alongside [lokka.dev](https://lokka.dev) or any Microsoft Graph MCP server. This skill provides the knowledge — your MCP server handles execution.
+  </Card>
+  <Card title="Direct Microsoft Graph API Execution" icon="rocket">
+    No MCP server? Authenticate and call the Microsoft Graph API directly. Delegated and app-only auth via MSAL.
   </Card>
   <Card title="Safe by Default" icon="approve-check">
     GET-only by default. Write operations require explicit `--allow-writes`. DELETE is always blocked.
   </Card>
-  <Card title="OpenAPI Search" icon="magnifier">
-    Pre-processed index of 27,000+ Graph API endpoints. Find the right endpoint without leaving your terminal.
-  </Card>
   <Card title="Zero Dependencies" icon="laptop">
     Cross-platform. Works on macOS, Linux, and Windows with no runtime installation needed.
   </Card>
-  <Card title="Agent Skills Spec" icon="document">
+  <Card title="Agent Skills Spec" icon="setting">
     Follows the open [Agent Skills specification](https://agentskills.io). Install with `npx skills add merill/msgraph`.
   </Card>
 </CardGrid>

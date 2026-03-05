@@ -1,11 +1,11 @@
 ---
 title: Introduction
-description: An agent skill that enables AI coding assistants to authenticate to Microsoft 365 using delegated or app-only auth and query the Microsoft Graph API.
+description: An agent skill that gives AI agents up-to-date knowledge of the complete Microsoft Graph API — 27,700+ endpoints, 6,200+ endpoint docs, and 4,200+ resource schemas searchable locally in milliseconds.
 ---
 
 import MermaidDiagram from '../../../components/MermaidDiagram.astro';
 
-**msgraph** is an [Agent Skill](https://agentskills.io) that enables AI coding assistants to query and manage Microsoft 365 data through the Microsoft Graph API.
+**msgraph** is an [Agent Skill](https://agentskills.io) that gives AI agents up-to-date knowledge of the complete Microsoft Graph API and optionally executes API calls directly.
 
 ## Quick Install
 
@@ -15,23 +15,46 @@ npx skills add merill/msgraph
 
 See the [Installation](/getting-started/installation/) page for manual installation and per-platform instructions.
 
+## The Problem
+
+Large language models are trained on data that is **months — sometimes over a year — old**. The Microsoft Graph API has **27,700+ endpoints** across **4,200+ resource types** and is **updated weekly**. New APIs ship, existing endpoints change, and features get deprecated — but your agent's training data doesn't reflect any of it.
+
+Without current API knowledge, agents:
+
+- **Hallucinate endpoints** that don't exist or have been renamed
+- **Use deprecated paths** instead of the current ones
+- **Miss required permissions** or headers (like `ConsistencyLevel: eventual`)
+- **Get the `$filter` syntax wrong** for queries that actually work differently
+- **Don't know about new features** shipped after their training cutoff
+
+This skill solves that by bundling the **complete Microsoft Graph API surface as local indexes** — searchable instantly with zero network calls.
+
+| What's included | Count | What it contains |
+|---|---|---|
+| OpenAPI endpoints | **27,700+** | Path, method, summary, description, permission scopes |
+| Endpoint docs | **6,200+** | Permissions (delegated/app), query parameters, required headers, default vs `$select`-only properties |
+| Resource schemas | **4,200+** | All properties with types, supported `$filter` operators, default/select-only flags |
+| Community samples | **Growing** | Hand-verified queries mapping natural-language tasks to exact API calls |
+
+All indexes are bundled with the skill and run **entirely locally** — no API calls, no latency. Results come back in milliseconds.
+
 ## What it does
 
-- **Authenticates** to Microsoft 365 tenants using MSAL — delegated (interactive browser / device code) and app-only (client secret, certificate, managed identity, workload identity federation)
-- **Executes** Microsoft Graph API REST calls (GET, POST, PUT, PATCH)
-- **Searches** a pre-processed OpenAPI index to find the right endpoints
-- **Handles incremental consent** automatically when permissions are insufficient (delegated auth)
+- **Searches** 27,700+ OpenAPI endpoints, 6,200+ endpoint docs, and 4,200+ resource schemas — all locally, instantly
+- **Provides** curated community samples that map natural-language tasks to exact Microsoft Graph API queries
+- **Works with** Microsoft Graph MCP servers (like [lokka.dev](https://lokka.dev)) — this skill provides the knowledge, your MCP server handles execution
+- **Authenticates and executes** Microsoft Graph API calls directly when no MCP server is available — delegated (interactive browser / device code) and app-only (client secret, certificate, managed identity, workload identity federation)
 - **Enforces safety** — read-only by default, writes require explicit opt-in, DELETE is always blocked
 
 ## How agents use it
 
 When an agent loads this skill, it gets instructions and a CLI to:
 
-1. Check authentication status
-2. Sign in if needed
-3. Construct and execute Graph API calls
-4. Search for endpoints when unsure of the right URL
-5. Parse responses and handle errors
+1. **Search** for the right endpoint, permissions, and syntax using local indexes
+2. **Construct** correct Microsoft Graph API calls using up-to-date knowledge
+3. **Execute** via a Graph MCP server or directly through this skill's built-in auth and API execution
+
+Authentication only happens when the agent needs to execute API calls directly — not when using the skill purely for knowledge and search.
 
 ## What you can ask your agent
 
@@ -70,3 +93,9 @@ Once the skill is installed, you can ask your agent things like:
 - Show me the latest security alerts
 - What is our current secure score?
 - Pull the sign-in logs from the last 24 hours
+
+### Knowledge Queries (no auth needed)
+- What permissions do I need to read user calendars?
+- What `$filter` operators does the `user` resource support?
+- Find the Microsoft Graph API endpoint for managing conditional access policies
+- What properties does the `managedDevice` resource have?

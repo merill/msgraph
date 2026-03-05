@@ -35,6 +35,7 @@ archives:
 
 checksum:
   name_template: "checksums.txt"
+  disable: true
 
 release:
   github:
@@ -42,6 +43,7 @@ release:
     name: msgraph
   draft: false
   prerelease: auto
+  skip_upload: true
 
 changelog:
   sort: asc
