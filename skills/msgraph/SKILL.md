@@ -5,7 +5,7 @@ license: MIT
 compatibility: Search tools run fully offline with no network access required. Direct API execution requires network access to login.microsoftonline.com and graph.microsoft.com. A system browser is used for interactive auth; falls back to device code flow in headless environments.
 metadata:
   author: merill
-  version: "1.0.11"
+  version: "1.0.12"
 ---
 
 # Microsoft Graph Agent Skill
