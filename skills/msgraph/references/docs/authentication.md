@@ -191,6 +191,7 @@ msgraph auth signin
 | `MSGRAPH_AUTH_METHOD` | Set to `managed-identity` for Azure managed identity | — |
 | `MSGRAPH_MANAGED_IDENTITY_CLIENT_ID` | Client ID for user-assigned managed identity | — |
 | `MSGRAPH_FEDERATED_TOKEN_FILE` | Path to federated token file (workload identity) | — |
+| `MSGRAPH_NO_TOKEN_CACHE` | Disable persisted token cache; tokens live only for the current process | `false` |
 
 Also auto-reads: `AZURE_FEDERATED_TOKEN_FILE`, `AWS_WEB_IDENTITY_TOKEN_FILE`, `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`.
 

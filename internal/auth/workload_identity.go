@@ -2,12 +2,14 @@ package auth
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
 
 	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/confidential"
 	"github.com/merill/msgraph/internal/config"
+	"github.com/zalando/go-keyring"
 )
 
 // WorkloadIdentityClient implements TokenProvider using federated token assertion.
@@ -19,6 +21,7 @@ type WorkloadIdentityClient struct {
 	app       confidential.Client
 	cfg       *config.Config
 	tokenFile string
+	key       string
 }
 
 // NewWorkloadIdentityClient creates a confidential client using a federated token assertion.
@@ -62,9 +65,14 @@ func NewWorkloadIdentityClient(cfg *config.Config) (*WorkloadIdentityClient, err
 		},
 	)
 
-	app, err := confidential.New(authority, clientID, cred,
-		confidential.WithCache(&tokenCache{path: sessionCachePath(clientID, tenantID)}),
-	)
+	_, cacheKey := sessionCacheKey(clientID, tenantID, cfg.WorkspaceRoot)
+
+	var opts []confidential.Option
+	if !cfg.NoTokenCache {
+		opts = append(opts, confidential.WithCache(&tokenCache{service: tokenCacheService, key: cacheKey}))
+	}
+
+	app, err := confidential.New(authority, clientID, cred, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create workload identity client: %w", err)
 	}
@@ -73,6 +81,7 @@ func NewWorkloadIdentityClient(cfg *config.Config) (*WorkloadIdentityClient, err
 		app:       app,
 		cfg:       cfg,
 		tokenFile: tokenFile,
+		key:       cacheKey,
 	}, nil
 }
 
@@ -92,9 +101,14 @@ func (c *WorkloadIdentityClient) AcquireTokenWithExtraScopes(_ context.Context, 
 
 // SignOut clears the token cache.
 func (c *WorkloadIdentityClient) SignOut() error {
-	path := sessionCachePath(c.cfg.ClientID, c.cfg.TenantID)
-	if err := os.Remove(path); err != nil && !os.IsNotExist(err) {
+	if c.cfg.NoTokenCache {
+		return nil
+	}
+	if err := keyring.Delete(tokenCacheService, c.key); err != nil && !errors.Is(err, keyring.ErrNotFound) {
 		return fmt.Errorf("failed to remove session cache: %w", err)
+	}
+	if err := os.Remove(cacheFilePath(c.key)); err != nil && !os.IsNotExist(err) {
+		return fmt.Errorf("failed to remove cache file: %w", err)
 	}
 	return nil
 }

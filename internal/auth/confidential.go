@@ -4,34 +4,42 @@ import (
 	"context"
 	"crypto/x509"
 	"encoding/pem"
+	"errors"
 	"fmt"
 	"os"
 
 	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/confidential"
 	"github.com/merill/msgraph/internal/config"
+	"github.com/zalando/go-keyring"
 )
 
 // ClientSecretClient implements TokenProvider using client secret credentials.
 type ClientSecretClient struct {
 	app confidential.Client
 	cfg *config.Config
+	key string
 }
 
 // NewClientSecretClient creates a confidential client using a client secret.
 func NewClientSecretClient(cfg *config.Config) (*ClientSecretClient, error) {
+	_, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, cfg.WorkspaceRoot)
+
 	cred, err := confidential.NewCredFromSecret(cfg.ClientSecret)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create secret credential: %w", err)
 	}
 
-	app, err := confidential.New(cfg.AuthorityURL(), cfg.ClientID, cred,
-		confidential.WithCache(&tokenCache{path: sessionCachePath(cfg.ClientID, cfg.TenantID)}),
-	)
+	var opts []confidential.Option
+	if !cfg.NoTokenCache {
+		opts = append(opts, confidential.WithCache(&tokenCache{service: tokenCacheService, key: cacheKey}))
+	}
+
+	app, err := confidential.New(cfg.AuthorityURL(), cfg.ClientID, cred, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create confidential client: %w", err)
 	}
 
-	return &ClientSecretClient{app: app, cfg: cfg}, nil
+	return &ClientSecretClient{app: app, cfg: cfg, key: cacheKey}, nil
 }
 
 // AcquireToken acquires a token using client credentials.
@@ -50,9 +58,14 @@ func (c *ClientSecretClient) AcquireTokenWithExtraScopes(_ context.Context, _, _
 
 // SignOut clears the token cache.
 func (c *ClientSecretClient) SignOut() error {
-	path := sessionCachePath(c.cfg.ClientID, c.cfg.TenantID)
-	if err := os.Remove(path); err != nil && !os.IsNotExist(err) {
+	if c.cfg.NoTokenCache {
+		return nil
+	}
+	if err := keyring.Delete(tokenCacheService, c.key); err != nil && !errors.Is(err, keyring.ErrNotFound) {
 		return fmt.Errorf("failed to remove session cache: %w", err)
+	}
+	if err := os.Remove(cacheFilePath(c.key)); err != nil && !os.IsNotExist(err) {
+		return fmt.Errorf("failed to remove cache file: %w", err)
 	}
 	return nil
 }
@@ -87,6 +100,7 @@ func (c *ClientSecretClient) IsAppOnly() bool {
 type ClientCertificateClient struct {
 	app confidential.Client
 	cfg *config.Config
+	key string
 }
 
 // NewClientCertificateClient creates a confidential client using a certificate.
@@ -106,14 +120,19 @@ func NewClientCertificateClient(cfg *config.Config) (*ClientCertificateClient, e
 		return nil, fmt.Errorf("failed to create certificate credential: %w", err)
 	}
 
-	app, err := confidential.New(cfg.AuthorityURL(), cfg.ClientID, cred,
-		confidential.WithCache(&tokenCache{path: sessionCachePath(cfg.ClientID, cfg.TenantID)}),
-	)
+	_, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, cfg.WorkspaceRoot)
+
+	var opts []confidential.Option
+	if !cfg.NoTokenCache {
+		opts = append(opts, confidential.WithCache(&tokenCache{service: tokenCacheService, key: cacheKey}))
+	}
+
+	app, err := confidential.New(cfg.AuthorityURL(), cfg.ClientID, cred, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create confidential client: %w", err)
 	}
 
-	return &ClientCertificateClient{app: app, cfg: cfg}, nil
+	return &ClientCertificateClient{app: app, cfg: cfg, key: cacheKey}, nil
 }
 
 // AcquireToken acquires a token using client certificate credentials.
@@ -132,9 +151,14 @@ func (c *ClientCertificateClient) AcquireTokenWithExtraScopes(_ context.Context,
 
 // SignOut clears the token cache.
 func (c *ClientCertificateClient) SignOut() error {
-	path := sessionCachePath(c.cfg.ClientID, c.cfg.TenantID)
-	if err := os.Remove(path); err != nil && !os.IsNotExist(err) {
+	if c.cfg.NoTokenCache {
+		return nil
+	}
+	if err := keyring.Delete(tokenCacheService, c.key); err != nil && !errors.Is(err, keyring.ErrNotFound) {
 		return fmt.Errorf("failed to remove session cache: %w", err)
+	}
+	if err := os.Remove(cacheFilePath(c.key)); err != nil && !os.IsNotExist(err) {
+		return fmt.Errorf("failed to remove cache file: %w", err)
 	}
 	return nil
 }

@@ -218,6 +218,7 @@ msgraph graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
 | `MSGRAPH_INDEX_PATH` | Path to OpenAPI index JSON | Auto-detected |
 | `MSGRAPH_SAMPLES_PATH` | Path to samples index JSON | Auto-detected |
 | `MSGRAPH_API_DOCS_PATH` | Path to API docs index JSON | Auto-detected |
+| `MSGRAPH_NO_TOKEN_CACHE` | Disable persistent token cache (in-memory only) | `false` |
 
 For the full list of authentication environment variables, see [references/docs/authentication.md](references/docs/authentication.md).
 

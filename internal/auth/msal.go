@@ -2,24 +2,33 @@ package auth
 
 import (
 	"context"
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
 	"crypto/sha256"
+	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/cache"
 	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
 	"github.com/merill/msgraph/internal/config"
+	"github.com/zalando/go-keyring"
 )
 
 // DelegatedClient implements TokenProvider using MSAL public client (interactive + device code).
 // This is the default auth method for user-delegated authentication.
 type DelegatedClient struct {
-	app       public.Client
-	cfg       *config.Config
-	session   *SessionData
-	cachePath string
+	app           public.Client
+	cfg           *config.Config
+	session       *SessionData
+	cacheKey      string
+	workspaceRoot string
 }
 
 // SessionData stores the current auth session state.
@@ -32,20 +41,27 @@ type SessionData struct {
 
 // NewDelegatedClient creates a new MSAL public client for delegated auth.
 func NewDelegatedClient(cfg *config.Config) (*DelegatedClient, error) {
-	cachePath := sessionCachePath(cfg.ClientID, cfg.TenantID)
+	workspaceRoot, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, cfg.WorkspaceRoot)
+	cacheOpt := public.WithCache(&tokenCache{service: tokenCacheService, key: cacheKey})
+	if cfg.NoTokenCache {
+		cacheOpt = nil
+	}
 
-	app, err := public.New(cfg.ClientID,
-		public.WithAuthority(cfg.AuthorityURL()),
-		public.WithCache(&tokenCache{path: cachePath}),
-	)
+	options := []public.Option{public.WithAuthority(cfg.AuthorityURL())}
+	if cacheOpt != nil {
+		options = append(options, cacheOpt)
+	}
+
+	app, err := public.New(cfg.ClientID, options...)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create MSAL client: %w", err)
 	}
 
 	return &DelegatedClient{
-		app:       app,
-		cfg:       cfg,
-		cachePath: cachePath,
+		app:           app,
+		cfg:           cfg,
+		cacheKey:      cacheKey,
+		workspaceRoot: workspaceRoot,
 	}, nil
 }
 
@@ -151,8 +167,15 @@ func (c *DelegatedClient) AcquireTokenDeviceCode(ctx context.Context, scopes []s
 
 // SignOut clears the session cache.
 func (c *DelegatedClient) SignOut() error {
-	if err := os.Remove(c.cachePath); err != nil && !os.IsNotExist(err) {
+	if c.cfg.NoTokenCache {
+		c.session = nil
+		return nil
+	}
+	if err := keyring.Delete(tokenCacheService, c.cacheKey); err != nil && !errors.Is(err, keyring.ErrNotFound) {
 		return fmt.Errorf("failed to remove session cache: %w", err)
+	}
+	if err := os.Remove(cacheFilePath(c.cacheKey)); err != nil && !os.IsNotExist(err) {
+		return fmt.Errorf("failed to remove cache file: %w", err)
 	}
 	c.session = nil
 	return nil
@@ -175,12 +198,14 @@ func (c *DelegatedClient) Status(ctx context.Context) (map[string]interface{}, e
 
 	acct := accounts[0]
 	return map[string]interface{}{
-		"signedIn":    true,
-		"authMethod":  string(config.AuthMethodDelegated),
-		"username":    acct.PreferredUsername,
-		"tenantId":    c.cfg.TenantID,
-		"clientId":    c.cfg.ClientID,
-		"environment": acct.Environment,
+		"signedIn":      true,
+		"authMethod":    string(config.AuthMethodDelegated),
+		"username":      acct.PreferredUsername,
+		"tenantId":      c.cfg.TenantID,
+		"clientId":      c.cfg.ClientID,
+		"environment":   acct.Environment,
+		"workspaceRoot": c.workspaceRoot,
+		"cacheKey":      c.cacheKey,
 	}, nil
 }
 
@@ -203,11 +228,37 @@ func StatusJSON(ctx context.Context, provider TokenProvider) ([]byte, error) {
 	return json.MarshalIndent(status, "", "  ")
 }
 
-// sessionCachePath returns the path to the session-scoped token cache file.
-func sessionCachePath(clientID, tenantID string) string {
-	h := sha256.Sum256([]byte(clientID + ":" + tenantID))
-	filename := fmt.Sprintf("msgraph-session-%x.json", h[:8])
-	return filepath.Join(os.TempDir(), filename)
+// sessionCacheKey returns the per-session cache key used for secure storage.
+// It scopes the cache by client, tenant, and current working directory so
+// different folders do not share the same session.
+func sessionCacheKey(clientID, tenantID, workspaceRoot string) (string, string) {
+	cwd := workspaceRoot
+	if cwd == "" {
+		var err error
+		cwd, err = os.Getwd()
+		if err != nil {
+			cwd = ""
+		} else {
+			cwd = filepath.Clean(cwd)
+		}
+	} else {
+		cwd = filepath.Clean(cwd)
+	}
+
+	h := sha256.Sum256([]byte(clientID + ":" + tenantID + ":" + cwd))
+	key := fmt.Sprintf("msgraph-%x", h[:16])
+
+	if debugEnabled() {
+		fmt.Fprintf(os.Stderr, "[msgraph] workspace: %s\n", cwd)
+		fmt.Fprintf(os.Stderr, "[msgraph] cache-key: %s\n", key)
+	}
+
+	return cwd, key
+}
+
+func debugEnabled() bool {
+	v := strings.ToLower(os.Getenv("MSGRAPH_DEBUG"))
+	return v == "1" || v == "true" || v == "yes" || v == "on"
 }
 
 // isBrowserAvailable does a basic check to see if we can open a browser.
@@ -225,26 +276,143 @@ func isBrowserAvailable() bool {
 	return true
 }
 
-// tokenCache implements the MSAL cache.ExportReplace interface for file-based caching.
+const tokenCacheService = "msgraph"
+
+// tokenCache implements the MSAL cache.ExportReplace interface with
+// encryption-at-rest and a key stored in the OS keyring.
 type tokenCache struct {
-	path string
+	service string
+	key     string
 }
 
 func (t *tokenCache) Replace(ctx context.Context, cache cache.Unmarshaler, hints cache.ReplaceHints) error {
-	data, err := os.ReadFile(t.path)
+	k, err := loadOrCreateEncryptionKey(t.service, t.key)
+	if err != nil {
+		if errors.Is(err, keyring.ErrNotFound) {
+			return nil
+		}
+		return err
+	}
+
+	encData, err := os.ReadFile(cacheFilePath(t.key))
 	if err != nil {
 		if os.IsNotExist(err) {
 			return nil
 		}
 		return err
 	}
-	return cache.Unmarshal(data)
-}
 
-func (t *tokenCache) Export(ctx context.Context, cache cache.Marshaler, hints cache.ExportHints) error {
-	data, err := cache.Marshal()
+	plain, err := decrypt(k, encData)
 	if err != nil {
 		return err
 	}
-	return os.WriteFile(t.path, data, 0600)
+
+	return cache.Unmarshal(plain)
+}
+
+func (t *tokenCache) Export(ctx context.Context, cache cache.Marshaler, hints cache.ExportHints) error {
+	if t == nil {
+		return nil
+	}
+
+	plaintext, err := cache.Marshal()
+	if err != nil {
+		return err
+	}
+
+	k, err := loadOrCreateEncryptionKey(t.service, t.key)
+	if err != nil {
+		// If keyring rejects (e.g., too big), skip persistence silently
+		if isKeyringDataTooBig(err) || errors.Is(err, keyring.ErrSetDataTooBig) {
+			return nil
+		}
+		return err
+	}
+
+	enc, err := encrypt(k, plaintext)
+	if err != nil {
+		return err
+	}
+
+	return os.WriteFile(cacheFilePath(t.key), enc, 0600)
+}
+
+func isKeyringDataTooBig(err error) bool {
+	return errors.Is(err, keyring.ErrSetDataTooBig) || strings.Contains(strings.ToLower(err.Error()), "too big")
+}
+
+func loadOrCreateEncryptionKey(service, key string) ([]byte, error) {
+	if key == "" {
+		return nil, fmt.Errorf("empty cache key")
+	}
+
+	if v, err := keyring.Get(service, key); err == nil {
+		b, err := base64.StdEncoding.DecodeString(v)
+		if err == nil && len(b) == 32 {
+			return b, nil
+		}
+	}
+
+	k := make([]byte, 32)
+	if _, err := rand.Read(k); err != nil {
+		return nil, err
+	}
+
+	encoded := base64.StdEncoding.EncodeToString(k)
+	if err := keyring.Set(service, key, encoded); err != nil {
+		return nil, err
+	}
+
+	return k, nil
+}
+
+func cacheFilePath(key string) string {
+	dir, err := os.UserCacheDir()
+	if err != nil || dir == "" {
+		dir = os.TempDir()
+	}
+	dir = filepath.Join(dir, "msgraph")
+	_ = os.MkdirAll(dir, 0700)
+	filename := fmt.Sprintf("msgraph-cache-%s.bin", key)
+	return filepath.Join(dir, filename)
+}
+
+func encrypt(key, plaintext []byte) ([]byte, error) {
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return nil, err
+	}
+
+	nonce := make([]byte, gcm.NonceSize())
+	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+		return nil, err
+	}
+
+	ciphertext := gcm.Seal(nonce, nonce, plaintext, nil)
+	return ciphertext, nil
+}
+
+func decrypt(key, ciphertext []byte) ([]byte, error) {
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return nil, err
+	}
+
+	ns := gcm.NonceSize()
+	if len(ciphertext) < ns {
+		return nil, fmt.Errorf("ciphertext too short")
+	}
+
+	nonce, data := ciphertext[:ns], ciphertext[ns:]
+	return gcm.Open(nil, nonce, data, nil)
 }

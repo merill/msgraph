@@ -69,6 +69,8 @@ type Config struct {
 
 	// App-only auth fields
 	AuthMethod                AuthMethod
+	NoTokenCache              bool
+	WorkspaceRoot             string
 	ClientSecret              string
 	ClientCertificatePath     string
 	ClientCertificatePassword string
@@ -83,6 +85,8 @@ func Load() *Config {
 		TenantID:                  envOrDefault("MSGRAPH_TENANT_ID", DefaultTenantID),
 		APIVersion:                envOrDefault("MSGRAPH_API_VERSION", DefaultAPIVersion),
 		Authority:                 DefaultAuthority,
+		NoTokenCache:              envBool("MSGRAPH_NO_TOKEN_CACHE"),
+		WorkspaceRoot:             os.Getenv("MSGRAPH_WORKSPACE_ROOT"),
 		ClientSecret:              os.Getenv("MSGRAPH_CLIENT_SECRET"),
 		ClientCertificatePath:     os.Getenv("MSGRAPH_CLIENT_CERTIFICATE_PATH"),
 		ClientCertificatePassword: os.Getenv("MSGRAPH_CLIENT_CERTIFICATE_PASSWORD"),
@@ -166,6 +170,11 @@ func envOrDefault(key, defaultValue string) string {
 		return v
 	}
 	return defaultValue
+}
+
+func envBool(key string) bool {
+	v := strings.ToLower(strings.TrimSpace(os.Getenv(key)))
+	return v == "1" || v == "true" || v == "yes" || v == "on"
 }
 
 func firstNonEmpty(values ...string) string {

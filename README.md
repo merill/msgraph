@@ -84,6 +84,7 @@ msgraph graph-call GET /me/messages --top 10
 | `MSGRAPH_CLIENT_ID` | Override the default app client ID | `14d82eec-204b-4c2f-b7e8-296a70dab67e` |
 | `MSGRAPH_TENANT_ID` | Target a specific tenant | `common` |
 | `MSGRAPH_API_VERSION` | Default API version (`beta` or `v1.0`) | `beta` |
+| `MSGRAPH_NO_TOKEN_CACHE` | Disable persisted token cache (in-memory only) | `false` |
 
 ## Building from Source
 

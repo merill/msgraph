@@ -37,6 +37,7 @@ export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
 | `MSGRAPH_TENANT_ID` | Target tenant ID | `common` |
 | `MSGRAPH_API_VERSION` | Default Graph API version | `beta` |
 | `MSGRAPH_INDEX_PATH` | Path to the OpenAPI index JSON | Auto-detected |
+| `MSGRAPH_NO_TOKEN_CACHE` | Disable persisted token cache (in-memory only) | `false` |
 
 ### App-Only Auth
 
@@ -143,3 +144,15 @@ Override if the index is in a non-standard location:
 ```bash
 export MSGRAPH_INDEX_PATH="/path/to/graph-api-index.json"
 ```
+
+## Token Cache
+
+Tokens are cached by default using an encrypted on-disk cache with the key stored in the OS keyring. This keeps sign-ins silent after the first authentication and survives process restarts.
+
+To turn off the persisted cache and keep tokens in-memory only for the current process, set:
+
+```bash
+export MSGRAPH_NO_TOKEN_CACHE=true
+```
+
+When disabled, every new process will require a fresh sign-in. This is useful for CI/CD, ephemeral containers, or shared environments where you do not want tokens written to disk.
