@@ -17,6 +17,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/merill/msgraph/internal/apidocs"
 )
 
 const docsRepo = "https://github.com/microsoftgraph/microsoft-graph-docs-contrib.git"
@@ -34,6 +36,7 @@ type ApiDocsIndex struct {
 func main() {
 	version := flag.String("version", "beta", "API version to index: 'v1.0' or 'beta'")
 	output := flag.String("output", "skills/msgraph/references/api-docs-index.json", "Output file path")
+	dbOutput := flag.String("db-output", "", "Output path for SQLite FTS database (defaults to .db alongside JSON)")
 	input := flag.String("input", "", "Local docs repo directory (skips clone if set)")
 	flag.Parse()
 
@@ -99,6 +102,21 @@ func main() {
 
 	fmt.Fprintf(os.Stderr, "Wrote index to %s (%d bytes, %d endpoints, %d resources)\n",
 		*output, len(outData), len(endpoints), len(resources))
+
+	// Build FTS SQLite database.
+	dbPath := *dbOutput
+	if dbPath == "" {
+		dbPath = strings.TrimSuffix(*output, ".json") + ".db"
+	}
+
+	// Convert local types to apidocs package types for the FTS builder.
+	ftsIdx := toApiDocsIndex(idx)
+	if err := apidocs.BuildFTSDatabase(ftsIdx, dbPath); err != nil {
+		fatal("Failed to build FTS database: %v", err)
+	}
+
+	fmt.Fprintf(os.Stderr, "Wrote FTS database to %s (%d endpoints, %d resources)\n",
+		dbPath, len(endpoints), len(resources))
 }
 
 // cloneDocs performs a shallow sparse checkout of the docs repo, fetching only
@@ -311,4 +329,49 @@ func unionStrings(a, b []string) []string {
 func fatal(format string, args ...interface{}) {
 	fmt.Fprintf(os.Stderr, "Error: "+format+"\n", args...)
 	os.Exit(1)
+}
+
+// toApiDocsIndex converts the local ApiDocsIndex (with local types) into an
+// apidocs.Index (with the internal package types) for use by the FTS builder.
+func toApiDocsIndex(local ApiDocsIndex) *apidocs.Index {
+	idx := &apidocs.Index{
+		Version:       local.Version,
+		Generated:     local.Generated,
+		EndpointCount: local.EndpointCount,
+		ResourceCount: local.ResourceCount,
+	}
+
+	for _, ep := range local.Endpoints {
+		idx.Endpoints = append(idx.Endpoints, apidocs.EndpointDoc{
+			Path:   ep.Path,
+			Method: ep.Method,
+			Permissions: apidocs.Permissions{
+				DelegatedWork:     ep.Permissions.DelegatedWork,
+				DelegatedPersonal: ep.Permissions.DelegatedPersonal,
+				Application:       ep.Permissions.Application,
+			},
+			QueryParams:       ep.QueryParams,
+			RequiredHeaders:   ep.RequiredHeaders,
+			DefaultProperties: ep.DefaultProperties,
+			Notes:             ep.Notes,
+		})
+	}
+
+	for _, res := range local.Resources {
+		r := apidocs.ResourceDoc{
+			Name: res.Name,
+		}
+		for _, p := range res.Properties {
+			r.Properties = append(r.Properties, apidocs.PropertyDoc{
+				Name:    p.Name,
+				Type:    p.Type,
+				Filter:  p.Filter,
+				Default: p.Default,
+				Notes:   p.Notes,
+			})
+		}
+		idx.Resources = append(idx.Resources, r)
+	}
+
+	return idx
 }

@@ -39,20 +39,21 @@ test: ## Run tests
 lint: ## Run linter
 	golangci-lint run ./...
 
-index: ## Run the OpenAPI indexer to generate graph-api-index.json
+index: ## Run the OpenAPI indexer to generate graph-api-index.json and .db
 	go run ./tools/openapi-indexer/... -output skills/msgraph/references/graph-api-index.json
 
-samples: ## Build the samples index from YAML source files
+samples: ## Build the samples index (JSON + FTS database) from YAML source files
 	go run . build-samples-index --samples-dir samples --output skills/msgraph/references/samples-index.json
 
-api-docs: ## Generate api-docs-index.json from Graph API documentation
+api-docs: ## Generate api-docs-index.json and .db from Graph API documentation
 	go run ./tools/api-docs-indexer/... -version beta -output skills/msgraph/references/api-docs-index.json
 	cp skills/msgraph/references/api-docs-index.json docs/public/api-docs-index.json
+	cp skills/msgraph/references/api-docs-index.db docs/public/api-docs-index.db
 
 concept-docs: ## Rebuild curated concept docs from Microsoft Graph docs repo
 	go run ./tools/concept-docs-builder/... -output skills/msgraph/references/docs
 
-dev: build ## Build skill and install to dev-skill-test/, then open OpenCode
+dev: build samples ## Build skill and install to dev-skill-test/, then open OpenCode
 	@rm -rf dev-skill-test
 	@mkdir -p $(DEV_SKILL_DIR)/scripts/bin
 	@cp skills/msgraph/SKILL.md $(DEV_SKILL_DIR)/

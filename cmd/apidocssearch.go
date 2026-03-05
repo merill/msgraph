@@ -2,8 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 
 	"github.com/merill/msgraph/internal/apidocs"
 	"github.com/spf13/cobra"
@@ -39,7 +37,13 @@ Examples:
 			return fmt.Errorf("at least one of --endpoint, --resource, or --query is required")
 		}
 
-		indexPath := findApiDocsIndexPath()
+		// Try FTS database first, fall back to JSON index.
+		if dbPath := findFile("api-docs-index.db", "MSGRAPH_API_DOCS_DB_PATH"); dbPath != "" {
+			return searchApiDocsFTS(dbPath, endpoint, resource, method, query, limit)
+		}
+
+		// Fall back to legacy JSON search.
+		indexPath := findFile("api-docs-index.json", "MSGRAPH_API_DOCS_PATH")
 		if indexPath == "" {
 			return fmt.Errorf("API docs index file not found. Set MSGRAPH_API_DOCS_PATH or ensure references/api-docs-index.json exists relative to the binary")
 		}
@@ -80,6 +84,23 @@ Examples:
 	},
 }
 
+func searchApiDocsFTS(dbPath, endpoint, resource, method, query string, limit int) error {
+	idx, err := apidocs.LoadFTSIndex(dbPath)
+	if err != nil {
+		return err
+	}
+	defer idx.Close()
+
+	// If --resource is specified, search resources; otherwise search endpoints.
+	if resource != "" {
+		results := idx.SearchResources(resource, query, limit)
+		return outputJSON(apidocs.FormatResourceResults(results))
+	}
+
+	results := idx.SearchEndpoints(endpoint, method, query, limit)
+	return outputJSON(apidocs.FormatEndpointResults(results))
+}
+
 func init() {
 	apiDocsSearchCmd.Flags().String("endpoint", "", "Search by endpoint path (e.g. /users, /me/messages)")
 	apiDocsSearchCmd.Flags().String("resource", "", "Search by resource type name (e.g. user, group, message)")
@@ -88,37 +109,4 @@ func init() {
 	apiDocsSearchCmd.Flags().Int("limit", 10, "Maximum number of results to return")
 
 	rootCmd.AddCommand(apiDocsSearchCmd)
-}
-
-// findApiDocsIndexPath locates the API docs index JSON file.
-func findApiDocsIndexPath() string {
-	candidates := []string{
-		// When running from the repo root
-		"skills/msgraph/references/api-docs-index.json",
-	}
-
-	// Also check relative to the executable
-	if exe, err := os.Executable(); err == nil {
-		exeDir := filepath.Dir(exe)
-		candidates = append(candidates,
-			// Binary at msgraph/scripts/bin/ -> index at msgraph/references/
-			filepath.Join(exeDir, "..", "..", "references", "api-docs-index.json"),
-			// Binary next to msgraph/
-			filepath.Join(exeDir, "..", "msgraph", "references", "api-docs-index.json"),
-			filepath.Join(exeDir, "msgraph", "references", "api-docs-index.json"),
-		)
-	}
-
-	// Check environment variable override
-	if envPath := os.Getenv("MSGRAPH_API_DOCS_PATH"); envPath != "" {
-		candidates = append([]string{envPath}, candidates...)
-	}
-
-	for _, p := range candidates {
-		if _, err := os.Stat(p); err == nil {
-			return p
-		}
-	}
-
-	return ""
 }

@@ -2,8 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 
 	"github.com/merill/msgraph/internal/samples"
 	"github.com/spf13/cobra"
@@ -32,7 +30,13 @@ Examples:
 			return fmt.Errorf("at least one of --query or --product is required")
 		}
 
-		indexPath := findSamplesIndexPath()
+		// Try FTS database first, fall back to JSON index.
+		if dbPath := findFile("samples-index.db", "MSGRAPH_SAMPLES_DB_PATH"); dbPath != "" {
+			return searchSamplesFTS(dbPath, query, product, limit)
+		}
+
+		// Fall back to legacy JSON search.
+		indexPath := findFile("samples-index.json", "MSGRAPH_SAMPLES_PATH")
 		if indexPath == "" {
 			return fmt.Errorf("samples index file not found. Set MSGRAPH_SAMPLES_PATH or ensure references/samples-index.json exists relative to the binary")
 		}
@@ -58,44 +62,21 @@ Examples:
 	},
 }
 
+func searchSamplesFTS(dbPath, query, product string, limit int) error {
+	idx, err := samples.LoadFTSIndex(dbPath)
+	if err != nil {
+		return err
+	}
+	defer idx.Close()
+
+	results := idx.Search(query, product, limit)
+	return outputJSON(samples.FormatFTSResults(results))
+}
+
 func init() {
 	sampleSearchCmd.Flags().String("query", "", "Free-text search query (searches intent and query fields)")
 	sampleSearchCmd.Flags().String("product", "", "Filter by product (entra, intune, exchange, teams, sharepoint, security, general)")
 	sampleSearchCmd.Flags().Int("limit", 10, "Maximum number of results to return")
 
 	rootCmd.AddCommand(sampleSearchCmd)
-}
-
-// findSamplesIndexPath locates the samples index JSON file.
-func findSamplesIndexPath() string {
-	candidates := []string{
-		// When running from the repo root
-		"references/samples-index.json",
-		"skills/msgraph/references/samples-index.json",
-	}
-
-	// Also check relative to the executable
-	if exe, err := os.Executable(); err == nil {
-		exeDir := filepath.Dir(exe)
-		candidates = append(candidates,
-			// Binary at msgraph/scripts/bin/ → index at msgraph/references/
-			filepath.Join(exeDir, "..", "..", "references", "samples-index.json"),
-			// Binary next to msgraph/
-			filepath.Join(exeDir, "..", "msgraph", "references", "samples-index.json"),
-			filepath.Join(exeDir, "msgraph", "references", "samples-index.json"),
-		)
-	}
-
-	// Check environment variable override
-	if envPath := os.Getenv("MSGRAPH_SAMPLES_PATH"); envPath != "" {
-		candidates = append([]string{envPath}, candidates...)
-	}
-
-	for _, p := range candidates {
-		if _, err := os.Stat(p); err == nil {
-			return p
-		}
-	}
-
-	return ""
 }

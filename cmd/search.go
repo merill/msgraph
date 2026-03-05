@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -30,6 +29,12 @@ Examples:
 			return fmt.Errorf("at least one of --query, --resource, or --method is required")
 		}
 
+		// Try FTS database first, fall back to JSON index.
+		if dbPath := findFTSIndexPath(); dbPath != "" {
+			return searchFTS(dbPath, query, resource, method, limit)
+		}
+
+		// Fall back to legacy JSON search.
 		indexPath := findIndexPath()
 		if indexPath == "" {
 			return fmt.Errorf("OpenAPI index file not found. Set MSGRAPH_INDEX_PATH or ensure references/graph-api-index.json exists relative to the binary")
@@ -56,6 +61,17 @@ Examples:
 	},
 }
 
+func searchFTS(dbPath, query, resource, method string, limit int) error {
+	idx, err := openapi.LoadFTSIndex(dbPath)
+	if err != nil {
+		return err
+	}
+	defer idx.Close()
+
+	results := idx.Search(query, resource, method, limit)
+	return outputJSON(openapi.FormatFTSResults(results))
+}
+
 func init() {
 	searchCmd.Flags().String("query", "", "Free-text search query (searches path, summary, description)")
 	searchCmd.Flags().String("resource", "", "Filter by resource name (e.g. users, groups, messages)")
@@ -65,29 +81,41 @@ func init() {
 	rootCmd.AddCommand(searchCmd)
 }
 
-// findIndexPath locates the OpenAPI index file.
-// It checks relative to the binary location and common paths.
+// findFTSIndexPath locates the SQLite FTS database file.
+func findFTSIndexPath() string {
+	return findFile("graph-api-index.db", "MSGRAPH_INDEX_DB_PATH")
+}
+
+// findIndexPath locates the OpenAPI JSON index file.
 func findIndexPath() string {
-	candidates := []string{
-		// When running from the repo root
-		"skills/msgraph/references/graph-api-index.json",
+	return findFile("graph-api-index.json", "MSGRAPH_INDEX_PATH")
+}
+
+// findFile searches for a file in standard locations relative to the
+// binary and working directory.
+func findFile(filename, envVar string) string {
+	var candidates []string
+
+	// Check environment variable override first.
+	if envPath := os.Getenv(envVar); envPath != "" {
+		candidates = append(candidates, envPath)
 	}
 
-	// Also check relative to the executable
+	// Working directory paths.
+	candidates = append(candidates,
+		filepath.Join("skills", "msgraph", "references", filename),
+		filepath.Join("references", filename),
+	)
+
+	// Relative to the executable.
 	if exe, err := os.Executable(); err == nil {
 		exeDir := filepath.Dir(exe)
 		candidates = append(candidates,
-			// Binary at msgraph/scripts/bin/ → index at msgraph/references/
-			filepath.Join(exeDir, "..", "..", "references", "graph-api-index.json"),
-			// Binary next to msgraph/
-			filepath.Join(exeDir, "..", "msgraph", "references", "graph-api-index.json"),
-			filepath.Join(exeDir, "msgraph", "references", "graph-api-index.json"),
+			// Binary at scripts/bin/ -> references/ is at ../../references/
+			filepath.Join(exeDir, "..", "..", "references", filename),
+			filepath.Join(exeDir, "..", "msgraph", "references", filename),
+			filepath.Join(exeDir, "msgraph", "references", filename),
 		)
-	}
-
-	// Check environment variable override
-	if envPath := os.Getenv("MSGRAPH_INDEX_PATH"); envPath != "" {
-		candidates = append([]string{envPath}, candidates...)
 	}
 
 	for _, p := range candidates {
@@ -97,11 +125,4 @@ func findIndexPath() string {
 	}
 
 	return ""
-}
-
-// outputSearchJSON is a helper for search output (reuses outputJSON from auth.go)
-func outputSearchJSON(v interface{}) error {
-	enc := json.NewEncoder(os.Stdout)
-	enc.SetIndent("", "  ")
-	return enc.Encode(v)
 }
