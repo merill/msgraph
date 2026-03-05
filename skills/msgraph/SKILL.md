@@ -1,6 +1,6 @@
 ---
 name: msgraph
-description: Up-to-date Microsoft Graph API knowledge for AI agents. Instantly search 27,700+ OpenAPI endpoints, 6,200+ endpoint docs with permissions and query parameters, 4,200+ resource schemas, and curated community samples — all locally, no network calls needed. Bridges the gap between LLM training cutoffs and the weekly-updated Microsoft Graph API. Works alongside Graph MCP servers (like lokka.dev) for execution, or authenticates and calls the Microsoft Graph API directly when needed.
+description: Up-to-date Microsoft Graph API knowledge for AI agents. Instantly search 27,700 Graph APIs and curated community samples — all locally, no network calls needed. Bridges the gap between LLM training cutoffs and the weekly-updated Microsoft Graph API. Works alongside Graph MCP servers (like lokka.dev) for execution, or authenticates and calls the Microsoft Graph API directly when needed.
 license: MIT
 compatibility: Search tools run fully offline with no network access required. Direct API execution requires network access to login.microsoftonline.com and graph.microsoft.com. A system browser is used for interactive auth; falls back to device code flow in headless environments.
 metadata:
@@ -14,7 +14,7 @@ Up-to-date Microsoft Graph API knowledge for AI agents — bridging the gap betw
 
 ## The Problem
 
-The Microsoft Graph API has **27,700+ endpoints** across **4,200+ resource types** and is **updated weekly**. LLM training data is months — sometimes over a year — old. Without current API knowledge, agents hallucinate endpoints that don't exist, use deprecated paths, miss required permissions, or get the `$filter` syntax wrong.
+The Microsoft Graph API has **27,700 Graph APIs** and is **updated weekly**. LLM training data is months — sometimes over a year — old. Without current API knowledge, agents hallucinate endpoints that don't exist, use deprecated paths, miss required permissions, or get the `$filter` syntax wrong.
 
 This skill solves that. It bundles the complete Microsoft Graph API surface as local indexes that the agent can search instantly — no network calls, no latency. Every search runs locally against pre-built indexes that are updated with each skill release.
 
@@ -43,7 +43,7 @@ This is the primary purpose of the skill. Follow this progressive lookup strateg
 1. **Your own knowledge** — try first for well-known endpoints (`/me`, `/users`, `/groups`).
 2. **`sample-search`** — curated, hand-verified samples. Highest quality. Use for common tasks and multi-step workflows.
 3. **`api-docs-search`** — per-endpoint permissions, supported query parameters, required headers, default vs `$select`-only properties, and resource property details with filter operators.
-4. **`openapi-search`** — full catalog of 27,700+ endpoints. Use when you cannot find the endpoint any other way.
+4. **`openapi-search`** — full catalog of 27,700 Graph APIs. Use when you cannot find the endpoint any other way.
 5. **Reference files** — concept docs on query parameters, advanced queries, paging, batching, throttling, errors, and best practices. Read only when you need specific guidance.
 
 This order is guidance — adapt based on the task. For example, jump straight to `api-docs-search` if you already know the endpoint but need its permissions.
@@ -92,7 +92,7 @@ At least one of `--endpoint`, `--resource`, or `--query` is required.
 
 ### openapi-search
 
-Search the full OpenAPI catalog of 27,700+ Microsoft Graph API paths:
+Search the full OpenAPI catalog of 27,700 Microsoft Graph APIs:
 
 ```
 msgraph openapi-search --query "send mail"

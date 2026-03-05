@@ -3,7 +3,7 @@ title: Installation
 description: How to install and set up the Microsoft Graph agent skill
 ---
 
-import { FileTree } from '@astrojs/starlight/components';
+import { FileTree, Tabs, TabItem } from '@astrojs/starlight/components';
 
 ## Using skills.sh (Recommended)
 
@@ -17,7 +17,7 @@ This automatically discovers the skill in the repository and installs it into yo
 
 ## Manual Installation
 
-1. Download `msgraph.zip` from the [latest release](https://github.com/merill/msgraph/releases/latest)
+1. [**Download msgraph.zip**](https://github.com/merill/msgraph/releases/latest/download/msgraph.zip) (or browse the [releases page](https://github.com/merill/msgraph/releases/latest))
 2. Unzip the archive
 3. Copy the `msgraph` folder into your agent platform's skill directory
 
@@ -31,93 +31,295 @@ The extracted folder structure looks like this:
   - scripts/
     - run.sh
     - run.ps1
-    - bin/
-      - msgraph_darwin_amd64
-      - msgraph_darwin_arm64
-      - msgraph_linux_amd64
-      - msgraph_linux_arm64
-      - msgraph_windows_amd64.exe
-      - msgraph_windows_arm64.exe
+    - bin/ (platform binaries)
   - references/
     - REFERENCE.md
     - graph-api-index.json
+    - api-docs-index.json
+    - samples-index.json
+    - docs/
 </FileTree>
 
 ### Agent Platform Instructions
 
-<details>
-<summary>Claude Code</summary>
+<details class="platform-details">
+<summary>
+  <img src="/logos/claude-code/light.svg" alt="Claude Code" class="platform-logo logo-light" />
+  <img src="/logos/claude-code/dark.svg" alt="Claude Code" class="platform-logo logo-dark" />
+</summary>
 
-Copy the `msgraph` folder to `~/.claude/skills/`:
+**Project-level** — copy into your project's `.claude/skills/` directory:
 
-```bash
-unzip msgraph.zip -d ~/.claude/skills/
-```
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath your-project/.claude/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d your-project/.claude/skills/
+    ```
+  </TabItem>
+</Tabs>
 
-Claude Code automatically discovers skills in `~/.claude/skills/`.
+**Global** — available across all projects:
 
-</details>
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath ~/.claude/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d ~/.claude/skills/
+    ```
+  </TabItem>
+</Tabs>
 
-<details>
-<summary>VS Code (GitHub Copilot)</summary>
+Claude Code automatically discovers skills by scanning for `SKILL.md` files in these directories. The skill's `description` is loaded into context at session start, and full instructions load on demand when relevant.
 
-Copy the `msgraph` folder into your workspace's `.github/skills/` directory:
-
-```bash
-unzip msgraph.zip -d your-project/.github/skills/
-```
-
-Or install it globally to `~/.github/skills/` so it's available across all projects.
-
-</details>
-
-<details>
-<summary>Cursor</summary>
-
-Copy the `msgraph` folder into your workspace's `.cursor/skills/` directory:
-
-```bash
-unzip msgraph.zip -d your-project/.cursor/skills/
-```
-
-Cursor discovers skills from the `.cursor/skills/` directory in your workspace root.
-
-</details>
-
-<details>
-<summary>OpenCode</summary>
-
-Copy the `msgraph` folder into your workspace's `.opencode/skills/` directory:
-
-```bash
-unzip msgraph.zip -d your-project/.opencode/skills/
-```
-
-Or install globally to `~/.opencode/skills/`.
+<span class="platform-docs-link">[Claude Code Skills documentation](https://docs.anthropic.com/en/docs/claude-code/skills)</span>
 
 </details>
 
-<details>
-<summary>Goose</summary>
+<details class="platform-details">
+<summary>
+  <img src="/logos/vscode/light.svg" alt="VS Code (GitHub Copilot)" class="platform-logo logo-light" />
+  <img src="/logos/vscode/dark.svg" alt="VS Code (GitHub Copilot)" class="platform-logo logo-dark" />
+</summary>
 
-Copy the `msgraph` folder into your Goose skills directory:
+**Project-level** — copy into your workspace:
 
-```bash
-unzip msgraph.zip -d ~/.config/goose/skills/
-```
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath your-project/.agents/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d your-project/.agents/skills/
+    ```
+  </TabItem>
+</Tabs>
 
-Goose discovers skills from `~/.config/goose/skills/`.
+Other supported project-level paths: `.github/skills/`, `.copilot/skills/`, `.claude/skills/`.
+
+**Global** — available across all projects:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath ~/.copilot/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d ~/.copilot/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+Other supported global paths: `~/.claude/skills/`, `~/.agents/skills/`. You can also add custom search paths via the `chat.agentSkillsLocations` setting.
+
+Copilot uses a three-level progressive disclosure system — skill names and descriptions are always loaded (lightweight), full instructions load when your prompt matches, and supporting files are accessed on demand.
+
+<span class="platform-docs-link">[VS Code Agent Skills documentation](https://code.visualstudio.com/docs/copilot/customization/agent-skills)</span>
 
 </details>
 
-<details>
+<details class="platform-details">
+<summary>
+  <img src="/logos/cursor/light.svg" alt="Cursor" class="platform-logo logo-light" />
+  <img src="/logos/cursor/dark.svg" alt="Cursor" class="platform-logo logo-dark" />
+</summary>
+
+**Project-level** — copy into your workspace:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath your-project/.agents/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d your-project/.agents/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+Other supported project-level paths: `.cursor/skills/`, `.claude/skills/`.
+
+**Global** — available across all projects:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath ~/.cursor/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d ~/.cursor/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+Other supported global paths: `~/.claude/skills/`, `~/.codex/skills/`.
+
+Cursor automatically discovers skills and shows them under **Settings > Rules** in the **Agent Decides** section. The agent decides when to apply a skill based on its `description`. You can also invoke skills manually with `/skill-name` in Agent chat.
+
+<span class="platform-docs-link">[Cursor Skills documentation](https://cursor.com/docs/context/skills)</span>
+
+</details>
+
+<details class="platform-details">
+<summary>
+  Windsurf
+</summary>
+
+**Project-level** — copy into your workspace:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath your-project/.windsurf/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d your-project/.windsurf/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+**Global** — available across all projects:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath ~/.codeium/windsurf/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d ~/.codeium/windsurf/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+Windsurf's Cascade agent automatically discovers skills and invokes them when your request matches the skill's `description`. You can also invoke skills manually with `@skill-name`. Skills can be managed via **Cascade panel > three-dot menu > Customizations > Skills**.
+
+<span class="platform-docs-link">[Windsurf Skills documentation](https://docs.windsurf.com/windsurf/cascade/skills)</span>
+
+</details>
+
+<details class="platform-details">
+<summary>
+  <img src="/logos/opencode/light.svg" alt="OpenCode" class="platform-logo logo-light" />
+  <img src="/logos/opencode/dark.svg" alt="OpenCode" class="platform-logo logo-dark" />
+</summary>
+
+**Project-level** — copy into your workspace:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath your-project/.opencode/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d your-project/.opencode/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+Other supported project-level paths: `.agents/skills/`, `.claude/skills/`.
+
+**Global** — available across all projects:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath ~/.config/opencode/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d ~/.config/opencode/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+Other supported global paths: `~/.agents/skills/`, `~/.claude/skills/`.
+
+OpenCode walks up from the current working directory to the git worktree root, scanning for skills along the way. Skills are loaded on demand via a native `skill` tool — the agent sees available skills and loads full instructions when relevant.
+
+<span class="platform-docs-link">[OpenCode Skills documentation](https://opencode.ai/docs/skills/)</span>
+
+</details>
+
+<details class="platform-details">
+<summary>
+  <img src="/logos/goose/light.png" alt="Goose" class="platform-logo logo-light" />
+  <img src="/logos/goose/dark.png" alt="Goose" class="platform-logo logo-dark" />
+</summary>
+
+**Project-level** — copy into your workspace:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath your-project/.agents/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d your-project/.agents/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+Other supported project-level paths: `.goose/skills/`, `.claude/skills/`.
+
+**Global** — available across all projects:
+
+<Tabs>
+  <TabItem label="Windows">
+    ```powershell
+    Expand-Archive msgraph.zip -DestinationPath ~/.config/goose/skills/
+    ```
+  </TabItem>
+  <TabItem label="macOS / Linux">
+    ```bash
+    unzip msgraph.zip -d ~/.config/goose/skills/
+    ```
+  </TabItem>
+</Tabs>
+
+Other supported global paths: `~/.config/agents/skills/`, `~/.claude/skills/`.
+
+Goose discovers skills via the built-in Summon extension (enabled by default in v1.25.0+). Skills are automatically loaded into session instructions when your request matches the skill's purpose.
+
+<span class="platform-docs-link">[Goose Skills documentation](https://block.github.io/goose/docs/guides/context-engineering/using-skills)</span>
+
+</details>
+
+<details class="platform-details">
 <summary>Other agent platforms</summary>
 
 Most agent platforms that support the [Agent Skills specification](https://agentskills.io) look for skills in a `skills/` directory, either in the workspace root or in a platform-specific config folder.
 
-Copy the `msgraph` folder to whichever location your agent platform uses. The key requirement is that the `SKILL.md` file is discoverable by the agent.
+Copy the `msgraph` folder to whichever location your agent platform uses. The most common cross-compatible paths are:
 
-Refer to your agent platform's documentation for the exact skill directory path.
+- **Project-level**: `.agents/skills/` or `.claude/skills/`
+- **Global**: `~/.agents/skills/` or `~/.claude/skills/`
+
+The key requirement is that the `SKILL.md` file is discoverable by the agent. Refer to your agent platform's documentation for the exact skill directory path.
 
 </details>
 

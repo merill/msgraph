@@ -3,17 +3,167 @@ title: CLI Reference
 description: Complete command-line reference for msgraph
 ---
 
+<style>{`
+  table td:first-child,
+  table th:first-child {
+    white-space: nowrap;
+  }
+`}</style>
+
 ## Global Flags
 
 | Flag | Description |
 |---|---|
 | `-h, --help` | Show help for any command |
 
-## Commands
+## Search Commands
+
+### `openapi-search`
+
+Search a pre-processed index of the Microsoft Graph OpenAPI specification to find available endpoints, required scopes, and API details.
+
+```bash
+msgraph openapi-search [flags]
+```
+
+At least one of `--query`, `--resource`, or `--method` is required.
+
+**Flags:**
+
+| Flag | Type | Description | Default |
+|---|---|---|---|
+| `--query` | string | Free-text search (searches path, summary, description) | — |
+| `--resource` | string | Filter by resource name (e.g. users, groups, messages) | — |
+| `--method` | string | Filter by HTTP method (GET, POST, PUT, PATCH) | — |
+| `--limit` | int | Max results | 20 |
+
+**Examples:**
+
+```bash
+msgraph openapi-search --query "list users"
+msgraph openapi-search --resource users --method GET
+msgraph openapi-search --query "send mail" --method POST
+```
+
+**Output:** JSON with `count` and `results` array.
+
+---
+
+### `api-docs-search`
+
+Search a pre-processed index of Microsoft Graph API documentation to find per-endpoint permissions, supported query parameters, default properties, required headers, and endpoint-specific gotchas.
+
+```bash
+msgraph api-docs-search [flags]
+```
+
+Use `--endpoint` to look up endpoint details (permissions, query params, headers). Use `--resource` to look up resource properties (filter operators, default status).
+
+**Flags:**
+
+| Flag | Type | Description | Default |
+|---|---|---|---|
+| `--endpoint` | string | Search by endpoint path (e.g. /users, /me/messages) | — |
+| `--resource` | string | Search by resource type name (e.g. user, group, message) | — |
+| `--method` | string | Filter by HTTP method (GET, POST, PUT, PATCH) | — |
+| `--query` | string | Free-text search across all fields | — |
+| `--limit` | int | Max results | 10 |
+
+**Examples:**
+
+```bash
+msgraph api-docs-search --endpoint /users --method GET
+msgraph api-docs-search --endpoint /me/messages
+msgraph api-docs-search --resource user
+msgraph api-docs-search --resource group --query "filter"
+msgraph api-docs-search --query "ConsistencyLevel"
+```
+
+**Output:** JSON with matching endpoint documentation including permissions, query parameter support, headers, and property details.
+
+---
+
+### `sample-search`
+
+Search a curated library of community-contributed Microsoft Graph API query samples to find the right API call for a given task. These samples map natural-language intents (e.g. "list all Conditional Access policies") to exact Graph API queries, including multi-step workflows.
+
+```bash
+msgraph sample-search [flags]
+```
+
+**Flags:**
+
+| Flag | Type | Description | Default |
+|---|---|---|---|
+| `--query` | string | Free-text search (searches intent and query fields) | — |
+| `--product` | string | Filter by product (entra, intune, exchange, teams, sharepoint, security, general) | — |
+| `--limit` | int | Max results | 10 |
+
+**Examples:**
+
+```bash
+msgraph sample-search --query "conditional access policies"
+msgraph sample-search --query "send email"
+msgraph sample-search --product entra
+msgraph sample-search --query "managed devices" --product intune
+```
+
+**Output:** JSON with matching samples including intent, Graph API queries, and product category.
+
+---
+
+## Execution Commands
+
+### `graph-call`
+
+Execute an HTTP request against the Microsoft Graph API. The URL can be a full URL or a relative path starting with `/`.
+
+By default, only GET requests are allowed. Use `--allow-writes` to enable POST, PUT, and PATCH requests. DELETE is always blocked for safety.
+
+```bash
+msgraph graph-call <METHOD> <URL> [flags]
+```
+
+**Args:**
+
+| Arg | Description |
+|---|---|
+| `METHOD` | HTTP method: GET, POST, PUT, PATCH |
+| `URL` | Full URL or relative path (e.g. `/me`, `/users`, `/me/messages`) |
+
+**Flags:**
+
+| Flag | Type | Description | Default |
+|---|---|---|---|
+| `--allow-writes` | bool | Allow POST, PUT, PATCH requests (agent must confirm with user) | false |
+| `--body` | string | JSON request body | — |
+| `--headers` | strings | Custom headers (key:value) | — |
+| `--api-version` | string | `v1.0` or `beta` | beta |
+| `--select` | string | OData $select | — |
+| `--filter` | string | OData $filter | — |
+| `--top` | int | OData $top | — |
+| `--expand` | string | OData $expand | — |
+| `--orderby` | string | OData $orderby | — |
+| `--scopes` | strings | Additional permission scopes to request | — |
+| `--output` | string | `json` or `raw` | json |
+
+**Examples:**
+
+```bash
+msgraph graph-call GET /me
+msgraph graph-call GET /me/messages --select "subject,from" --top 10
+msgraph graph-call POST /me/messages --body '{"subject":"Hello"}' --allow-writes
+```
+
+**Output:** JSON with `statusCode` and `body`.
+
+---
+
+## Authentication Commands
 
 ### `auth signin`
 
-Sign in to a Microsoft 365 tenant. For delegated auth, opens a browser or uses device code flow. For app-only auth, verifies that credentials work by acquiring a token.
+Authenticate to a Microsoft 365 tenant. For delegated auth, uses interactive browser or device code flow. For app-only auth (client secret, certificate, managed identity, workload identity), verifies that credentials are valid.
 
 ```bash
 msgraph auth signin [flags]
@@ -24,7 +174,7 @@ msgraph auth signin [flags]
 | Flag | Type | Description |
 |---|---|---|
 | `--device-code` | bool | Use device code flow instead of browser (delegated only) |
-| `--scopes` | strings | Permission scopes to request (delegated only, default: User.Read) |
+| `--scopes` | strings | Permission scopes to request (default: User.Read, delegated only) |
 
 **App-only behavior:** When app-only auth is detected (via environment variables), `auth signin` acquires a token to verify credentials and shows the auth status. The `--device-code` and `--scopes` flags are ignored.
 
@@ -46,7 +196,7 @@ msgraph auth signout
 
 ### `auth status`
 
-Show the current authentication state.
+Display the current sign-in state, including the signed-in user/app and tenant.
 
 ```bash
 msgraph auth status
@@ -65,16 +215,16 @@ msgraph auth status
 }
 ```
 
-For app-only auth, `authMethod` shows the detected method (e.g., `client-secret`, `certificate`, `managed-identity`, `workload-identity`) and `username` reflects the auth type.
+For app-only auth, `authMethod` shows the detected method (e.g. `client-secret`, `certificate`, `managed-identity`, `workload-identity`) and `username` reflects the auth type.
 
 ---
 
 ### `auth switch-tenant`
 
-Sign out and sign in to a different tenant.
+Sign out of the current tenant and sign in to a new one.
 
 ```bash
-msgraph auth switch-tenant <tenant-id> [flags]
+msgraph auth switch-tenant [tenant-id] [flags]
 ```
 
 **Args:**
@@ -87,58 +237,16 @@ msgraph auth switch-tenant <tenant-id> [flags]
 
 ---
 
-### `graph-call`
+## Utility Commands
 
-Execute a Microsoft Graph API HTTP request.
+### `completion`
 
-```bash
-msgraph graph-call <METHOD> <URL> [flags]
-```
-
-**Args:**
-
-| Arg | Description |
-|---|---|
-| `METHOD` | HTTP method: GET, POST, PUT, PATCH |
-| `URL` | Full URL or relative path (e.g., `/me`) |
-
-**Flags:**
-
-| Flag | Type | Description | Default |
-|---|---|---|---|
-| `--allow-writes` | bool | Enable POST/PUT/PATCH | false |
-| `--body` | string | JSON request body | — |
-| `--headers` | strings | Custom headers (key:value) | — |
-| `--api-version` | string | v1.0 or beta | beta |
-| `--select` | string | OData $select | — |
-| `--filter` | string | OData $filter | — |
-| `--top` | int | OData $top | 0 |
-| `--expand` | string | OData $expand | — |
-| `--orderby` | string | OData $orderby | — |
-| `--scopes` | strings | Additional scopes | — |
-| `--output` | string | json or raw | json |
-
-**Output:** JSON with `statusCode` and `body`.
-
----
-
-### `openapi-search`
-
-Search the Microsoft Graph OpenAPI index.
+Generate shell autocompletion scripts for msgraph.
 
 ```bash
-msgraph openapi-search [flags]
+msgraph completion <shell>
 ```
 
-At least one of `--query`, `--resource`, or `--method` is required.
+Supported shells: `bash`, `fish`, `powershell`, `zsh`.
 
-**Flags:**
-
-| Flag | Type | Description | Default |
-|---|---|---|---|
-| `--query` | string | Free-text search | — |
-| `--resource` | string | Filter by resource | — |
-| `--method` | string | Filter by HTTP method | — |
-| `--limit` | int | Max results | 20 |
-
-**Output:** JSON with `count` and `results` array.
+See `msgraph completion <shell> --help` for instructions on how to install the generated script.

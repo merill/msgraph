@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: An agent skill that gives AI agents up-to-date knowledge of the complete Microsoft Graph API — 27,700+ endpoints, 6,200+ endpoint docs, and 4,200+ resource schemas searchable locally in milliseconds.
+description: An agent skill that gives AI agents up-to-date knowledge of the complete Microsoft Graph API — 27,700 Graph APIs searchable locally in milliseconds.
 ---
 
 import MermaidDiagram from '../../../components/MermaidDiagram.astro';
@@ -9,15 +9,31 @@ import MermaidDiagram from '../../../components/MermaidDiagram.astro';
 
 ## Quick Install
 
+### Option 1: Using skills.sh
+
 ```bash
 npx skills add merill/msgraph
 ```
 
-See the [Installation](/getting-started/installation/) page for manual installation and per-platform instructions.
+### Option 2: Download and unzip
+
+<a href="https://github.com/merill/msgraph/releases/latest/download/msgraph.zip" class="download-btn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Download Microsoft Graph Skill</span></a>
+
+Unzip and copy the `msgraph` folder into the `.agents/skills/` folder of your project or agent platform.
+
+```
+your-project/
+└── .agents/
+    └── skills/
+        └── msgraph/
+            └── SKILL.md
+```
+
+See the [Installation](/getting-started/installation/) page for other agent platforms and global install options.
 
 ## The Problem
 
-Large language models are trained on data that is **months — sometimes over a year — old**. The Microsoft Graph API has **27,700+ endpoints** across **4,200+ resource types** and is **updated weekly**. New APIs ship, existing endpoints change, and features get deprecated — but your agent's training data doesn't reflect any of it.
+Large language models are trained on data that is **months — sometimes over a year — old**. The Microsoft Graph API has **27,700 Graph APIs** and is **updated weekly**. New APIs ship, existing endpoints change, and features get deprecated — but your agent's training data doesn't reflect any of it.
 
 Without current API knowledge, agents:
 
@@ -40,7 +56,7 @@ All indexes are bundled with the skill and run **entirely locally** — no API c
 
 ## What it does
 
-- **Searches** 27,700+ OpenAPI endpoints, 6,200+ endpoint docs, and 4,200+ resource schemas — all locally, instantly
+- **Searches** 27,700 Graph APIs — all locally, instantly
 - **Provides** curated community samples that map natural-language tasks to exact Microsoft Graph API queries
 - **Works with** Microsoft Graph MCP servers (like [lokka.dev](https://lokka.dev)) — this skill provides the knowledge, your MCP server handles execution
 - **Authenticates and executes** Microsoft Graph API calls directly when no MCP server is available — delegated (interactive browser / device code) and app-only (client secret, certificate, managed identity, workload identity federation)

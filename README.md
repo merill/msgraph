@@ -4,7 +4,7 @@ An [Agent Skill](https://agentskills.io) that gives AI agents up-to-date knowled
 
 ## The Problem
 
-LLMs are trained on data that is months old. The Microsoft Graph API has **27,700+ endpoints** across **4,200+ resource types** and is updated weekly. Without current API knowledge, agents hallucinate endpoints, use deprecated paths, and miss required permissions.
+LLMs are trained on data that is months old. The Microsoft Graph API has **27,700 Graph APIs** and is updated weekly. Without current API knowledge, agents hallucinate endpoints, use deprecated paths, and miss required permissions.
 
 ## The Solution
 
@@ -19,7 +19,7 @@ This skill bundles the complete Microsoft Graph API surface as local indexes —
 
 ## Features
 
-- **Complete Microsoft Graph API Knowledge** — 27,700+ endpoints, 6,200+ endpoint docs, 4,200+ resource schemas, all indexed locally
+- **Complete Microsoft Graph API Knowledge** — 27,700 Graph APIs, all indexed locally
 - **Instant Local Search** — All lookups run locally in milliseconds, no network calls needed
 - **Community Samples** — Curated, hand-verified samples mapping tasks to exact API queries
 - **MCP Server Compatible** — Works with [lokka.dev](https://lokka.dev) or any Microsoft Graph MCP server for execution
@@ -57,7 +57,7 @@ msgraph sample-search --query "conditional access policies"
 # Look up endpoint docs with permissions
 msgraph api-docs-search --endpoint /users --method GET
 
-# Search 27,700+ OpenAPI endpoints
+# Search 27,700 Graph APIs
 msgraph openapi-search --query "send mail"
 
 # Look up resource schema and filter operators
