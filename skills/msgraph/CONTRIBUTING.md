@@ -32,10 +32,10 @@ query:
 
 ### Directory structure
 
-Place your file in the appropriate product directory under `skills/msgraph/samples/`:
+Place your file in the appropriate product directory under `samples/` at the repo root:
 
 ```
-skills/msgraph/samples/
+samples/
 ├── entra/          # Entra ID (identity, conditional access, roles, apps)
 ├── exchange/       # Exchange Online (mail, calendar, mailbox)
 ├── general/        # Cross-product (licensing, organization, domains)
@@ -50,7 +50,7 @@ skills/msgraph/samples/
 1. Fork this repository
 2. Create a new `.yaml` file in the appropriate product directory:
    ```
-   skills/msgraph/samples/{product}/{descriptive-name}.yaml
+   samples/{product}/{descriptive-name}.yaml
    ```
 3. Add your `intent` and `query` fields
 4. Submit a pull request

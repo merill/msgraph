@@ -43,7 +43,7 @@ index: ## Run the OpenAPI indexer to generate graph-api-index.json
 	go run ./tools/openapi-indexer/... -output skills/msgraph/references/graph-api-index.json
 
 samples: ## Build the samples index from YAML source files
-	go run . build-samples-index --samples-dir skills/msgraph/samples --output skills/msgraph/references/samples-index.json
+	go run . build-samples-index --samples-dir samples --output skills/msgraph/references/samples-index.json
 
 api-docs: ## Generate api-docs-index.json from Graph API documentation
 	go run ./tools/api-docs-indexer/... -version beta -output skills/msgraph/references/api-docs-index.json
@@ -57,7 +57,7 @@ dev: build ## Build skill and install to dev-skill-test/, then open OpenCode
 	@mkdir -p $(DEV_SKILL_DIR)/scripts/bin
 	@cp skills/msgraph/SKILL.md $(DEV_SKILL_DIR)/
 	@cp -R skills/msgraph/references $(DEV_SKILL_DIR)/
-	@cp -R skills/msgraph/samples $(DEV_SKILL_DIR)/
+	@cp -R samples $(DEV_SKILL_DIR)/
 	@cp skills/msgraph/scripts/run.sh $(DEV_SKILL_DIR)/scripts/
 	@cp skills/msgraph/scripts/run.ps1 $(DEV_SKILL_DIR)/scripts/
 	@OS=$$(uname -s | tr '[:upper:]' '[:lower:]') ; \

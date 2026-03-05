@@ -117,7 +117,7 @@ jobs:
       - name: Package skill directory
         run: |
           cd skills
-          zip -r ../msgraph.zip msgraph/ -x "msgraph/samples/*" "msgraph/CONTRIBUTING.md"
+          zip -r ../msgraph.zip msgraph/ -x "msgraph/CONTRIBUTING.md"
           cd ..
           echo "Skill zip contents:"
           unzip -l msgraph.zip

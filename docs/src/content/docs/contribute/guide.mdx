@@ -52,10 +52,10 @@ msgraph/
 │   ├── openapi-indexer/        # Builds graph-api-index.json from OpenAPI spec
 │   ├── api-docs-indexer/       # Builds api-docs-index.json from Graph docs repo
 │   └── concept-docs-builder/   # Builds curated concept docs from Graph docs repo
+├── samples/                    # YAML sample files by product
 ├── skills/msgraph/             # The agent skill package
 │   ├── SKILL.md                # Skill definition (loaded by AI agents)
 │   ├── references/             # Index files + concept docs
-│   ├── samples/                # YAML sample files by product
 │   └── scripts/                # Launcher scripts + platform binaries
 ├── docs/                       # This docs site (Astro + Starlight)
 └── Makefile                    # All build targets
@@ -120,7 +120,7 @@ The simplest way to contribute is adding a Graph API sample. See [Add a Sample](
 
 Quick version:
 
-1. Create a YAML file in `skills/msgraph/samples/<product>/`
+1. Create a YAML file in `samples/<product>/`
 2. Add `intent` and `query` fields
 3. Run `make samples` to rebuild the index
 4. Test with `make dev`, then ask the agent to search for your sample

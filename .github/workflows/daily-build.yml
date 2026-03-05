@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "Building samples index from YAML source files..."
           go run . build-samples-index \
-            --samples-dir skills/msgraph/samples \
+            --samples-dir samples \
             --output skills/msgraph/references/samples-index.json
           echo "Samples index rebuilt"
 

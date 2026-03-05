@@ -233,7 +233,7 @@
       yamlContent = `intent: ${intent}\nquery:\n${queries.map(q => `  - ${q}`).join('\n')}\n`;
     }
 
-    const filePath = `skills/msgraph/samples/${product}/${slug}.yaml`;
+    const filePath = `samples/${product}/${slug}.yaml`;
     const branchName = `sample/${slug}`;
 
     try {

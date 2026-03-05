@@ -104,10 +104,11 @@ make index
 
 ```
 msgraph/
+├── samples/          # Community YAML sample files by product
 ├── skills/msgraph/   # The installable Agent Skill
 │   ├── SKILL.md      # Agent Skills spec entry point
 │   ├── scripts/      # Launcher scripts + binary cache
-│   └── references/   # OpenAPI index, API docs index, samples, reference docs
+│   └── references/   # OpenAPI index, API docs index, samples index, reference docs
 ├── cmd/              # CLI subcommands (Cobra)
 ├── internal/         # Internal packages
 ├── tools/            # Build-time tools (OpenAPI indexer)

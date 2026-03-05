@@ -70,6 +70,7 @@ func init() {
 func findSamplesIndexPath() string {
 	candidates := []string{
 		// When running from the repo root
+		"references/samples-index.json",
 		"skills/msgraph/references/samples-index.json",
 	}
 

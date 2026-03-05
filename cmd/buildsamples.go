@@ -31,7 +31,7 @@ var buildSamplesCmd = &cobra.Command{
 }
 
 func init() {
-	buildSamplesCmd.Flags().String("samples-dir", "skills/msgraph/samples", "Path to the samples source directory")
+	buildSamplesCmd.Flags().String("samples-dir", "samples", "Path to the samples source directory")
 	buildSamplesCmd.Flags().String("output", "skills/msgraph/references/samples-index.json", "Path to write the compiled index JSON")
 
 	rootCmd.AddCommand(buildSamplesCmd)
