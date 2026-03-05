@@ -5,6 +5,28 @@ description: Environment variables and configuration options
 
 msgraph is configured through environment variables. All settings have sensible defaults.
 
+## Setting Environment Variables
+
+The quickest way is to create a `.env` file in your project root (the same directory where you run the agent/CLI). Use simple `KEY=VALUE` lines (no `export`). Example:
+
+```env
+MSGRAPH_CLIENT_ID=your-app-id
+MSGRAPH_TENANT_ID=contoso.onmicrosoft.com
+```
+
+How different platforms pick up the `.env` file:
+
+- **Claude Code, Cursor, OpenCode, Windsurf, Goose**: Read `.env` from the workspace root automatically.
+- **VS Code / GitHub Copilot**: Uses the terminal environment. Either put vars in your shell profile (`~/.zshrc`, `~/.bashrc`) or load a `.env` via your terminal/extension before running msgraph.
+- **CI/CD or Docker**: Set environment variables in your pipeline config, Dockerfile, or `docker run -e` flags.
+
+One-off shell session: you can also export variables directly in your terminal before running the tool:
+
+```bash
+export MSGRAPH_CLIENT_ID="your-app-id"
+export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
+```
+
 ## Environment Variables
 
 ### Core
