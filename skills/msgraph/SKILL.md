@@ -4,7 +4,7 @@ description: Up-to-date Microsoft Graph API knowledge for AI agents. Search 27,7
 license: MIT
 metadata:
   author: merill
-  version: "1.0.17"
+  version: "1.0.18"
 ---
 
 # Microsoft Graph Agent Skill
