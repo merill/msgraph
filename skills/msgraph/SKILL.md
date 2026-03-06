@@ -1,8 +1,7 @@
 ---
 name: msgraph
-description: Up-to-date Microsoft Graph API knowledge for AI agents. Instantly search 27,700 Graph APIs and curated community samples — all locally, no network calls needed. Bridges the gap between LLM training cutoffs and the weekly-updated Microsoft Graph API. Works alongside Graph MCP servers (like lokka.dev) for execution, or authenticates and calls the Microsoft Graph API directly when needed.
+description: Up-to-date Microsoft Graph API knowledge for AI agents. Search 27,700+ Graph APIs, endpoint docs, resource schemas, and community samples — all locally, no network calls. Use when the agent needs to find, understand, or call Microsoft Graph endpoints.
 license: MIT
-compatibility: Search tools run fully offline with no network access required. Direct API execution requires network access to login.microsoftonline.com and graph.microsoft.com. A system browser is used for interactive auth; falls back to device code flow in headless environments.
 metadata:
   author: merill
   version: "1.0.16"
@@ -10,15 +9,11 @@ metadata:
 
 # Microsoft Graph Agent Skill
 
-Up-to-date Microsoft Graph API knowledge for AI agents — bridging the gap between LLM training cutoffs and the latest API.
+Search, look up, and call any of the 27,700+ Microsoft Graph APIs — all locally, no network calls needed. Use the three search commands to find the right endpoint, check permissions and parameters, then optionally execute calls directly or hand off to a Graph MCP server.
 
-## The Problem
+## What's Included
 
-The Microsoft Graph API has **27,700 Graph APIs** and is **updated weekly**. LLM training data is months — sometimes over a year — old. Without current API knowledge, agents hallucinate endpoints that don't exist, use deprecated paths, miss required permissions, or get the `$filter` syntax wrong.
-
-This skill solves that. It bundles the complete Microsoft Graph API surface as local indexes that the agent can search instantly — no network calls, no latency. Every search runs locally against pre-built indexes that are updated with each skill release.
-
-**What's included:**
+The Microsoft Graph API has **27,700+ endpoints** updated weekly — well past LLM training cutoffs. This skill bundles the complete API surface as local indexes that you search instantly with no network calls.
 
 | Index | Count | What it contains |
 |---|---|---|
@@ -33,6 +28,12 @@ The `msgraph` CLI is bundled with this skill. Run all commands through the launc
 
 - **macOS / Linux**: `bash <path-to-this-skill>/scripts/run.sh <command> [args...]`
 - **Windows**: `powershell <path-to-this-skill>/scripts/run.ps1 <command> [args...]`
+
+For example, to search for mail-related APIs on macOS:
+
+```
+bash /home/user/.opencode/skills/msgraph/scripts/run.sh openapi-search --query "send mail"
+```
 
 In all examples below, `msgraph` is shorthand for the full launcher invocation.
 
@@ -110,7 +111,7 @@ At least one of `--query`, `--resource`, or `--method` is required.
 
 ## Using with MCP Servers
 
-If the agent has access to a Microsoft Graph MCP server (such as [lokka.dev](https://lokka.dev) or any other Graph MCP server), use the search tools above to find the right endpoint, permissions, and request syntax, then pass the information to the MCP server for execution.
+If the agent has access to a Microsoft Graph MCP server (such as [lokka.dev](https://lokka.dev) or any other Microsoft Graph MCP server), use the search tools above to find the right endpoint, permissions, and request syntax, then use the information with the MCP server for execution.
 
 In this mode, **no authentication through this skill is needed**. The skill acts purely as a knowledge layer — the MCP server handles authentication and API execution.
 
@@ -126,7 +127,7 @@ The tool supports **delegated (user)** and **app-only (application)** authentica
 
 ```
 msgraph auth status          # check if signed in
-msgraph auth signin          # sign in (opens browser)
+msgraph auth signin          # sign in (opens browser) - recommended
 msgraph auth signin --device-code  # sign in via device code (headless)
 msgraph auth signout         # clear the session
 ```
@@ -184,20 +185,21 @@ msgraph graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
 
 ### Always (search and knowledge)
 
-1. **Use the progressive lookup strategy** — start with what you know, then sample-search, api-docs-search, openapi-search as needed.
-2. **Use `--select`** to reduce response size — only request fields you need.
-3. **Use `--top`** to limit results — avoid fetching thousands of records.
-4. **ConsistencyLevel header** is required for `$count` and `$search` on directory objects (users, groups, etc.). Use `--headers "ConsistencyLevel:eventual"`.
-5. **Default API version is beta** — use `--api-version v1.0` for production-stable endpoints.
+1. **Never guess or fabricate Microsoft Graph endpoints** — always verify via search before calling. This skill exists because agents hallucinate endpoints; use it.
+2. **Use the progressive lookup strategy** — start with what you know, then sample-search, api-docs-search, openapi-search as needed.
+3. **Use `--select`** to reduce response size — only request fields you need.
+4. **Use `--top`** to limit results — avoid fetching thousands of records.
+5. **ConsistencyLevel header** is required for `$count` and `$search` on directory objects (users, groups, etc.). Use `--headers "ConsistencyLevel:eventual"`.
+6. **Default API version is beta** — use `--api-version v1.0` for production-stable endpoints.
 
 ### When using direct execution (graph-call)
 
-6. **Check auth status** before the first `graph-call` in a session.
-7. **GET is the default** — no special flags needed.
-8. **Write operations require `--allow-writes`** — YOU MUST confirm with the user first.
-9. **DELETE is always blocked** — inform the user this is not supported.
-10. **403 triggers automatic re-auth** — the tool requests additional scopes and retries (delegated auth only).
-11. **All output is JSON** — parse `statusCode` and `body` fields from the response.
+7. **Check auth status** before the first `graph-call` in a session.
+8. **GET is the default** — no special flags needed.
+9. **Write operations require `--allow-writes`** — YOU MUST confirm with the user first.
+10. **DELETE is always blocked** — inform the user this is not supported.
+11. **403 triggers automatic re-auth** — the tool requests additional scopes and retries (delegated auth only).
+12. **All output is JSON** — parse `statusCode` and `body` fields from the response.
 
 ## Error Handling
 
@@ -222,18 +224,22 @@ msgraph graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
 
 For the full list of authentication environment variables, see [references/docs/authentication.md](references/docs/authentication.md).
 
+## Compatibility
+
+Search tools run fully offline with no network access required. Direct API execution requires network access to `login.microsoftonline.com` and `graph.microsoft.com`. A system browser is used for interactive auth; falls back to device code flow in headless environments.
+
 ## Reference Files
 
 Load these on demand when you need specific guidance. Do NOT load them preemptively.
 
 | File | When to Read | Size |
 |---|---|---|
-| [references/REFERENCE.md](references/REFERENCE.md) | Common resource paths, OData patterns, permission scopes | Quick reference |
-| [references/docs/authentication.md](references/docs/authentication.md) | Detailed auth configuration: certificates, managed identity, workload identity, all env vars | Concept doc |
-| [references/docs/query-parameters.md](references/docs/query-parameters.md) | OData $select, $filter, $expand, $top, $orderby, $search syntax and gotchas | Concept doc |
-| [references/docs/advanced-queries.md](references/docs/advanced-queries.md) | ConsistencyLevel header, $count, $search, ne/not/endsWith on directory objects | Concept doc |
-| [references/docs/paging.md](references/docs/paging.md) | @odata.nextLink pagination, server-side vs client-side paging | Concept doc |
-| [references/docs/batching.md](references/docs/batching.md) | $batch endpoint, combining multiple requests, dependsOn sequencing | Concept doc |
-| [references/docs/throttling.md](references/docs/throttling.md) | 429 handling, Retry-After, backoff strategy | Concept doc |
-| [references/docs/errors.md](references/docs/errors.md) | HTTP status codes, error response format, error codes | Concept doc |
-| [references/docs/best-practices.md](references/docs/best-practices.md) | $select for performance, pagination, delta queries, batching | Concept doc |
+| [references/REFERENCE.md](references/REFERENCE.md) | Common resource paths, OData patterns, permission scopes | ~230 lines |
+| [references/docs/authentication.md](references/docs/authentication.md) | Detailed auth configuration: certificates, managed identity, workload identity, all env vars | ~200 lines |
+| [references/docs/query-parameters.md](references/docs/query-parameters.md) | OData $select, $filter, $expand, $top, $orderby, $search syntax and gotchas | ~300 lines |
+| [references/docs/advanced-queries.md](references/docs/advanced-queries.md) | ConsistencyLevel header, $count, $search, ne/not/endsWith on directory objects | ~190 lines |
+| [references/docs/paging.md](references/docs/paging.md) | @odata.nextLink pagination, server-side vs client-side paging | ~50 lines |
+| [references/docs/batching.md](references/docs/batching.md) | $batch endpoint, combining multiple requests, dependsOn sequencing | ~280 lines |
+| [references/docs/throttling.md](references/docs/throttling.md) | 429 handling, Retry-After, backoff strategy | ~90 lines |
+| [references/docs/errors.md](references/docs/errors.md) | HTTP status codes, error response format, error codes | ~105 lines |
+| [references/docs/best-practices.md](references/docs/best-practices.md) | $select for performance, pagination, delta queries, batching | ~155 lines |
