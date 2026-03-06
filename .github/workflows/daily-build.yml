@@ -49,10 +49,13 @@ jobs:
       - name: Copy indexes to docs/public for static hosting
         run: |
           cp skills/msgraph/references/graph-api-index.json docs/public/graph-api-index.json
+          cp skills/msgraph/references/graph-api-index.db docs/public/graph-api-index.db
           cp skills/msgraph/references/samples-index.json docs/public/samples-index.json
+          cp skills/msgraph/references/samples-index.db docs/public/samples-index.db
           cp skills/msgraph/references/api-docs-index.json docs/public/api-docs-index.json
+          cp skills/msgraph/references/api-docs-index.db docs/public/api-docs-index.db
           echo "Indexes copied to docs/public/"
-          ls -lh docs/public/*.json
+          ls -lh docs/public/*.json docs/public/*.db
 
       - name: Check for changes
         id: changes

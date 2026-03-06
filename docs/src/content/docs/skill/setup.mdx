@@ -18,7 +18,9 @@ msgraph/
 │   └── bin/                          # Binary cache (auto-populated)
 └── references/
     ├── REFERENCE.md                  # API reference for agents
-    └── graph-api-index.json          # Pre-processed OpenAPI index
+    ├── graph-api-index.db            # Pre-processed OpenAPI index (SQLite FTS5)
+    ├── samples-index.db              # Samples index (SQLite FTS5)
+    └── api-docs-index.db             # API docs index (SQLite FTS5)
 ```
 
 No monorepo files (docs, CI, source code) are included in the installed skill.

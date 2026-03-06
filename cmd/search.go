@@ -37,7 +37,7 @@ Examples:
 		// Fall back to legacy JSON search.
 		indexPath := findIndexPath()
 		if indexPath == "" {
-			return fmt.Errorf("OpenAPI index file not found. Set MSGRAPH_INDEX_PATH or ensure references/graph-api-index.json exists relative to the binary")
+			return fmt.Errorf("OpenAPI index not found. Set MSGRAPH_INDEX_DB_PATH or ensure references/graph-api-index.db exists relative to the binary")
 		}
 
 		idx, err := openapi.LoadIndex(indexPath)

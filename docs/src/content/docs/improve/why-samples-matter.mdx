@@ -86,4 +86,4 @@ Need a new category? Just use it — when you submit a sample with a product nam
 
 ## Validation
 
-A daily build compiles all sample YAML files into a single `samples-index.json` that is published to [graph.pm/samples-index.json](https://graph.pm/samples-index.json) and bundled with the skill. If your YAML has syntax errors, the build will fail and the PR checks will report the issue.
+A daily build compiles all sample YAML files into a `samples-index.db` (SQLite FTS5 database) that is bundled with the skill. If your YAML has syntax errors, the build will fail and the PR checks will report the issue.

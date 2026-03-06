@@ -36,7 +36,7 @@ export MSGRAPH_TENANT_ID="contoso.onmicrosoft.com"
 | `MSGRAPH_CLIENT_ID` | Entra ID app registration client ID | `14d82eec-204b-4c2f-b7e8-296a70dab67e` |
 | `MSGRAPH_TENANT_ID` | Target tenant ID | `common` |
 | `MSGRAPH_API_VERSION` | Default Graph API version | `beta` |
-| `MSGRAPH_INDEX_PATH` | Path to the OpenAPI index JSON | Auto-detected |
+| `MSGRAPH_INDEX_DB_PATH` | Path to the OpenAPI index database | Auto-detected |
 | `MSGRAPH_NO_TOKEN_CACHE` | Disable persisted token cache (in-memory only) | `false` |
 
 ### App-Only Auth
@@ -132,17 +132,16 @@ Or per-request:
 msgraph graph-call GET /me --api-version v1.0
 ```
 
-## OpenAPI Index Path
+## OpenAPI Index
 
-The tool searches for the index file in these locations (in order):
+The tool uses a SQLite FTS5 database (`graph-api-index.db`) for full-text search with BM25 ranking. It searches for the database in these locations (in order):
 
-1. `MSGRAPH_INDEX_PATH` environment variable
-2. `references/graph-api-index.json` (relative to the CLI location)
-3. Relative to the CLI location
+1. `MSGRAPH_INDEX_DB_PATH` environment variable
+2. `references/graph-api-index.db` (relative to the skill or CLI location)
 
-Override if the index is in a non-standard location:
+Override if the index database is in a non-standard location:
 ```bash
-export MSGRAPH_INDEX_PATH="/path/to/graph-api-index.json"
+export MSGRAPH_INDEX_DB_PATH="/path/to/graph-api-index.db"
 ```
 
 ## Token Cache

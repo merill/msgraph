@@ -3,7 +3,93 @@ title: How It Works
 description: Technical details of how the agent skill operates
 ---
 
+import MermaidDiagram from '../../../components/MermaidDiagram.astro';
+
 This page explains the technical internals of msgraph for those who want to understand or extend it.
+
+## Architecture Overview
+
+The diagram below shows how an AI agent interacts with the skill. The search layer runs entirely locally against pre-built SQLite FTS5 databases — no network calls, no auth. The execution layer is optional and requires authentication.
+
+<MermaidDiagram chart={`%%{init: {"flowchart": {"nodeSpacing": 20, "rankSpacing": 40}, "themeVariables": {"fontSize": "16px"}}}%%
+flowchart TD
+    Agent["AI Agent\n(Claude, Copilot, etc.)"]
+
+    Agent -->|"reads instructions"| SKILL["SKILL.md\nAgent Instructions and\nProgressive Lookup Strategy"]
+    Agent -->|"runs commands via"| CLI["msgraph CLI"]
+
+    CLI --> search
+    CLI --> exec
+
+    subgraph search ["Search Layer - Local, No Auth Required"]
+        direction TB
+        SS["sample-search\nCurated samples"]
+        ADS["api-docs-search\nEndpoint details"]
+        OAS["openapi-search\nFull API catalog"]
+    end
+
+    subgraph db ["SQLite FTS5 Databases - BM25 Ranked"]
+        direction TB
+        SDB[("Samples Index\nCommunity Samples")]
+        ADDB[("API Docs Index\n6,200+ Endpoints\n4,200+ Resources")]
+        OADB[("OpenAPI Index\n27,700+ APIs")]
+    end
+
+    SS --> SDB
+    ADS --> ADDB
+    OAS --> OADB
+
+    subgraph exec ["Execution Layer - Auth Required"]
+        direction TB
+        AUTH["auth signin\n5 auth methods"]
+        CALL["graph-call\nSafety enforcement"]
+    end
+
+    AUTH -->|"acquire token"| ENTRA["Microsoft\nEntra ID"]
+    CALL -->|"HTTP request"| GRAPH["Microsoft\nGraph API"]
+    CALL -.->|"403: incremental\nconsent and retry"| AUTH
+`} />
+
+### Agent Workflow
+
+When an agent receives a user request involving Microsoft 365 data, it follows a **progressive lookup strategy** — each level adds more detail:
+
+1. **Own knowledge** — try first for well-known endpoints (`/me`, `/users`, `/groups`).
+2. **`sample-search`** — curated, hand-verified samples. Highest quality. Best for common tasks and multi-step workflows.
+3. **`api-docs-search`** — per-endpoint permissions, supported query parameters, required headers, and resource property details with filter operators.
+4. **`openapi-search`** — full catalog of 27,700 APIs. Use when the endpoint can't be found any other way.
+5. **Reference files** — concept docs on paging, batching, throttling, errors, and best practices.
+
+### Build Pipeline
+
+The search indexes are built offline and bundled with the skill. Each release runs the indexer tools to produce fresh databases:
+
+<MermaidDiagram chart={`%%{init: {"flowchart": {"nodeSpacing": 20, "rankSpacing": 50}, "themeVariables": {"fontSize": "16px"}}}%%
+flowchart TD
+    subgraph sources ["Data Sources"]
+        OA["Graph OpenAPI YAML\n~60 MB"]
+        AD["Graph API Docs\nEndpoints and Resources"]
+        YS["Community YAML\nSamples"]
+    end
+
+    subgraph indexers ["Indexer Tools"]
+        OAI["openapi-indexer"]
+        ADI["api-docs-indexer"]
+        BSI["build-samples-index"]
+    end
+
+    subgraph outputs ["Pre-built Indexes (SQLite FTS5)"]
+        OADB[("graph-api-index.db")]
+        ADDB[("api-docs-index.db")]
+        SDB[("samples-index.db")]
+    end
+
+    OA --> OAI --> OADB
+    AD --> ADI --> ADDB
+    YS --> BSI --> SDB
+`} />
+
+## Technical Details
 
 ### Auth Method Detection
 
@@ -56,14 +142,14 @@ The index is built by `tools/openapi-indexer/`:
 
 1. Downloads the [official Graph OpenAPI YAML](https://github.com/microsoftgraph/msgraph-metadata) (~60MB)
 2. Parses using `gopkg.in/yaml.v3` with flexible `interface{}` unmarshaling
-3. Extracts path, method, summary, description, and security scopes
-4. Outputs a compact JSON file (~8MB, ~27,000 endpoints)
+3. Extracts path, method, summary, description, operation IDs, parameters, deprecation info, doc URLs, request/response schema refs, and security scopes
+4. Outputs a SQLite FTS5 database (`graph-api-index.db`, ~27,000 endpoints)
 
-The search algorithm:
-- Filters by method (exact match)
-- Filters by resource (path segment match)
-- Filters by query (all words must appear in path, summary, description, or scopes)
-- Returns results with match reason
+The search algorithm uses SQLite FTS5 full-text search:
+- BM25 ranking with weighted columns (path weight 10, summary 5, description 3)
+- Porter stemming tokenizer for flexible term matching
+- Filters by method (exact match) and resource (path segment match)
+- Returns results ranked by relevance
 
 ## Build System
 

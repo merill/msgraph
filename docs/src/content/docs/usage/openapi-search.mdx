@@ -68,12 +68,15 @@ The index is pre-generated from the official [Microsoft Graph OpenAPI metadata](
 go run ./tools/openapi-indexer -version beta -output skills/msgraph/references/graph-api-index.json
 ```
 
+The indexer produces a SQLite FTS5 database (`graph-api-index.db`) alongside the JSON file. The CLI uses the database for full-text search with BM25 ranking and Porter stemming.
+
 The index contains ~27,000 endpoints from the beta API, each with:
 - Path
 - HTTP method
 - Summary and description
 - Required permission scopes
 - Resource category
+- Operation ID, parameters, doc URL, and request/response schema refs
 
 ## Flags
 

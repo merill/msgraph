@@ -6,6 +6,9 @@
  * The chart definition is base64-encoded into a data attribute to avoid
  * Astro/MDX escaping issues with Mermaid syntax characters.
  *
+ * Includes an "Expand" button that opens the diagram in a native <dialog>
+ * modal (top layer — renders above all other content including nav).
+ *
  * Usage in MDX:
  *   import MermaidDiagram from '../../../components/MermaidDiagram.astro';
  *   <MermaidDiagram chart={`graph LR; A-->B`} />
@@ -17,11 +20,46 @@ const { chart } = Astro.props;
 const encoded = Buffer.from(chart).toString('base64');
 ---
 
-<div class="mermaid-diagram" data-chart={encoded}></div>
+<div class="mermaid-wrapper">
+  <button class="mermaid-expand" aria-label="View fullscreen" title="View fullscreen">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+    <span>Expand</span>
+  </button>
+  <div class="mermaid-diagram" data-chart={encoded}></div>
+  <dialog class="mermaid-dialog">
+    <div class="mermaid-dialog-header">
+      <button class="mermaid-dialog-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mermaid-dialog-diagram"></div>
+  </dialog>
+</div>
 
 <style>
-  .mermaid-diagram {
+  .mermaid-wrapper {
+    position: relative;
     margin: 1.5rem 0;
+  }
+  .mermaid-expand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.6rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.375rem;
+    background: var(--sl-color-bg-nav);
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-xs);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .mermaid-expand:hover {
+    background: var(--sl-color-gray-6);
+    border-color: var(--sl-color-gray-4);
+  }
+  .mermaid-diagram {
     text-align: center;
   }
   .mermaid-diagram svg {
@@ -32,6 +70,54 @@ const encoded = Buffer.from(chart).toString('base64');
     color: var(--sl-color-gray-3);
     font-size: var(--sl-text-sm);
     font-style: italic;
+  }
+
+  /* Native <dialog> modal — renders in the browser top layer */
+  .mermaid-dialog {
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0;
+    width: 95vw;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: auto;
+    background: var(--sl-color-bg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  .mermaid-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .mermaid-dialog-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .mermaid-dialog-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.375rem;
+    background: var(--sl-color-bg-nav);
+    color: var(--sl-color-gray-2);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .mermaid-dialog-close:hover {
+    background: var(--sl-color-gray-6);
+  }
+  .mermaid-dialog-diagram {
+    text-align: center;
+    padding: 0 2rem 2rem;
+  }
+  .mermaid-dialog-diagram svg {
+    max-width: 100%;
+    height: auto;
   }
 </style>
 
@@ -49,9 +135,11 @@ const encoded = Buffer.from(chart).toString('base64');
       securityLevel: 'loose',
     });
 
-    const elements = document.querySelectorAll<HTMLElement>('.mermaid-diagram[data-chart]');
+    const wrappers = document.querySelectorAll<HTMLElement>('.mermaid-wrapper');
     let index = 0;
-    for (const el of elements) {
+    for (const wrapper of wrappers) {
+      const el = wrapper.querySelector<HTMLElement>('.mermaid-diagram[data-chart]');
+      if (!el) continue;
       const encoded = el.getAttribute('data-chart');
       if (!encoded) continue;
       try {
@@ -66,14 +154,41 @@ const encoded = Buffer.from(chart).toString('base64');
     }
   }
 
-  // Initial render
-  renderAll();
+  function setupDialogs() {
+    const wrappers = document.querySelectorAll<HTMLElement>('.mermaid-wrapper');
+
+    for (const wrapper of wrappers) {
+      const expandBtn = wrapper.querySelector<HTMLElement>('.mermaid-expand');
+      const dialog = wrapper.querySelector<HTMLDialogElement>('.mermaid-dialog');
+      if (!expandBtn || !dialog) continue;
+
+      const closeBtn = dialog.querySelector<HTMLElement>('.mermaid-dialog-close');
+      const dialogDiagram = dialog.querySelector<HTMLElement>('.mermaid-dialog-diagram');
+      const inlineDiagram = wrapper.querySelector<HTMLElement>('.mermaid-diagram');
+
+      expandBtn.addEventListener('click', () => {
+        if (!dialogDiagram || !inlineDiagram) return;
+        dialogDiagram.innerHTML = inlineDiagram.innerHTML;
+        dialog.showModal();
+      });
+
+      closeBtn?.addEventListener('click', () => dialog.close());
+
+      // Close when clicking the backdrop (the dialog element outside the content box)
+      dialog.addEventListener('click', (e: MouseEvent) => {
+        if (e.target === dialog) dialog.close();
+      });
+    }
+  }
+
+  // Initial render then set up dialogs
+  renderAll().then(setupDialogs);
 
   // Re-render on theme change
   new MutationObserver((mutations) => {
     for (const m of mutations) {
       if (m.attributeName === 'data-theme') {
-        renderAll();
+        renderAll().then(setupDialogs);
       }
     }
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });

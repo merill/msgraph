@@ -215,9 +215,9 @@ msgraph graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
 | `MSGRAPH_CLIENT_ID` | Custom Entra ID app client ID | Microsoft Graph CLI Tools app |
 | `MSGRAPH_TENANT_ID` | Target tenant ID (required for app-only) | `common` |
 | `MSGRAPH_API_VERSION` | Default API version | `beta` |
-| `MSGRAPH_INDEX_PATH` | Path to OpenAPI index JSON | Auto-detected |
-| `MSGRAPH_SAMPLES_PATH` | Path to samples index JSON | Auto-detected |
-| `MSGRAPH_API_DOCS_PATH` | Path to API docs index JSON | Auto-detected |
+| `MSGRAPH_INDEX_DB_PATH` | Path to OpenAPI index database | Auto-detected |
+| `MSGRAPH_SAMPLES_DB_PATH` | Path to samples index database | Auto-detected |
+| `MSGRAPH_API_DOCS_DB_PATH` | Path to API docs index database | Auto-detected |
 | `MSGRAPH_NO_TOKEN_CACHE` | Disable persistent token cache (in-memory only) | `false` |
 
 For the full list of authentication environment variables, see [references/docs/authentication.md](references/docs/authentication.md).

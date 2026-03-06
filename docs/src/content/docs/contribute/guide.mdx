@@ -49,8 +49,8 @@ msgraph/
 │   ├── samples/                # Sample search + index builder
 │   └── apidocs/                # API docs search logic
 ├── tools/
-│   ├── openapi-indexer/        # Builds graph-api-index.json from OpenAPI spec
-│   ├── api-docs-indexer/       # Builds api-docs-index.json from Graph docs repo
+│   ├── openapi-indexer/        # Builds graph-api-index.db from OpenAPI spec
+│   ├── api-docs-indexer/       # Builds api-docs-index.db from Graph docs repo
 │   └── concept-docs-builder/   # Builds curated concept docs from Graph docs repo
 ├── samples/                    # YAML sample files by product
 ├── skills/msgraph/             # The agent skill package
@@ -101,10 +101,10 @@ make test
 The skill ships with prebuilt index files. Rebuild them when the upstream data changes:
 
 ```bash
-make samples        # Rebuild samples-index.json from YAML source files
-make api-docs       # Rebuild api-docs-index.json (clones Graph docs repo)
+make samples        # Rebuild samples-index.db from YAML source files
+make api-docs       # Rebuild api-docs-index.db (clones Graph docs repo)
 make concept-docs   # Rebuild concept docs (clones Graph docs repo)
-make index          # Rebuild graph-api-index.json (downloads ~60MB OpenAPI spec)
+make index          # Rebuild graph-api-index.db (downloads ~60MB OpenAPI spec)
 ```
 
 ### Docs Site
@@ -147,9 +147,9 @@ Run `make help` to see all targets:
 | `make lint` | Run linter |
 | `make dev` | Build skill, assemble into dev-skill-test/, launch OpenCode |
 | `make dev-clean` | Remove dev-skill-test/ directory |
-| `make index` | Rebuild OpenAPI index (graph-api-index.json) |
-| `make samples` | Rebuild samples index (samples-index.json) |
-| `make api-docs` | Rebuild API docs index (api-docs-index.json) |
+| `make index` | Rebuild OpenAPI index (graph-api-index.db) |
+| `make samples` | Rebuild samples index (samples-index.db) |
+| `make api-docs` | Rebuild API docs index (api-docs-index.db) |
 | `make concept-docs` | Rebuild curated concept docs |
 | `make docs-dev` | Start docs dev server |
 | `make docs-build` | Build docs site |
