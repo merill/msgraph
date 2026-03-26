@@ -2,6 +2,7 @@ package openapi
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/merill/msgraph/internal/ftsutil"
@@ -12,6 +13,9 @@ import (
 // content table (for returning results) and an FTS5 virtual table (for
 // full-text search with Porter stemming).
 func BuildFTSDatabase(endpoints []FullEndpoint, dbPath string) error {
+	// Always start from a clean database to avoid table-exists errors when rerun.
+	_ = os.Remove(dbPath)
+
 	db, err := ftsutil.OpenDB(dbPath)
 	if err != nil {
 		return err

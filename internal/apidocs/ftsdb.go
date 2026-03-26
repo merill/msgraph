@@ -2,6 +2,7 @@ package apidocs
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/merill/msgraph/internal/ftsutil"
@@ -11,6 +12,9 @@ import (
 // The database contains content tables for both endpoints and resources,
 // plus FTS5 virtual tables for full-text search with Porter stemming.
 func BuildFTSDatabase(idx *Index, dbPath string) error {
+	// Always start from a clean database to avoid table-exists errors when rerun.
+	_ = os.Remove(dbPath)
+
 	db, err := ftsutil.OpenDB(dbPath)
 	if err != nil {
 		return err
