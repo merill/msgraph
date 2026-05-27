@@ -1,6 +1,6 @@
 {
   "version": "beta",
-  "generated": "2026-05-26T09:31:09Z",
+  "generated": "2026-05-27T08:57:01Z",
   "endpointCount": 6385,
   "resourceCount": 4368,
   "endpoints": [
@@ -86818,7 +86818,10 @@
         "application": [
           "TeamworkSection.Read.All"
         ]
-      }
+      },
+      "queryParams": [
+        "$expand"
+      ]
     },
     {
       "path": "/users/{user-id}/teamwork/sections",
@@ -86854,7 +86857,10 @@
         "application": [
           "TeamworkSection.Read.All"
         ]
-      }
+      },
+      "queryParams": [
+        "$expand"
+      ]
     },
     {
       "path": "/users/{user-id}/teamwork/sections/{teamworkSection-id}",
