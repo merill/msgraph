@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-05-27T08:57:01Z",
-  "endpointCount": 6385,
-  "resourceCount": 4368,
+  "generated": "2026-05-28T09:40:40Z",
+  "endpointCount": 6400,
+  "resourceCount": 4376,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -6723,20 +6723,20 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28581,20 +28581,20 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
@@ -56439,16 +56439,16 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "Mail.Read",
-          "Mail.ReadBasic"
+          "Mail.ReadBasic",
+          "Mail.Read"
         ],
         "delegatedPersonal": [
-          "Mail.Read",
-          "Mail.ReadBasic"
+          "Mail.ReadBasic",
+          "Mail.Read"
         ],
         "application": [
-          "Mail.Read",
-          "Mail.ReadBasic.All"
+          "Mail.ReadBasic.All",
+          "Mail.Read"
         ]
       },
       "queryParams": [
@@ -62712,25 +62712,25 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All",
           "User.Read",
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All"
-        ],
-        "application": [
+          "Directory.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementConfiguration.ReadWrite.All"
+        ],
+        "application": [
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All"
+          "Directory.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -79047,6 +79047,84 @@
       }
     },
     {
+      "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicyId}/mailboxExclusionUnits",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$count",
+        "$top"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicyId}/mailboxExclusionUnits/{mailboxExclusionUnitId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicyId}/mailboxExclusionUnitsBulkAdditionJobs",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$count",
+        "$top"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicyId}/mailboxExclusionUnitsBulkAdditionJobs",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.ReadWrite.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicyId}/mailboxExclusionUnitsBulkAdditionJobs/{mailboxExclusionUnitsBulkAdditionJobId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
       "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicyId}/mailboxInclusionRules",
       "method": "GET",
       "permissions": {
@@ -79249,6 +79327,84 @@
           "BackupRestore-Configuration.ReadWrite.All"
         ]
       }
+    },
+    {
+      "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicyId}/driveExclusionUnits",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$count",
+        "$top"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicyId}/driveExclusionUnits/{driveExclusionUnitId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicyId}/driveExclusionUnitsBulkAdditionJobs",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$count",
+        "$top"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicyId}/driveExclusionUnitsBulkAdditionJobs",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.ReadWrite.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicyId}/driveExclusionUnitsBulkAdditionJobs/{driveExclusionUnitsBulkAdditionJobId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
     },
     {
       "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicyId}/driveInclusionRules",
@@ -79641,7 +79797,10 @@
         "delegatedWork": [
           "BackupRestore-Control.ReadWrite.All"
         ]
-      }
+      },
+      "notes": [
+        "This API is intended for use by registered backup controller applications. If it's called via Microsoft Graph PowerShell, it returns a 403 Forbidden response code because the Microsoft Graph PowerShell SDK isn't a supported client for this operation."
+      ]
     },
     {
       "path": "/solutions/backupRestore/serviceApps/{serviceAppId}/deactivate",
@@ -79650,7 +79809,10 @@
         "delegatedWork": [
           "BackupRestore-Control.ReadWrite.All"
         ]
-      }
+      },
+      "notes": [
+        "This API is intended for use by registered backup controller applications. If it's called via Microsoft Graph PowerShell, it returns a 403 Forbidden response code because the Microsoft Graph PowerShell SDK isn't a supported client for this operation."
+      ]
     },
     {
       "path": "/solutions/backupRestore/sharePointBrowseSessions",
@@ -79723,6 +79885,84 @@
           "BackupRestore-Configuration.ReadWrite.All"
         ]
       }
+    },
+    {
+      "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}/siteExclusionUnits",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$count",
+        "$top"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}/siteExclusionUnits/{siteExclusionUnitId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}/siteExclusionUnitsBulkAdditionJobs",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$count",
+        "$top"
+      ]
+    },
+    {
+      "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}/siteExclusionUnitsBulkAdditionJobs",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.ReadWrite.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}/siteExclusionUnitsBulkAdditionJobs/{siteExclusionUnitsBulkAdditionJobId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "BackupRestore-Configuration.Read.All"
+        ],
+        "application": [
+          "BackupRestore-Configuration.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
     },
     {
       "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}/siteInclusionRules",
@@ -86086,26 +86326,26 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "User.ReadBasic.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
+          "User.ReadBasic.All",
           "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
-          "User.Read.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
+          "User.Read.All",
           "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -86122,8 +86362,8 @@
         "ConsistencyLevel: eventual"
       ],
       "notes": [
-        "Guest users cannot call this API. For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?.",
-        "The Microsoft Graph API for Intune requires an active Intune license for the tenant."
+        "The Microsoft Graph API for Intune requires an active Intune license for the tenant.",
+        "Guest users cannot call this API. For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?."
       ]
     },
     {
@@ -86131,18 +86371,18 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
-          "User.ReadWrite.All"
+          "DeviceManagementConfiguration.ReadWrite.All",
+          "User.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
-          "User.ReadWrite.All"
+          "DeviceManagementConfiguration.ReadWrite.All",
+          "User.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -86293,37 +86533,37 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "Calendars.ReadBasic",
           "User.Read",
-          "UserAuthenticationMethod.Read",
-          "AppRoleAssignment.ReadWrite.All"
+          "Calendars.ReadBasic",
+          "AppRoleAssignment.ReadWrite.All",
+          "UserAuthenticationMethod.Read"
         ],
         "delegatedPersonal": [
           "Calendars.ReadBasic",
           "User.Read"
         ],
         "application": [
-          "Calendars.ReadBasic",
           "User.Read.All",
-          "UserAuthenticationMethod.Read",
+          "Calendars.ReadBasic",
           "Directory.Read.All",
-          "Chat.Read.All"
+          "Chat.Read.All",
+          "UserAuthenticationMethod.Read"
         ]
       },
       "queryParams": [
-        "$select",
-        "$expand",
         "$count",
+        "$expand",
         "$filter",
         "$orderby",
         "$search",
+        "$select",
         "$top",
         "$skip"
       ],
       "notes": [
         "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1.",
-        "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages.",
-        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query."
+        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
+        "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages."
       ]
     },
     {
@@ -86351,25 +86591,25 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-Email.ReadWrite",
-          "Sites.ReadWrite.All",
-          "LicenseAssignment.ReadWrite.All",
-          "UserAuthMethod-Phone.ReadWrite",
-          "UserAuthMethod-TAP.Read",
           "AppRoleAssignment.ReadWrite.All",
           "Mail.Send",
-          "UserAuthenticationMethod.ReadWrite.All"
+          "Sites.ReadWrite.All",
+          "LicenseAssignment.ReadWrite.All",
+          "UserAuthMethod-TAP.Read",
+          "UserAuthenticationMethod.ReadWrite.All",
+          "UserAuthMethod-Email.ReadWrite",
+          "UserAuthMethod-Phone.ReadWrite"
         ],
         "delegatedPersonal": [
           "Mail.Send"
         ],
         "application": [
-          "UserAuthenticationMethod.ReadWrite.All",
+          "AppRoleAssignment.ReadWrite.All",
+          "Mail.Send",
           "Sites.ReadWrite.All",
           "LicenseAssignment.ReadWrite.All",
           "UserAuthMethod-TAP.Read.All",
-          "AppRoleAssignment.ReadWrite.All",
-          "Mail.Send"
+          "UserAuthenticationMethod.ReadWrite.All"
         ]
       }
     },
@@ -86660,8 +86900,8 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "TeamsAppInstallation.ReadWriteSelfForUser",
-          "TeamworkTargetedMessage.ReadWrite"
+          "TeamworkTargetedMessage.ReadWrite",
+          "TeamsAppInstallation.ReadWriteSelfForUser"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -86679,15 +86919,15 @@
           "TeamsAppInstallation.ReadForUser"
         ],
         "application": [
-          "TeamsAppInstallation.ReadForUser.All",
-          "TeamworkTargetedMessage.Read.All"
+          "TeamworkTargetedMessage.Read.All",
+          "TeamsAppInstallation.ReadForUser.All"
         ]
       },
       "queryParams": [
-        "$select",
         "$filter",
-        "$expand",
-        "$top"
+        "$top",
+        "$select",
+        "$expand"
       ],
       "notes": [
         "This API works differently in one or more national clouds. For details, see Implementation differences in national clouds."
@@ -87114,15 +87354,15 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
@@ -114321,7 +114561,7 @@
       "properties": [
         {
           "name": "action",
-          "type": "microsoft.graph.ediscovery.caseAction"
+          "type": "microsoft.graph.security.caseAction"
         },
         {
           "name": "completedDateTime",
@@ -114350,7 +114590,7 @@
         },
         {
           "name": "status",
-          "type": "microsoft.graph.ediscovery.caseOperationStatus"
+          "type": "microsoft.graph.security.caseOperationStatus"
         }
       ]
     },
@@ -123737,7 +123977,7 @@
       "name": "contentInfo",
       "properties": [
         {
-          "name": "contentFormat",
+          "name": "format",
           "type": "String"
         },
         {
@@ -123750,7 +123990,7 @@
         },
         {
           "name": "state",
-          "type": "contentState"
+          "type": "String"
         }
       ]
     },
@@ -129012,31 +129252,37 @@
       "name": "deployment",
       "properties": [
         {
-          "name": "configuration",
-          "type": "microsoft.graph.networkaccess.deploymentConfiguration"
+          "name": "content",
+          "type": "microsoft.graph.windowsUpdates.deployableContent",
+          "default": true
         },
         {
-          "name": "deploymentEndDateTime",
-          "type": "DateTimeOffset"
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "default": true,
+          "notes": "Read-only"
         },
         {
-          "name": "initiatedBy",
-          "type": "String"
+          "name": "id",
+          "type": "String",
+          "default": true,
+          "notes": "Read-only; Not nullable"
         },
         {
           "name": "lastModifiedDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "default": true,
+          "notes": "Read-only"
         },
         {
-          "name": "requestId",
-          "type": "String"
+          "name": "settings",
+          "type": "microsoft.graph.windowsUpdates.deploymentSettings",
+          "default": true
         },
         {
-          "name": "status",
-          "type": "microsoft.graph.networkaccess.deploymentStatus",
-          "filter": [
-            "eq"
-          ]
+          "name": "state",
+          "type": "microsoft.graph.windowsUpdates.deploymentState",
+          "default": true
         }
       ]
     },
@@ -130460,16 +130706,16 @@
           "notes": "Read-only"
         },
         {
+          "name": "Onboarding",
+          "type": ""
+        },
+        {
           "name": "displayName",
           "type": "String"
         },
         {
           "name": "description",
           "type": "String"
-        },
-        {
-          "name": "roleScopeTagIds",
-          "type": "String collection"
         }
       ]
     },
@@ -139280,6 +139526,92 @@
       ]
     },
     {
+      "name": "driveExclusionUnit",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "directoryObjectId",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "policyId",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "driveExclusionUnitsBulkAdditionJob",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "drives",
+          "type": "String collection"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "status",
+          "type": "exclusionUnitBulkJobStatus"
+        }
+      ]
+    },
+    {
       "name": "driveItemAccessOperationsViewpoint",
       "properties": [
         {
@@ -145380,6 +145712,10 @@
           "type": "DateTimeOffset"
         },
         {
+          "name": "protectionMode",
+          "type": "backupPolicyProtectionMode"
+        },
+        {
           "name": "protectionPolicyArtifactCount",
           "type": "protectionPolicyArtifactCount"
         },
@@ -145552,6 +145888,76 @@
         {
           "name": "groupId",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "exclusionUnitBase",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "policyId",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "exclusionUnitBulkAdditionJob",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "status",
+          "type": "exclusionUnitBulkJobStatus"
         }
       ]
     },
@@ -147056,11 +147462,11 @@
       "name": "fileHash",
       "properties": [
         {
-          "name": "hashType",
-          "type": "fileHashType enum"
+          "name": "algorithm",
+          "type": "microsoft.graph.security.fileHashAlgorithm"
         },
         {
-          "name": "hashValue",
+          "name": "value",
           "type": "String"
         }
       ]
@@ -149613,6 +150019,14 @@
           "type": "DateTimeOffset"
         },
         {
+          "name": "destinationType",
+          "type": "destinationType"
+        },
+        {
+          "name": "directoryObjectId",
+          "type": "String"
+        },
+        {
           "name": "id",
           "type": "String"
         },
@@ -149642,10 +150056,6 @@
         },
         {
           "name": "webUrl",
-          "type": "String"
-        },
-        {
-          "name": "directoryObjectId",
           "type": "String"
         }
       ]
@@ -149711,6 +150121,10 @@
           "type": "DateTimeOffset"
         },
         {
+          "name": "destinationType",
+          "type": "destinationType"
+        },
+        {
           "name": "id",
           "type": "String"
         },
@@ -149756,6 +150170,10 @@
           "type": "DateTimeOffset"
         },
         {
+          "name": "destinationType",
+          "type": "destinationType"
+        },
+        {
           "name": "id",
           "type": "String"
         },
@@ -149776,6 +150194,10 @@
           "type": "DateTimeOffset"
         },
         {
+          "name": "siteId",
+          "type": "String"
+        },
+        {
           "name": "startDateTime",
           "type": "DateTimeOffset"
         },
@@ -149785,10 +150207,6 @@
         },
         {
           "name": "webUrl",
-          "type": "String"
-        },
-        {
-          "name": "siteId",
           "type": "String"
         }
       ]
@@ -167353,6 +167771,92 @@
       ]
     },
     {
+      "name": "mailboxExclusionUnit",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "directoryObjectId",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "policyId",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "mailboxExclusionUnitsBulkAdditionJob",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "mailboxes",
+          "type": "String collection"
+        },
+        {
+          "name": "status",
+          "type": "exclusionUnitBulkJobStatus"
+        }
+      ]
+    },
+    {
       "name": "mailboxFolder",
       "properties": [
         {
@@ -170873,10 +171377,6 @@
       "name": "mdmWindowsInformationProtectionPolicy",
       "properties": [
         {
-          "name": "id",
-          "type": "String"
-        },
-        {
           "name": "displayName",
           "type": "String"
         },
@@ -170895,6 +171395,10 @@
         {
           "name": "roleScopeTagIds",
           "type": "String collection"
+        },
+        {
+          "name": "id",
+          "type": "String"
         },
         {
           "name": "version",
@@ -173897,11 +174401,35 @@
           "type": "String"
         },
         {
+          "name": "Troubleshooting",
+          "type": ""
+        },
+        {
+          "name": "additionalInformation",
+          "type": "keyValuePair collection"
+        },
+        {
+          "name": "applicationId",
+          "type": "String"
+        },
+        {
+          "name": "correlationId",
+          "type": "String"
+        },
+        {
           "name": "eventDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "correlationId",
+          "name": "eventName",
+          "type": "String"
+        },
+        {
+          "name": "history",
+          "type": "mobileAppTroubleshootingHistoryItem collection"
+        },
+        {
+          "name": "managedDeviceIdentifier",
           "type": "String"
         },
         {
@@ -173909,32 +174437,8 @@
           "type": "deviceManagementTroubleshootingErrorDetails"
         },
         {
-          "name": "eventName",
-          "type": "String"
-        },
-        {
-          "name": "additionalInformation",
-          "type": "keyValuePair collection"
-        },
-        {
-          "name": "managedDeviceIdentifier",
-          "type": "String"
-        },
-        {
-          "name": "deviceId",
-          "type": "String"
-        },
-        {
           "name": "userId",
           "type": "String"
-        },
-        {
-          "name": "applicationId",
-          "type": "String"
-        },
-        {
-          "name": "history",
-          "type": "mobileAppTroubleshootingHistoryItem collection"
         }
       ]
     },
@@ -178753,6 +179257,10 @@
         {
           "name": "offboardRequestedDateTime",
           "type": "DateTimeOffset"
+        },
+        {
+          "name": "protectionMode",
+          "type": "backupPolicyProtectionMode"
         },
         {
           "name": "protectionPolicyArtifactCount",
@@ -189637,6 +190145,10 @@
           "type": "DateTimeOffset"
         },
         {
+          "name": "protectionMode",
+          "type": "backupPolicyProtectionMode"
+        },
+        {
           "name": "protectionPolicyArtifactCount",
           "type": "protectionPolicyArtifactCount"
         },
@@ -200265,6 +200777,10 @@
           "type": "DateTimeOffset"
         },
         {
+          "name": "protectionMode",
+          "type": "backupPolicyProtectionMode"
+        },
+        {
           "name": "protectionPolicyArtifactCount",
           "type": "protectionPolicyArtifactCount"
         },
@@ -202326,6 +202842,92 @@
           "name": "root",
           "type": "[root][]",
           "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "siteExclusionUnit",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "policyId",
+          "type": "String"
+        },
+        {
+          "name": "siteId",
+          "type": "String"
+        },
+        {
+          "name": "siteName",
+          "type": "String"
+        },
+        {
+          "name": "siteWebUrl",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "siteExclusionUnitsBulkAdditionJob",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "siteWebUrls",
+          "type": "String collection"
+        },
+        {
+          "name": "status",
+          "type": "exclusionUnitBulkJobStatus"
         }
       ]
     },
