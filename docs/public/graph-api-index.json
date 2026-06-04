@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-06-03T10:29:22Z",
-  "count": 28732,
+  "generated": "2026-06-04T09:39:35Z",
+  "count": 28816,
   "endpoints": [
     {
       "path": "/accessReviewDecisions",
@@ -1810,6 +1810,77 @@
       "method": "PATCH",
       "summary": "Update adminReportSettings",
       "description": "Update tenant-level settings for Microsoft 365 reports.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint",
+      "method": "DELETE",
+      "summary": "Delete navigation property sharePoint for admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint",
+      "method": "GET",
+      "summary": "Get sharePoint from admin",
+      "description": "A container for SharePoint-specific report settings. Access the SharePoint API usage report metrics through the operations defined on the sharePointReportSettings resource type.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint",
+      "method": "PATCH",
+      "summary": "Update the navigation property sharePoint in admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint/apiUsageReportMetrics",
+      "method": "GET",
+      "summary": "List apiUsageReportMetrics",
+      "description": "Get the list of SharePoint API usage report metrics and their enablement status for the tenant. Currently, only the EgressReport metric is supported.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint/apiUsageReportMetrics",
+      "method": "POST",
+      "summary": "Create new navigation property to apiUsageReportMetrics for admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint/apiUsageReportMetrics/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint/apiUsageReportMetrics/{apiUsageReportEnablementStatus-metric}",
+      "method": "DELETE",
+      "summary": "Delete navigation property apiUsageReportMetrics for admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint/apiUsageReportMetrics/{apiUsageReportEnablementStatus-metric}",
+      "method": "GET",
+      "summary": "Get apiUsageReportMetrics from admin",
+      "description": "The collection of API usage report metrics and the status of their enablement.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint/apiUsageReportMetrics/{apiUsageReportEnablementStatus-metric}",
+      "method": "PATCH",
+      "summary": "Update the navigation property apiUsageReportMetrics in admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint/disableApiUsageReport",
+      "method": "POST",
+      "summary": "Invoke action disableApiUsageReport",
+      "description": "Disable a SharePoint API usage report metric for the tenant. After you disable a metric, SharePoint stops collecting and reporting data for that specific usage metric.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/reportSettings/sharePoint/enableApiUsageReport",
+      "method": "POST",
+      "summary": "Invoke action enableApiUsageReport",
+      "description": "Enable a SharePoint API usage report metric for the tenant. After you enable a metric, SharePoint starts collecting and reporting data for that specific usage metric.",
       "resource": "admin"
     },
     {
@@ -35671,7 +35742,8 @@
     {
       "path": "/deviceManagement/virtualEndpoint/cloudApps",
       "method": "POST",
-      "summary": "Create new navigation property to cloudApps for deviceManagement",
+      "summary": "Create cloudPcCloudApp",
+      "description": "Create a new cloudPcCloudApp object.",
       "resource": "devicemanagement"
     },
     {
@@ -35711,7 +35783,8 @@
     {
       "path": "/deviceManagement/virtualEndpoint/cloudApps/{cloudPcCloudApp-id}",
       "method": "DELETE",
-      "summary": "Delete navigation property cloudApps for deviceManagement",
+      "summary": "Delete cloudPcCloudApp",
+      "description": "Delete a cloudPcCloudApp object.",
       "resource": "devicemanagement"
     },
     {
@@ -35958,13 +36031,15 @@
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools",
       "method": "GET",
-      "summary": "Get cloudPcPools from deviceManagement",
+      "summary": "List cloudPcPools",
+      "description": "List the properties and relationships of the cloudPcPool objects.",
       "resource": "devicemanagement"
     },
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools",
       "method": "POST",
-      "summary": "Create new navigation property to cloudPcPools for deviceManagement",
+      "summary": "Create cloudPcPool",
+      "description": "Create a new cloudPcPool object.",
       "resource": "devicemanagement"
     },
     {
@@ -35976,31 +36051,36 @@
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools/{cloudPcPool-id}",
       "method": "DELETE",
-      "summary": "Delete navigation property cloudPcPools for deviceManagement",
+      "summary": "Delete cloudPcPool",
+      "description": "Delete a cloudPcPool object.",
       "resource": "devicemanagement"
     },
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools/{cloudPcPool-id}",
       "method": "GET",
-      "summary": "Get cloudPcPools from deviceManagement",
+      "summary": "Get cloudPcPool",
+      "description": "Read the properties and relationships of a cloudPcPool object.",
       "resource": "devicemanagement"
     },
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools/{cloudPcPool-id}",
       "method": "PATCH",
-      "summary": "Update the navigation property cloudPcPools in deviceManagement",
+      "summary": "Update cloudPcPool",
+      "description": "Update the properties of a cloudPcPool object.",
       "resource": "devicemanagement"
     },
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools/{cloudPcPool-id}/assignments",
       "method": "GET",
-      "summary": "Get assignments from deviceManagement",
+      "summary": "List assignments",
+      "description": "List the assignments of a cloudPcPool.",
       "resource": "devicemanagement"
     },
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools/{cloudPcPool-id}/assignments",
       "method": "POST",
-      "summary": "Create new navigation property to assignments for deviceManagement",
+      "summary": "Create cloudPcPoolAssignment",
+      "description": "Create a new cloudPcPoolAssignment for a cloudPcPool.",
       "resource": "devicemanagement"
     },
     {
@@ -36012,13 +36092,15 @@
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools/{cloudPcPool-id}/assignments/{cloudPcPoolAssignment-id}",
       "method": "DELETE",
-      "summary": "Delete navigation property assignments for deviceManagement",
+      "summary": "Delete cloudPcPoolAssignment",
+      "description": "Delete a cloudPcPoolAssignment object.",
       "resource": "devicemanagement"
     },
     {
       "path": "/deviceManagement/virtualEndpoint/cloudPcPools/{cloudPcPool-id}/assignments/{cloudPcPoolAssignment-id}",
       "method": "GET",
-      "summary": "Get assignments from deviceManagement",
+      "summary": "Get cloudPcPoolAssignment",
+      "description": "Read the properties of a cloudPcPoolAssignment object.",
       "resource": "devicemanagement"
     },
     {
@@ -36469,7 +36551,7 @@
       "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/apply",
       "method": "POST",
       "summary": "Invoke action apply",
-      "description": "Apply the current provisioning policy configuration to all Cloud PC devices under a specified policy. Currently, the region is the only policy setting that you can apply.",
+      "description": "Apply the current provisioning policy configuration to all Cloud PC devices under a specified policy. You can apply policy settings such as region and singleSignOn. This action also supports reprovisioning for frontline shared mode Cloud PCs by using the reservePercentage parameter to control the...",
       "resource": "devicemanagement"
     },
     {
@@ -36834,7 +36916,7 @@
       "path": "/deviceManagement/virtualEndpoint/reports/retrieveCloudPcTroubleshootReports",
       "method": "POST",
       "summary": "Invoke action retrieveCloudPcTroubleshootReports",
-      "description": "Get troubleshooting reports for Cloud PCs. You can get a regional troubleshooting report, a report with troubleshooting details, a report with troubleshooting trends, or a report on the number of troubleshooting issues.",
+      "description": "Get Cloud PC troubleshooting reports. You can get tenant-level reports, configuration reports, user and device reports, and view data table reports. For the report types grouped by scope, including the mandatory filter parameters and response columns per reportName, see Cloud PC troubleshoot repo...",
       "resource": "devicemanagement"
     },
     {
@@ -74658,6 +74740,56 @@
       "resource": "groups"
     },
     {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from groups",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for groups",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for groups",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from groups",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in groups",
+      "resource": "groups"
+    },
+    {
       "path": "/groups/{group-id}/team/channels/{channel-id}/members",
       "method": "GET",
       "summary": "Get members from groups",
@@ -76121,6 +76253,56 @@
       "method": "PUT",
       "summary": "Update contentStream for the navigation property filesFolder in groups",
       "description": "The content stream, if the item represents a file.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from groups",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for groups",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for groups",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from groups",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in groups",
       "resource": "groups"
     },
     {
@@ -101841,7 +102023,8 @@
     {
       "path": "/me/cloudPcPools",
       "method": "GET",
-      "summary": "Get cloudPcPools from me",
+      "summary": "List cloudPcPools for user",
+      "description": "List the cloudPcPool objects that the signed-in user can access.",
       "resource": "me"
     },
     {
@@ -101865,7 +102048,8 @@
     {
       "path": "/me/cloudPcPools/{cloudPcPool-id}",
       "method": "GET",
-      "summary": "Get cloudPcPools from me",
+      "summary": "Get cloudPcPool for user",
+      "description": "Read the properties and relationships of a cloudPcPool object that the signed-in user can access.",
       "resource": "me"
     },
     {
@@ -101878,6 +102062,7 @@
       "path": "/me/cloudPcPools/{cloudPcPool-id}/assignments",
       "method": "GET",
       "summary": "Get assignments from me",
+      "description": "The collection of assignments that grant user or service principal identities access to this pool.",
       "resource": "me"
     },
     {
@@ -101902,6 +102087,7 @@
       "path": "/me/cloudPcPools/{cloudPcPool-id}/assignments/{cloudPcPoolAssignment-id}",
       "method": "GET",
       "summary": "Get assignments from me",
+      "description": "The collection of assignments that grant user or service principal identities access to this pool.",
       "resource": "me"
     },
     {
@@ -115465,7 +115651,7 @@
       "resource": "networkaccess"
     },
     {
-      "path": "/networkAccess/reports/microsoft.graph.networkaccess.deviceReport(startDateTime={startDateTime},endDateTime={endDateTime},discoveredApplicationSegmentId='@discoveredApplicationSegmentId',applicationId='@applicationId',aiAgentId='@aiAgentId',aiAgentName='@aiAgentName',cloudApplicationName='@cloudApplicationName')",
+      "path": "/networkAccess/reports/microsoft.graph.networkaccess.deviceReport(startDateTime={startDateTime},endDateTime={endDateTime},discoveredApplicationSegmentId='@discoveredApplicationSegmentId',applicationId='@applicationId',aiAgentId='@aiAgentId',aiAgentName='@aiAgentName',cloudApplicationName='@cloudApplicationName',destinationUrl='@destinationUrl')",
       "method": "GET",
       "summary": "Invoke function deviceReport",
       "resource": "networkaccess"
@@ -115548,7 +115734,7 @@
       "resource": "networkaccess"
     },
     {
-      "path": "/networkAccess/reports/microsoft.graph.networkaccess.userReport(startDateTime={startDateTime},endDateTime={endDateTime},discoveredApplicationSegmentId='@discoveredApplicationSegmentId',applicationId='@applicationId',aiAgentId='@aiAgentId',aiAgentName='@aiAgentName',cloudApplicationName='@cloudApplicationName')",
+      "path": "/networkAccess/reports/microsoft.graph.networkaccess.userReport(startDateTime={startDateTime},endDateTime={endDateTime},discoveredApplicationSegmentId='@discoveredApplicationSegmentId',applicationId='@applicationId',aiAgentId='@aiAgentId',aiAgentName='@aiAgentName',cloudApplicationName='@cloudApplicationName',destinationUrl='@destinationUrl')",
       "method": "GET",
       "summary": "Invoke function userReport",
       "resource": "networkaccess"
@@ -135668,6 +135854,12 @@
       "resource": "security"
     },
     {
+      "path": "/security/microsoft.graph.security.getHuntingSchema()",
+      "method": "GET",
+      "summary": "Invoke function getHuntingSchema",
+      "resource": "security"
+    },
+    {
       "path": "/security/microsoft.graph.security.runHuntingQuery",
       "method": "POST",
       "summary": "Invoke action runHuntingQuery",
@@ -147514,6 +147706,7 @@
       "path": "/solutions/backupRestore/driveExclusionUnits",
       "method": "GET",
       "summary": "Get driveExclusionUnits from solutions",
+      "description": "The list of drive exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -147538,6 +147731,7 @@
       "path": "/solutions/backupRestore/driveExclusionUnits/{driveExclusionUnit-id}",
       "method": "GET",
       "summary": "Get driveExclusionUnits from solutions",
+      "description": "The list of drive exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -147550,6 +147744,7 @@
       "path": "/solutions/backupRestore/driveExclusionUnitsBulkAdditionJobs",
       "method": "GET",
       "summary": "Get driveExclusionUnitsBulkAdditionJobs from solutions",
+      "description": "The list of bulk addition jobs for drive exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -147574,6 +147769,7 @@
       "path": "/solutions/backupRestore/driveExclusionUnitsBulkAdditionJobs/{driveExclusionUnitsBulkAdditionJob-id}",
       "method": "GET",
       "summary": "Get driveExclusionUnitsBulkAdditionJobs from solutions",
+      "description": "The list of bulk addition jobs for drive exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -147764,7 +147960,8 @@
     {
       "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicy-id}/mailboxExclusionUnits",
       "method": "GET",
-      "summary": "Get mailboxExclusionUnits from solutions",
+      "summary": "List mailboxExclusionUnits",
+      "description": "Get a list of mailbox exclusion units associated with an Exchange protection policy.",
       "resource": "solutions"
     },
     {
@@ -147776,13 +147973,15 @@
     {
       "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicy-id}/mailboxExclusionUnits/{mailboxExclusionUnit-id}",
       "method": "GET",
-      "summary": "Get mailboxExclusionUnits from solutions",
+      "summary": "Get mailboxExclusionUnit",
+      "description": "Get a mailbox exclusion unit associated with an Exchange protection policy.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicy-id}/mailboxExclusionUnitsBulkAdditionJobs",
       "method": "GET",
-      "summary": "Get mailboxExclusionUnitsBulkAdditionJobs from solutions",
+      "summary": "List mailboxExclusionUnitsBulkAdditionJobs",
+      "description": "Get a list of mailbox exclusion units bulk addition jobs associated with an Exchange protection policy.",
       "resource": "solutions"
     },
     {
@@ -147794,7 +147993,8 @@
     {
       "path": "/solutions/backupRestore/exchangeProtectionPolicies/{exchangeProtectionPolicy-id}/mailboxExclusionUnitsBulkAdditionJobs/{mailboxExclusionUnitsBulkAdditionJob-id}",
       "method": "GET",
-      "summary": "Get mailboxExclusionUnitsBulkAdditionJobs from solutions",
+      "summary": "Get mailboxExclusionUnitsBulkAdditionJob",
+      "description": "Get a mailbox exclusion units bulk addition job associated with an Exchange protection policy.",
       "resource": "solutions"
     },
     {
@@ -148028,6 +148228,7 @@
       "path": "/solutions/backupRestore/exclusionUnits",
       "method": "GET",
       "summary": "Get exclusionUnits from solutions",
+      "description": "The list of exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -148040,12 +148241,14 @@
       "path": "/solutions/backupRestore/exclusionUnits/{exclusionUnitBase-id}",
       "method": "GET",
       "summary": "Get exclusionUnits from solutions",
+      "description": "The list of exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/backupRestore/mailboxExclusionUnits",
       "method": "GET",
       "summary": "Get mailboxExclusionUnits from solutions",
+      "description": "The list of mailbox exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -148070,6 +148273,7 @@
       "path": "/solutions/backupRestore/mailboxExclusionUnits/{mailboxExclusionUnit-id}",
       "method": "GET",
       "summary": "Get mailboxExclusionUnits from solutions",
+      "description": "The list of mailbox exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -148082,6 +148286,7 @@
       "path": "/solutions/backupRestore/mailboxExclusionUnitsBulkAdditionJobs",
       "method": "GET",
       "summary": "Get mailboxExclusionUnitsBulkAdditionJobs from solutions",
+      "description": "The list of bulk addition jobs for mailbox exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -148106,6 +148311,7 @@
       "path": "/solutions/backupRestore/mailboxExclusionUnitsBulkAdditionJobs/{mailboxExclusionUnitsBulkAdditionJob-id}",
       "method": "GET",
       "summary": "Get mailboxExclusionUnitsBulkAdditionJobs from solutions",
+      "description": "The list of bulk addition jobs for mailbox exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -148308,7 +148514,8 @@
     {
       "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicy-id}/driveExclusionUnits",
       "method": "GET",
-      "summary": "Get driveExclusionUnits from solutions",
+      "summary": "List driveExclusionUnits",
+      "description": "Get a list of drive exclusion units associated with a OneDrive for work or school protection policy.",
       "resource": "solutions"
     },
     {
@@ -148320,13 +148527,15 @@
     {
       "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicy-id}/driveExclusionUnits/{driveExclusionUnit-id}",
       "method": "GET",
-      "summary": "Get driveExclusionUnits from solutions",
+      "summary": "Get driveExclusionUnit",
+      "description": "Get a drive exclusion unit associated with a OneDrive for work or school protection policy.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicy-id}/driveExclusionUnitsBulkAdditionJobs",
       "method": "GET",
-      "summary": "Get driveExclusionUnitsBulkAdditionJobs from solutions",
+      "summary": "List driveExclusionUnitsBulkAdditionJobs",
+      "description": "Get a list of drive exclusion units bulk addition jobs associated with a OneDrive for work or school protection policy.",
       "resource": "solutions"
     },
     {
@@ -148338,7 +148547,8 @@
     {
       "path": "/solutions/backupRestore/oneDriveForBusinessProtectionPolicies/{oneDriveForBusinessProtectionPolicy-id}/driveExclusionUnitsBulkAdditionJobs/{driveExclusionUnitsBulkAdditionJob-id}",
       "method": "GET",
-      "summary": "Get driveExclusionUnitsBulkAdditionJobs from solutions",
+      "summary": "Get driveExclusionUnitsBulkAdditionJob",
+      "description": "Get a drive exclusion units bulk addition job associated with a OneDrive for work or school protection policy.",
       "resource": "solutions"
     },
     {
@@ -148968,7 +149178,8 @@
     {
       "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicy-id}/siteExclusionUnits",
       "method": "GET",
-      "summary": "Get siteExclusionUnits from solutions",
+      "summary": "List siteExclusionUnits",
+      "description": "Get a list of site exclusion units associated with a SharePoint protection policy.",
       "resource": "solutions"
     },
     {
@@ -148980,13 +149191,15 @@
     {
       "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicy-id}/siteExclusionUnits/{siteExclusionUnit-id}",
       "method": "GET",
-      "summary": "Get siteExclusionUnits from solutions",
+      "summary": "Get siteExclusionUnit",
+      "description": "Get a site exclusion unit associated with a SharePoint protection policy.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicy-id}/siteExclusionUnitsBulkAdditionJobs",
       "method": "GET",
-      "summary": "Get siteExclusionUnitsBulkAdditionJobs from solutions",
+      "summary": "List siteExclusionUnitsBulkAdditionJobs",
+      "description": "Get a list of site exclusion units bulk addition jobs associated with a SharePoint protection policy.",
       "resource": "solutions"
     },
     {
@@ -148998,7 +149211,8 @@
     {
       "path": "/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicy-id}/siteExclusionUnitsBulkAdditionJobs/{siteExclusionUnitsBulkAdditionJob-id}",
       "method": "GET",
-      "summary": "Get siteExclusionUnitsBulkAdditionJobs from solutions",
+      "summary": "Get siteExclusionUnitsBulkAdditionJob",
+      "description": "Get a site exclusion units bulk addition job associated with a SharePoint protection policy.",
       "resource": "solutions"
     },
     {
@@ -149228,6 +149442,7 @@
       "path": "/solutions/backupRestore/siteExclusionUnits",
       "method": "GET",
       "summary": "Get siteExclusionUnits from solutions",
+      "description": "The list of site exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -149252,6 +149467,7 @@
       "path": "/solutions/backupRestore/siteExclusionUnits/{siteExclusionUnit-id}",
       "method": "GET",
       "summary": "Get siteExclusionUnits from solutions",
+      "description": "The list of site exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -149264,6 +149480,7 @@
       "path": "/solutions/backupRestore/siteExclusionUnitsBulkAdditionJobs",
       "method": "GET",
       "summary": "Get siteExclusionUnitsBulkAdditionJobs from solutions",
+      "description": "The list of bulk addition jobs for site exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -149288,6 +149505,7 @@
       "path": "/solutions/backupRestore/siteExclusionUnitsBulkAdditionJobs/{siteExclusionUnitsBulkAdditionJob-id}",
       "method": "GET",
       "summary": "Get siteExclusionUnitsBulkAdditionJobs from solutions",
+      "description": "The list of bulk addition jobs for site exclusion units in the tenant.",
       "resource": "solutions"
     },
     {
@@ -150879,7 +151097,8 @@
     {
       "path": "/solutions/virtualEvents/townhalls/{virtualEventTownhall-id}/registrationConfiguration",
       "method": "GET",
-      "summary": "Get registrationConfiguration from solutions",
+      "summary": "Get virtualEventTownhallRegistrationConfiguration",
+      "description": "Read the properties and relationships of a virtualEventTownhallRegistrationConfiguration object.",
       "resource": "solutions"
     },
     {
@@ -150930,6 +151149,7 @@
       "path": "/solutions/virtualEvents/townhalls/{virtualEventTownhall-id}/registrations",
       "method": "GET",
       "summary": "Get registrations from solutions",
+      "description": "Registration records of the town hall.",
       "resource": "solutions"
     },
     {
@@ -150948,6 +151168,7 @@
       "path": "/solutions/virtualEvents/townhalls/{virtualEventTownhall-id}/registrations(email='{email}')",
       "method": "GET",
       "summary": "Get registrations from solutions",
+      "description": "Registration records of the town hall.",
       "resource": "solutions"
     },
     {
@@ -150972,6 +151193,7 @@
       "path": "/solutions/virtualEvents/townhalls/{virtualEventTownhall-id}/registrations(userId='{userId}')",
       "method": "GET",
       "summary": "Get registrations from solutions",
+      "description": "Registration records of the town hall.",
       "resource": "solutions"
     },
     {
@@ -151002,6 +151224,7 @@
       "path": "/solutions/virtualEvents/townhalls/{virtualEventTownhall-id}/registrations/{virtualEventRegistration-id}",
       "method": "GET",
       "summary": "Get registrations from solutions",
+      "description": "Registration records of the town hall.",
       "resource": "solutions"
     },
     {
@@ -151364,14 +151587,14 @@
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrationConfiguration/questions",
       "method": "GET",
       "summary": "List questions",
-      "description": "Get a list of all registration questions for a webinar. The list can include either predefined registration questions or custom registration questions.",
+      "description": "Get a list of all registration questions for a webinar or town hall. The list can include either predefined registration questions or custom registration questions.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrationConfiguration/questions",
       "method": "POST",
       "summary": "Create question",
-      "description": "Create a registration question for a webinar. You can create either a predefined registration question or a custom registration question.",
+      "description": "Create a registration question for a webinar or town hall. You can create either a predefined registration question or a custom registration question.",
       "resource": "solutions"
     },
     {
@@ -151384,7 +151607,7 @@
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrationConfiguration/questions/{virtualEventRegistrationQuestionBase-id}",
       "method": "DELETE",
       "summary": "Delete virtualEventRegistrationQuestionBase",
-      "description": "Delete a registration question from a webinar. The question can either be a predefined registration question or a custom registration question.",
+      "description": "Delete a registration question from a webinar or town hall. The question can either be a predefined registration question or a custom registration question.",
       "resource": "solutions"
     },
     {
@@ -151404,14 +151627,14 @@
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrations",
       "method": "GET",
       "summary": "List virtualEventRegistrations",
-      "description": "Get a list of all registration records of a webinar.",
+      "description": "Get a list of all registration records of a webinar or town hall.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrations",
       "method": "POST",
       "summary": "Create virtualEventRegistration",
-      "description": "Create a registration record for a registrant of a webinar. This method registers the person for the webinar.",
+      "description": "Create a registration record for a registrant of a webinar or town hall. This method registers the person for the webinar or town hall.",
       "resource": "solutions"
     },
     {
@@ -151437,7 +151660,7 @@
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrations(email='{email}')/cancel",
       "method": "POST",
       "summary": "Invoke action cancel",
-      "description": "Cancel a registrant's registration record for a webinar.",
+      "description": "Cancel a registrant's registration record for a webinar or town hall.",
       "resource": "solutions"
     },
     {
@@ -151463,7 +151686,7 @@
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrations(userId='{userId}')/cancel",
       "method": "POST",
       "summary": "Invoke action cancel",
-      "description": "Cancel a registrant's registration record for a webinar.",
+      "description": "Cancel a registrant's registration record for a webinar or town hall.",
       "resource": "solutions"
     },
     {
@@ -151495,14 +151718,14 @@
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrations/{virtualEventRegistration-id}/cancel",
       "method": "POST",
       "summary": "Invoke action cancel",
-      "description": "Cancel a registrant's registration record for a webinar.",
+      "description": "Cancel a registrant's registration record for a webinar or town hall.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/virtualEvents/webinars/{virtualEventWebinar-id}/registrations/{virtualEventRegistration-id}/sessions",
       "method": "GET",
       "summary": "List sessions for a virtual event registration",
-      "description": "Get a list of sessions that a registrant registered for in a webinar.",
+      "description": "Get a list of sessions that a registrant registered for in a webinar or town hall.",
       "resource": "solutions"
     },
     {
@@ -153435,6 +153658,56 @@
       "resource": "teamtemplatedefinition"
     },
     {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/members",
       "method": "GET",
       "summary": "Get members from teamTemplateDefinition",
@@ -154898,6 +155171,56 @@
       "method": "PUT",
       "summary": "Update contentStream for the navigation property filesFolder in teamTemplateDefinition",
       "description": "The content stream, if the item represents a file.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamTemplateDefinition",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in teamTemplateDefinition",
       "resource": "teamtemplatedefinition"
     },
     {
@@ -156809,6 +157132,56 @@
       "resource": "teams"
     },
     {
+      "path": "/teams/{team-id}/channels/{channel-id}/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from teams",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for teams",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for teams",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from teams",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in teams",
+      "resource": "teams"
+    },
+    {
       "path": "/teams/{team-id}/channels/{channel-id}/members",
       "method": "GET",
       "summary": "List members of channel",
@@ -158285,6 +158658,56 @@
       "method": "PUT",
       "summary": "Update contentStream for the navigation property filesFolder in teams",
       "description": "The content stream, if the item represents a file.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from teams",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for teams",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for teams",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from teams",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in teams",
       "resource": "teams"
     },
     {
@@ -160261,6 +160684,56 @@
       "resource": "teamwork"
     },
     {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in teamwork",
+      "resource": "teamwork"
+    },
+    {
       "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/members",
       "method": "GET",
       "summary": "Get members from teamwork",
@@ -161729,6 +162202,56 @@
       "resource": "teamwork"
     },
     {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in teamwork",
+      "resource": "teamwork"
+    },
+    {
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/members",
       "method": "GET",
       "summary": "Get members from teamwork",
@@ -163192,6 +163715,56 @@
       "method": "PUT",
       "summary": "Update contentStream for the navigation property filesFolder in teamwork",
       "description": "The content stream, if the item represents a file.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers",
+      "method": "POST",
+      "summary": "Create new navigation property to joinedUsers for teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/add",
+      "method": "POST",
+      "summary": "Invoke action add",
+      "description": "Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/remove",
+      "method": "POST",
+      "summary": "Invoke action remove",
+      "description": "Remove multiple members from a team in a single request. The response provides details about which memberships could and couldn't be removed.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property joinedUsers for teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "GET",
+      "summary": "Get joinedUsers from teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/joinedUsers/{conversationMember-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property joinedUsers in teamwork",
       "resource": "teamwork"
     },
     {
@@ -172728,6 +173301,7 @@
       "path": "/users/{user-id}/cloudPcPools",
       "method": "GET",
       "summary": "Get cloudPcPools from users",
+      "description": "The user's Cloud PC pools. Read-only. Nullable.",
       "resource": "users"
     },
     {
@@ -172752,6 +173326,7 @@
       "path": "/users/{user-id}/cloudPcPools/{cloudPcPool-id}",
       "method": "GET",
       "summary": "Get cloudPcPools from users",
+      "description": "The user's Cloud PC pools. Read-only. Nullable.",
       "resource": "users"
     },
     {
@@ -172764,6 +173339,7 @@
       "path": "/users/{user-id}/cloudPcPools/{cloudPcPool-id}/assignments",
       "method": "GET",
       "summary": "Get assignments from users",
+      "description": "The collection of assignments that grant user or service principal identities access to this pool.",
       "resource": "users"
     },
     {
@@ -172788,6 +173364,7 @@
       "path": "/users/{user-id}/cloudPcPools/{cloudPcPool-id}/assignments/{cloudPcPoolAssignment-id}",
       "method": "GET",
       "summary": "Get assignments from users",
+      "description": "The collection of assignments that grant user or service principal identities access to this pool.",
       "resource": "users"
     },
     {
