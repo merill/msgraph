@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-06-11T10:00:15Z",
-  "endpointCount": 6406,
+  "generated": "2026-06-12T09:52:58Z",
+  "endpointCount": 6407,
   "resourceCount": 4382,
   "endpoints": [
     {
@@ -6775,14 +6775,14 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28637,15 +28637,15 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
@@ -39254,7 +39254,11 @@
         "application": [
           "Directory.Read.All"
         ]
-      }
+      },
+      "notes": [
+        "Microsoft Graph evaluates the groupIds collection as a single request. If the request is invalid (for example, a malformed group ID), the entire request fails. If the caller doesn't have access to evaluate certain groups (for example, groups with hidden membership), the response might include onl...",
+        "Response time depends on your tenant's directory structure, including group nesting depth and membership size. Microsoft Graph doesn't publish latency targets for transitive membership APIs."
+      ]
     },
     {
       "path": "/directoryObjects/{id}/checkMemberObjects",
@@ -40180,12 +40184,12 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "Files.ReadWrite.All",
-          "Files.Read.All"
+          "Files.Read.All",
+          "Files.ReadWrite.All"
         ],
         "application": [
-          "Files.ReadWrite.All",
-          "Files.Read.All"
+          "Files.Read.All",
+          "Files.ReadWrite.All"
         ]
       }
     },
@@ -47203,6 +47207,9 @@
         "$orderby",
         "$skip",
         "$top"
+      ],
+      "notes": [
+        "The delegatedBy property isn't returned for accessReviewScheduleDefinition responses. Use delegatedReviewer only to filter the returned definitions."
       ]
     },
     {
@@ -47222,6 +47229,9 @@
         "$orderby",
         "$skip",
         "$top"
+      ],
+      "notes": [
+        "The delegatedBy property isn't returned by default. To retrieve it, use $select=delegatedBy in your query."
       ]
     },
     {
@@ -47306,6 +47316,9 @@
         "$orderby",
         "$skip",
         "$top"
+      ],
+      "notes": [
+        "The delegatedBy property isn't returned by default. To retrieve it, use $select=delegatedBy in your query."
       ]
     },
     {
@@ -56466,16 +56479,16 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "Mail.ReadBasic",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic"
         ],
         "delegatedPersonal": [
-          "Mail.ReadBasic",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic"
         ],
         "application": [
-          "Mail.ReadBasic.All",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic.All"
         ]
       },
       "queryParams": [
@@ -62739,25 +62752,25 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All",
           "User.Read",
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All",
+          "Directory.ReadWrite.All"
+        ],
+        "application": [
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All"
-        ],
-        "application": [
+          "DeviceManagementConfiguration.ReadWrite.All",
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All"
+          "Directory.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -81994,6 +82007,24 @@
     },
     {
       "path": "/storage/fileStorage/containers/{containerId}/permissions/{permissionId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "FileStorageContainer.Selected"
+        ],
+        "delegatedPersonal": [
+          "FileStorageContainer.Selected"
+        ],
+        "application": [
+          "FileStorageContainer.Selected"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/storage/fileStorage/containers/{containerId}/permissions/{permissionId}",
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
@@ -86389,26 +86420,26 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "User.ReadBasic.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "User.ReadBasic.All"
         ],
         "application": [
-          "User.Read.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "User.Read.All"
         ]
       },
       "queryParams": [
@@ -86425,8 +86456,8 @@
         "ConsistencyLevel: eventual"
       ],
       "notes": [
-        "Guest users cannot call this API. For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?.",
-        "The Microsoft Graph API for Intune requires an active Intune license for the tenant."
+        "The Microsoft Graph API for Intune requires an active Intune license for the tenant.",
+        "Guest users cannot call this API. For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?."
       ]
     },
     {
@@ -86596,37 +86627,37 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "Calendars.ReadBasic",
           "User.Read",
           "UserAuthenticationMethod.Read",
-          "AppRoleAssignment.ReadWrite.All",
-          "Calendars.ReadBasic"
+          "AppRoleAssignment.ReadWrite.All"
         ],
         "delegatedPersonal": [
-          "User.Read",
-          "Calendars.ReadBasic"
+          "Calendars.ReadBasic",
+          "User.Read"
         ],
         "application": [
+          "Calendars.ReadBasic",
+          "Chat.Read.All",
           "User.Read.All",
           "UserAuthenticationMethod.Read",
-          "Chat.Read.All",
-          "Directory.Read.All",
-          "Calendars.ReadBasic"
+          "Directory.Read.All"
         ]
       },
       "queryParams": [
         "$top",
         "$skip",
         "$filter",
-        "$count",
+        "$select",
         "$expand",
+        "$count",
         "$orderby",
-        "$search",
-        "$select"
+        "$search"
       ],
       "notes": [
         "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages.",
-        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
-        "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1."
+        "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1.",
+        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query."
       ]
     },
     {
@@ -86634,17 +86665,17 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-Phone.ReadWrite",
           "User.ReadWrite",
-          "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthenticationMethod.ReadWrite"
+          "UserAuthMethod-Phone.ReadWrite",
+          "UserAuthenticationMethod.ReadWrite",
+          "UserAuthenticationMethod.ReadWrite.All"
         ],
         "delegatedPersonal": [
           "User.ReadWrite"
         ],
         "application": [
-          "UserAuthenticationMethod.ReadWrite.All",
           "User.ManageIdentities.All",
+          "UserAuthenticationMethod.ReadWrite.All",
           "UserAuthenticationMethod.ReadWrite"
         ]
       }
@@ -86655,24 +86686,24 @@
       "permissions": {
         "delegatedWork": [
           "UserAuthMethod-Email.ReadWrite",
+          "UserAuthMethod-TAP.Read",
+          "AppRoleAssignment.ReadWrite.All",
+          "LicenseAssignment.ReadWrite.All",
           "Mail.Send",
           "Sites.ReadWrite.All",
           "UserAuthMethod-Phone.ReadWrite",
-          "AppRoleAssignment.ReadWrite.All",
-          "LicenseAssignment.ReadWrite.All",
-          "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthMethod-TAP.Read"
+          "UserAuthenticationMethod.ReadWrite.All"
         ],
         "delegatedPersonal": [
           "Mail.Send"
         ],
         "application": [
           "UserAuthenticationMethod.ReadWrite.All",
-          "Mail.Send",
-          "Sites.ReadWrite.All",
+          "UserAuthMethod-TAP.Read.All",
           "AppRoleAssignment.ReadWrite.All",
           "LicenseAssignment.ReadWrite.All",
-          "UserAuthMethod-TAP.Read.All"
+          "Mail.Send",
+          "Sites.ReadWrite.All"
         ]
       }
     },
@@ -86963,8 +86994,8 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "TeamsAppInstallation.ReadWriteSelfForUser",
-          "TeamworkTargetedMessage.ReadWrite"
+          "TeamworkTargetedMessage.ReadWrite",
+          "TeamsAppInstallation.ReadWriteSelfForUser"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -86982,15 +87013,15 @@
           "TeamsAppInstallation.ReadForUser"
         ],
         "application": [
-          "TeamworkTargetedMessage.Read.All",
-          "TeamsAppInstallation.ReadForUser.All"
+          "TeamsAppInstallation.ReadForUser.All",
+          "TeamworkTargetedMessage.Read.All"
         ]
       },
       "queryParams": [
         "$filter",
-        "$top",
         "$select",
-        "$expand"
+        "$expand",
+        "$top"
       ],
       "notes": [
         "This API works differently in one or more national clouds. For details, see Implementation differences in national clouds."
@@ -87440,20 +87471,20 @@
         "delegatedWork": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All"
         ]
@@ -87467,15 +87498,15 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All"
         ]
       },
@@ -91178,6 +91209,11 @@
       "name": "accessReviewInstance",
       "properties": [
         {
+          "name": "delegatedBy",
+          "type": "userIdentity collection",
+          "notes": "Read-only"
+        },
+        {
           "name": "endDateTime",
           "type": "DateTimeOffset",
           "notes": "Read-only"
@@ -91236,17 +91272,22 @@
           "notes": "Read-only"
         },
         {
+          "name": "applyDescription",
+          "type": "String"
+        },
+        {
           "name": "applyResult",
           "type": "String",
           "notes": "Read-only"
         },
         {
-          "name": "applyDescription",
+          "name": "decision",
           "type": "String"
         },
         {
-          "name": "decision",
-          "type": "String"
+          "name": "delegatedBy",
+          "type": "userIdentity collection",
+          "notes": "Read-only"
         },
         {
           "name": "id",
@@ -91256,11 +91297,6 @@
         {
           "name": "justification",
           "type": "String"
-        },
-        {
-          "name": "target",
-          "type": "accessReviewInstanceDecisionItemTarget",
-          "notes": "Read-only"
         },
         {
           "name": "permission",
@@ -91274,6 +91310,11 @@
         {
           "name": "principalLink",
           "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "principalResourceMembership",
+          "type": "decisionItemPrincipalResourceMembership",
           "notes": "Read-only"
         },
         {
@@ -91302,8 +91343,8 @@
           "notes": "Read-only"
         },
         {
-          "name": "principalResourceMembership",
-          "type": "decisionItemPrincipalResourceMembership",
+          "name": "target",
+          "type": "accessReviewInstanceDecisionItemTarget",
           "notes": "Read-only"
         }
       ]
