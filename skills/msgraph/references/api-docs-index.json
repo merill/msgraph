@@ -1,6 +1,6 @@
 {
   "version": "beta",
-  "generated": "2026-06-16T10:49:18Z",
+  "generated": "2026-06-17T10:22:21Z",
   "endpointCount": 6407,
   "resourceCount": 4382,
   "endpoints": [
@@ -3680,7 +3680,7 @@
         ]
       },
       "notes": [
-        "Do not share application client IDs (appId) in API documentation or code samples."
+        "Don't share application client IDs (appId) in API documentation or code samples."
       ]
     },
     {
@@ -6180,7 +6180,7 @@
         ]
       },
       "notes": [
-        "This method only lists the last operation; it does not return a history of all operations."
+        "This method only lists the last operation; it doesn't return a history of all operations."
       ]
     },
     {
@@ -6255,7 +6255,7 @@
         ]
       },
       "notes": [
-        "This method only lists the last operation; it does not return a history of all operations."
+        "This method only lists the last operation; it doesn't return a history of all operations."
       ]
     },
     {
@@ -6294,7 +6294,7 @@
         ]
       },
       "notes": [
-        "This request purges Teams data only. It does not purge other types of data such as mailbox items."
+        "This request purges Teams data only. It doesn't purge other types of data such as mailbox items."
       ]
     },
     {
@@ -44794,7 +44794,7 @@
         "$select"
       ],
       "notes": [
-        "The createdDateTime and lastModifiedDateTime properties of event do not support $select. To get their values, simply query on calendarView without applying $select."
+        "The createdDateTime and lastModifiedDateTime properties of event don't support $select. To get their values, simply query on calendarView without applying $select."
       ]
     },
     {
@@ -52428,7 +52428,7 @@
         "$top"
       ],
       "notes": [
-        "The createdDateTime and lastModifiedDateTime properties of event do not support $select. To get their values, simply query on calendarView without applying $select."
+        "The createdDateTime and lastModifiedDateTime properties of event don't support $select. To get their values, simply query on calendarView without applying $select."
       ]
     },
     {
@@ -72969,7 +72969,7 @@
         ]
       },
       "notes": [
-        "This method only lists the last operation; it does not return a history of all operations."
+        "This method only lists the last operation; it doesn't return a history of all operations."
       ]
     },
     {
@@ -78029,7 +78029,7 @@
         "$top"
       ],
       "notes": [
-        "The [baseSitePage][] specified is a parent type and does not have any instance. As a result, the returned data only consists of available subtypes that are provided as a list."
+        "The [baseSitePage][] specified is a parent type and doesn't have any instance. As a result, the returned data only consists of available subtypes that are provided as a list."
       ]
     },
     {
