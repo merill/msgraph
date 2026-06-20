@@ -1,6 +1,6 @@
 {
   "version": "beta",
-  "generated": "2026-06-19T10:08:26Z",
+  "generated": "2026-06-20T08:37:59Z",
   "endpointCount": 6420,
   "resourceCount": 4402,
   "endpoints": [
@@ -105230,7 +105230,8 @@
       "properties": [
         {
           "name": "displayName",
-          "type": "string"
+          "type": "string",
+          "notes": "Read-only"
         },
         {
           "name": "id",
@@ -110989,11 +110990,13 @@
       "properties": [
         {
           "name": "displayName",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "tenantId",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         }
       ]
     },
@@ -115542,7 +115545,8 @@
         },
         {
           "name": "createdDateTime",
-          "type": "dateTimeOffset"
+          "type": "dateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "moderationSettings",
@@ -115900,7 +115904,8 @@
         },
         {
           "name": "deletedDateTime",
-          "type": "dateTimeOffset"
+          "type": "dateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "etag",
@@ -115927,11 +115932,13 @@
         },
         {
           "name": "lastEditedDateTime",
-          "type": "dateTimeOffset"
+          "type": "dateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "lastModifiedDateTime",
-          "type": "dateTimeOffset"
+          "type": "dateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "locale",
@@ -117634,7 +117641,8 @@
         },
         {
           "name": "connectionSetting",
-          "type": "cloudPcConnectionSetting"
+          "type": "cloudPcConnectionSetting",
+          "notes": "Read-only"
         },
         {
           "name": "userAccountType",
@@ -122666,7 +122674,8 @@
         },
         {
           "name": "createdDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "description",
@@ -122687,7 +122696,8 @@
         },
         {
           "name": "modifiedDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "sessionControls",
@@ -123524,7 +123534,8 @@
         },
         {
           "name": "description",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "isBackup",
@@ -125228,15 +125239,18 @@
       "properties": [
         {
           "name": "cloudInstance",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "displayName",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "tenantId",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         }
       ]
     },
@@ -126036,14 +126050,16 @@
         },
         {
           "name": "description",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "displayName",
           "type": "String",
           "filter": [
             "contains"
-          ]
+          ],
+          "notes": "Read-only"
         },
         {
           "name": "endpointConfiguration",
@@ -128470,7 +128486,8 @@
         },
         {
           "name": "status",
-          "type": "delegatedAdminRelationshipStatus"
+          "type": "delegatedAdminRelationshipStatus",
+          "notes": "Read-only"
         }
       ]
     },
@@ -138726,7 +138743,8 @@
           "type": "String",
           "filter": [
             "eq"
-          ]
+          ],
+          "notes": "Read-only"
         }
       ]
     },
@@ -146871,15 +146889,18 @@
       "properties": [
         {
           "name": "displayName",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "domainName",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "issuerUri",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         }
       ]
     },
@@ -151293,7 +151314,8 @@
         },
         {
           "name": "description",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "isBackup",
@@ -183533,7 +183555,8 @@
         },
         {
           "name": "defaultLabel",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "fieldId",
@@ -186218,7 +186241,8 @@
         },
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         }
       ]
     },
@@ -194136,7 +194160,8 @@
         },
         {
           "name": "eventId",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "eventLocation",
@@ -202058,11 +202083,13 @@
       "properties": [
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "lastShared",
-          "type": "sharingDetail"
+          "type": "sharingDetail",
+          "notes": "Read-only"
         },
         {
           "name": "resourceVisualization",
@@ -203710,7 +203737,8 @@
         },
         {
           "name": "description",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "isBackup",
@@ -208954,7 +208982,8 @@
       "properties": [
         {
           "name": "id",
-          "type": "string"
+          "type": "string",
+          "notes": "Read-only"
         },
         {
           "name": "displayName",
@@ -208974,7 +209003,8 @@
         },
         {
           "name": "webUrl",
-          "type": "string"
+          "type": "string",
+          "notes": "Read-only"
         },
         {
           "name": "configuration",
@@ -212909,7 +212939,8 @@
         {
           "name": "untranslatedLanguages",
           "type": "String collection",
-          "default": true
+          "default": true,
+          "notes": "Read-only"
         }
       ]
     },
@@ -212918,7 +212949,8 @@
       "properties": [
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "weight",
@@ -214020,7 +214052,8 @@
           "type": "String",
           "filter": [
             "eq"
-          ]
+          ],
+          "notes": "Read-only"
         },
         {
           "name": "roleEligibilityScheduleId",
@@ -215318,11 +215351,13 @@
       "properties": [
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "lastUsed",
-          "type": "usageDetails"
+          "type": "usageDetails",
+          "notes": "Read-only"
         },
         {
           "name": "resourceVisualization",
