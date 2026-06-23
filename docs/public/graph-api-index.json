@@ -1,6 +1,6 @@
 {
   "version": "beta",
-  "generated": "2026-06-22T11:29:06Z",
+  "generated": "2026-06-23T08:54:01Z",
   "count": 28816,
   "endpoints": [
     {
@@ -1673,7 +1673,7 @@
       "path": "/admin/people/profilePropertySettings",
       "method": "GET",
       "summary": "List profilePropertySettings",
-      "description": "Get a collection of profilePropertySetting objects that define the configuration for user profile properties in an organization. The id property identifies each resource object uniquely.",
+      "description": "Get a collection of profilePropertySetting objects that define the configuration for user profile property settings in an organization. The id property identifies each resource object uniquely.",
       "resource": "admin"
     },
     {
@@ -1693,7 +1693,7 @@
       "path": "/admin/people/profilePropertySettings/{profilePropertySetting-id}",
       "method": "DELETE",
       "summary": "Delete profilePropertySetting",
-      "description": "Delete a profilePropertySetting object.",
+      "description": "Delete a profilePropertySetting object. You shouldn't delete a profilePropertySetting that includes a source precedence configuration. Instead, patch it to a default state that contains only the Microsoft Entra ID source reference. This delete operation is supported but fails unless the prioritiz...",
       "resource": "admin"
     },
     {
@@ -132566,7 +132566,8 @@
     {
       "path": "/security/alerts_v2",
       "method": "POST",
-      "summary": "Create new navigation property to alerts_v2 for security",
+      "summary": "Create manualAlert",
+      "description": "Create a manual security alert in Microsoft 365 Defender with specified entities and metadata. When the alert is created, the backend automatically creates a new incident to contain the alert, or links the alert to an existing incident if linkToIncident is specified.",
       "resource": "security"
     },
     {
@@ -135016,7 +135017,8 @@
     {
       "path": "/security/identities/sensorMigration",
       "method": "GET",
-      "summary": "Get sensorMigration from security",
+      "summary": "List sensorMigration objects",
+      "description": "Get a list of the sensorMigration objects and their properties.",
       "resource": "security"
     },
     {
@@ -135035,6 +135037,7 @@
       "path": "/security/identities/sensorMigration/microsoft.graph.security.migrate",
       "method": "POST",
       "summary": "Invoke action migrate",
+      "description": "Migrate the specified sensors to the unified security portal. This action initiates the migration process for one or more Microsoft Defender for Identity sensors.",
       "resource": "security"
     },
     {
@@ -135047,6 +135050,7 @@
       "path": "/security/identities/sensorMigration/{sensorMigration-id}",
       "method": "GET",
       "summary": "Get sensorMigration from security",
+      "description": "Represents Microsoft Defender for Identity sensors that can be migrated to the unified security portal.",
       "resource": "security"
     },
     {
