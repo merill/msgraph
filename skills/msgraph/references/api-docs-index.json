@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-06-26T08:46:18Z",
-  "endpointCount": 6428,
-  "resourceCount": 4453,
+  "generated": "2026-06-27T08:23:44Z",
+  "endpointCount": 6427,
+  "resourceCount": 4448,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -52508,8 +52508,8 @@
         ]
       },
       "queryParams": [
-        "$select",
-        "$top"
+        "$top",
+        "$select"
       ],
       "notes": [
         "The createdDateTime and lastModifiedDateTime properties of event don't support $select. To get their values, simply query on calendarView without applying $select."
@@ -56719,16 +56719,16 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "Mail.ReadBasic",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic"
         ],
         "delegatedPersonal": [
-          "Mail.ReadBasic",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic"
         ],
         "application": [
-          "Mail.ReadBasic.All",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic.All"
         ]
       },
       "queryParams": [
@@ -64127,21 +64127,6 @@
           "Tasks.Read.All"
         ]
       }
-    },
-    {
-      "path": "/planner/plans/{plan-id}/historyItems",
-      "method": "GET",
-      "permissions": {
-        "delegatedWork": [
-          "Tasks.Read"
-        ],
-        "application": [
-          "Tasks.Read.All"
-        ]
-      },
-      "queryParams": [
-        "$filter"
-      ]
     },
     {
       "path": "/planner/plans/{plan-id}/tasks",
@@ -86745,22 +86730,22 @@
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "User.ReadBasic.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "User.ReadBasic.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "User.Read.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "User.Read.All"
         ]
       },
       "queryParams": [
@@ -86787,15 +86772,15 @@
       "permissions": {
         "delegatedWork": [
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "User.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "User.ReadWrite.All"
         ]
@@ -86948,9 +86933,9 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "UserAuthenticationMethod.Read",
-          "User.Read",
           "AppRoleAssignment.ReadWrite.All",
+          "User.Read",
+          "UserAuthenticationMethod.Read",
           "Calendars.ReadBasic"
         ],
         "delegatedPersonal": [
@@ -86958,27 +86943,27 @@
           "Calendars.ReadBasic"
         ],
         "application": [
+          "Directory.Read.All",
+          "User.Read.All",
           "UserAuthenticationMethod.Read",
           "Chat.Read.All",
-          "User.Read.All",
-          "Directory.Read.All",
           "Calendars.ReadBasic"
         ]
       },
       "queryParams": [
+        "$select",
+        "$expand",
         "$top",
+        "$skip",
         "$filter",
         "$count",
-        "$expand",
         "$orderby",
-        "$search",
-        "$select",
-        "$skip"
+        "$search"
       ],
       "notes": [
-        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
         "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1.",
-        "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages."
+        "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages.",
+        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query."
       ]
     },
     {
@@ -86986,17 +86971,17 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
+          "User.ReadWrite",
           "UserAuthMethod-Phone.ReadWrite",
           "UserAuthenticationMethod.ReadWrite.All",
-          "User.ReadWrite",
           "UserAuthenticationMethod.ReadWrite"
         ],
         "delegatedPersonal": [
           "User.ReadWrite"
         ],
         "application": [
-          "UserAuthenticationMethod.ReadWrite.All",
           "User.ManageIdentities.All",
+          "UserAuthenticationMethod.ReadWrite.All",
           "UserAuthenticationMethod.ReadWrite"
         ]
       }
@@ -87006,23 +86991,23 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-Phone.ReadWrite",
-          "Mail.Send",
           "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthMethod-TAP.Read",
+          "Mail.Send",
           "AppRoleAssignment.ReadWrite.All",
-          "LicenseAssignment.ReadWrite.All",
           "UserAuthMethod-Email.ReadWrite",
-          "Sites.ReadWrite.All"
+          "UserAuthMethod-TAP.Read",
+          "LicenseAssignment.ReadWrite.All",
+          "Sites.ReadWrite.All",
+          "UserAuthMethod-Phone.ReadWrite"
         ],
         "delegatedPersonal": [
           "Mail.Send"
         ],
         "application": [
-          "UserAuthenticationMethod.ReadWrite.All",
           "Mail.Send",
-          "UserAuthMethod-TAP.Read.All",
           "AppRoleAssignment.ReadWrite.All",
+          "UserAuthenticationMethod.ReadWrite.All",
+          "UserAuthMethod-TAP.Read.All",
           "LicenseAssignment.ReadWrite.All",
           "Sites.ReadWrite.All"
         ]
@@ -87340,9 +87325,9 @@
       },
       "queryParams": [
         "$filter",
+        "$top",
         "$select",
-        "$expand",
-        "$top"
+        "$expand"
       ],
       "notes": [
         "This API works differently in one or more national clouds. For details, see Implementation differences in national clouds."
@@ -87353,8 +87338,8 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "TeamsAppInstallation.ReadWriteSelfForUser",
-          "TeamworkTargetedMessage.ReadWrite"
+          "TeamworkTargetedMessage.ReadWrite",
+          "TeamsAppInstallation.ReadWriteSelfForUser"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -87771,14 +87756,14 @@
         "delegatedWork": [
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -87792,22 +87777,22 @@
         "delegatedWork": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -87819,16 +87804,16 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -164062,7 +164047,7 @@
         },
         {
           "name": "labelId",
-          "type": "Guid"
+          "type": "GUID"
         }
       ]
     },
@@ -165118,12 +165103,12 @@
       "name": "loggedOnUser",
       "properties": [
         {
-          "name": "userId",
+          "name": "accountName",
           "type": "String"
         },
         {
-          "name": "lastLogOnDateTime",
-          "type": "DateTimeOffset"
+          "name": "domainName",
+          "type": "String"
         }
       ]
     },
@@ -173289,10 +173274,6 @@
       "name": "mdmWindowsInformationProtectionPolicy",
       "properties": [
         {
-          "name": "id",
-          "type": "String"
-        },
-        {
           "name": "displayName",
           "type": "String"
         },
@@ -173311,6 +173292,10 @@
         {
           "name": "roleScopeTagIds",
           "type": "String collection"
+        },
+        {
+          "name": "id",
+          "type": "String"
         },
         {
           "name": "version",
@@ -176377,11 +176362,35 @@
           "type": "String"
         },
         {
+          "name": "Troubleshooting",
+          "type": ""
+        },
+        {
+          "name": "additionalInformation",
+          "type": "keyValuePair collection"
+        },
+        {
+          "name": "applicationId",
+          "type": "String"
+        },
+        {
+          "name": "correlationId",
+          "type": "String"
+        },
+        {
           "name": "eventDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "correlationId",
+          "name": "eventName",
+          "type": "String"
+        },
+        {
+          "name": "history",
+          "type": "mobileAppTroubleshootingHistoryItem collection"
+        },
+        {
+          "name": "managedDeviceIdentifier",
           "type": "String"
         },
         {
@@ -176389,32 +176398,8 @@
           "type": "deviceManagementTroubleshootingErrorDetails"
         },
         {
-          "name": "eventName",
-          "type": "String"
-        },
-        {
-          "name": "additionalInformation",
-          "type": "keyValuePair collection"
-        },
-        {
-          "name": "managedDeviceIdentifier",
-          "type": "String"
-        },
-        {
-          "name": "deviceId",
-          "type": "String"
-        },
-        {
           "name": "userId",
           "type": "String"
-        },
-        {
-          "name": "applicationId",
-          "type": "String"
-        },
-        {
-          "name": "history",
-          "type": "mobileAppTroubleshootingHistoryItem collection"
         }
       ]
     },
@@ -187045,15 +187030,6 @@
       ]
     },
     {
-      "name": "plannerDelta",
-      "properties": [
-        {
-          "name": "id",
-          "type": "String"
-        }
-      ]
-    },
-    {
       "name": "plannerExternalBucketSource",
       "properties": [
         {
@@ -187223,39 +187199,6 @@
           "name": "id",
           "type": "String",
           "notes": "Read-only"
-        }
-      ]
-    },
-    {
-      "name": "plannerHistoryItem",
-      "properties": [
-        {
-          "name": "actor",
-          "type": "identitySet"
-        },
-        {
-          "name": "entityId",
-          "type": "String"
-        },
-        {
-          "name": "entityType",
-          "type": "historyEntityType"
-        },
-        {
-          "name": "eventType",
-          "type": "historyEventType"
-        },
-        {
-          "name": "id",
-          "type": "String"
-        },
-        {
-          "name": "occurredDateTime",
-          "type": "DateTimeOffset"
-        },
-        {
-          "name": "planId",
-          "type": "String"
         }
       ]
     },
@@ -187914,115 +187857,6 @@
       ]
     },
     {
-      "name": "plannerTaskData",
-      "properties": [
-        {
-          "name": "activeChecklistItemCount",
-          "type": "Int32"
-        },
-        {
-          "name": "appliedCategories",
-          "type": "plannerAppliedCategories"
-        },
-        {
-          "name": "archivalInfo",
-          "type": "plannerArchivalInfo"
-        },
-        {
-          "name": "assignments",
-          "type": "plannerAssignments"
-        },
-        {
-          "name": "bucketId",
-          "type": "String"
-        },
-        {
-          "name": "checklistItemCount",
-          "type": "Int32"
-        },
-        {
-          "name": "completedBy",
-          "type": "identitySet"
-        },
-        {
-          "name": "completedDateTime",
-          "type": "DateTimeOffset"
-        },
-        {
-          "name": "conversationThreadId",
-          "type": "String"
-        },
-        {
-          "name": "createdBy",
-          "type": "identitySet"
-        },
-        {
-          "name": "createdDateTime",
-          "type": "DateTimeOffset"
-        },
-        {
-          "name": "creationSource",
-          "type": "plannerTaskCreation"
-        },
-        {
-          "name": "details",
-          "type": "plannerTaskDetailsData"
-        },
-        {
-          "name": "dueDateTime",
-          "type": "DateTimeOffset"
-        },
-        {
-          "name": "hasChat",
-          "type": "Boolean"
-        },
-        {
-          "name": "hasDescription",
-          "type": "Boolean"
-        },
-        {
-          "name": "isArchived",
-          "type": "Boolean"
-        },
-        {
-          "name": "orderHint",
-          "type": "String"
-        },
-        {
-          "name": "percentComplete",
-          "type": "Int32"
-        },
-        {
-          "name": "previewType",
-          "type": "plannerPreviewType"
-        },
-        {
-          "name": "priority",
-          "type": "Int32"
-        },
-        {
-          "name": "recurrence",
-          "type": "plannerTaskRecurrence"
-        },
-        {
-          "name": "referenceCount",
-          "type": "Int32"
-        },
-        {
-          "name": "specifiedCompletionRequirements",
-          "type": "plannerTaskCompletionRequirements"
-        },
-        {
-          "name": "startDateTime",
-          "type": "DateTimeOffset"
-        },
-        {
-          "name": "title",
-          "type": "String"
-        }
-      ]
-    },
-    {
       "name": "plannerTaskDetails",
       "properties": [
         {
@@ -188058,43 +187892,6 @@
         {
           "name": "previewType",
           "type": "string"
-        },
-        {
-          "name": "references",
-          "type": "plannerExternalReferences"
-        }
-      ]
-    },
-    {
-      "name": "plannerTaskDetailsData",
-      "properties": [
-        {
-          "name": "approvalAttachment",
-          "type": "plannerBaseApprovalAttachment"
-        },
-        {
-          "name": "checklist",
-          "type": "plannerChecklistItems"
-        },
-        {
-          "name": "completionRequirements",
-          "type": "plannerTaskCompletionRequirementDetails"
-        },
-        {
-          "name": "description",
-          "type": "String"
-        },
-        {
-          "name": "forms",
-          "type": "plannerFormsDictionary"
-        },
-        {
-          "name": "notes",
-          "type": "itemBody"
-        },
-        {
-          "name": "previewType",
-          "type": "plannerPreviewType"
         },
         {
           "name": "references",
@@ -209405,47 +209202,6 @@
       ]
     },
     {
-      "name": "taskHistoryItem",
-      "properties": [
-        {
-          "name": "actor",
-          "type": "identitySet"
-        },
-        {
-          "name": "entityId",
-          "type": "String"
-        },
-        {
-          "name": "entityType",
-          "type": "historyEntityType"
-        },
-        {
-          "name": "eventType",
-          "type": "historyEventType"
-        },
-        {
-          "name": "id",
-          "type": "String"
-        },
-        {
-          "name": "newData",
-          "type": "plannerTaskData"
-        },
-        {
-          "name": "occurredDateTime",
-          "type": "DateTimeOffset"
-        },
-        {
-          "name": "oldData",
-          "type": "plannerTaskData"
-        },
-        {
-          "name": "planId",
-          "type": "String"
-        }
-      ]
-    },
-    {
       "name": "taskList",
       "properties": [
         {
@@ -216943,24 +216699,20 @@
       "name": "usageRight",
       "properties": [
         {
+          "name": "catalogId",
+          "type": "String"
+        },
+        {
           "name": "id",
-          "type": "String",
-          "notes": "Read-only; Not nullable"
+          "type": "String"
         },
         {
-          "name": "services",
-          "type": "microsoft.graph.cloudLicensing.service collection",
-          "notes": "Read-only; Not nullable"
+          "name": "serviceIdentifier",
+          "type": "String"
         },
         {
-          "name": "skuId",
-          "type": "Guid",
-          "notes": "Read-only"
-        },
-        {
-          "name": "skuPartNumber",
-          "type": "String",
-          "notes": "Read-only; Unique SKU display name that is equal to the skuPartNumber on the related subscribedSku object; for example, AAD_Premium"
+          "name": "state",
+          "type": "usageRightState"
         }
       ]
     },
