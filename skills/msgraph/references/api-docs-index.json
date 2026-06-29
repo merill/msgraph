@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-06-28T08:37:44Z",
-  "endpointCount": 6427,
+  "generated": "2026-06-29T10:16:58Z",
+  "endpointCount": 6428,
   "resourceCount": 4448,
   "endpoints": [
     {
@@ -57873,7 +57873,8 @@
         ]
       },
       "queryParams": [
-        "$select"
+        "$select",
+        "$format"
       ],
       "notes": [
         "For online meetings: * This is a metered API. For more information, see payment models for meeting APIs. * This API doesn't support meetings created using the create onlineMeeting API that are not associated with an event on the user's calendar. * This API might not return a call transcript if mu...",
@@ -73665,6 +73666,21 @@
       "path": "/security/getHuntingSchema",
       "method": "GET",
       "permissions": {}
+    },
+    {
+      "path": "/security/getRunHuntingQuery(query='{query}',timespan='{timespan}',workspaceId={workspaceId})",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ThreatHunting.Read.All"
+        ],
+        "application": [
+          "ThreatHunting.Read.All"
+        ]
+      },
+      "notes": [
+        "Because the query is passed in the URL, callers whose query string exceeds infrastructure URI limits receive a 414 URI Too Long response. Use the runHuntingQuery POST action for long queries."
+      ]
     },
     {
       "path": "/security/identities/healthIssues",
