@@ -1,6 +1,6 @@
 {
   "version": "beta",
-  "generated": "2026-06-29T10:16:58Z",
+  "generated": "2026-06-30T08:52:18Z",
   "endpointCount": 6428,
   "resourceCount": 4448,
   "endpoints": [
@@ -121802,46 +121802,6 @@
       "name": "columnDefinition",
       "properties": [
         {
-          "name": "columnGroup",
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "type": "string"
-        },
-        {
-          "name": "displayName",
-          "type": "string"
-        },
-        {
-          "name": "enforceUniqueValues",
-          "type": "Boolean"
-        },
-        {
-          "name": "hidden",
-          "type": "Boolean"
-        },
-        {
-          "name": "id",
-          "type": "string"
-        },
-        {
-          "name": "indexed",
-          "type": "Boolean"
-        },
-        {
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "name": "readOnly",
-          "type": "Boolean"
-        },
-        {
-          "name": "required",
-          "type": "Boolean"
-        },
-        {
           "name": "boolean",
           "type": "[booleanColumn][]"
         },
@@ -121852,6 +121812,14 @@
         {
           "name": "choice",
           "type": "[choiceColumn][]"
+        },
+        {
+          "name": "columnGroup",
+          "type": "string"
+        },
+        {
+          "name": "contentApprovalStatus",
+          "type": "[contentApprovalStatusColumn][]"
         },
         {
           "name": "currency",
@@ -121866,12 +121834,61 @@
           "type": "[defaultColumnValue][]"
         },
         {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "displayName",
+          "type": "string"
+        },
+        {
+          "name": "enforceUniqueValues",
+          "type": "Boolean"
+        },
+        {
           "name": "geolocation",
           "type": "[geolocationColumn][]"
         },
         {
+          "name": "hidden",
+          "type": "Boolean"
+        },
+        {
+          "name": "hyperlinkOrPicture",
+          "type": "[hyperlinkOrPictureColumn][]"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "indexed",
+          "type": "Boolean"
+        },
+        {
+          "name": "isDeletable",
+          "type": "Boolean"
+        },
+        {
+          "name": "isReorderable",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
+          "name": "isSearchable",
+          "type": "Boolean"
+        },
+        {
+          "name": "isSealed",
+          "type": "Boolean"
+        },
+        {
           "name": "lookup",
           "type": "[lookupColumn][]"
+        },
+        {
+          "name": "name",
+          "type": "string"
         },
         {
           "name": "number",
@@ -121882,41 +121899,28 @@
           "type": "[personOrGroupColumn][]"
         },
         {
-          "name": "text",
-          "type": "[textColumn][]"
-        },
-        {
-          "name": "isDeletable",
-          "type": "Boolean"
-        },
-        {
           "name": "propagateChanges",
           "type": "Boolean"
         },
         {
-          "name": "isReorderable",
-          "type": "Boolean",
-          "notes": "Read-only"
-        },
-        {
-          "name": "isSealed",
+          "name": "readOnly",
           "type": "Boolean"
         },
         {
-          "name": "validation",
-          "type": "[columnValidation][]"
+          "name": "required",
+          "type": "Boolean"
         },
         {
-          "name": "hyperlinkOrPicture",
-          "type": "[hyperlinkOrPictureColumn][]"
+          "name": "sourceContentType",
+          "type": "[contentTypeInfo][]"
         },
         {
           "name": "term",
           "type": "[termColumn][]"
         },
         {
-          "name": "sourceContentType",
-          "type": "[contentTypeInfo][]"
+          "name": "text",
+          "type": "[textColumn][]"
         },
         {
           "name": "thumbnail",
@@ -121928,8 +121932,8 @@
           "notes": "Read-only"
         },
         {
-          "name": "contentApprovalStatus",
-          "type": "[contentApprovalStatusColumn][]"
+          "name": "validation",
+          "type": "[columnValidation][]"
         }
       ]
     },
@@ -151168,6 +151172,10 @@
           "type": "String"
         },
         {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
           "name": "id",
           "type": "String"
         },
@@ -151266,6 +151274,10 @@
           "type": "destinationType"
         },
         {
+          "name": "error",
+          "type": "publicError"
+        },
+        {
           "name": "id",
           "type": "String"
         },
@@ -151313,6 +151325,10 @@
         {
           "name": "destinationType",
           "type": "destinationType"
+        },
+        {
+          "name": "error",
+          "type": "publicError"
         },
         {
           "name": "id",
