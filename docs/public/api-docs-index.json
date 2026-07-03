@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-07-02T08:38:16Z",
-  "endpointCount": 6428,
-  "resourceCount": 4448,
+  "generated": "2026-07-03T08:44:38Z",
+  "endpointCount": 6429,
+  "resourceCount": 4454,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -6787,14 +6787,14 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28624,20 +28624,20 @@
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28650,15 +28650,15 @@
       "permissions": {
         "delegatedWork": [
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -44860,14 +44860,14 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "Group-Conversation.Read.All",
           "Group.Read.All",
-          "Group.ReadWrite.All",
-          "Group-Conversation.Read.All"
+          "Group.ReadWrite.All"
         ],
         "application": [
+          "Group-Conversation.Read.All",
           "Group.Read.All",
-          "Group.ReadWrite.All",
-          "Group-Conversation.Read.All"
+          "Group.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -49411,6 +49411,11 @@
           "LifecycleWorkflows-Workflow.Activate"
         ]
       }
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflowId}/clearQuarantine",
+      "method": "POST",
+      "permissions": {}
     },
     {
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflowId}/createNewVersion",
@@ -71862,10 +71867,10 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "SecurityAlert.ReadWrite.All"
+          "SecurityAlert.Create.All"
         ],
         "application": [
-          "SecurityAlert.ReadWrite.All"
+          "SecurityAlert.Create.All"
         ]
       }
     },
@@ -115232,7 +115237,7 @@
       "properties": [
         {
           "name": "action",
-          "type": "microsoft.graph.security.caseAction"
+          "type": "microsoft.graph.ediscovery.caseAction"
         },
         {
           "name": "completedDateTime",
@@ -115261,7 +115266,7 @@
         },
         {
           "name": "status",
-          "type": "microsoft.graph.security.caseOperationStatus"
+          "type": "microsoft.graph.ediscovery.caseOperationStatus"
         }
       ]
     },
@@ -121651,10 +121656,6 @@
           "type": "Boolean"
         },
         {
-          "name": "notificationSetting",
-          "type": "cloudPcNotificationSetting"
-        },
-        {
           "name": "provisioningSourceType",
           "type": "cloudPcProvisioningSourceType"
         },
@@ -121665,6 +121666,10 @@
         {
           "name": "restorePointSetting",
           "type": "cloudPcRestorePointSetting"
+        },
+        {
+          "name": "notificationSetting (deprecated)",
+          "type": "cloudPcNotificationSetting"
         },
         {
           "name": "selfServiceEnabled (deprecated)",
@@ -124706,7 +124711,7 @@
       "name": "contentInfo",
       "properties": [
         {
-          "name": "format",
+          "name": "contentFormat",
           "type": "String"
         },
         {
@@ -124719,7 +124724,7 @@
         },
         {
           "name": "state",
-          "type": "String"
+          "type": "contentState"
         }
       ]
     },
@@ -125309,6 +125314,15 @@
       ]
     },
     {
+      "name": "countBasedQuarantineCondition",
+      "properties": [
+        {
+          "name": "threshold",
+          "type": "Int64"
+        }
+      ]
+    },
+    {
       "name": "countryNamedLocation",
       "properties": [
         {
@@ -125395,16 +125409,16 @@
       "name": "credential",
       "properties": [
         {
-          "name": "displayName",
+          "name": "fieldId",
           "type": "String"
         },
         {
-          "name": "isValid",
-          "type": "Boolean"
+          "name": "type",
+          "type": "String"
         },
         {
-          "name": "lastValidDateTime",
-          "type": "DateTimeOffset"
+          "name": "value",
+          "type": "String"
         }
       ]
     },
@@ -130067,37 +130081,31 @@
       "name": "deployment",
       "properties": [
         {
-          "name": "content",
-          "type": "microsoft.graph.windowsUpdates.deployableContent",
-          "default": true
+          "name": "configuration",
+          "type": "microsoft.graph.networkaccess.deploymentConfiguration"
         },
         {
-          "name": "createdDateTime",
-          "type": "DateTimeOffset",
-          "default": true,
-          "notes": "Read-only"
+          "name": "deploymentEndDateTime",
+          "type": "DateTimeOffset"
         },
         {
-          "name": "id",
-          "type": "String",
-          "default": true,
-          "notes": "Read-only; Not nullable"
+          "name": "initiatedBy",
+          "type": "String"
         },
         {
           "name": "lastModifiedDateTime",
-          "type": "DateTimeOffset",
-          "default": true,
-          "notes": "Read-only"
+          "type": "DateTimeOffset"
         },
         {
-          "name": "settings",
-          "type": "microsoft.graph.windowsUpdates.deploymentSettings",
-          "default": true
+          "name": "requestId",
+          "type": "String"
         },
         {
-          "name": "state",
-          "type": "microsoft.graph.windowsUpdates.deploymentState",
-          "default": true
+          "name": "status",
+          "type": "microsoft.graph.networkaccess.deploymentStatus",
+          "filter": [
+            "eq"
+          ]
         }
       ]
     },
@@ -131798,12 +131806,12 @@
       "name": "deviceCompliancePolicy",
       "properties": [
         {
-          "name": "id",
-          "type": "String"
-        },
-        {
           "name": "roleScopeTagIds",
           "type": "String collection"
+        },
+        {
+          "name": "id",
+          "type": "String"
         },
         {
           "name": "createdDateTime",
@@ -149707,6 +149715,10 @@
         {
           "name": "version",
           "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "Int32"
         }
       ]
     },
@@ -160001,11 +160013,13 @@
       "properties": [
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "expirationDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "default": true
         },
         {
           "name": "payloadFileName",
@@ -164079,7 +164093,7 @@
         },
         {
           "name": "labelId",
-          "type": "GUID"
+          "type": "Guid"
         }
       ]
     },
@@ -164651,12 +164665,16 @@
       "name": "lifecycleManagementSettings",
       "properties": [
         {
-          "name": "workflowScheduleIntervalInHours",
-          "type": "Int32"
-        },
-        {
           "name": "emailSettings",
           "type": "microsoft.graph.emailSettings"
+        },
+        {
+          "name": "quarantineConfiguration",
+          "type": "microsoft.graph.identityGovernance.quarantineConfiguration"
+        },
+        {
+          "name": "workflowScheduleIntervalInHours",
+          "type": "Int32"
         }
       ]
     },
@@ -165132,15 +165150,40 @@
       ]
     },
     {
+      "name": "lockInfo",
+      "properties": [
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "expirationDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lockType",
+          "type": "lockType",
+          "notes": "Read-only"
+        },
+        {
+          "name": "owners",
+          "type": "Collection(userIdentity)",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "loggedOnUser",
       "properties": [
         {
-          "name": "accountName",
+          "name": "userId",
           "type": "String"
         },
         {
-          "name": "domainName",
-          "type": "String"
+          "name": "lastLogOnDateTime",
+          "type": "DateTimeOffset"
         }
       ]
     },
@@ -176394,35 +176437,11 @@
           "type": "String"
         },
         {
-          "name": "Troubleshooting",
-          "type": ""
-        },
-        {
-          "name": "additionalInformation",
-          "type": "keyValuePair collection"
-        },
-        {
-          "name": "applicationId",
-          "type": "String"
-        },
-        {
-          "name": "correlationId",
-          "type": "String"
-        },
-        {
           "name": "eventDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "eventName",
-          "type": "String"
-        },
-        {
-          "name": "history",
-          "type": "mobileAppTroubleshootingHistoryItem collection"
-        },
-        {
-          "name": "managedDeviceIdentifier",
+          "name": "correlationId",
           "type": "String"
         },
         {
@@ -176430,8 +176449,32 @@
           "type": "deviceManagementTroubleshootingErrorDetails"
         },
         {
+          "name": "eventName",
+          "type": "String"
+        },
+        {
+          "name": "additionalInformation",
+          "type": "keyValuePair collection"
+        },
+        {
+          "name": "managedDeviceIdentifier",
+          "type": "String"
+        },
+        {
+          "name": "deviceId",
+          "type": "String"
+        },
+        {
           "name": "userId",
           "type": "String"
+        },
+        {
+          "name": "applicationId",
+          "type": "String"
+        },
+        {
+          "name": "history",
+          "type": "mobileAppTroubleshootingHistoryItem collection"
         }
       ]
     },
@@ -180650,6 +180693,10 @@
       "name": "onPremisesDirectorySynchronizationFeature",
       "properties": [
         {
+          "name": "allowOnPremUpdateOfOnPremisesObjectIdentifierEnabled",
+          "type": "Boolean"
+        },
+        {
           "name": "blockCloudObjectTakeoverThroughHardMatchEnabled",
           "type": "Boolean"
         },
@@ -182366,7 +182413,8 @@
         },
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "lastActionDateTime",
@@ -182374,7 +182422,8 @@
         },
         {
           "name": "status",
-          "type": "microsoft.graph.longRunningOperationStatus"
+          "type": "String",
+          "notes": "Read-only"
         }
       ]
     },
@@ -185333,6 +185382,15 @@
         {
           "name": "id",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "percentageBasedQuarantineCondition",
+      "properties": [
+        {
+          "name": "percentage",
+          "type": "Int32"
         }
       ]
     },
@@ -193391,6 +193449,36 @@
       ]
     },
     {
+      "name": "quarantineConfiguration",
+      "properties": [
+        {
+          "name": "conditions",
+          "type": "microsoft.graph.identityGovernance.quarantineCondition collection"
+        },
+        {
+          "name": "matchMode",
+          "type": "microsoft.graph.identityGovernance.matchMode"
+        }
+      ]
+    },
+    {
+      "name": "quarantineDetails",
+      "properties": [
+        {
+          "name": "quarantinedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "quarantineReason",
+          "type": "String"
+        },
+        {
+          "name": "quarantineType",
+          "type": "microsoft.graph.identityGovernance.quarantineType"
+        }
+      ]
+    },
+    {
       "name": "queryCondition",
       "properties": [
         {
@@ -195924,8 +196012,8 @@
       "name": "requiredResourceAccess",
       "properties": [
         {
-          "name": "resourceAccess",
-          "type": "resourceAccess collection"
+          "name": "permissions",
+          "type": "microsoft.graph.tenantGovernanceServices.resourcePermission collection"
         },
         {
           "name": "resourceAppId",
@@ -201757,6 +201845,11 @@
         {
           "name": "tokenEncryptionKeyId",
           "type": "Boolean"
+        },
+        {
+          "name": "enforcementScope",
+          "type": "servicePrincipalLockScope",
+          "notes": "Read-only; Not nullable"
         }
       ]
     },
@@ -216731,20 +216824,24 @@
       "name": "usageRight",
       "properties": [
         {
-          "name": "catalogId",
-          "type": "String"
-        },
-        {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only; Not nullable"
         },
         {
-          "name": "serviceIdentifier",
-          "type": "String"
+          "name": "services",
+          "type": "microsoft.graph.cloudLicensing.service collection",
+          "notes": "Read-only; Not nullable"
         },
         {
-          "name": "state",
-          "type": "usageRightState"
+          "name": "skuId",
+          "type": "Guid",
+          "notes": "Read-only"
+        },
+        {
+          "name": "skuPartNumber",
+          "type": "String",
+          "notes": "Read-only; Unique SKU display name that is equal to the skuPartNumber on the related subscribedSku object; for example, AAD_Premium"
         }
       ]
     },
@@ -222904,6 +223001,10 @@
       "name": "voiceAuthenticationMethodConfiguration",
       "properties": [
         {
+          "name": "callerIdNumber",
+          "type": "String"
+        },
+        {
           "name": "excludeTargets",
           "type": "excludeTarget collection"
         },
@@ -224660,8 +224761,8 @@
       "name": "win32LobAppAutoUpdateSettings",
       "properties": [
         {
-          "name": "autoUpdateSupersededAppsState",
-          "type": "win32LobAutoUpdateSupersededAppsState"
+          "name": "autoUpdateSupersededApps",
+          "type": "win32LobAppAutoUpdateSupersededApps"
         }
       ]
     },
@@ -238389,6 +238490,15 @@
           ]
         },
         {
+          "name": "quarantineDetails",
+          "type": "microsoft.graph.identityGovernance.quarantineDetails",
+          "notes": "Read-only"
+        },
+        {
+          "name": "settings",
+          "type": "microsoft.graph.identityGovernance.workflowSetting"
+        },
+        {
           "name": "version",
           "type": "Int32",
           "filter": [
@@ -238436,6 +238546,15 @@
         {
           "name": "lastModifiedDateTime",
           "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "workflowSetting",
+      "properties": [
+        {
+          "name": "quarantineConfiguration",
+          "type": "microsoft.graph.identityGovernance.quarantineConfiguration"
         }
       ]
     },
@@ -238542,6 +238661,10 @@
             "eq",
             "ne"
           ]
+        },
+        {
+          "name": "settings",
+          "type": "microsoft.graph.identityGovernance.workflowSetting"
         },
         {
           "name": "versionNumber",
