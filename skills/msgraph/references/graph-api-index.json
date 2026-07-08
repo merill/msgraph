@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-07-07T09:19:09Z",
-  "count": 29038,
+  "generated": "2026-07-08T08:03:55Z",
+  "count": 29037,
   "endpoints": [
     {
       "path": "/accessReviewDecisions",
@@ -1585,7 +1585,7 @@
       "path": "/admin/people/itemInsights",
       "method": "PATCH",
       "summary": "Update insightsSettings",
-      "description": "Update privacy settings to display or return the specified type of insights in an organization. The type of settings can be contact insights, item insights, or people insights. To learn more about customizing insights privacy for your organization, see: - Customize item insights privacy - Customi...",
+      "description": "Update privacy settings to display or return the specified type of insightsSettings in an organization. The type of settings can be contact insights, item insights, or people insights. To learn more about customizing insights privacy for your organization, see: - Customize item insights privacy -...",
       "resource": "admin"
     },
     {
@@ -7043,7 +7043,7 @@
       "path": "/applications/{application-id}/synchronization/acquireAccessToken",
       "method": "POST",
       "summary": "Invoke action acquireAccessToken",
-      "description": "Acquire an OAuth Access token to authorize the Microsoft Entra provisioning service to provision users into an application.",
+      "description": "Acquire an OAuth access token from the synchronization resource to authorize the Microsoft Entra provisioning service to provision users into an application.",
       "resource": "applications"
     },
     {
@@ -7134,21 +7134,21 @@
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/pause",
       "method": "POST",
       "summary": "Invoke action pause",
-      "description": "Temporarily stop a running synchronization job. All the progress, including job state, is persisted, and the job continues from where it left off when a start call is made.",
+      "description": "Temporarily stop a running synchronizationJob. All the progress, including job state, is persisted, and the job continues from where it left off when a start call is made.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/provisionOnDemand",
       "method": "POST",
       "summary": "Invoke action provisionOnDemand",
-      "description": "Select a user and provision the account on-demand. The rate limit for this API is 5 requests per 10 seconds. No user or group will be provisioned on-demand that would not have been provisioned through the regular provisioning cycles.",
+      "description": "Select a user and provision the account on-demand for a synchronizationJob. The rate limit for this API is 5 requests per 10 seconds. No user or group will be provisioned on-demand that would not have been provisioned through the regular provisioning cycles.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/restart",
       "method": "POST",
       "summary": "Invoke action restart",
-      "description": "Restart a stopped synchronization job, forcing it to reprocess all the objects in the directory. Optionally clears existing the synchronization state and previous errors.",
+      "description": "Restart a stopped synchronizationJob, forcing it to reprocess all the objects in the directory. Optionally clears existing the synchronization state and previous errors.",
       "resource": "applications"
     },
     {
@@ -7212,42 +7212,42 @@
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/schema/directories/{directoryDefinition-id}/discover",
       "method": "POST",
       "summary": "Invoke action discover",
-      "description": "Discover the latest schema definition for provisioning to an application.",
+      "description": "Discover the latest schema for a directoryDefinition to provision to an application.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/schema/filterOperators()",
       "method": "GET",
       "summary": "Invoke function filterOperators",
-      "description": "List all operators supported in the scoping filters.",
+      "description": "List all operators supported in the scoping filters for a synchronizationSchema.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/schema/functions()",
       "method": "GET",
       "summary": "Invoke function functions",
-      "description": "List all the functions currently supported in the attributeMappingSource.",
+      "description": "List all the functions currently supported in the attributeMappingSource for a synchronizationSchema.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/schema/parseExpression",
       "method": "POST",
       "summary": "Invoke action parseExpression",
-      "description": "Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.",
+      "description": "Parse a string expression into an attributeMappingSource object for a synchronizationSchema. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/start",
       "method": "POST",
       "summary": "Invoke action start",
-      "description": "Start an existing synchronization job. If the job is in a paused state, it continues processing changes from the point where it was paused. If the job is in quarantine, the quarantine status is cleared. Don't create scripts to call the start job continuously while it's running because that can ca...",
+      "description": "Start an existing synchronizationJob. If the job is in a paused state, it continues processing changes from the point where it was paused. If the job is in quarantine, the quarantine status is cleared. Don't create scripts to call the start job continuously while it's running because that can cau...",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/validateCredentials",
       "method": "POST",
       "summary": "Invoke action validateCredentials",
-      "description": "Validate that the credentials are valid in the tenant.",
+      "description": "Validate that the credentials are valid in the tenant for a synchronizationJob.",
       "resource": "applications"
     },
     {
@@ -7298,7 +7298,7 @@
       "path": "/applications/{application-id}/synchronization/templates/{synchronizationTemplate-id}",
       "method": "PATCH",
       "summary": "Update synchronizationTemplate",
-      "description": "Update (override) the synchronization template associated with a given application.",
+      "description": "Update (override) the synchronizationTemplate associated with a given application.",
       "resource": "applications"
     },
     {
@@ -7362,28 +7362,28 @@
       "path": "/applications/{application-id}/synchronization/templates/{synchronizationTemplate-id}/schema/directories/{directoryDefinition-id}/discover",
       "method": "POST",
       "summary": "Invoke action discover",
-      "description": "Discover the latest schema definition for provisioning to an application.",
+      "description": "Discover the latest schema for a directoryDefinition to provision to an application.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/templates/{synchronizationTemplate-id}/schema/filterOperators()",
       "method": "GET",
       "summary": "Invoke function filterOperators",
-      "description": "List all operators supported in the scoping filters.",
+      "description": "List all operators supported in the scoping filters for a synchronizationSchema.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/templates/{synchronizationTemplate-id}/schema/functions()",
       "method": "GET",
       "summary": "Invoke function functions",
-      "description": "List all the functions currently supported in the attributeMappingSource.",
+      "description": "List all the functions currently supported in the attributeMappingSource for a synchronizationSchema.",
       "resource": "applications"
     },
     {
       "path": "/applications/{application-id}/synchronization/templates/{synchronizationTemplate-id}/schema/parseExpression",
       "method": "POST",
       "summary": "Invoke action parseExpression",
-      "description": "Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.",
+      "description": "Parse a string expression into an attributeMappingSource object for a synchronizationSchema. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.",
       "resource": "applications"
     },
     {
@@ -7685,7 +7685,7 @@
       "path": "/auditLogs/customSecurityAttributeAudits",
       "method": "GET",
       "summary": "List customSecurityAttributeAudits",
-      "description": "Get the list of audit logs generated by activities related to custom security attribute management in Microsoft Entra ID.",
+      "description": "Get a list of customSecurityAttributeAudit objects representing audit logs generated by activities related to custom security attribute management in Microsoft Entra ID.",
       "resource": "auditlogs"
     },
     {
@@ -7723,7 +7723,7 @@
       "path": "/auditLogs/directoryAudits",
       "method": "GET",
       "summary": "List directoryAudits",
-      "description": "Get the list of audit logs generated by Microsoft Entra ID. This includes audit logs generated by various services within Microsoft Entra ID, including user, app, device and group Management, privileged identity management (PIM), access reviews, terms of use, identity protection, password managem...",
+      "description": "Get a list of directoryAudit objects representing the audit logs generated by Microsoft Entra ID. This includes audit logs generated by various services within Microsoft Entra ID, including user, app, device and group Management, privileged identity management (PIM), access reviews, terms of use,...",
       "resource": "auditlogs"
     },
     {
@@ -7748,7 +7748,7 @@
       "path": "/auditLogs/directoryAudits/{directoryAudit-id}",
       "method": "GET",
       "summary": "Get directoryAudit",
-      "description": "Get a specific Microsoft Entra audit log item. This includes an audit log item generated by various services within Microsoft Entra ID like user, application, device and group management, privileged identity management (PIM), access reviews, terms of use, identity protection, password management ...",
+      "description": "Get a specific directoryAudit item. This includes an audit log item generated by various services within Microsoft Entra ID like user, application, device and group management, privileged identity management (PIM), access reviews, terms of use, identity protection, password management (self-servi...",
       "resource": "auditlogs"
     },
     {
@@ -7818,7 +7818,7 @@
       "path": "/auditLogs/provisioning",
       "method": "GET",
       "summary": "List provisioningObjectSummary",
-      "description": "Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system.",
+      "description": "Get all provisioningObjectSummary events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system.",
       "resource": "auditlogs"
     },
     {
@@ -80893,14 +80893,14 @@
       "path": "/identityGovernance/accessReviews/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/accessReviews/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "identitygovernance"
     },
     {
@@ -81319,14 +81319,14 @@
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "identitygovernance"
     },
     {
@@ -81495,14 +81495,14 @@
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "identitygovernance"
     },
     {
@@ -81744,7 +81744,7 @@
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/stages",
       "method": "GET",
       "summary": "List stages",
-      "description": "Retrieve the stages in a multi-stage access review instance.",
+      "description": "Retrieve the accessReviewStage objects for a specific accessReviewInstance in a multi-stage access review.",
       "resource": "identitygovernance"
     },
     {
@@ -81790,7 +81790,7 @@
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions",
       "method": "GET",
       "summary": "List decisions (from a multi-stage access review)",
-      "description": "Get the decisions from a stage in a multi-stage access review. The decisions in an accessReviewStage object are represented by an accessReviewInstanceDecisionItem object.",
+      "description": "Get the accessReviewInstanceDecisionItem objects from an accessReviewStage in a multi-stage access review.",
       "resource": "identitygovernance"
     },
     {
@@ -81914,14 +81914,14 @@
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "identitygovernance"
     },
     {
@@ -82259,14 +82259,14 @@
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "identitygovernance"
     },
     {
@@ -82434,14 +82434,14 @@
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "identitygovernance"
     },
     {
@@ -82851,14 +82851,14 @@
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "identitygovernance"
     },
     {
@@ -85072,7 +85072,7 @@
       "path": "/identityGovernance/entitlementManagement/accessPackageAssignmentApprovals/{approval-id}/steps/{approvalStep-id}",
       "method": "PATCH",
       "summary": "Update approvalStep",
-      "description": "Apply approve or deny decision on an approvalStep object.",
+      "description": "Apply an approve or deny decision on an approvalStep object.",
       "resource": "identitygovernance"
     },
     {
@@ -87220,7 +87220,7 @@
       "path": "/identityGovernance/entitlementManagement/accessPackageAssignments/{accessPackageAssignment-id}/accessPackage/getApplicablePolicyRequirements",
       "method": "POST",
       "summary": "Invoke action getApplicablePolicyRequirements",
-      "description": "In Microsoft Entra entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest. Each requirement object corresponds to an access package assignment policy that the ...",
+      "description": "In Microsoft Entra entitlement management, this action retrieves accessPackageAssignmentRequestRequirements objects for an accessPackage that the currently signed-in user can use to create an accessPackageAssignmentRequest. Each requirement object corresponds to an access package assignment polic...",
       "resource": "identitygovernance"
     },
     {
@@ -88494,7 +88494,7 @@
       "path": "/identityGovernance/entitlementManagement/accessPackageCatalogs/{accessPackageCatalog-id}/accessPackageCustomWorkflowExtensions",
       "method": "GET",
       "summary": "List accessPackageCustomWorkflowExtensions",
-      "description": "Get a list of the accessPackageAssignmentRequestWorkflowExtension and accessPackageAssignmentWorkflowExtension objects and their properties. The resulting list includes all the customAccessPackageWorkflowExtension objects for the catalog that the caller has access to read. Each object includes an...",
+      "description": "List the accessPackageAssignmentRequestWorkflowExtension and accessPackageAssignmentWorkflowExtension objects in the accessPackageCustomWorkflowExtensions relationship of an accessPackageCatalog. The resulting list includes all the customAccessPackageWorkflowExtension objects for the catalog that...",
       "resource": "identitygovernance"
     },
     {
@@ -91977,7 +91977,7 @@
       "path": "/identityGovernance/entitlementManagement/accessPackages(uniqueName='{uniqueName}')/getApplicablePolicyRequirements",
       "method": "POST",
       "summary": "Invoke action getApplicablePolicyRequirements",
-      "description": "In Microsoft Entra entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest. Each requirement object corresponds to an access package assignment policy that the ...",
+      "description": "In Microsoft Entra entitlement management, this action retrieves accessPackageAssignmentRequestRequirements objects for an accessPackage that the currently signed-in user can use to create an accessPackageAssignmentRequest. Each requirement object corresponds to an access package assignment polic...",
       "resource": "identitygovernance"
     },
     {
@@ -92999,7 +92999,7 @@
       "path": "/identityGovernance/entitlementManagement/accessPackages/{accessPackage-id}/getApplicablePolicyRequirements",
       "method": "POST",
       "summary": "Invoke action getApplicablePolicyRequirements",
-      "description": "In Microsoft Entra entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest. Each requirement object corresponds to an access package assignment policy that the ...",
+      "description": "In Microsoft Entra entitlement management, this action retrieves accessPackageAssignmentRequestRequirements objects for an accessPackage that the currently signed-in user can use to create an accessPackageAssignmentRequest. Each requirement object corresponds to an access package assignment polic...",
       "resource": "identitygovernance"
     },
     {
@@ -93324,7 +93324,7 @@
       "path": "/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization-id}/externalSponsors/$ref",
       "method": "DELETE",
       "summary": "Remove connected organization external sponsor",
-      "description": "Remove a user or a group from the connected organization's external sponsors. The external sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
+      "description": "Remove a user or a group from the externalSponsors relationship of a connectedOrganization. External sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
       "resource": "identitygovernance"
     },
     {
@@ -93338,14 +93338,14 @@
       "path": "/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization-id}/externalSponsors/$ref",
       "method": "POST",
       "summary": "Add connected organization external sponsor",
-      "description": "Add a user or a group to the connected organization's external sponsors. The external sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
+      "description": "Add a user or a group to the externalSponsors relationship of a connectedOrganization. External sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization-id}/externalSponsors/{directoryObject-id}/$ref",
       "method": "DELETE",
       "summary": "Remove connected organization external sponsor",
-      "description": "Remove a user or a group from the connected organization's external sponsors. The external sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
+      "description": "Remove a user or a group from the externalSponsors relationship of a connectedOrganization. External sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
       "resource": "identitygovernance"
     },
     {
@@ -93365,7 +93365,7 @@
       "path": "/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization-id}/internalSponsors/$ref",
       "method": "DELETE",
       "summary": "Remove connected organization internal sponsor",
-      "description": "Remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
+      "description": "Remove a user or a group from the internalSponsors relationship of a connectedOrganization. Internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
       "resource": "identitygovernance"
     },
     {
@@ -93379,14 +93379,14 @@
       "path": "/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization-id}/internalSponsors/$ref",
       "method": "POST",
       "summary": "Add connected organization internal sponsor",
-      "description": "Add a user or a group to the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
+      "description": "Add a user or a group to the internalSponsors relationship of a connectedOrganization. Internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization-id}/internalSponsors/{directoryObject-id}/$ref",
       "method": "DELETE",
       "summary": "Remove connected organization internal sponsor",
-      "description": "Remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
+      "description": "Remove a user or a group from the internalSponsors relationship of a connectedOrganization. Internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.",
       "resource": "identitygovernance"
     },
     {
@@ -93696,7 +93696,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows",
       "method": "GET",
       "summary": "List deletedItems (deleted lifecycle workflows)",
-      "description": "Get a list of the deleted workflow objects and their properties.",
+      "description": "Get a list of deleted workflow objects and their properties from the deletedItemContainer.",
       "resource": "identitygovernance"
     },
     {
@@ -93857,6 +93857,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/microsoft.graph.identityGovernance.clearQuarantine",
       "method": "POST",
       "summary": "Invoke action clearQuarantine",
+      "description": "Release a quarantined workflow so that it resumes processing. A workflow is automatically quarantined when a run exceeds the threshold conditions defined in its quarantineConfiguration. After an administrator reviews the cause of the quarantine, calling this action clears the quarantine state and...",
       "resource": "identitygovernance"
     },
     {
@@ -93877,14 +93878,14 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/microsoft.graph.identityGovernance.previewWorkflow",
       "method": "POST",
       "summary": "Invoke action previewWorkflow",
-      "description": "Run a workflow in preview mode for selected directory objects without affecting production users. This action triggers workflow processing in preview mode, and results can be retrieved using the List userProcessingResults operation with $filter=workflowExecutionType eq 'previewMode'.",
+      "description": "Run a workflow in preview mode for selected directory objects without affecting production users. This action triggers workflow processing in preview mode, and results can be retrieved by using the List userProcessingResults operation with $filter=workflowExecutionType eq 'previewMode'.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/microsoft.graph.identityGovernance.restore",
       "method": "POST",
       "summary": "Invoke action restore",
-      "description": "Restore a workflow that has been deleted. You can only restore a workflow that was deleted within the last 30 days before Microsoft Entra ID automatically permanently deletes it.",
+      "description": "Restore a deleted workflow object. You can only restore a workflow that was deleted within the last 30 days before Microsoft Entra ID automatically permanently deletes it.",
       "resource": "identitygovernance"
     },
     {
@@ -94017,7 +94018,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/runs/{run-id}/subjectProcessingResults/{subjectProcessingResult-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -94084,7 +94085,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/runs/{run-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -94230,7 +94231,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/runs/{run-id}/userProcessingResults/{userProcessingResult-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -94335,7 +94336,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/subjectProcessingResults/{subjectProcessingResult-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -94442,7 +94443,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/taskReports/{taskReport-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -94547,7 +94548,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/tasks/{task-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -94693,7 +94694,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/userProcessingResults/{userProcessingResult-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -94904,7 +94905,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/versions/{workflowVersion-versionNumber}/tasks/{task-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -94970,28 +94971,28 @@
       "path": "/identityGovernance/lifecycleWorkflows/insights/microsoft.graph.identityGovernance.topTasksProcessedSummary(startDateTime={startDateTime},endDateTime={endDateTime})",
       "method": "GET",
       "summary": "Invoke function topTasksProcessedSummary",
-      "description": "Provide a summary of the most processed tasks, known as top tasks, for a specified time period in a tenant. The task definition is provided, along with numerical counts of total, successful, and failed runs. For information about workflows processed, see insights: topWorkflowsProcessedSummary.",
+      "description": "Provide a summary from the insights resource of the most processed task objects, known as top tasks, for a specified time period in a tenant. The task definition is provided, along with numerical counts of total, successful, and failed runs. For information about workflows processed, see insights...",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/lifecycleWorkflows/insights/microsoft.graph.identityGovernance.topWorkflowsProcessedSummary(startDateTime={startDateTime},endDateTime={endDateTime})",
       "method": "GET",
       "summary": "Invoke function topWorkflowsProcessedSummary",
-      "description": "Provide a summary of the workflows processed the most, known as top workflows, for a specified period in a tenant. Workflow basic details are given, along with run information. For information about tasks processed, see insights: topTasksProcessedSummary.",
+      "description": "Provide a summary from the insights resource of the workflow objects processed the most, known as top workflows, for a specified period in a tenant. Workflow basic details are given, along with run information. For information about tasks processed, see insights: topTasksProcessedSummary.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/lifecycleWorkflows/insights/microsoft.graph.identityGovernance.workflowsProcessedByCategory(startDateTime={startDateTime},endDateTime={endDateTime})",
       "method": "GET",
       "summary": "Invoke function workflowsProcessedByCategory",
-      "description": "Provide a summary of workflows processed, by category, in a tenant. This allows you to quickly get category information, by numerical value, bypassing other information found in the WorkflowsProcessedSummary call.",
+      "description": "Provide a summary from the insights resource of workflow objects processed by category in a tenant. This allows you to quickly get category information, by numerical value, without retrieving the other information included in the workflowsProcessedSummary call.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/lifecycleWorkflows/insights/microsoft.graph.identityGovernance.workflowsProcessedSummary(startDateTime={startDateTime},endDateTime={endDateTime})",
       "method": "GET",
       "summary": "Invoke function workflowsProcessedSummary",
-      "description": "Provide a summary of all workflows processed within a tenant for a specified period. Because the amount of results for listed workflows as returned by the List workflows doesn't tell you which workflows were processed from the list of created workflows, this summary gives you a quick overview of ...",
+      "description": "Provide a summary from the insights resource of workflow objects processed within a tenant for a specified period. Because the list returned by List workflows doesn't indicate which workflows were processed, this summary gives you a quick overview based on counts.",
       "resource": "identitygovernance"
     },
     {
@@ -95092,7 +95093,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflowTemplates/{workflowTemplate-id}/tasks/{task-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -95139,7 +95140,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows",
       "method": "GET",
       "summary": "List workflows",
-      "description": "Get a list of workflow resources that are associated with lifecycle workflows.",
+      "description": "Get a list of workflow resources that are associated with Lifecycle Workflows.",
       "resource": "identitygovernance"
     },
     {
@@ -95159,7 +95160,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}",
       "method": "DELETE",
       "summary": "Delete workflow",
-      "description": "Delete a workflow object and its associated tasks, taskProcessingResults and versions. You can restore a deleted workflow and its associated objects within 30 days of deletion.",
+      "description": "Delete a workflow object and its associated tasks, taskProcessingResults and versions. The deleted workflow is sent to the deleted workflows container. You can restore a deleted workflow and its associated objects within 30 days of deletion.",
       "resource": "identitygovernance"
     },
     {
@@ -95314,6 +95315,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/microsoft.graph.identityGovernance.clearQuarantine",
       "method": "POST",
       "summary": "Invoke action clearQuarantine",
+      "description": "Release a quarantined workflow so that it resumes processing. A workflow is automatically quarantined when a run exceeds the threshold conditions defined in its quarantineConfiguration. After an administrator reviews the cause of the quarantine, calling this action clears the quarantine state and...",
       "resource": "identitygovernance"
     },
     {
@@ -95334,14 +95336,14 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/microsoft.graph.identityGovernance.previewWorkflow",
       "method": "POST",
       "summary": "Invoke action previewWorkflow",
-      "description": "Run a workflow in preview mode for selected directory objects without affecting production users. This action triggers workflow processing in preview mode, and results can be retrieved using the List userProcessingResults operation with $filter=workflowExecutionType eq 'previewMode'.",
+      "description": "Run a workflow in preview mode for selected directory objects without affecting production users. This action triggers workflow processing in preview mode, and results can be retrieved by using the List userProcessingResults operation with $filter=workflowExecutionType eq 'previewMode'.",
       "resource": "identitygovernance"
     },
     {
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/microsoft.graph.identityGovernance.restore",
       "method": "POST",
       "summary": "Invoke action restore",
-      "description": "Restore a workflow that has been deleted. You can only restore a workflow that was deleted within the last 30 days before Microsoft Entra ID automatically permanently deletes it.",
+      "description": "Restore a deleted workflow object. You can only restore a workflow that was deleted within the last 30 days before Microsoft Entra ID automatically permanently deletes it.",
       "resource": "identitygovernance"
     },
     {
@@ -95368,7 +95370,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/runs",
       "method": "GET",
       "summary": "List runs",
-      "description": "Get a list of the run objects and their properties for a lifecycle workflow.",
+      "description": "Get a list of run objects and their properties for a workflow.",
       "resource": "identitygovernance"
     },
     {
@@ -95381,7 +95383,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/runs/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})",
       "method": "GET",
       "summary": "Invoke function summary",
-      "description": "Get a summary of runs for a specified time period. Because the amount of runs returned by the List API call can be overwhelming, this summary allows the administrator to get a quick overview based on counts.",
+      "description": "Get a runSummary for run objects over a specified time period. Because the number of runs returned by the list API call can be overwhelming, this summary allows administrators to get a quick overview based on counts.",
       "resource": "identitygovernance"
     },
     {
@@ -95475,7 +95477,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/runs/{run-id}/subjectProcessingResults/{subjectProcessingResult-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -95542,7 +95544,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/runs/{run-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -95608,7 +95610,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/runs/{run-id}/userProcessingResults/{userProcessingResult-id}",
       "method": "GET",
       "summary": "Get userProcessingResult",
-      "description": "Get the user processing result of a user processing result of a run.",
+      "description": "Get a userProcessingResult for a run.",
       "resource": "identitygovernance"
     },
     {
@@ -95688,7 +95690,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/runs/{run-id}/userProcessingResults/{userProcessingResult-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -95793,7 +95795,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/subjectProcessingResults/{subjectProcessingResult-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -95853,7 +95855,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/taskReports/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})",
       "method": "GET",
       "summary": "Invoke function summary",
-      "description": "Get a taskReportSummary object. This API provides a summary of task processing results for a specified time period. Because the volume of task processing results and task reports returned by the List API calls can be overwhelming, this summary allows the administrator to get a quick overview base...",
+      "description": "Get a taskReportSummary for a taskReport. This API provides a summary of task processing results for a specified time period. Because the volume of task processing results and task reports returned by the List API calls can be overwhelming, this summary allows the administrator to get a quick ove...",
       "resource": "identitygovernance"
     },
     {
@@ -95901,7 +95903,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/taskReports/{taskReport-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -95948,7 +95950,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/tasks",
       "method": "GET",
       "summary": "List tasks (in Lifecycle Workflows)",
-      "description": "Retrieve the details of the built-in tasks in Lifecycle Workflows.",
+      "description": "Retrieve the details of the built-in task objects in a workflow.",
       "resource": "identitygovernance"
     },
     {
@@ -96006,7 +96008,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/tasks/{task-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -96152,7 +96154,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/userProcessingResults/{userProcessingResult-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -96363,7 +96365,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/versions/{workflowVersion-versionNumber}/tasks/{task-id}/taskProcessingResults/{taskProcessingResult-id}/microsoft.graph.identityGovernance.resume",
       "method": "POST",
       "summary": "Invoke action resume",
-      "description": "Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.",
+      "description": "Resume a taskProcessingResult that's inProgress. In the default case, an Azure Logic Apps system-assigned managed identity calls this API. For more information, see Lifecycle Workflows extensibility approach.",
       "resource": "identitygovernance"
     },
     {
@@ -98988,8 +98990,8 @@
     {
       "path": "/me",
       "method": "PATCH",
-      "summary": "Update user or agentUser",
-      "description": "Update the properties of a user or agentUser object.",
+      "summary": "Update user",
+      "description": "Update the properties of a user. To use this API to update an agentUser, specify an @odata.type property with a value of #microsoft.graph.agentUser in the request body.",
       "resource": "me"
     },
     {
@@ -110494,14 +110496,14 @@
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "me"
     },
     {
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "me"
     },
     {
@@ -110669,14 +110671,14 @@
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "me"
     },
     {
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "me"
     },
     {
@@ -111086,14 +111088,14 @@
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "me"
     },
     {
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "me"
     },
     {
@@ -118336,7 +118338,7 @@
       "path": "/organization/{organization-id}/settings/contactInsights",
       "method": "PATCH",
       "summary": "Update insightsSettings",
-      "description": "Update privacy settings to display or return the specified type of insights in an organization. The type of settings can be contact insights, item insights, or people insights. To learn more about customizing insights privacy for your organization, see: - Customize item insights privacy - Customi...",
+      "description": "Update privacy settings to display or return the specified type of insightsSettings in an organization. The type of settings can be contact insights, item insights, or people insights. To learn more about customizing insights privacy for your organization, see: - Customize item insights privacy -...",
       "resource": "organization"
     },
     {
@@ -118395,7 +118397,7 @@
       "path": "/organization/{organization-id}/settings/peopleInsights",
       "method": "PATCH",
       "summary": "Update insightsSettings",
-      "description": "Update privacy settings to display or return the specified type of insights in an organization. The type of settings can be contact insights, item insights, or people insights. To learn more about customizing insights privacy for your organization, see: - Customize item insights privacy - Customi...",
+      "description": "Update privacy settings to display or return the specified type of insightsSettings in an organization. The type of settings can be contact insights, item insights, or people insights. To learn more about customizing insights privacy for your organization, see: - Customize item insights privacy -...",
       "resource": "organization"
     },
     {
@@ -126309,7 +126311,7 @@
       "path": "/reports/correlations/{identityCorrelation-id}/identities",
       "method": "GET",
       "summary": "List correlatedIdentity objects",
-      "description": "List the correlated identity results for an identityCorrelation object.",
+      "description": "List the correlatedIdentity results for an identityCorrelation object.",
       "resource": "reports"
     },
     {
@@ -140327,21 +140329,21 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/acquireAccessToken",
       "method": "POST",
       "summary": "Invoke action acquireAccessToken",
-      "description": "Acquire an OAuth Access token to authorize the Microsoft Entra provisioning service to provision users into an application.",
+      "description": "Acquire an OAuth access token from the synchronization resource to authorize the Microsoft Entra provisioning service to provision users into an application.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs",
       "method": "GET",
       "summary": "List synchronization jobs",
-      "description": "List existing jobs for a given application instance (service principal).",
+      "description": "List existing synchronizationJob objects for a given application instance (service principal).",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs",
       "method": "POST",
       "summary": "Create synchronizationJob",
-      "description": "Create new synchronization job with a default synchronization schema. The job is created in a disabled state. Call Start job to start synchronization.",
+      "description": "Create a new synchronizationJob with a default synchronization schema. The job is created in a disabled state. Call Start job to start synchronization.",
       "resource": "serviceprincipals"
     },
     {
@@ -140360,14 +140362,14 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}",
       "method": "DELETE",
       "summary": "Delete synchronizationJob",
-      "description": "Stop the synchronization job, and permanently delete all the state associated with it. Synchronized accounts are left as-is.",
+      "description": "Stop the synchronizationJob, and permanently delete all the state associated with it. Synchronized accounts are left as-is.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}",
       "method": "GET",
       "summary": "Get synchronizationJob",
-      "description": "Retrieve the existing synchronization job and its properties.",
+      "description": "Retrieve an existing synchronizationJob and its properties.",
       "resource": "serviceprincipals"
     },
     {
@@ -140420,21 +140422,21 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/pause",
       "method": "POST",
       "summary": "Invoke action pause",
-      "description": "Temporarily stop a running synchronization job. All the progress, including job state, is persisted, and the job continues from where it left off when a start call is made.",
+      "description": "Temporarily stop a running synchronizationJob. All the progress, including job state, is persisted, and the job continues from where it left off when a start call is made.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/provisionOnDemand",
       "method": "POST",
       "summary": "Invoke action provisionOnDemand",
-      "description": "Select a user and provision the account on-demand. The rate limit for this API is 5 requests per 10 seconds. No user or group will be provisioned on-demand that would not have been provisioned through the regular provisioning cycles.",
+      "description": "Select a user and provision the account on-demand for a synchronizationJob. The rate limit for this API is 5 requests per 10 seconds. No user or group will be provisioned on-demand that would not have been provisioned through the regular provisioning cycles.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/restart",
       "method": "POST",
       "summary": "Invoke action restart",
-      "description": "Restart a stopped synchronization job, forcing it to reprocess all the objects in the directory. Optionally clears existing the synchronization state and previous errors.",
+      "description": "Restart a stopped synchronizationJob, forcing it to reprocess all the objects in the directory. Optionally clears existing the synchronization state and previous errors.",
       "resource": "serviceprincipals"
     },
     {
@@ -140447,14 +140449,14 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/schema",
       "method": "GET",
       "summary": "Get synchronizationSchema",
-      "description": "Retrieve the schema for a given synchronization job or template.",
+      "description": "Retrieve the synchronizationSchema for a given synchronization job or template.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/schema",
       "method": "PATCH",
       "summary": "Update synchronizationSchema",
-      "description": "Update the synchronization schema for a given job or template. This method fully replaces the current schema with the one provided in the request. To update the schema of a template, make the call on the application object. You must be the owner of the application.",
+      "description": "Update the synchronizationSchema for a given job or template. This method fully replaces the current schema with the one provided in the request. To update the schema of a template, make the call on the application object. You must be the owner of the application.",
       "resource": "serviceprincipals"
     },
     {
@@ -140499,49 +140501,49 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/schema/directories/{directoryDefinition-id}/discover",
       "method": "POST",
       "summary": "Invoke action discover",
-      "description": "Discover the latest schema definition for provisioning to an application.",
+      "description": "Discover the latest schema for a directoryDefinition to provision to an application.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/schema/filterOperators()",
       "method": "GET",
       "summary": "Invoke function filterOperators",
-      "description": "List all operators supported in the scoping filters.",
+      "description": "List all operators supported in the scoping filters for a synchronizationSchema.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/schema/functions()",
       "method": "GET",
       "summary": "Invoke function functions",
-      "description": "List all the functions currently supported in the attributeMappingSource.",
+      "description": "List all the functions currently supported in the attributeMappingSource for a synchronizationSchema.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/schema/parseExpression",
       "method": "POST",
       "summary": "Invoke action parseExpression",
-      "description": "Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.",
+      "description": "Parse a string expression into an attributeMappingSource object for a synchronizationSchema. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/start",
       "method": "POST",
       "summary": "Invoke action start",
-      "description": "Start an existing synchronization job. If the job is in a paused state, it continues processing changes from the point where it was paused. If the job is in quarantine, the quarantine status is cleared. Don't create scripts to call the start job continuously while it's running because that can ca...",
+      "description": "Start an existing synchronizationJob. If the job is in a paused state, it continues processing changes from the point where it was paused. If the job is in quarantine, the quarantine status is cleared. Don't create scripts to call the start job continuously while it's running because that can cau...",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/validateCredentials",
       "method": "POST",
       "summary": "Invoke action validateCredentials",
-      "description": "Validate that the credentials are valid in the tenant.",
+      "description": "Validate that the credentials are valid in the tenant for a synchronizationJob.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/secrets",
       "method": "PUT",
       "summary": "Add synchronization secrets",
-      "description": "Provide credentials for establishing connectivity with the target system.",
+      "description": "Provide credentials for establishing connectivity with the target system and store them in the synchronization resource.",
       "resource": "serviceprincipals"
     },
     {
@@ -140554,7 +140556,7 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/templates",
       "method": "GET",
       "summary": "List existing synchronization templates",
-      "description": "List the synchronization templates associated with a given application or service principal.",
+      "description": "List synchronizationTemplate objects associated with a given application or service principal.",
       "resource": "serviceprincipals"
     },
     {
@@ -140649,28 +140651,28 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/templates/{synchronizationTemplate-id}/schema/directories/{directoryDefinition-id}/discover",
       "method": "POST",
       "summary": "Invoke action discover",
-      "description": "Discover the latest schema definition for provisioning to an application.",
+      "description": "Discover the latest schema for a directoryDefinition to provision to an application.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/templates/{synchronizationTemplate-id}/schema/filterOperators()",
       "method": "GET",
       "summary": "Invoke function filterOperators",
-      "description": "List all operators supported in the scoping filters.",
+      "description": "List all operators supported in the scoping filters for a synchronizationSchema.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/templates/{synchronizationTemplate-id}/schema/functions()",
       "method": "GET",
       "summary": "Invoke function functions",
-      "description": "List all the functions currently supported in the attributeMappingSource.",
+      "description": "List all the functions currently supported in the attributeMappingSource for a synchronizationSchema.",
       "resource": "serviceprincipals"
     },
     {
       "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/templates/{synchronizationTemplate-id}/schema/parseExpression",
       "method": "POST",
       "summary": "Invoke action parseExpression",
-      "description": "Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.",
+      "description": "Parse a string expression into an attributeMappingSource object for a synchronizationSchema. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.",
       "resource": "serviceprincipals"
     },
     {
@@ -151347,12 +151349,6 @@
       "path": "/solutions/migrations/crossTenantMigrationJobs/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
-      "resource": "solutions"
-    },
-    {
-      "path": "/solutions/migrations/crossTenantMigrationJobs/validate",
-      "method": "POST",
-      "summary": "Invoke action validate",
       "resource": "solutions"
     },
     {
@@ -170850,8 +170846,8 @@
     {
       "path": "/users(userPrincipalName='{userPrincipalName}')",
       "method": "PATCH",
-      "summary": "Update user or agentUser",
-      "description": "Update the properties of a user or agentUser object.",
+      "summary": "Update user",
+      "description": "Update the properties of a user. To use this API to update an agentUser, specify an @odata.type property with a value of #microsoft.graph.agentUser in the request body.",
       "resource": "users(userprincipalname='{userprincipalname}')"
     },
     {
@@ -170918,8 +170914,8 @@
     {
       "path": "/users/{user-id}",
       "method": "PATCH",
-      "summary": "Update user or agentUser",
-      "description": "Update the properties of a user or agentUser object.",
+      "summary": "Update user",
+      "description": "Update the properties of a user. To use this API to update an agentUser, specify an @odata.type property with a value of #microsoft.graph.agentUser in the request body.",
       "resource": "users"
     },
     {
@@ -182379,14 +182375,14 @@
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "users"
     },
     {
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "users"
     },
     {
@@ -182554,14 +182550,14 @@
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "users"
     },
     {
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "users"
     },
     {
@@ -182971,14 +182967,14 @@
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
       "resource": "users"
     },
     {
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchRecordDecisions",
       "method": "POST",
       "summary": "Invoke action batchRecordDecisions",
-      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in batches by using principalId, resourceId, or neither.",
+      "description": "Enables reviewers to review all accessReviewInstanceDecisionItem objects in a specific pending accessReviewInstance in batches by using principalId, resourceId, or neither.",
       "resource": "users"
     },
     {
