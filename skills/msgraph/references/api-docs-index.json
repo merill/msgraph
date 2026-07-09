@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-07-08T08:04:08Z",
+  "generated": "2026-07-09T09:00:06Z",
   "endpointCount": 6432,
-  "resourceCount": 4454,
+  "resourceCount": 4455,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -130308,6 +130308,15 @@
           "type": "String"
         },
         {
+          "name": "placeId",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "servicePlans",
+          "type": "placeServicePlanInfo collection"
+        },
+        {
           "name": "tags",
           "type": "String collection"
         }
@@ -148652,11 +148661,11 @@
       "name": "fileHash",
       "properties": [
         {
-          "name": "algorithm",
-          "type": "microsoft.graph.security.fileHashAlgorithm"
+          "name": "hashType",
+          "type": "fileHashType enum"
         },
         {
-          "name": "value",
+          "name": "hashValue",
           "type": "String"
         }
       ]
@@ -151443,7 +151452,8 @@
         },
         {
           "name": "assignedLabels",
-          "type": "assignedLabel collection"
+          "type": "assignedLabel collection",
+          "notes": "Requires a Microsoft Entra ID P1 license"
         },
         {
           "name": "assignedLicenses",
@@ -160059,13 +160069,11 @@
       "properties": [
         {
           "name": "id",
-          "type": "String",
-          "notes": "Read-only"
+          "type": "String"
         },
         {
           "name": "expirationDateTime",
-          "type": "DateTimeOffset",
-          "default": true
+          "type": "DateTimeOffset"
         },
         {
           "name": "payloadFileName",
@@ -165224,12 +165232,12 @@
       "name": "loggedOnUser",
       "properties": [
         {
-          "name": "accountName",
+          "name": "userId",
           "type": "String"
         },
         {
-          "name": "domainName",
-          "type": "String"
+          "name": "lastLogOnDateTime",
+          "type": "DateTimeOffset"
         }
       ]
     },
@@ -186772,10 +186780,6 @@
           "type": "physicalAddress"
         },
         {
-          "name": "label",
-          "type": "String"
-        },
-        {
           "name": "displayName",
           "type": "String"
         },
@@ -186793,12 +186797,21 @@
           "type": "Boolean"
         },
         {
+          "name": "label",
+          "type": "String"
+        },
+        {
           "name": "parentId",
           "type": "String"
         },
         {
           "name": "phone",
           "type": "String"
+        },
+        {
+          "name": "placeId",
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "tags",
@@ -186854,6 +186867,15 @@
         {
           "name": "totalPlaceCount",
           "type": "Int32"
+        }
+      ]
+    },
+    {
+      "name": "placeServicePlanInfo",
+      "properties": [
+        {
+          "name": "servicePlanId",
+          "type": "String"
         }
       ]
     },
@@ -198200,11 +198222,6 @@
         {
           "name": "phone",
           "type": "String"
-        },
-        {
-          "name": "placeId",
-          "type": "String",
-          "notes": "Read-only"
         },
         {
           "name": "tags",
@@ -216881,20 +216898,24 @@
       "name": "usageRight",
       "properties": [
         {
-          "name": "catalogId",
-          "type": "String"
-        },
-        {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only; Not nullable"
         },
         {
-          "name": "serviceIdentifier",
-          "type": "String"
+          "name": "services",
+          "type": "microsoft.graph.cloudLicensing.service collection",
+          "notes": "Read-only; Not nullable"
         },
         {
-          "name": "state",
-          "type": "usageRightState"
+          "name": "skuId",
+          "type": "Guid",
+          "notes": "Read-only"
+        },
+        {
+          "name": "skuPartNumber",
+          "type": "String",
+          "notes": "Read-only; Unique SKU display name that is equal to the skuPartNumber on the related subscribedSku object; for example, AAD_Premium"
         }
       ]
     },
@@ -239167,11 +239188,6 @@
         {
           "name": "phone",
           "type": "String"
-        },
-        {
-          "name": "placeId",
-          "type": "String",
-          "notes": "Read-only"
         },
         {
           "name": "tags",
