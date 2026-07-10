@@ -1,6 +1,6 @@
 {
   "version": "beta",
-  "generated": "2026-07-09T08:59:53Z",
+  "generated": "2026-07-10T08:56:24Z",
   "count": 29037,
   "endpoints": [
     {
@@ -68277,7 +68277,7 @@
       "path": "/groups/{group-id}/settings",
       "method": "POST",
       "summary": "Create settings",
-      "description": "Create a new directory setting based on the templates available in directorySettingTemplates. These settings can be at the tenant-level or at the group level. Group settings apply to only Microsoft 365 groups. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 gro...",
+      "description": "Create a new directory setting based on the templates available in directorySettingTemplates. These settings can be at the tenant-level or at the group level. The following setting templates are available for groups:",
       "resource": "groups"
     },
     {
@@ -140845,7 +140845,7 @@
       "path": "/settings",
       "method": "POST",
       "summary": "Create settings",
-      "description": "Create a new directory setting based on the templates available in directorySettingTemplates. These settings can be at the tenant-level or at the group level. Group settings apply to only Microsoft 365 groups. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 gro...",
+      "description": "Create a new directory setting based on the templates available in directorySettingTemplates. These settings can be at the tenant-level or at the group level. The following setting templates are available for groups:",
       "resource": "settings"
     },
     {

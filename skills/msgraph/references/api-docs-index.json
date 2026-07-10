@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-07-09T09:00:06Z",
-  "endpointCount": 6432,
+  "generated": "2026-07-10T08:56:37Z",
+  "endpointCount": 6433,
   "resourceCount": 4455,
   "endpoints": [
     {
@@ -28620,24 +28620,24 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28649,16 +28649,16 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -40235,12 +40235,12 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "Files.ReadWrite.All",
-          "Files.Read.All"
+          "Files.Read.All",
+          "Files.ReadWrite.All"
         ],
         "application": [
-          "Files.ReadWrite.All",
-          "Files.Read.All"
+          "Files.Read.All",
+          "Files.ReadWrite.All"
         ]
       }
     },
@@ -56769,16 +56769,16 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "Mail.ReadBasic",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic"
         ],
         "delegatedPersonal": [
-          "Mail.ReadBasic",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic"
         ],
         "application": [
-          "Mail.ReadBasic.All",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic.All"
         ]
       },
       "queryParams": [
@@ -63043,25 +63043,25 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All",
           "User.Read",
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All"
-        ],
-        "application": [
+          "Directory.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementConfiguration.ReadWrite.All"
+        ],
+        "application": [
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All"
+          "Directory.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -82090,6 +82090,18 @@
       }
     },
     {
+      "path": "/storage/fileStorage/containers/getByUser(userPrincipalName='{userPrincipalName}')",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "FileStorageContainer.Manage.All"
+        ]
+      },
+      "notes": [
+        "- Only supported for delegated admin requests. Requests made without a user context (app-only authentication) or in a non-admin context aren't currently supported."
+      ]
+    },
+    {
       "path": "/storage/fileStorage/containers/{containerId}",
       "method": "DELETE",
       "permissions": {
@@ -86792,26 +86804,26 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "User.ReadBasic.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "User.ReadBasic.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "User.Read.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "User.Read.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -86840,15 +86852,15 @@
           "User.Create",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
           "User.Create",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -86999,37 +87011,37 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "UserAuthenticationMethod.Read",
-          "Calendars.ReadBasic",
           "User.Read",
+          "Calendars.ReadBasic",
+          "UserAuthenticationMethod.Read",
           "AppRoleAssignment.ReadWrite.All"
         ],
         "delegatedPersonal": [
-          "Calendars.ReadBasic",
-          "User.Read"
+          "User.Read",
+          "Calendars.ReadBasic"
         ],
         "application": [
+          "User.Read.All",
+          "Calendars.ReadBasic",
           "Chat.Read.All",
           "UserAuthenticationMethod.Read",
-          "Calendars.ReadBasic",
-          "User.Read.All",
           "Directory.Read.All"
         ]
       },
       "queryParams": [
         "$top",
-        "$skip",
         "$filter",
-        "$count",
+        "$select",
         "$expand",
+        "$count",
         "$orderby",
         "$search",
-        "$select"
+        "$skip"
       ],
       "notes": [
-        "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages.",
         "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
-        "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1."
+        "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1.",
+        "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages."
       ]
     },
     {
@@ -87037,13 +87049,13 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "UserAuthenticationMethod.ReadWrite",
-          "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthMethod-Phone.ReadWrite"
-        ],
-        "application": [
+          "UserAuthMethod-Phone.ReadWrite",
           "UserAuthenticationMethod.ReadWrite",
           "UserAuthenticationMethod.ReadWrite.All"
+        ],
+        "application": [
+          "UserAuthenticationMethod.ReadWrite.All",
+          "UserAuthenticationMethod.ReadWrite"
         ]
       }
     },
@@ -87052,25 +87064,25 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-Phone.ReadWrite",
-          "UserAuthMethod-TAP.Read",
           "Sites.ReadWrite.All",
-          "Mail.Send",
+          "UserAuthMethod-Email.ReadWrite",
+          "UserAuthMethod-Phone.ReadWrite",
           "AppRoleAssignment.ReadWrite.All",
           "LicenseAssignment.ReadWrite.All",
-          "UserAuthMethod-Email.ReadWrite",
-          "UserAuthenticationMethod.ReadWrite.All"
+          "Mail.Send",
+          "UserAuthenticationMethod.ReadWrite.All",
+          "UserAuthMethod-TAP.Read"
         ],
         "delegatedPersonal": [
           "Mail.Send"
         ],
         "application": [
-          "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthMethod-TAP.Read.All",
           "Sites.ReadWrite.All",
-          "Mail.Send",
+          "UserAuthenticationMethod.ReadWrite.All",
           "AppRoleAssignment.ReadWrite.All",
-          "LicenseAssignment.ReadWrite.All"
+          "LicenseAssignment.ReadWrite.All",
+          "Mail.Send",
+          "UserAuthMethod-TAP.Read.All"
         ]
       }
     },
@@ -87399,8 +87411,8 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "TeamsAppInstallation.ReadWriteSelfForUser",
-          "TeamworkTargetedMessage.ReadWrite"
+          "TeamworkTargetedMessage.ReadWrite",
+          "TeamsAppInstallation.ReadWriteSelfForUser"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -87815,16 +87827,16 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -87836,22 +87848,22 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ]
