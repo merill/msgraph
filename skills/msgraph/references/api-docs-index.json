@@ -1,6 +1,6 @@
 {
   "version": "beta",
-  "generated": "2026-07-10T08:56:37Z",
+  "generated": "2026-07-11T07:29:27Z",
   "endpointCount": 6433,
   "resourceCount": 4455,
   "endpoints": [
@@ -82094,7 +82094,13 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "FileStorageContainer.Manage.All"
+          "FileStorageContainer.Selected"
+        ],
+        "delegatedPersonal": [
+          "FileStorageContainer.Selected"
+        ],
+        "application": [
+          "FileStorageContainer.Selected"
         ]
       },
       "notes": [
