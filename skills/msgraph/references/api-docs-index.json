@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-07-14T07:43:16Z",
+  "generated": "2026-07-15T06:40:10Z",
   "endpointCount": 6433,
-  "resourceCount": 4455,
+  "resourceCount": 4456,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -3682,13 +3682,13 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "Application.ReadWrite.All"
+          "AppRegistration.Create"
         ],
         "delegatedPersonal": [
           "Application.ReadWrite.All"
         ],
         "application": [
-          "Application.ReadWrite.OwnedBy"
+          "AppRegistration.Create"
         ]
       },
       "notes": [
@@ -82094,13 +82094,7 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "FileStorageContainer.Selected"
-        ],
-        "delegatedPersonal": [
-          "FileStorageContainer.Selected"
-        ],
-        "application": [
-          "FileStorageContainer.Selected"
+          "FileStorageContainer.Manage.All"
         ]
       },
       "notes": [
@@ -117935,6 +117929,11 @@
           "type": "cloudPcLoginResult"
         },
         {
+          "name": "lastLogoffDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
           "name": "lastModifiedDateTime",
           "type": "DateTimeOffset"
         },
@@ -124769,7 +124768,7 @@
       "name": "contentInfo",
       "properties": [
         {
-          "name": "contentFormat",
+          "name": "format",
           "type": "String"
         },
         {
@@ -124782,7 +124781,7 @@
         },
         {
           "name": "state",
-          "type": "contentState"
+          "type": "String"
         }
       ]
     },
@@ -125467,16 +125466,16 @@
       "name": "credential",
       "properties": [
         {
-          "name": "fieldId",
+          "name": "displayName",
           "type": "String"
         },
         {
-          "name": "type",
-          "type": "String"
+          "name": "isValid",
+          "type": "Boolean"
         },
         {
-          "name": "value",
-          "type": "String"
+          "name": "lastValidDateTime",
+          "type": "DateTimeOffset"
         }
       ]
     },
@@ -131698,16 +131697,16 @@
           "notes": "Read-only"
         },
         {
+          "name": "Onboarding",
+          "type": ""
+        },
+        {
           "name": "displayName",
           "type": "String"
         },
         {
           "name": "description",
           "type": "String"
-        },
-        {
-          "name": "roleScopeTagIds",
-          "type": "String collection"
         }
       ]
     },
@@ -137869,14 +137868,6 @@
       "name": "deviceManagementScript",
       "properties": [
         {
-          "name": "enforceSignatureCheck",
-          "type": "Boolean"
-        },
-        {
-          "name": "runAs32Bit",
-          "type": "Boolean"
-        },
-        {
           "name": "id",
           "type": "String"
         },
@@ -137907,12 +137898,20 @@
           "type": "runAsAccountType"
         },
         {
+          "name": "enforceSignatureCheck",
+          "type": "Boolean"
+        },
+        {
           "name": "fileName",
           "type": "String"
         },
         {
           "name": "roleScopeTagIds",
           "type": "String collection"
+        },
+        {
+          "name": "runAs32Bit",
+          "type": "Boolean"
         }
       ]
     },
@@ -147639,6 +147638,10 @@
           "type": "String"
         },
         {
+          "name": "informationProtectionLabel",
+          "type": "microsoft.graph.externalConnectors.externalItemInformationProtectionLabel"
+        },
+        {
           "name": "properties",
           "type": "Object"
         }
@@ -147653,6 +147656,15 @@
         },
         {
           "name": "type",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "externalItemInformationProtectionLabel",
+      "properties": [
+        {
+          "name": "sensitivityLabelId",
           "type": "String"
         }
       ]
@@ -160087,11 +160099,13 @@
       "properties": [
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "expirationDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "default": true
         },
         {
           "name": "payloadFileName",
@@ -162906,7 +162920,7 @@
         },
         {
           "name": "contentType",
-          "type": "microsoft.graph.windowsUpdates.bodyType"
+          "type": "bodyType"
         }
       ]
     },
@@ -164165,7 +164179,7 @@
         },
         {
           "name": "labelId",
-          "type": "GUID"
+          "type": "Guid"
         }
       ]
     },
@@ -165250,12 +165264,12 @@
       "name": "loggedOnUser",
       "properties": [
         {
-          "name": "userId",
+          "name": "accountName",
           "type": "String"
         },
         {
-          "name": "lastLogOnDateTime",
-          "type": "DateTimeOffset"
+          "name": "domainName",
+          "type": "String"
         }
       ]
     },
@@ -176509,11 +176523,35 @@
           "type": "String"
         },
         {
+          "name": "Troubleshooting",
+          "type": ""
+        },
+        {
+          "name": "additionalInformation",
+          "type": "keyValuePair collection"
+        },
+        {
+          "name": "applicationId",
+          "type": "String"
+        },
+        {
+          "name": "correlationId",
+          "type": "String"
+        },
+        {
           "name": "eventDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "correlationId",
+          "name": "eventName",
+          "type": "String"
+        },
+        {
+          "name": "history",
+          "type": "mobileAppTroubleshootingHistoryItem collection"
+        },
+        {
+          "name": "managedDeviceIdentifier",
           "type": "String"
         },
         {
@@ -176521,32 +176559,8 @@
           "type": "deviceManagementTroubleshootingErrorDetails"
         },
         {
-          "name": "eventName",
-          "type": "String"
-        },
-        {
-          "name": "additionalInformation",
-          "type": "keyValuePair collection"
-        },
-        {
-          "name": "managedDeviceIdentifier",
-          "type": "String"
-        },
-        {
-          "name": "deviceId",
-          "type": "String"
-        },
-        {
           "name": "userId",
           "type": "String"
-        },
-        {
-          "name": "applicationId",
-          "type": "String"
-        },
-        {
-          "name": "history",
-          "type": "mobileAppTroubleshootingHistoryItem collection"
         }
       ]
     },
