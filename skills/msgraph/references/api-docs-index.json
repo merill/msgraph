@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-07-15T06:40:10Z",
-  "endpointCount": 6433,
-  "resourceCount": 4456,
+  "generated": "2026-07-16T06:44:31Z",
+  "endpointCount": 6454,
+  "resourceCount": 4478,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -6787,13 +6787,13 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
@@ -28620,24 +28620,24 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28649,16 +28649,16 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "notes": [
@@ -40235,12 +40235,12 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "Files.Read.All",
-          "Files.ReadWrite.All"
+          "Files.ReadWrite.All",
+          "Files.Read.All"
         ],
         "application": [
-          "Files.Read.All",
-          "Files.ReadWrite.All"
+          "Files.ReadWrite.All",
+          "Files.Read.All"
         ]
       }
     },
@@ -52558,8 +52558,8 @@
         ]
       },
       "queryParams": [
-        "$top",
-        "$select"
+        "$select",
+        "$top"
       ],
       "notes": [
         "The createdDateTime and lastModifiedDateTime properties of event don't support $select. To get their values, simply query on calendarView without applying $select."
@@ -63043,25 +63043,25 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All",
           "User.Read",
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All",
+          "Directory.ReadWrite.All"
+        ],
+        "application": [
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All"
-        ],
-        "application": [
+          "DeviceManagementConfiguration.ReadWrite.All",
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All"
+          "Directory.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -72379,6 +72379,152 @@
     {
       "path": "/security/auditLog/queries/{auditLogQueryId}/records",
       "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$count",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$skip",
+        "$top"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases",
+      "method": "POST",
+      "permissions": {},
+      "notes": [
+        "You can't use this API to create incidentCase objects. Incident cases are created by the service; API requests can't create new incident cases."
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/activities",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/activities",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/activities/{activityId}",
+      "method": "DELETE",
+      "permissions": {},
+      "notes": [
+        "You can't use this API to delete comment activities from incidentCase objects."
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/activities/{activityId}",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/activities/{activityId}",
+      "method": "PATCH",
+      "permissions": {},
+      "notes": [
+        "You can't use this API to update comment activities for incidentCase objects."
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/attachments",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/attachments",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/attachments/{attachmentId}",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/attachments/{attachmentId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/relations",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/relations",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/relations/{relationId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/tasks",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/tasks",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/tasks/{taskId}",
+      "method": "GET",
+      "permissions": {},
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/caseManagement/cases/{caseId}/tasks/{taskId}",
+      "method": "PATCH",
       "permissions": {}
     },
     {
@@ -86804,26 +86950,26 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "User.ReadBasic.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "User.ReadBasic.All"
         ],
         "application": [
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "User.Read.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "User.Read.All"
         ]
       },
       "queryParams": [
@@ -86849,23 +86995,23 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "User.Create",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
+          "User.Create",
           "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
-          "User.Create",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
+          "User.Create",
           "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
-        "To create external users as part of B2B collaboration with your organization, use the invitation API. To create a customer, citizen, or business partner in Microsoft Entra External ID in external tenants, see Example 4: Create a customer account.",
-        "The Microsoft Graph API for Intune requires an active Intune license for the tenant."
+        "The Microsoft Graph API for Intune requires an active Intune license for the tenant.",
+        "To create external users as part of B2B collaboration with your organization, use the invitation API. To create a customer, citizen, or business partner in Microsoft Entra External ID in external tenants, see Example 4: Create a customer account."
       ]
     },
     {
@@ -87011,36 +87157,36 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "AppRoleAssignment.ReadWrite.All",
           "User.Read",
-          "Calendars.ReadBasic",
           "UserAuthenticationMethod.Read",
-          "AppRoleAssignment.ReadWrite.All"
+          "Calendars.ReadBasic"
         ],
         "delegatedPersonal": [
           "User.Read",
           "Calendars.ReadBasic"
         ],
         "application": [
-          "User.Read.All",
-          "Calendars.ReadBasic",
+          "Directory.Read.All",
           "Chat.Read.All",
+          "User.Read.All",
           "UserAuthenticationMethod.Read",
-          "Directory.Read.All"
+          "Calendars.ReadBasic"
         ]
       },
       "queryParams": [
         "$top",
         "$filter",
-        "$select",
-        "$expand",
         "$count",
+        "$expand",
         "$orderby",
         "$search",
+        "$select",
         "$skip"
       ],
       "notes": [
-        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
         "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1.",
+        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
         "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages."
       ]
     },
@@ -87064,25 +87210,25 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "Sites.ReadWrite.All",
           "UserAuthMethod-Email.ReadWrite",
-          "UserAuthMethod-Phone.ReadWrite",
-          "AppRoleAssignment.ReadWrite.All",
-          "LicenseAssignment.ReadWrite.All",
-          "Mail.Send",
           "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthMethod-TAP.Read"
+          "AppRoleAssignment.ReadWrite.All",
+          "Mail.Send",
+          "LicenseAssignment.ReadWrite.All",
+          "UserAuthMethod-TAP.Read",
+          "Sites.ReadWrite.All",
+          "UserAuthMethod-Phone.ReadWrite"
         ],
         "delegatedPersonal": [
           "Mail.Send"
         ],
         "application": [
-          "Sites.ReadWrite.All",
           "UserAuthenticationMethod.ReadWrite.All",
           "AppRoleAssignment.ReadWrite.All",
-          "LicenseAssignment.ReadWrite.All",
           "Mail.Send",
-          "UserAuthMethod-TAP.Read.All"
+          "LicenseAssignment.ReadWrite.All",
+          "UserAuthMethod-TAP.Read.All",
+          "Sites.ReadWrite.All"
         ]
       }
     },
@@ -87411,8 +87557,8 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "TeamworkTargetedMessage.ReadWrite",
-          "TeamsAppInstallation.ReadWriteSelfForUser"
+          "TeamsAppInstallation.ReadWriteSelfForUser",
+          "TeamworkTargetedMessage.ReadWrite"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -87829,14 +87975,14 @@
         "delegatedWork": [
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -87850,22 +87996,22 @@
         "delegatedWork": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "notes": [
@@ -87877,16 +88023,16 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "notes": [
@@ -92726,6 +92872,31 @@
       ]
     },
     {
+      "name": "activity",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
       "name": "activityBasedTimeoutPolicy",
       "properties": [
         {
@@ -92815,6 +92986,19 @@
         {
           "name": "activity",
           "type": "microsoft.graph.security.userActivityType"
+        }
+      ]
+    },
+    {
+      "name": "activityResourceDetails",
+      "properties": [
+        {
+          "name": "kind",
+          "type": "String"
+        },
+        {
+          "name": "resourceId",
+          "type": "String"
         }
       ]
     },
@@ -95447,6 +95631,27 @@
       ]
     },
     {
+      "name": "alertCounts",
+      "properties": [
+        {
+          "name": "active",
+          "type": "Int32"
+        },
+        {
+          "name": "bySeverity",
+          "type": "microsoft.graph.security.caseManagement.incidentSeverityCounts"
+        },
+        {
+          "name": "byStatus",
+          "type": "microsoft.graph.security.caseManagement.alertStatusCounts"
+        },
+        {
+          "name": "total",
+          "type": "Int32"
+        }
+      ]
+    },
+    {
       "name": "alertEvidence",
       "properties": [
         {
@@ -95654,6 +95859,23 @@
         {
           "name": "severity",
           "type": "microsoft.graph.networkaccess.alertSeverity"
+        }
+      ]
+    },
+    {
+      "name": "alertStatusCounts",
+      "properties": [
+        {
+          "name": "inProgress",
+          "type": "Int32"
+        },
+        {
+          "name": "new",
+          "type": "Int32"
+        },
+        {
+          "name": "resolved",
+          "type": "Int32"
         }
       ]
     },
@@ -108198,29 +108420,52 @@
       "name": "attachment",
       "properties": [
         {
-          "name": "contentType",
+          "name": "content",
+          "type": "Stream"
+        },
+        {
+          "name": "createdBy",
           "type": "String"
         },
         {
-          "name": "id",
-          "type": "String",
-          "notes": "Read-only"
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
         },
         {
-          "name": "isInline",
-          "type": "Boolean"
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "fileExtension",
+          "type": "String"
+        },
+        {
+          "name": "fileSize",
+          "type": "Int64"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
         },
         {
           "name": "lastModifiedDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "name",
-          "type": "String"
+          "name": "origin",
+          "type": "microsoft.graph.security.caseManagement.attachmentOrigin"
         },
         {
-          "name": "size",
-          "type": "Int32"
+          "name": "scanResult",
+          "type": "microsoft.graph.security.caseManagement.attachmentScanResult"
         }
       ]
     },
@@ -108297,6 +108542,19 @@
         {
           "name": "size",
           "type": "Int64"
+        }
+      ]
+    },
+    {
+      "name": "attachmentOrigin",
+      "properties": [
+        {
+          "name": "resourceId",
+          "type": "String"
+        },
+        {
+          "name": "resourceType",
+          "type": "microsoft.graph.security.caseManagement.attachmentOriginType"
         }
       ]
     },
@@ -109039,6 +109297,43 @@
         {
           "name": "dateTime",
           "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "auditLog",
+      "properties": [
+        {
+          "name": "action",
+          "type": "microsoft.graph.security.caseManagement.auditAction"
+        },
+        {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "details",
+          "type": "microsoft.graph.security.caseManagement.activityResourceDetails"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "modifiedProperties",
+          "type": "microsoft.graph.security.caseManagement.modifiedProperty collection"
         }
       ]
     },
@@ -113567,6 +113862,15 @@
       ]
     },
     {
+      "name": "booleanValueProperty",
+      "properties": [
+        {
+          "name": "value",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
       "name": "branchConnectivityConfiguration",
       "properties": [
         {
@@ -115285,11 +115589,36 @@
       ]
     },
     {
+      "name": "caseManagementEntity",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
       "name": "caseOperation",
       "properties": [
         {
           "name": "action",
-          "type": "microsoft.graph.ediscovery.caseAction"
+          "type": "microsoft.graph.security.caseAction"
         },
         {
           "name": "completedDateTime",
@@ -115318,7 +115647,7 @@
         },
         {
           "name": "status",
-          "type": "microsoft.graph.ediscovery.caseOperationStatus"
+          "type": "microsoft.graph.security.caseOperationStatus"
         }
       ]
     },
@@ -122194,6 +122523,35 @@
       ]
     },
     {
+      "name": "comment",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "message",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "commsNotification",
       "properties": [
         {
@@ -124768,7 +125126,7 @@
       "name": "contentInfo",
       "properties": [
         {
-          "name": "format",
+          "name": "contentFormat",
           "type": "String"
         },
         {
@@ -124781,7 +125139,7 @@
         },
         {
           "name": "state",
-          "type": "String"
+          "type": "contentState"
         }
       ]
     },
@@ -127145,6 +127503,42 @@
         {
           "name": "stage",
           "type": "accessPackageCustomExtensionStage"
+        }
+      ]
+    },
+    {
+      "name": "customFieldDateTimeValue",
+      "properties": [
+        {
+          "name": "valueDateTime",
+          "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "customFieldNumberValue",
+      "properties": [
+        {
+          "name": "value",
+          "type": "Int32"
+        }
+      ]
+    },
+    {
+      "name": "customFieldOptionsValue",
+      "properties": [
+        {
+          "name": "values",
+          "type": "String collection"
+        }
+      ]
+    },
+    {
+      "name": "customFieldStringValue",
+      "properties": [
+        {
+          "name": "value",
+          "type": "String"
         }
       ]
     },
@@ -130138,37 +130532,31 @@
       "name": "deployment",
       "properties": [
         {
-          "name": "content",
-          "type": "microsoft.graph.windowsUpdates.deployableContent",
-          "default": true
+          "name": "configuration",
+          "type": "microsoft.graph.networkaccess.deploymentConfiguration"
         },
         {
-          "name": "createdDateTime",
-          "type": "DateTimeOffset",
-          "default": true,
-          "notes": "Read-only"
+          "name": "deploymentEndDateTime",
+          "type": "DateTimeOffset"
         },
         {
-          "name": "id",
-          "type": "String",
-          "default": true,
-          "notes": "Read-only; Not nullable"
+          "name": "initiatedBy",
+          "type": "String"
         },
         {
           "name": "lastModifiedDateTime",
-          "type": "DateTimeOffset",
-          "default": true,
-          "notes": "Read-only"
+          "type": "DateTimeOffset"
         },
         {
-          "name": "settings",
-          "type": "microsoft.graph.windowsUpdates.deploymentSettings",
-          "default": true
+          "name": "requestId",
+          "type": "String"
         },
         {
-          "name": "state",
-          "type": "microsoft.graph.windowsUpdates.deploymentState",
-          "default": true
+          "name": "status",
+          "type": "microsoft.graph.networkaccess.deploymentStatus",
+          "filter": [
+            "eq"
+          ]
         }
       ]
     },
@@ -137868,6 +138256,14 @@
       "name": "deviceManagementScript",
       "properties": [
         {
+          "name": "enforceSignatureCheck",
+          "type": "Boolean"
+        },
+        {
+          "name": "runAs32Bit",
+          "type": "Boolean"
+        },
+        {
           "name": "id",
           "type": "String"
         },
@@ -137898,20 +138294,12 @@
           "type": "runAsAccountType"
         },
         {
-          "name": "enforceSignatureCheck",
-          "type": "Boolean"
-        },
-        {
           "name": "fileName",
           "type": "String"
         },
         {
           "name": "roleScopeTagIds",
           "type": "String collection"
-        },
-        {
-          "name": "runAs32Bit",
-          "type": "Boolean"
         }
       ]
     },
@@ -150332,6 +150720,63 @@
       ]
     },
     {
+      "name": "genericCase",
+      "properties": [
+        {
+          "name": "assignedTo",
+          "type": "String"
+        },
+        {
+          "name": "closingNotes",
+          "type": "String"
+        },
+        {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "customFields",
+          "type": "microsoft.graph.security.caseManagement.customFieldValues"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "dueDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "priority",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "genericError",
       "properties": [
         {
@@ -155568,6 +156013,67 @@
       ]
     },
     {
+      "name": "impactedAssetsCounts",
+      "properties": [
+        {
+          "name": "aiAgents",
+          "type": "Int32"
+        },
+        {
+          "name": "apps",
+          "type": "Int32"
+        },
+        {
+          "name": "cloudResources",
+          "type": "Int32"
+        },
+        {
+          "name": "files",
+          "type": "Int32"
+        },
+        {
+          "name": "ips",
+          "type": "Int32"
+        },
+        {
+          "name": "machines",
+          "type": "Int32"
+        },
+        {
+          "name": "mailboxes",
+          "type": "Int32"
+        },
+        {
+          "name": "oauthApps",
+          "type": "Int32"
+        },
+        {
+          "name": "processes",
+          "type": "Int32"
+        },
+        {
+          "name": "registryKeys",
+          "type": "Int32"
+        },
+        {
+          "name": "securityGroups",
+          "type": "Int32"
+        },
+        {
+          "name": "total",
+          "type": "Int32"
+        },
+        {
+          "name": "urls",
+          "type": "Int32"
+        },
+        {
+          "name": "users",
+          "type": "Int32"
+        }
+      ]
+    },
+    {
       "name": "impactedDeviceAsset",
       "properties": [
         {
@@ -156400,6 +156906,277 @@
         {
           "name": "tenantId",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "incidentCase",
+      "properties": [
+        {
+          "name": "aiAgentIds",
+          "type": "String collection"
+        },
+        {
+          "name": "alertCounts",
+          "type": "microsoft.graph.security.caseManagement.alertCounts"
+        },
+        {
+          "name": "alertPolicyIds",
+          "type": "String collection"
+        },
+        {
+          "name": "assignedTo",
+          "type": "String"
+        },
+        {
+          "name": "associatedThreatIds",
+          "type": "String collection"
+        },
+        {
+          "name": "categories",
+          "type": "String collection"
+        },
+        {
+          "name": "classification",
+          "type": "microsoft.graph.security.caseManagement.incidentClassification"
+        },
+        {
+          "name": "cloudScopes",
+          "type": "String collection"
+        },
+        {
+          "name": "createdBy",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ]
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ne",
+            "ge",
+            "le"
+          ]
+        },
+        {
+          "name": "customFields",
+          "type": "microsoft.graph.security.caseManagement.customFieldValues"
+        },
+        {
+          "name": "dataSensitivityLabels",
+          "type": "String collection"
+        },
+        {
+          "name": "dataStreams",
+          "type": "String collection"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "detectionSources",
+          "type": "String collection"
+        },
+        {
+          "name": "determination",
+          "type": "microsoft.graph.security.caseManagement.incidentDetermination"
+        },
+        {
+          "name": "displayName",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ]
+        },
+        {
+          "name": "dueDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "emailNotificationRecipients",
+          "type": "String collection"
+        },
+        {
+          "name": "firstEventTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ]
+        },
+        {
+          "name": "impactedAssets",
+          "type": "microsoft.graph.security.caseManagement.impactedAssetsCounts"
+        },
+        {
+          "name": "incidentId",
+          "type": "Int64"
+        },
+        {
+          "name": "incidentWebUrl",
+          "type": "String"
+        },
+        {
+          "name": "investigation",
+          "type": "microsoft.graph.security.caseManagement.investigation"
+        },
+        {
+          "name": "investigationIds",
+          "type": "String collection"
+        },
+        {
+          "name": "investigationStates",
+          "type": "String collection"
+        },
+        {
+          "name": "lastEventTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ]
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ne",
+            "ge",
+            "le"
+          ]
+        },
+        {
+          "name": "machineGroupIds",
+          "type": "String collection"
+        },
+        {
+          "name": "osPlatforms",
+          "type": "String collection"
+        },
+        {
+          "name": "policyNames",
+          "type": "String collection"
+        },
+        {
+          "name": "priorityScore",
+          "type": "Int32"
+        },
+        {
+          "name": "productNames",
+          "type": "String collection"
+        },
+        {
+          "name": "redirectCaseId",
+          "type": "Int64"
+        },
+        {
+          "name": "redirectIncidentId",
+          "type": "Int64"
+        },
+        {
+          "name": "serviceSources",
+          "type": "String collection"
+        },
+        {
+          "name": "severity",
+          "type": "microsoft.graph.security.caseManagement.incidentSeverity"
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ]
+        },
+        {
+          "name": "summary",
+          "type": "String"
+        },
+        {
+          "name": "systemTags",
+          "type": "String collection"
+        },
+        {
+          "name": "topRiskScore",
+          "type": "Int32"
+        },
+        {
+          "name": "workspaceIds",
+          "type": "String collection"
+        }
+      ]
+    },
+    {
+      "name": "incidentRelation",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "relatedResourceId",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "incidentSeverityCounts",
+      "properties": [
+        {
+          "name": "high",
+          "type": "Int32"
+        },
+        {
+          "name": "informational",
+          "type": "Int32"
+        },
+        {
+          "name": "low",
+          "type": "Int32"
+        },
+        {
+          "name": "medium",
+          "type": "Int32"
+        },
+        {
+          "name": "unknown",
+          "type": "Int32"
         }
       ]
     },
@@ -157584,6 +158361,23 @@
           "name": "tenantLicenseStatus",
           "type": "String",
           "notes": "Status of the tenant's Microsoft Entra ID P2 license"
+        }
+      ]
+    },
+    {
+      "name": "investigation",
+      "properties": [
+        {
+          "name": "count",
+          "type": "Int32"
+        },
+        {
+          "name": "ids",
+          "type": "String collection"
+        },
+        {
+          "name": "state",
+          "type": "String"
         }
       ]
     },
@@ -162920,7 +163714,7 @@
         },
         {
           "name": "contentType",
-          "type": "bodyType"
+          "type": "microsoft.graph.windowsUpdates.bodyType"
         }
       ]
     },
@@ -164179,7 +164973,7 @@
         },
         {
           "name": "labelId",
-          "type": "Guid"
+          "type": "GUID"
         }
       ]
     },
@@ -173435,6 +174229,10 @@
       "name": "mdmWindowsInformationProtectionPolicy",
       "properties": [
         {
+          "name": "id",
+          "type": "String"
+        },
+        {
           "name": "displayName",
           "type": "String"
         },
@@ -173453,10 +174251,6 @@
         {
           "name": "roleScopeTagIds",
           "type": "String collection"
-        },
-        {
-          "name": "id",
-          "type": "String"
         },
         {
           "name": "version",
@@ -176523,35 +177317,11 @@
           "type": "String"
         },
         {
-          "name": "Troubleshooting",
-          "type": ""
-        },
-        {
-          "name": "additionalInformation",
-          "type": "keyValuePair collection"
-        },
-        {
-          "name": "applicationId",
-          "type": "String"
-        },
-        {
-          "name": "correlationId",
-          "type": "String"
-        },
-        {
           "name": "eventDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "eventName",
-          "type": "String"
-        },
-        {
-          "name": "history",
-          "type": "mobileAppTroubleshootingHistoryItem collection"
-        },
-        {
-          "name": "managedDeviceIdentifier",
+          "name": "correlationId",
           "type": "String"
         },
         {
@@ -176559,8 +177329,32 @@
           "type": "deviceManagementTroubleshootingErrorDetails"
         },
         {
+          "name": "eventName",
+          "type": "String"
+        },
+        {
+          "name": "additionalInformation",
+          "type": "keyValuePair collection"
+        },
+        {
+          "name": "managedDeviceIdentifier",
+          "type": "String"
+        },
+        {
+          "name": "deviceId",
+          "type": "String"
+        },
+        {
           "name": "userId",
           "type": "String"
+        },
+        {
+          "name": "applicationId",
+          "type": "String"
+        },
+        {
+          "name": "history",
+          "type": "mobileAppTroubleshootingHistoryItem collection"
         }
       ]
     },
@@ -194080,6 +194874,51 @@
       ]
     },
     {
+      "name": "recommendationRelation",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "recommendationType",
+          "type": "String"
+        },
+        {
+          "name": "relatedResourceId",
+          "type": "String"
+        },
+        {
+          "name": "resourceGroupName",
+          "type": "String"
+        },
+        {
+          "name": "subscriptionId",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "recommendedAction",
       "properties": [
         {
@@ -195548,11 +196387,31 @@
       "name": "relation",
       "properties": [
         {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
           "name": "id",
           "type": "String"
         },
         {
-          "name": "relationship",
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "relatedResourceId",
           "type": "String"
         }
       ]
@@ -202562,6 +203421,11 @@
           "notes": "Read-only"
         },
         {
+          "name": "throttledRequests",
+          "type": "Int64",
+          "notes": "Read-only"
+        },
+        {
           "name": "usageDateTime",
           "type": "DateTimeOffset",
           "notes": "Read-only"
@@ -207167,6 +208031,15 @@
       ]
     },
     {
+      "name": "stringValueProperty",
+      "properties": [
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "strongAuthenticationRequirements",
       "properties": [
         {
@@ -209297,20 +210170,28 @@
       "name": "task",
       "properties": [
         {
-          "name": "textbody",
-          "type": "itemBody"
+          "name": "assignedTo",
+          "type": "String"
         },
         {
-          "name": "bodyLastModifiedDateTime",
-          "type": "DateTimeOffset"
+          "name": "category",
+          "type": "microsoft.graph.security.caseManagement.caseTaskCategory"
         },
         {
-          "name": "completedDateTime",
-          "type": "DateTimeOffset"
+          "name": "closingNotes",
+          "type": "String"
+        },
+        {
+          "name": "createdBy",
+          "type": "String"
         },
         {
           "name": "createdDateTime",
           "type": "DateTimeOffset"
+        },
+        {
+          "name": "description",
+          "type": "String"
         },
         {
           "name": "displayName",
@@ -209318,35 +210199,27 @@
         },
         {
           "name": "dueDateTime",
-          "type": "dateTimeTimeZone"
+          "type": "DateTimeOffset"
         },
         {
           "name": "id",
           "type": "String"
         },
         {
-          "name": "importance",
-          "type": "importance"
+          "name": "lastModifiedBy",
+          "type": "String"
         },
         {
           "name": "lastModifiedDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "viewpoint",
-          "type": "taskViewpoint"
-        },
-        {
-          "name": "recurrence",
-          "type": "patternedRecurrence"
-        },
-        {
-          "name": "startDateTime",
-          "type": "dateTimeTimeZone"
+          "name": "priority",
+          "type": "microsoft.graph.security.caseManagement.caseTaskPriority"
         },
         {
           "name": "status",
-          "type": "taskStatus_v2"
+          "type": "microsoft.graph.security.caseManagement.taskStatus"
         }
       ]
     },
@@ -216930,24 +217803,20 @@
       "name": "usageRight",
       "properties": [
         {
+          "name": "catalogId",
+          "type": "String"
+        },
+        {
           "name": "id",
-          "type": "String",
-          "notes": "Read-only; Not nullable"
+          "type": "String"
         },
         {
-          "name": "services",
-          "type": "microsoft.graph.cloudLicensing.service collection",
-          "notes": "Read-only; Not nullable"
+          "name": "serviceIdentifier",
+          "type": "String"
         },
         {
-          "name": "skuId",
-          "type": "Guid",
-          "notes": "Read-only"
-        },
-        {
-          "name": "skuPartNumber",
-          "type": "String",
-          "notes": "Read-only; Unique SKU display name that is equal to the skuPartNumber on the related subscribedSku object; for example, AAD_Premium"
+          "name": "state",
+          "type": "usageRightState"
         }
       ]
     },
@@ -239224,6 +240093,51 @@
         {
           "name": "tags",
           "type": "String collection"
+        }
+      ]
+    },
+    {
+      "name": "workspaceIndicatorRelation",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "relatedResourceId",
+          "type": "String"
+        },
+        {
+          "name": "resourceGroupName",
+          "type": "String"
+        },
+        {
+          "name": "subscriptionId",
+          "type": "String"
+        },
+        {
+          "name": "workspaceName",
+          "type": "String"
         }
       ]
     },
