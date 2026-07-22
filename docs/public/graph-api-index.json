@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-07-21T06:46:36Z",
-  "count": 29037,
+  "generated": "2026-07-22T06:47:21Z",
+  "count": 29096,
   "endpoints": [
     {
       "path": "/accessReviewDecisions",
@@ -1218,6 +1218,13 @@
       "resource": "admin"
     },
     {
+      "path": "/admin/exchange/mailboxes/{mailbox-id}/folders",
+      "method": "POST",
+      "summary": "Create mailboxFolder",
+      "description": "Create a new mailboxFolder or child mailboxFolder in a user's mailbox.",
+      "resource": "admin"
+    },
+    {
       "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
@@ -1232,9 +1239,23 @@
     },
     {
       "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/{mailboxFolder-id}",
+      "method": "DELETE",
+      "summary": "Delete mailboxFolder",
+      "description": "Delete a mailboxFolder or a child mailboxFolder within a mailbox.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/{mailboxFolder-id}",
       "method": "GET",
       "summary": "Get mailboxFolder",
       "description": "Read the properties and relationships of a mailboxFolder object.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/{mailboxFolder-id}",
+      "method": "PATCH",
+      "summary": "Update mailboxFolder",
+      "description": "Update mailboxFolder properties such as the displayName within a mailbox.",
       "resource": "admin"
     },
     {
@@ -1242,6 +1263,12 @@
       "method": "GET",
       "summary": "List childFolders",
       "description": "Get the mailboxFolder collection under the specified mailboxFolder in a mailbox.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/{mailboxFolder-id}/childFolders",
+      "method": "POST",
+      "summary": "Create new navigation property to childFolders for admin",
       "resource": "admin"
     },
     {
@@ -1259,9 +1286,21 @@
     },
     {
       "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/{mailboxFolder-id}/childFolders/{mailboxFolder-id1}",
+      "method": "DELETE",
+      "summary": "Delete navigation property childFolders for admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/{mailboxFolder-id}/childFolders/{mailboxFolder-id1}",
       "method": "GET",
       "summary": "Get childFolders from admin",
       "description": "The collection of child folders in this folder.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/{mailboxFolder-id}/childFolders/{mailboxFolder-id1}",
+      "method": "PATCH",
+      "summary": "Update the navigation property childFolders in admin",
       "resource": "admin"
     },
     {
@@ -1835,7 +1874,7 @@
       "path": "/admin/reportSettings/sharePoint/apiUsageReportMetrics",
       "method": "GET",
       "summary": "List apiUsageReportMetrics",
-      "description": "Get the list of SharePoint API usage report metrics and their enablement status for the tenant. Currently, only the EgressReport metric is supported.",
+      "description": "Get the list of SharePoint API usage report metrics and their enablement status for the tenant. The supported metrics are egressReport and throttlingReport.",
       "resource": "admin"
     },
     {
@@ -14026,19 +14065,19 @@
       "resource": "copilot"
     },
     {
-      "path": "/copilot/reports/getMicrosoft365CopilotUsageUserDetail(period='{period}')",
+      "path": "/copilot/reports/getMicrosoft365CopilotUsageUserDetail(period='{period}',version='{version}')",
       "method": "GET",
       "summary": "Invoke function getMicrosoft365CopilotUsageUserDetail",
       "resource": "copilot"
     },
     {
-      "path": "/copilot/reports/getMicrosoft365CopilotUserCountSummary(period='{period}')",
+      "path": "/copilot/reports/getMicrosoft365CopilotUserCountSummary(period='{period}',version='{version}')",
       "method": "GET",
       "summary": "Invoke function getMicrosoft365CopilotUserCountSummary",
       "resource": "copilot"
     },
     {
-      "path": "/copilot/reports/getMicrosoft365CopilotUserCountTrend(period='{period}')",
+      "path": "/copilot/reports/getMicrosoft365CopilotUserCountTrend(period='{period}',version='{version}')",
       "method": "GET",
       "summary": "Invoke function getMicrosoft365CopilotUserCountTrend",
       "resource": "copilot"
@@ -22459,6 +22498,13 @@
       "resource": "devicemanagement"
     },
     {
+      "path": "/deviceManagement/androidManagedStoreAccountEnterpriseSettings/createZeroTouchWebToken",
+      "method": "POST",
+      "summary": "Invoke action createZeroTouchWebToken",
+      "description": "Generates a web token scoped to the Zero Touch Enrollment portal. Requires the ManageZeroTouchEnrollment RBAC permission.",
+      "resource": "devicemanagement"
+    },
+    {
       "path": "/deviceManagement/androidManagedStoreAccountEnterpriseSettings/requestEnterpriseUpgradeUrl",
       "method": "POST",
       "summary": "Invoke action requestEnterpriseUpgradeUrl",
@@ -23654,6 +23700,12 @@
       "resource": "devicemanagement"
     },
     {
+      "path": "/deviceManagement/comanagedDevices/{managedDevice-id}/getSyncStatus()",
+      "method": "GET",
+      "summary": "Invoke function getSyncStatus",
+      "resource": "devicemanagement"
+    },
+    {
       "path": "/deviceManagement/comanagedDevices/{managedDevice-id}/initiateDeviceAttestation",
       "method": "POST",
       "summary": "Invoke action initiateDeviceAttestation",
@@ -23815,6 +23867,13 @@
       "method": "POST",
       "summary": "Invoke action remoteLock",
       "description": "Remote lock",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/comanagedDevices/{managedDevice-id}/removeDeviceEsim",
+      "method": "POST",
+      "summary": "Invoke action removeDeviceEsim",
+      "description": "Remove eSIM from the device",
       "resource": "devicemanagement"
     },
     {
@@ -30460,6 +30519,12 @@
       "resource": "devicemanagement"
     },
     {
+      "path": "/deviceManagement/managedDevices/{managedDevice-id}/getSyncStatus()",
+      "method": "GET",
+      "summary": "Invoke function getSyncStatus",
+      "resource": "devicemanagement"
+    },
+    {
       "path": "/deviceManagement/managedDevices/{managedDevice-id}/initiateDeviceAttestation",
       "method": "POST",
       "summary": "Invoke action initiateDeviceAttestation",
@@ -30621,6 +30686,13 @@
       "method": "POST",
       "summary": "Invoke action remoteLock",
       "description": "Remote lock",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/managedDevices/{managedDevice-id}/removeDeviceEsim",
+      "method": "POST",
+      "summary": "Invoke action removeDeviceEsim",
+      "description": "Remove eSIM from the device",
       "resource": "devicemanagement"
     },
     {
@@ -36520,6 +36592,7 @@
       "path": "/deviceManagement/virtualEndpoint/organizationAction",
       "method": "POST",
       "summary": "Invoke action organizationAction",
+      "description": "Trigger a Cloud PC organization action.",
       "resource": "devicemanagement"
     },
     {
@@ -36992,6 +37065,7 @@
       "path": "/deviceManagement/virtualEndpoint/retrieveOrganizationActionDetail(actionType='{actionType}')",
       "method": "GET",
       "summary": "Invoke function retrieveOrganizationActionDetail",
+      "description": "Retrieve the details of a cloudPcOrganizationActionDetail.",
       "resource": "devicemanagement"
     },
     {
@@ -37011,7 +37085,7 @@
       "path": "/deviceManagement/virtualEndpoint/servicePlans",
       "method": "GET",
       "summary": "List servicePlans",
-      "description": "List the currently available service plans that an organization can purchase for their Cloud PCs. For examples of currently available service plans, see Windows 365 compare plans and pricing. Currently, Microsoft Graph API is available for Windows 365 Enterprise.",
+      "description": "List the currently available service plans that an organization can purchase for their Cloud PCs. For examples of currently available service plans, see Windows 365 compare plans and pricing. Currently, the Microsoft Graph API is available for Windows 365 Enterprise.",
       "resource": "devicemanagement"
     },
     {
@@ -42807,6 +42881,13 @@
       "resource": "drives"
     },
     {
+      "path": "/drives/{drive-id}/items/{driveItem-id}/lock",
+      "method": "POST",
+      "summary": "Invoke action lock",
+      "description": "Acquire an exclusive lock on a file represented by a driveItem, or extend an existing lock you already hold. While the lock is held, other users are prevented from acquiring a lock on the same file. The lock automatically expires after the duration specified in the request elapses. A single endpo...",
+      "resource": "drives"
+    },
+    {
       "path": "/drives/{drive-id}/items/{driveItem-id}/permanentDelete",
       "method": "POST",
       "summary": "Invoke action permanentDelete",
@@ -42868,6 +42949,13 @@
       "path": "/drives/{drive-id}/items/{driveItem-id}/preview",
       "method": "POST",
       "summary": "Invoke action preview",
+      "resource": "drives"
+    },
+    {
+      "path": "/drives/{drive-id}/items/{driveItem-id}/releaseLock",
+      "method": "POST",
+      "summary": "Invoke action releaseLock",
+      "description": "Release the exclusive lock that the calling user currently holds on a file represented by a driveItem. After successful release, the file is immediately available for other users to lock and modify. Only the user who currently holds the lock can release it. The server identifies the lock from the...",
       "resource": "drives"
     },
     {
@@ -67958,6 +68046,7 @@
       "path": "/groups/{group-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from groups",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "groups"
     },
     {
@@ -67982,6 +68071,7 @@
       "path": "/groups/{group-id}/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from groups",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "groups"
     },
     {
@@ -75533,6 +75623,7 @@
       "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from groups",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "groups"
     },
     {
@@ -75557,6 +75648,7 @@
       "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from groups",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "groups"
     },
     {
@@ -77085,6 +77177,7 @@
       "path": "/groups/{group-id}/team/primaryChannel/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from groups",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "groups"
     },
     {
@@ -77109,6 +77202,7 @@
       "path": "/groups/{group-id}/team/primaryChannel/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from groups",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "groups"
     },
     {
@@ -107100,6 +107194,12 @@
       "resource": "me"
     },
     {
+      "path": "/me/managedDevices/{managedDevice-id}/getSyncStatus()",
+      "method": "GET",
+      "summary": "Invoke function getSyncStatus",
+      "resource": "me"
+    },
+    {
       "path": "/me/managedDevices/{managedDevice-id}/initiateDeviceAttestation",
       "method": "POST",
       "summary": "Invoke action initiateDeviceAttestation",
@@ -107261,6 +107361,13 @@
       "method": "POST",
       "summary": "Invoke action remoteLock",
       "description": "Remote lock",
+      "resource": "me"
+    },
+    {
+      "path": "/me/managedDevices/{managedDevice-id}/removeDeviceEsim",
+      "method": "POST",
+      "summary": "Invoke action removeDeviceEsim",
+      "description": "Remove eSIM from the device",
       "resource": "me"
     },
     {
@@ -111816,6 +111923,7 @@
       "path": "/me/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from me",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "me"
     },
     {
@@ -111840,6 +111948,7 @@
       "path": "/me/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from me",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "me"
     },
     {
@@ -120117,6 +120226,7 @@
       "path": "/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from planner",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "planner"
     },
     {
@@ -120141,6 +120251,7 @@
       "path": "/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from planner",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "planner"
     },
     {
@@ -126787,21 +126898,21 @@
       "resource": "reports"
     },
     {
-      "path": "/reports/getMicrosoft365CopilotUsageUserDetail(period='{period}')",
+      "path": "/reports/getMicrosoft365CopilotUsageUserDetail(period='{period}',version='{version}')",
       "method": "GET",
       "summary": "Invoke function getMicrosoft365CopilotUsageUserDetail",
       "description": "Get the most recent activity data for enabled users of Microsoft 365 Copilot apps.",
       "resource": "reports"
     },
     {
-      "path": "/reports/getMicrosoft365CopilotUserCountSummary(period='{period}')",
+      "path": "/reports/getMicrosoft365CopilotUserCountSummary(period='{period}',version='{version}')",
       "method": "GET",
       "summary": "Invoke function getMicrosoft365CopilotUserCountSummary",
       "description": "Get the aggregated number of active and enabled users of Microsoft 365 Copilot for a specified time period.",
       "resource": "reports"
     },
     {
-      "path": "/reports/getMicrosoft365CopilotUserCountTrend(period='{period}')",
+      "path": "/reports/getMicrosoft365CopilotUserCountTrend(period='{period}',version='{version}')",
       "method": "GET",
       "summary": "Invoke function getMicrosoft365CopilotUserCountTrend",
       "description": "Get the trend in the daily number of active and enabled users of Microsoft 365 Copilot for a specified time period.",
@@ -134180,6 +134291,248 @@
       "resource": "security"
     },
     {
+      "path": "/security/caseManagement",
+      "method": "DELETE",
+      "summary": "Delete navigation property caseManagement for security",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement",
+      "method": "GET",
+      "summary": "Get caseManagement from security",
+      "description": "The entry point for security case management APIs, including cases, tasks, activities, relations, and attachments.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement",
+      "method": "PATCH",
+      "summary": "Update the navigation property caseManagement in security",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases",
+      "method": "GET",
+      "summary": "List case objects",
+      "description": "Get a list of the case objects and their properties.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases",
+      "method": "POST",
+      "summary": "Create case management case",
+      "description": "Create a case object in case management.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}",
+      "method": "DELETE",
+      "summary": "Delete case management case",
+      "description": "Delete a case object from case management.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}",
+      "method": "GET",
+      "summary": "Get case management case",
+      "description": "Read the properties and relationships of a microsoft.graph.security.caseManagement.case object.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}",
+      "method": "PATCH",
+      "summary": "Update case management case",
+      "description": "Update the properties of a microsoft.graph.security.caseManagement.case object.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/activities",
+      "method": "GET",
+      "summary": "List case activities",
+      "description": "Get a list of activity objects in a case timeline.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/activities",
+      "method": "POST",
+      "summary": "Create case activity",
+      "description": "Create a comment activity for a case.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/activities/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/activities/{activity-id}",
+      "method": "DELETE",
+      "summary": "Delete activity",
+      "description": "Delete a comment activity from a case timeline. Only comment activities support delete.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/activities/{activity-id}",
+      "method": "GET",
+      "summary": "Get activity",
+      "description": "Read the properties and relationships of a microsoft.graph.security.caseManagement.activity object. The response can be a comment or auditLog object, identified by @odata.type.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/activities/{activity-id}",
+      "method": "PATCH",
+      "summary": "Update activity",
+      "description": "Update a comment activity in a case timeline. Only comment activities support update. Include @odata.type with #microsoft.graph.security.caseManagement.comment in the request body to identify the concrete activity type.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments",
+      "method": "GET",
+      "summary": "List case attachments",
+      "description": "Get a list of attachment objects for a case.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments",
+      "method": "POST",
+      "summary": "Create case attachment",
+      "description": "Create an attachment for a case.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property attachments for security",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}",
+      "method": "GET",
+      "summary": "Get attachment",
+      "description": "Read the properties and relationships of an attachment object.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}",
+      "method": "PATCH",
+      "summary": "Update attachment",
+      "description": "Update the properties of an attachment object.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}/content",
+      "method": "DELETE",
+      "summary": "Delete content for the navigation property attachments in security",
+      "description": "The binary content stream for the attachment.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}/content",
+      "method": "GET",
+      "summary": "Get content for the navigation property attachments from security",
+      "description": "The binary content stream for the attachment.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}/content",
+      "method": "PUT",
+      "summary": "Update content for the navigation property attachments in security",
+      "description": "The binary content stream for the attachment.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/relations",
+      "method": "GET",
+      "summary": "List case relations",
+      "description": "Get a list of external resource relation objects for a case.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/relations",
+      "method": "POST",
+      "summary": "Create case relation",
+      "description": "Create an external resource relation for a case.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/relations/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/relations/{relation-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property relations for security",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/relations/{relation-id}",
+      "method": "GET",
+      "summary": "Get relations from security",
+      "description": "Links from the case to related security resources. Supports $expand.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/relations/{relation-id}",
+      "method": "PATCH",
+      "summary": "Update relation",
+      "description": "Update the properties of a relation object.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/tasks",
+      "method": "GET",
+      "summary": "List case tasks",
+      "description": "Get a list of task objects for a case.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/tasks",
+      "method": "POST",
+      "summary": "Create case task",
+      "description": "Create a task for a case.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/tasks/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/tasks/{task-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property tasks for security",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/tasks/{task-id}",
+      "method": "GET",
+      "summary": "Get task",
+      "description": "Read the properties and relationships of a task object.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/cases/{case-id}/tasks/{task-id}",
+      "method": "PATCH",
+      "summary": "Update task",
+      "description": "Update the properties of a task object.",
+      "resource": "security"
+    },
+    {
       "path": "/security/cases",
       "method": "DELETE",
       "summary": "Delete navigation property cases for security",
@@ -134561,6 +134914,18 @@
       "path": "/security/cases/ediscoveryCases/{ediscoveryCase-id}/legalHolds/{ediscoveryHoldPolicy-id}",
       "method": "PATCH",
       "summary": "Update the navigation property legalHolds in security",
+      "resource": "security"
+    },
+    {
+      "path": "/security/cases/ediscoveryCases/{ediscoveryCase-id}/legalHolds/{ediscoveryHoldPolicy-id}/microsoft.graph.security.disablePolicy",
+      "method": "POST",
+      "summary": "Invoke action disablePolicy",
+      "resource": "security"
+    },
+    {
+      "path": "/security/cases/ediscoveryCases/{ediscoveryCase-id}/legalHolds/{ediscoveryHoldPolicy-id}/microsoft.graph.security.enablePolicy",
+      "method": "POST",
+      "summary": "Invoke action enablePolicy",
       "resource": "security"
     },
     {
@@ -153120,6 +153485,19 @@
       "resource": "storage"
     },
     {
+      "path": "/storage/fileStorage/containers/getByUser(userPrincipalName='{userPrincipalName}')",
+      "method": "GET",
+      "summary": "Invoke function getByUser",
+      "description": "Get a list of fileStorageContainer objects that are owned by a user (either as owner or as principalOwner). You can also filter the results to only list containers for which the user is the principalOwner.",
+      "resource": "storage"
+    },
+    {
+      "path": "/storage/fileStorage/containers/getByUser(userPrincipalName='{userPrincipalName}',role='{role}')",
+      "method": "GET",
+      "summary": "Invoke function getByUser",
+      "resource": "storage"
+    },
+    {
       "path": "/storage/fileStorage/containers/{fileStorageContainer-id}",
       "method": "DELETE",
       "summary": "Delete navigation property containers for storage",
@@ -153660,6 +154038,19 @@
       "path": "/storage/fileStorage/deletedContainers/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
+      "resource": "storage"
+    },
+    {
+      "path": "/storage/fileStorage/deletedContainers/getByUser(userPrincipalName='{userPrincipalName}')",
+      "method": "GET",
+      "summary": "Invoke function getByUser",
+      "description": "Get a list of fileStorageContainer objects that are owned by a user (either as owner or as principalOwner). You can also filter the results to only list containers for which the user is the principalOwner.",
+      "resource": "storage"
+    },
+    {
+      "path": "/storage/fileStorage/deletedContainers/getByUser(userPrincipalName='{userPrincipalName}',role='{role}')",
+      "method": "GET",
+      "summary": "Invoke function getByUser",
       "resource": "storage"
     },
     {
@@ -155331,6 +155722,7 @@
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teamTemplateDefinition",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamtemplatedefinition"
     },
     {
@@ -155355,6 +155747,7 @@
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from teamTemplateDefinition",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamtemplatedefinition"
     },
     {
@@ -156883,6 +157276,7 @@
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teamTemplateDefinition",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamtemplatedefinition"
     },
     {
@@ -156907,6 +157301,7 @@
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from teamTemplateDefinition",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamtemplatedefinition"
     },
     {
@@ -158883,6 +159278,7 @@
       "path": "/teams/{team-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teams",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teams"
     },
     {
@@ -158907,6 +159303,7 @@
       "path": "/teams/{team-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from teams",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teams"
     },
     {
@@ -160442,6 +160839,7 @@
       "path": "/teams/{team-id}/primaryChannel/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teams",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teams"
     },
     {
@@ -160466,6 +160864,7 @@
       "path": "/teams/{team-id}/primaryChannel/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from teams",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teams"
     },
     {
@@ -162501,6 +162900,7 @@
       "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teamwork",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamwork"
     },
     {
@@ -162525,6 +162925,7 @@
       "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from teamwork",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamwork"
     },
     {
@@ -164109,6 +164510,7 @@
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teamwork",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamwork"
     },
     {
@@ -164133,6 +164535,7 @@
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from teamwork",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamwork"
     },
     {
@@ -165661,6 +166064,7 @@
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teamwork",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamwork"
     },
     {
@@ -165685,6 +166089,7 @@
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from teamwork",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "teamwork"
     },
     {
@@ -179012,6 +179417,12 @@
       "resource": "users"
     },
     {
+      "path": "/users/{user-id}/managedDevices/{managedDevice-id}/getSyncStatus()",
+      "method": "GET",
+      "summary": "Invoke function getSyncStatus",
+      "resource": "users"
+    },
+    {
       "path": "/users/{user-id}/managedDevices/{managedDevice-id}/initiateDeviceAttestation",
       "method": "POST",
       "summary": "Invoke action initiateDeviceAttestation",
@@ -179173,6 +179584,13 @@
       "method": "POST",
       "summary": "Invoke action remoteLock",
       "description": "Remote lock",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/managedDevices/{managedDevice-id}/removeDeviceEsim",
+      "method": "POST",
+      "summary": "Invoke action removeDeviceEsim",
+      "description": "Remove eSIM from the device",
       "resource": "users"
     },
     {
@@ -183691,6 +184109,7 @@
       "path": "/users/{user-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from users",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "users"
     },
     {
@@ -183715,6 +184134,7 @@
       "path": "/users/{user-id}/planner/plans/{plannerPlan-id}/historyItems/{plannerHistoryItem-id}",
       "method": "GET",
       "summary": "Get historyItems from users",
+      "description": "Collection of history items for entities in the plan. Read-only. Nullable.",
       "resource": "users"
     },
     {

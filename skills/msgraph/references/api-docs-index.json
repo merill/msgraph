@@ -1,6 +1,6 @@
 {
   "version": "beta",
-  "generated": "2026-07-21T06:46:48Z",
+  "generated": "2026-07-22T06:47:33Z",
   "endpointCount": 6459,
   "resourceCount": 4484,
   "endpoints": [
@@ -64440,7 +64440,11 @@
         "application": [
           "Tasks.Read.All"
         ]
-      }
+      },
+      "queryParams": [
+        "$filter",
+        "$select"
+      ]
     },
     {
       "path": "/planner/tasks",
@@ -64464,7 +64468,11 @@
         "application": [
           "Tasks.Read.All"
         ]
-      }
+      },
+      "queryParams": [
+        "$filter",
+        "$select"
+      ]
     },
     {
       "path": "/planner/tasks/{id}",
