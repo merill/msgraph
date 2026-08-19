@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-08-18T06:21:07Z",
-  "count": 29496,
+  "generated": "2026-08-19T06:21:58Z",
+  "count": 29554,
   "endpoints": [
     {
       "path": "/accessReviewDecisions",
@@ -5542,6 +5542,7 @@
       "path": "/app/calls/{call-id}/participants/{participant-id}/reportSyntheticMedia",
       "method": "POST",
       "summary": "Invoke action reportSyntheticMedia",
+      "description": "Report synthetic media detections for a participant in a meeting call. This action is intended for certified third-party audio and video synthetic media detection bots admitted to the meeting call. The detection bot calls this action to flag a participant whose stream it identifies as AI-generate...",
       "resource": "app"
     },
     {
@@ -9548,7 +9549,7 @@
       "path": "/chats/{chat-id}/targetedMessages",
       "method": "GET",
       "summary": "Get targetedMessages from chats",
-      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable.",
+      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.",
       "resource": "chats"
     },
     {
@@ -9573,7 +9574,7 @@
       "path": "/chats/{chat-id}/targetedMessages/{targetedChatMessage-id}",
       "method": "GET",
       "summary": "Get targetedMessages from chats",
-      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable.",
+      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.",
       "resource": "chats"
     },
     {
@@ -10559,6 +10560,7 @@
       "path": "/communications/calls/{call-id}/participants/{participant-id}/reportSyntheticMedia",
       "method": "POST",
       "summary": "Invoke action reportSyntheticMedia",
+      "description": "Report synthetic media detections for a participant in a meeting call. This action is intended for certified third-party audio and video synthetic media detection bots admitted to the meeting call. The detection bot calls this action to flag a participant whose stream it identifies as AI-generate...",
       "resource": "communications"
     },
     {
@@ -42641,6 +42643,7 @@
       "path": "/drives/{drive-id}/items/{driveItem-id}/assignSensitivityLabel",
       "method": "POST",
       "summary": "Invoke action assignSensitivityLabel",
+      "description": "Asynchronously assign a sensitivity label to a driveItem. This API is part of the Microsoft SharePoint and OneDrive APIs that perform advanced premium administrative functions, and is considered as protected. Protected APIs require you to have more validations, beyond permission and consent, befo...",
       "resource": "drives"
     },
     {
@@ -68106,6 +68109,26 @@
       "resource": "groups"
     },
     {
+      "path": "/groups/{group-id}/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from groups",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from groups",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "groups"
+    },
+    {
       "path": "/groups/{group-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from groups",
@@ -75683,6 +75706,26 @@
       "resource": "groups"
     },
     {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from groups",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from groups",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "groups"
+    },
+    {
       "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from groups",
@@ -77234,6 +77277,26 @@
       "path": "/groups/{group-id}/team/primaryChannel/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from groups",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from groups",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
       "resource": "groups"
     },
     {
@@ -102817,6 +102880,39 @@
       "resource": "me"
     },
     {
+      "path": "/me/authentication/resourceAccountKeyAuthenticationMethods",
+      "method": "GET",
+      "summary": "Get resourceAccountKeyAuthenticationMethods from me",
+      "description": "Represents the resource account key credentials registered to a user for authentication on shared devices.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/authentication/resourceAccountKeyAuthenticationMethods/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "me"
+    },
+    {
+      "path": "/me/authentication/resourceAccountKeyAuthenticationMethods/{resourceAccountKeyAuthenticationMethod-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property resourceAccountKeyAuthenticationMethods for me",
+      "resource": "me"
+    },
+    {
+      "path": "/me/authentication/resourceAccountKeyAuthenticationMethods/{resourceAccountKeyAuthenticationMethod-id}",
+      "method": "GET",
+      "summary": "Get resourceAccountKeyAuthenticationMethods from me",
+      "description": "Represents the resource account key credentials registered to a user for authentication on shared devices.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/authentication/resourceAccountKeyAuthenticationMethods/{resourceAccountKeyAuthenticationMethod-id}/device",
+      "method": "GET",
+      "summary": "Get device from me",
+      "description": "The registered device on which this resource account key resides. Supports $expand.",
+      "resource": "me"
+    },
+    {
       "path": "/me/authentication/signInPreferences",
       "method": "GET",
       "summary": "Get signInPreferences property value",
@@ -104592,7 +104688,7 @@
       "path": "/me/chats/{chat-id}/targetedMessages",
       "method": "GET",
       "summary": "Get targetedMessages from me",
-      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable.",
+      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.",
       "resource": "me"
     },
     {
@@ -104617,7 +104713,7 @@
       "path": "/me/chats/{chat-id}/targetedMessages/{targetedChatMessage-id}",
       "method": "GET",
       "summary": "Get targetedMessages from me",
-      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable.",
+      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.",
       "resource": "me"
     },
     {
@@ -114313,6 +114409,26 @@
       "resource": "me"
     },
     {
+      "path": "/me/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from me",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "me"
+    },
+    {
+      "path": "/me/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from me",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "me"
+    },
+    {
       "path": "/me/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from me",
@@ -122337,6 +122453,64 @@
       "resource": "planner"
     },
     {
+      "path": "/planner/goals",
+      "method": "GET",
+      "summary": "Get plannerGoal",
+      "description": "Retrieve the properties and relationships of a plannerGoal object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/goals",
+      "method": "POST",
+      "summary": "Create new navigation property to goals for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/goals/{plannerGoal-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property goals for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get plannerGoal",
+      "description": "Retrieve the properties and relationships of a plannerGoal object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/goals/{plannerGoal-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property goals in planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/goals/{plannerGoal-id}/tasks",
+      "method": "GET",
+      "summary": "Get tasks from planner",
+      "description": "Read-only. Nullable. The tasks associated with the goal. This relationship doesn't support direct retrieval or $expand. To identify the goals associated with a task, read the goalIds property of the plannerTask resource.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/goals/{plannerGoal-id}/tasks/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/goals/{plannerGoal-id}/tasks/{plannerTask-id}",
+      "method": "GET",
+      "summary": "Get tasks from planner",
+      "description": "Read-only. Nullable. The tasks associated with the goal. This relationship doesn't support direct retrieval or $expand. To identify the goals associated with a task, read the goalIds property of the plannerTask resource.",
+      "resource": "planner"
+    },
+    {
       "path": "/planner/plans",
       "method": "GET",
       "summary": "List plans",
@@ -122633,6 +122807,26 @@
       "path": "/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "List goals",
+      "description": "Retrieve the plannerGoal objects associated with a plannerPlan object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from planner",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
       "resource": "planner"
     },
     {
@@ -158335,6 +158529,26 @@
       "resource": "teamtemplatedefinition"
     },
     {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from teamTemplateDefinition",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from teamTemplateDefinition",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teamTemplateDefinition",
@@ -159886,6 +160100,26 @@
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from teamTemplateDefinition",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from teamTemplateDefinition",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
       "resource": "teamtemplatedefinition"
     },
     {
@@ -161891,6 +162125,26 @@
       "resource": "teams"
     },
     {
+      "path": "/teams/{team-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from teams",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from teams",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teams"
+    },
+    {
       "path": "/teams/{team-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teams",
@@ -163449,6 +163703,26 @@
       "path": "/teams/{team-id}/primaryChannel/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from teams",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from teams",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
       "resource": "teams"
     },
     {
@@ -165513,6 +165787,26 @@
       "resource": "teamwork"
     },
     {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from teamwork",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from teamwork",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teamwork"
+    },
+    {
       "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teamwork",
@@ -167127,6 +167421,26 @@
       "resource": "teamwork"
     },
     {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from teamwork",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from teamwork",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teamwork"
+    },
+    {
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/historyItems",
       "method": "GET",
       "summary": "Get historyItems from teamwork",
@@ -168678,6 +168992,26 @@
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from teamwork",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from teamwork",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
       "resource": "teamwork"
     },
     {
@@ -175274,6 +175608,40 @@
       "resource": "users"
     },
     {
+      "path": "/users/{user-id}/authentication/resourceAccountKeyAuthenticationMethods",
+      "method": "GET",
+      "summary": "List resourceAccountKeyAuthenticationMethods",
+      "description": "Retrieve a list of the resourceAccountKeyAuthenticationMethod objects and their properties for a resource account.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/authentication/resourceAccountKeyAuthenticationMethods/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/authentication/resourceAccountKeyAuthenticationMethods/{resourceAccountKeyAuthenticationMethod-id}",
+      "method": "DELETE",
+      "summary": "Delete resourceAccountKeyAuthenticationMethod",
+      "description": "Delete a resourceAccountKeyAuthenticationMethod object.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/authentication/resourceAccountKeyAuthenticationMethods/{resourceAccountKeyAuthenticationMethod-id}",
+      "method": "GET",
+      "summary": "Get resourceAccountKeyAuthenticationMethod",
+      "description": "Read the properties and relationships of a resourceAccountKeyAuthenticationMethod object.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/authentication/resourceAccountKeyAuthenticationMethods/{resourceAccountKeyAuthenticationMethod-id}/device",
+      "method": "GET",
+      "summary": "Get device from users",
+      "description": "The registered device on which this resource account key resides. Supports $expand.",
+      "resource": "users"
+    },
+    {
       "path": "/users/{user-id}/authentication/signInPreferences",
       "method": "GET",
       "summary": "Get authentication method states",
@@ -177053,7 +177421,7 @@
       "path": "/users/{user-id}/chats/{chat-id}/targetedMessages",
       "method": "GET",
       "summary": "Get targetedMessages from users",
-      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable.",
+      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.",
       "resource": "users"
     },
     {
@@ -177079,7 +177447,7 @@
       "path": "/users/{user-id}/chats/{chat-id}/targetedMessages/{targetedChatMessage-id}",
       "method": "GET",
       "summary": "Get targetedMessages from users",
-      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable.",
+      "description": "A collection of targeted messages in the chat that are visible only to specific users. Nullable. You can't expand this relationship using $expand. Targeted messages can also be retrieved via the userTeamwork: getAllTargetedMessages API.",
       "resource": "users"
     },
     {
@@ -186707,6 +187075,26 @@
       "path": "/users/{user-id}/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/planner/plans/{plannerPlan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from users",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/planner/plans/{plannerPlan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/planner/plans/{plannerPlan-id}/goals/{plannerGoal-id}",
+      "method": "GET",
+      "summary": "Get goals from users",
+      "description": "Collection of goals in the plan. Read-only. Nullable.",
       "resource": "users"
     },
     {
