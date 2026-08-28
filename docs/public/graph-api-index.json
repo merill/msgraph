@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-08-27T16:57:55Z",
-  "count": 29554,
+  "generated": "2026-08-28T17:47:56Z",
+  "count": 29626,
   "endpoints": [
     {
       "path": "/accessReviewDecisions",
@@ -682,34 +682,10 @@
       "resource": "admin"
     },
     {
-      "path": "/admin/configurationManagement",
-      "method": "DELETE",
-      "summary": "Delete navigation property configurationManagement for admin",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement",
-      "method": "GET",
-      "summary": "Get configurationManagement from admin",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement",
-      "method": "PATCH",
-      "summary": "Update the navigation property configurationManagement in admin",
-      "resource": "admin"
-    },
-    {
       "path": "/admin/configurationManagement/configurationDrifts",
       "method": "GET",
       "summary": "List configurationDrifts",
       "description": "Get a list of the configurationDrift objects and their properties.",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationDrifts",
-      "method": "POST",
-      "summary": "Create new navigation property to configurationDrifts for admin",
       "resource": "admin"
     },
     {
@@ -720,21 +696,9 @@
     },
     {
       "path": "/admin/configurationManagement/configurationDrifts/{configurationDrift-id}",
-      "method": "DELETE",
-      "summary": "Delete navigation property configurationDrifts for admin",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationDrifts/{configurationDrift-id}",
       "method": "GET",
       "summary": "Get configurationDrift",
       "description": "Get the properties and relationships of a configurationDrift object.",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationDrifts/{configurationDrift-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property configurationDrifts in admin",
       "resource": "admin"
     },
     {
@@ -745,12 +709,6 @@
       "resource": "admin"
     },
     {
-      "path": "/admin/configurationManagement/configurationMonitoringResults",
-      "method": "POST",
-      "summary": "Create new navigation property to configurationMonitoringResults for admin",
-      "resource": "admin"
-    },
-    {
       "path": "/admin/configurationManagement/configurationMonitoringResults/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
@@ -758,21 +716,9 @@
     },
     {
       "path": "/admin/configurationManagement/configurationMonitoringResults/{configurationMonitoringResult-id}",
-      "method": "DELETE",
-      "summary": "Delete navigation property configurationMonitoringResults for admin",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationMonitoringResults/{configurationMonitoringResult-id}",
       "method": "GET",
       "summary": "Get configurationMonitoringResult",
       "description": "Read the properties and relationships of a configurationMonitoringResult object.",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationMonitoringResults/{configurationMonitoringResult-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property configurationMonitoringResults in admin",
       "resource": "admin"
     },
     {
@@ -818,21 +764,9 @@
     },
     {
       "path": "/admin/configurationManagement/configurationMonitors/{configurationMonitor-id}/baseline",
-      "method": "DELETE",
-      "summary": "Delete navigation property baseline for admin",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationMonitors/{configurationMonitor-id}/baseline",
       "method": "GET",
       "summary": "Get configurationBaseline",
       "description": "Read the properties and relationships of a configurationBaseline object that is attached to a specific monitor.",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationMonitors/{configurationMonitor-id}/baseline",
-      "method": "PATCH",
-      "summary": "Update the navigation property baseline in admin",
       "resource": "admin"
     },
     {
@@ -840,18 +774,6 @@
       "method": "GET",
       "summary": "List configurationSnapshotJobs",
       "description": "Get a list of the configurationSnapshotJob objects and their properties.",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationSnapshotJobs",
-      "method": "POST",
-      "summary": "Create new navigation property to configurationSnapshotJobs for admin",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationSnapshotJobs/$count",
-      "method": "GET",
-      "summary": "Get the number of the resource",
       "resource": "admin"
     },
     {
@@ -869,12 +791,6 @@
       "resource": "admin"
     },
     {
-      "path": "/admin/configurationManagement/configurationSnapshotJobs/{configurationSnapshotJob-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property configurationSnapshotJobs in admin",
-      "resource": "admin"
-    },
-    {
       "path": "/admin/configurationManagement/configurationSnapshots",
       "method": "GET",
       "summary": "List configurationSnapshots",
@@ -882,34 +798,10 @@
       "resource": "admin"
     },
     {
-      "path": "/admin/configurationManagement/configurationSnapshots",
-      "method": "POST",
-      "summary": "Create new navigation property to configurationSnapshots for admin",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationSnapshots/$count",
-      "method": "GET",
-      "summary": "Get the number of the resource",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationSnapshots/{configurationBaseline-id}",
-      "method": "DELETE",
-      "summary": "Delete navigation property configurationSnapshots for admin",
-      "resource": "admin"
-    },
-    {
       "path": "/admin/configurationManagement/configurationSnapshots/{configurationBaseline-id}",
       "method": "GET",
       "summary": "Get configurationSnapshots from admin",
       "description": "A container for configuration snapshot baselines.",
-      "resource": "admin"
-    },
-    {
-      "path": "/admin/configurationManagement/configurationSnapshots/{configurationBaseline-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property configurationSnapshots in admin",
       "resource": "admin"
     },
     {
@@ -13748,21 +13640,8 @@
     },
     {
       "path": "/copilot/agentRegistrations",
-      "method": "GET",
-      "summary": "Get agentRegistrations from copilot",
-      "description": "Navigation property to access agent registrations at /copilot/agentRegistrations.",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/agentRegistrations",
       "method": "POST",
       "summary": "Create new navigation property to agentRegistrations for copilot",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/agentRegistrations/$count",
-      "method": "GET",
-      "summary": "Get the number of the resource",
       "resource": "copilot"
     },
     {
@@ -13954,21 +13833,8 @@
     },
     {
       "path": "/copilot/conversations",
-      "method": "GET",
-      "summary": "Get conversations from copilot",
-      "description": "The users conversations with Copilot Chat.",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations",
       "method": "POST",
       "summary": "Create new navigation property to conversations for copilot",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations/$count",
-      "method": "GET",
-      "summary": "Get the number of the resource",
       "resource": "copilot"
     },
     {
@@ -13979,60 +13845,9 @@
       "resource": "copilot"
     },
     {
-      "path": "/copilot/conversations/{copilotConversation-id}",
-      "method": "DELETE",
-      "summary": "Delete navigation property conversations for copilot",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations/{copilotConversation-id}",
-      "method": "GET",
-      "summary": "Get conversations from copilot",
-      "description": "The users conversations with Copilot Chat.",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations/{copilotConversation-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property conversations in copilot",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations/{copilotConversation-id}/messages",
-      "method": "GET",
-      "summary": "Get messages from copilot",
-      "description": "The ordered list of messages in the conversation.",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations/{copilotConversation-id}/messages",
-      "method": "POST",
-      "summary": "Create new navigation property to messages for copilot",
-      "resource": "copilot"
-    },
-    {
       "path": "/copilot/conversations/{copilotConversation-id}/messages/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations/{copilotConversation-id}/messages/{copilotConversationMessage-id}",
-      "method": "DELETE",
-      "summary": "Delete navigation property messages for copilot",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations/{copilotConversation-id}/messages/{copilotConversationMessage-id}",
-      "method": "GET",
-      "summary": "Get messages from copilot",
-      "description": "The ordered list of messages in the conversation.",
-      "resource": "copilot"
-    },
-    {
-      "path": "/copilot/conversations/{copilotConversation-id}/messages/{copilotConversationMessage-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property messages in copilot",
       "resource": "copilot"
     },
     {
@@ -23484,6 +23299,13 @@
       "resource": "devicemanagement"
     },
     {
+      "path": "/deviceManagement/comanagedDevices/{managedDevice-id}/cancelEnhancedLogCollection",
+      "method": "POST",
+      "summary": "Invoke action cancelEnhancedLogCollection",
+      "description": "Cancels an in-progress enhanced log collection session on a supervised Apple device.",
+      "resource": "devicemanagement"
+    },
+    {
       "path": "/deviceManagement/comanagedDevices/{managedDevice-id}/changeAssignments",
       "method": "POST",
       "summary": "Invoke action changeAssignments",
@@ -24104,6 +23926,13 @@
       "method": "POST",
       "summary": "Invoke action triggerConfigurationManagerAction",
       "description": "Trigger action on ConfigurationManager client",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/comanagedDevices/{managedDevice-id}/triggerEnhancedLogCollection",
+      "method": "POST",
+      "summary": "Invoke action triggerEnhancedLogCollection",
+      "description": "Triggers an AppleCare-authorized enhanced log collection session on a supervised Apple device.",
       "resource": "devicemanagement"
     },
     {
@@ -30303,6 +30132,13 @@
       "resource": "devicemanagement"
     },
     {
+      "path": "/deviceManagement/managedDevices/{managedDevice-id}/cancelEnhancedLogCollection",
+      "method": "POST",
+      "summary": "Invoke action cancelEnhancedLogCollection",
+      "description": "Cancels an in-progress enhanced log collection session on a supervised Apple device.",
+      "resource": "devicemanagement"
+    },
+    {
       "path": "/deviceManagement/managedDevices/{managedDevice-id}/changeAssignments",
       "method": "POST",
       "summary": "Invoke action changeAssignments",
@@ -30923,6 +30759,13 @@
       "method": "POST",
       "summary": "Invoke action triggerConfigurationManagerAction",
       "description": "Trigger action on ConfigurationManager client",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/managedDevices/{managedDevice-id}/triggerEnhancedLogCollection",
+      "method": "POST",
+      "summary": "Invoke action triggerEnhancedLogCollection",
+      "description": "Triggers an AppleCare-authorized enhanced log collection session on a supervised Apple device.",
       "resource": "devicemanagement"
     },
     {
@@ -38419,6 +38262,12 @@
       "resource": "devices"
     },
     {
+      "path": "/devices/provision",
+      "method": "POST",
+      "summary": "Invoke action provision",
+      "resource": "devices"
+    },
+    {
       "path": "/devices/validateProperties",
       "method": "POST",
       "summary": "Invoke action validateProperties",
@@ -40025,6 +39874,18 @@
       "resource": "directory"
     },
     {
+      "path": "/directory/impactedResources/addTag",
+      "method": "POST",
+      "summary": "Invoke action addTag",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/removeTag",
+      "method": "POST",
+      "summary": "Invoke action removeTag",
+      "resource": "directory"
+    },
+    {
       "path": "/directory/impactedResources/{impactedResource-id}",
       "method": "DELETE",
       "summary": "Delete navigation property impactedResources for directory",
@@ -40043,6 +39904,24 @@
       "resource": "directory"
     },
     {
+      "path": "/directory/impactedResources/{impactedResource-id}/acceptRisk",
+      "method": "POST",
+      "summary": "Invoke action acceptRisk",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/addTag",
+      "method": "POST",
+      "summary": "Invoke action addTag",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/applyAlternateMitigation",
+      "method": "POST",
+      "summary": "Invoke action applyAlternateMitigation",
+      "resource": "directory"
+    },
+    {
       "path": "/directory/impactedResources/{impactedResource-id}/complete",
       "method": "POST",
       "summary": "Invoke action complete",
@@ -40057,6 +39936,12 @@
       "resource": "directory"
     },
     {
+      "path": "/directory/impactedResources/{impactedResource-id}/markPlanned",
+      "method": "POST",
+      "summary": "Invoke action markPlanned",
+      "resource": "directory"
+    },
+    {
       "path": "/directory/impactedResources/{impactedResource-id}/postpone",
       "method": "POST",
       "summary": "Invoke action postpone",
@@ -40068,6 +39953,48 @@
       "method": "POST",
       "summary": "Invoke action reactivate",
       "description": "Reactivate an accidentally dismissed, completed, or postponed impactedResource object. This action updates the status of the resource to active. This method is relevant only if the status of the impactedResource object is dismissed, postponed, or completedByUser.",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/removeTag",
+      "method": "POST",
+      "summary": "Invoke action removeTag",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/tags",
+      "method": "GET",
+      "summary": "Get tags from directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/tags",
+      "method": "POST",
+      "summary": "Create new navigation property to tags for directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/tags/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/tags/{recommendationTag-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property tags for directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/tags/{recommendationTag-id}",
+      "method": "GET",
+      "summary": "Get tags from directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/impactedResources/{impactedResource-id}/tags/{recommendationTag-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property tags in directory",
       "resource": "directory"
     },
     {
@@ -40452,6 +40379,24 @@
       "resource": "directory"
     },
     {
+      "path": "/directory/recommendations/{recommendation-id}/acceptRisk",
+      "method": "POST",
+      "summary": "Invoke action acceptRisk",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/addTag",
+      "method": "POST",
+      "summary": "Invoke action addTag",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/applyAlternateMitigation",
+      "method": "POST",
+      "summary": "Invoke action applyAlternateMitigation",
+      "resource": "directory"
+    },
+    {
       "path": "/directory/recommendations/{recommendation-id}/complete",
       "method": "POST",
       "summary": "Invoke action complete",
@@ -40485,6 +40430,18 @@
       "resource": "directory"
     },
     {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/addTag",
+      "method": "POST",
+      "summary": "Invoke action addTag",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/removeTag",
+      "method": "POST",
+      "summary": "Invoke action removeTag",
+      "resource": "directory"
+    },
+    {
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}",
       "method": "DELETE",
       "summary": "Delete navigation property impactedResources for directory",
@@ -40504,6 +40461,24 @@
       "resource": "directory"
     },
     {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/acceptRisk",
+      "method": "POST",
+      "summary": "Invoke action acceptRisk",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/addTag",
+      "method": "POST",
+      "summary": "Invoke action addTag",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/applyAlternateMitigation",
+      "method": "POST",
+      "summary": "Invoke action applyAlternateMitigation",
+      "resource": "directory"
+    },
+    {
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/complete",
       "method": "POST",
       "summary": "Invoke action complete",
@@ -40515,6 +40490,12 @@
       "method": "POST",
       "summary": "Invoke action dismiss",
       "description": "Dismiss an impactedResources object and update its status to dismissed.",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/markPlanned",
+      "method": "POST",
+      "summary": "Invoke action markPlanned",
       "resource": "directory"
     },
     {
@@ -40532,6 +40513,54 @@
       "resource": "directory"
     },
     {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/removeTag",
+      "method": "POST",
+      "summary": "Invoke action removeTag",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/tags",
+      "method": "GET",
+      "summary": "Get tags from directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/tags",
+      "method": "POST",
+      "summary": "Create new navigation property to tags for directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/tags/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/tags/{recommendationTag-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property tags for directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/tags/{recommendationTag-id}",
+      "method": "GET",
+      "summary": "Get tags from directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/tags/{recommendationTag-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property tags in directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/markPlanned",
+      "method": "POST",
+      "summary": "Invoke action markPlanned",
+      "resource": "directory"
+    },
+    {
       "path": "/directory/recommendations/{recommendation-id}/postpone",
       "method": "POST",
       "summary": "Invoke action postpone",
@@ -40543,6 +40572,48 @@
       "method": "POST",
       "summary": "Invoke action reactivate",
       "description": "Reactivate a completed, dismissed, or postponed recommendation object. This action updates the status of the recommendation to active. This method only works when the status of the recommendation is completedByUser, dismissed, or postponed.",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/removeTag",
+      "method": "POST",
+      "summary": "Invoke action removeTag",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/tags",
+      "method": "GET",
+      "summary": "Get tags from directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/tags",
+      "method": "POST",
+      "summary": "Create new navigation property to tags for directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/tags/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/tags/{recommendationTag-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property tags for directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/tags/{recommendationTag-id}",
+      "method": "GET",
+      "summary": "Get tags from directory",
+      "resource": "directory"
+    },
+    {
+      "path": "/directory/recommendations/{recommendation-id}/tags/{recommendationTag-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property tags in directory",
       "resource": "directory"
     },
     {
@@ -41030,21 +41101,21 @@
       "resource": "directory"
     },
     {
-      "path": "/directory/tenantGovernance/governancePolicyTemplates/{governancePolicyTemplate-id}",
+      "path": "/directory/tenantGovernance/governancePolicyTemplates/{tenantGovernancePolicyTemplate-id}",
       "method": "DELETE",
       "summary": "Delete governancePolicyTemplate",
       "description": "Delete a governancePolicyTemplate object. You can't delete the default template or templates currently used by active relationships.",
       "resource": "directory"
     },
     {
-      "path": "/directory/tenantGovernance/governancePolicyTemplates/{governancePolicyTemplate-id}",
+      "path": "/directory/tenantGovernance/governancePolicyTemplates/{tenantGovernancePolicyTemplate-id}",
       "method": "GET",
       "summary": "Get governancePolicyTemplate",
       "description": "Read the properties of a governancePolicyTemplate object.",
       "resource": "directory"
     },
     {
-      "path": "/directory/tenantGovernance/governancePolicyTemplates/{governancePolicyTemplate-id}",
+      "path": "/directory/tenantGovernance/governancePolicyTemplates/{tenantGovernancePolicyTemplate-id}",
       "method": "PATCH",
       "summary": "Update governancePolicyTemplate",
       "description": "Update the properties of a governancePolicyTemplate object.",
@@ -41133,7 +41204,6 @@
       "path": "/directory/tenantGovernance/governanceRequests/{governanceRequest-id}/governancePolicyTemplate",
       "method": "GET",
       "summary": "Get governancePolicyTemplate from directory",
-      "description": "The governance policy template associated with this request.",
       "resource": "directory"
     },
     {
@@ -41156,14 +41226,14 @@
       "resource": "directory"
     },
     {
-      "path": "/directory/tenantGovernance/relatedTenants/microsoft.graph.tenantGovernanceServices.refresh",
+      "path": "/directory/tenantGovernance/relatedTenants/refresh",
       "method": "POST",
       "summary": "Invoke action refresh",
       "description": "Manually refresh the list of related tenants. The list is also automatically refreshed daily.",
       "resource": "directory"
     },
     {
-      "path": "/directory/tenantGovernance/relatedTenants/microsoft.graph.tenantGovernanceServices.refreshStatus()",
+      "path": "/directory/tenantGovernance/relatedTenants/refreshStatus()",
       "method": "GET",
       "summary": "Invoke function refreshStatus",
       "description": "Get the status of the related tenants refresh action.",
@@ -41192,35 +41262,30 @@
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/appB2BSignInActivityMetrics",
       "method": "GET",
       "summary": "Get appB2BSignInActivityMetrics from directory",
-      "description": "B2B sign-in activity metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/b2BRegistrationMetrics",
       "method": "GET",
       "summary": "Get b2BRegistrationMetrics from directory",
-      "description": "B2B registration metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/b2BSignInActivityMetrics",
       "method": "GET",
       "summary": "Get b2BSignInActivityMetrics from directory",
-      "description": "B2B sign-in activity metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/billingMetrics",
       "method": "GET",
       "summary": "Get billingMetrics from directory",
-      "description": "Billing metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/multiTenantApplicationMetrics",
       "method": "GET",
       "summary": "Get multiTenantApplicationMetrics from directory",
-      "description": "Multi-tenant application usage metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
@@ -41244,7 +41309,7 @@
       "resource": "directory"
     },
     {
-      "path": "/directory/tenantGovernance/settings/microsoft.graph.tenantGovernanceServices.enableRelatedTenants",
+      "path": "/directory/tenantGovernance/settings/enableRelatedTenants",
       "method": "POST",
       "summary": "Invoke action enableRelatedTenants",
       "description": "Enable the related tenants feature for tenant discovery. After calling this action, the isRelatedTenantsEnabled property of tenantGovernanceSetting is set to true, which allows the use of related tenant APIs.",
@@ -58650,12 +58715,6 @@
       "resource": "employeeexperience"
     },
     {
-      "path": "/employeeExperience/communities/$count",
-      "method": "GET",
-      "summary": "Get the number of the resource",
-      "resource": "employeeexperience"
-    },
-    {
       "path": "/employeeExperience/communities/{community-id}",
       "method": "DELETE",
       "summary": "Delete community",
@@ -58757,34 +58816,10 @@
       "resource": "employeeexperience"
     },
     {
-      "path": "/employeeExperience/engagementAsyncOperations",
-      "method": "POST",
-      "summary": "Create new navigation property to engagementAsyncOperations for employeeExperience",
-      "resource": "employeeexperience"
-    },
-    {
-      "path": "/employeeExperience/engagementAsyncOperations/$count",
-      "method": "GET",
-      "summary": "Get the number of the resource",
-      "resource": "employeeexperience"
-    },
-    {
-      "path": "/employeeExperience/engagementAsyncOperations/{engagementAsyncOperation-id}",
-      "method": "DELETE",
-      "summary": "Delete navigation property engagementAsyncOperations for employeeExperience",
-      "resource": "employeeexperience"
-    },
-    {
       "path": "/employeeExperience/engagementAsyncOperations/{engagementAsyncOperation-id}",
       "method": "GET",
       "summary": "Get engagementAsyncOperation",
       "description": "Get an engagementAsyncOperation to track a long-running operation request.",
-      "resource": "employeeexperience"
-    },
-    {
-      "path": "/employeeExperience/engagementAsyncOperations/{engagementAsyncOperation-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property engagementAsyncOperations in employeeExperience",
       "resource": "employeeexperience"
     },
     {
@@ -59093,34 +59128,10 @@
       "resource": "employeeexperience"
     },
     {
-      "path": "/employeeExperience/roles",
-      "method": "POST",
-      "summary": "Create new navigation property to roles for employeeExperience",
-      "resource": "employeeexperience"
-    },
-    {
-      "path": "/employeeExperience/roles/$count",
-      "method": "GET",
-      "summary": "Get the number of the resource",
-      "resource": "employeeexperience"
-    },
-    {
-      "path": "/employeeExperience/roles/{engagementRole-id}",
-      "method": "DELETE",
-      "summary": "Delete navigation property roles for employeeExperience",
-      "resource": "employeeexperience"
-    },
-    {
       "path": "/employeeExperience/roles/{engagementRole-id}",
       "method": "GET",
       "summary": "Get roles from employeeExperience",
       "description": "A collection of roles in Viva Engage.",
-      "resource": "employeeexperience"
-    },
-    {
-      "path": "/employeeExperience/roles/{engagementRole-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property roles in employeeExperience",
       "resource": "employeeexperience"
     },
     {
@@ -59155,12 +59166,6 @@
       "method": "GET",
       "summary": "Get members from employeeExperience",
       "description": "Users that have this role assigned.",
-      "resource": "employeeexperience"
-    },
-    {
-      "path": "/employeeExperience/roles/{engagementRole-id}/members/{engagementRoleMember-id}",
-      "method": "PATCH",
-      "summary": "Update the navigation property members in employeeExperience",
       "resource": "employeeexperience"
     },
     {
@@ -96259,6 +96264,108 @@
       "resource": "identitygovernance"
     },
     {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies",
+      "method": "GET",
+      "summary": "Get lifecyclePolicies from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property lifecyclePolicies for identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}",
+      "method": "GET",
+      "summary": "Get lifecyclePolicies from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/createdBy",
+      "method": "GET",
+      "summary": "Get createdBy from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/lastModifiedBy",
+      "method": "GET",
+      "summary": "Get lastModifiedBy from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/microsoft.graph.identityGovernance.restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/rules",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/rules/{lifecyclePolicyRule-id}",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions",
+      "method": "GET",
+      "summary": "Get versions from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}",
+      "method": "GET",
+      "summary": "Get versions from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/createdBy",
+      "method": "GET",
+      "summary": "Get createdBy from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/lastModifiedBy",
+      "method": "GET",
+      "summary": "Get lastModifiedBy from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/microsoft.graph.identityGovernance.restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules/{lifecyclePolicyRule-id}",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows",
       "method": "GET",
       "summary": "List deletedItems (deleted lifecycle workflows)",
@@ -96531,6 +96638,12 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/runs/{run-id}/subjectProcessingResults/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/runs/{run-id}/subjectProcessingResults/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})",
+      "method": "GET",
+      "summary": "Invoke function summary",
       "resource": "identitygovernance"
     },
     {
@@ -96850,6 +96963,12 @@
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/subjectProcessingResults/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow-id}/subjectProcessingResults/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})",
+      "method": "GET",
+      "summary": "Invoke function summary",
       "resource": "identitygovernance"
     },
     {
@@ -97562,6 +97681,138 @@
       "resource": "identitygovernance"
     },
     {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies",
+      "method": "GET",
+      "summary": "Get lifecyclePolicies from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies",
+      "method": "POST",
+      "summary": "Create new navigation property to lifecyclePolicies for identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property lifecyclePolicies for identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}",
+      "method": "GET",
+      "summary": "Get lifecyclePolicies from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/createdBy",
+      "method": "GET",
+      "summary": "Get createdBy from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/lastModifiedBy",
+      "method": "GET",
+      "summary": "Get lastModifiedBy from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/microsoft.graph.identityGovernance.restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/rules",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/rules/{lifecyclePolicyRule-id}",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions",
+      "method": "GET",
+      "summary": "Get versions from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}",
+      "method": "GET",
+      "summary": "Get versions from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/createdBy",
+      "method": "GET",
+      "summary": "Get createdBy from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/lastModifiedBy",
+      "method": "GET",
+      "summary": "Get lastModifiedBy from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/microsoft.graph.identityGovernance.restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules/{lifecyclePolicyRule-id}",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicyPriorityConfigurations",
+      "method": "GET",
+      "summary": "Get lifecyclePolicyPriorityConfigurations from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicyPriorityConfigurations/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicyPriorityConfigurations/{lifecyclePolicyPriorityConfiguration-id}",
+      "method": "GET",
+      "summary": "Get lifecyclePolicyPriorityConfigurations from identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicyPriorityConfigurations/{lifecyclePolicyPriorityConfiguration-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property lifecyclePolicyPriorityConfigurations in identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
       "path": "/identityGovernance/lifecycleWorkflows/settings",
       "method": "GET",
       "summary": "Get lifecycleManagementSettings",
@@ -97993,6 +98244,13 @@
       "resource": "identitygovernance"
     },
     {
+      "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/runs/{run-id}/subjectProcessingResults/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})",
+      "method": "GET",
+      "summary": "Invoke function summary",
+      "description": "Provide a subjectSummary for subjectProcessingResult objects over a specified time period. Because the number of subject processing results returned by the list API can be overwhelming, this summary allows administrators to get a quick overview based on counts.",
+      "resource": "identitygovernance"
+    },
+    {
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/runs/{run-id}/subjectProcessingResults/{subjectProcessingResult-id}",
       "method": "GET",
       "summary": "Get subjectProcessingResult",
@@ -98309,6 +98567,12 @@
       "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/subjectProcessingResults/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/workflows/{workflow-id}/subjectProcessingResults/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})",
+      "method": "GET",
+      "summary": "Invoke function summary",
       "resource": "identitygovernance"
     },
     {
@@ -106369,6 +106633,12 @@
       "resource": "me"
     },
     {
+      "path": "/me/devices/provision",
+      "method": "POST",
+      "summary": "Invoke action provision",
+      "resource": "me"
+    },
+    {
       "path": "/me/devices/{device-id}",
       "method": "DELETE",
       "summary": "Delete navigation property devices for me",
@@ -106963,6 +107233,33 @@
       "path": "/me/distributionLists/{distributionList-id}/deleteMembers",
       "method": "POST",
       "summary": "Invoke action deleteMembers",
+      "resource": "me"
+    },
+    {
+      "path": "/me/distributionLists/{distributionList-id}/members",
+      "method": "GET",
+      "summary": "Get members from me",
+      "description": "The members of the distribution list. Not returned by default; use $expand=members to include. Read-only.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/distributionLists/{distributionList-id}/members/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "me"
+    },
+    {
+      "path": "/me/distributionLists/{distributionList-id}/members/{distributionListMember-id}",
+      "method": "GET",
+      "summary": "Get members from me",
+      "description": "The members of the distribution list. Not returned by default; use $expand=members to include. Read-only.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/distributionLists/{distributionList-id}/members/{distributionListMember-id}/contact",
+      "method": "GET",
+      "summary": "Get contact from me",
+      "description": "The contact associated with the distribution list member. Read-only.",
       "resource": "me"
     },
     {
@@ -109412,6 +109709,13 @@
       "resource": "me"
     },
     {
+      "path": "/me/managedDevices/{managedDevice-id}/cancelEnhancedLogCollection",
+      "method": "POST",
+      "summary": "Invoke action cancelEnhancedLogCollection",
+      "description": "Cancels an in-progress enhanced log collection session on a supervised Apple device.",
+      "resource": "me"
+    },
+    {
       "path": "/me/managedDevices/{managedDevice-id}/changeAssignments",
       "method": "POST",
       "summary": "Invoke action changeAssignments",
@@ -110032,6 +110336,13 @@
       "method": "POST",
       "summary": "Invoke action triggerConfigurationManagerAction",
       "description": "Trigger action on ConfigurationManager client",
+      "resource": "me"
+    },
+    {
+      "path": "/me/managedDevices/{managedDevice-id}/triggerEnhancedLogCollection",
+      "method": "POST",
+      "summary": "Invoke action triggerEnhancedLogCollection",
+      "description": "Triggers an AppleCare-authorized enhanced log collection session on a supervised Apple device.",
       "resource": "me"
     },
     {
@@ -116686,6 +116997,13 @@
       "resource": "me"
     },
     {
+      "path": "/me/teamwork/sections/reorder",
+      "method": "POST",
+      "summary": "Invoke action reorder",
+      "description": "Reorder the sections in a user's teamwork. The sectionsOrder collection must contain every section ID returned by List sections, exactly once. If the collection contains the *QuickViews* system section, that section must be first.",
+      "resource": "me"
+    },
+    {
       "path": "/me/teamwork/sections/{teamworkSection-id}",
       "method": "DELETE",
       "summary": "Delete navigation property sections for me",
@@ -116721,6 +117039,13 @@
       "path": "/me/teamwork/sections/{teamworkSection-id}/items/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
+      "resource": "me"
+    },
+    {
+      "path": "/me/teamwork/sections/{teamworkSection-id}/items/reorder",
+      "method": "POST",
+      "summary": "Invoke action reorder",
+      "description": "Reorder the items in a user-defined section in a user's teamwork. The section must have sortType set to userDefinedCustomOrder, and the itemsOrder collection must contain every item ID returned by List items, exactly once.",
       "resource": "me"
     },
     {
@@ -136371,6 +136696,13 @@
       "resource": "security"
     },
     {
+      "path": "/security/alerts_v2/microsoft.graph.security.createAlert",
+      "method": "POST",
+      "summary": "Invoke action createAlert",
+      "description": "Create a Microsoft 365 Defender alert by invoking a bound action on the alerts_v2 collection and returning the created alert resource. The action accepts a createAlertInput complex type that combines alert metadata and creation-specific options in one request object.",
+      "resource": "security"
+    },
+    {
       "path": "/security/alerts_v2/microsoft.graph.security.moveAlerts",
       "method": "POST",
       "summary": "Invoke action moveAlerts",
@@ -137192,7 +137524,7 @@
       "path": "/security/caseManagement/cases/{case-id}/attachments",
       "method": "POST",
       "summary": "Create case attachment",
-      "description": "Create an attachment for a case.",
+      "description": "Create attachment metadata for a case. This method doesn't upload the file content. After creating the attachment, use Upload attachment content.",
       "resource": "security"
     },
     {
@@ -137225,35 +137557,35 @@
       "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}/content",
       "method": "DELETE",
       "summary": "Delete content for the navigation property attachments in security",
-      "description": "The binary content stream for the attachment.",
+      "description": "The binary content stream for the attachment. Use the Upload content and Download content methods to access it.",
       "resource": "security"
     },
     {
       "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}/content",
       "method": "GET",
-      "summary": "Get content for the navigation property attachments from security",
-      "description": "The binary content stream for the attachment.",
+      "summary": "Download attachment content",
+      "description": "Download the binary content of an attachment. After an upload completes, the service asynchronously scans the attachment for malware. Poll the attachment metadata by using Get attachment. If scanResult is unscanned, wait and try again later. Download the content only when scanResult is noThreatsF...",
       "resource": "security"
     },
     {
       "path": "/security/caseManagement/cases/{case-id}/attachments/{attachment-id}/content",
       "method": "PUT",
-      "summary": "Update content for the navigation property attachments in security",
-      "description": "The binary content stream for the attachment.",
+      "summary": "Upload attachment content",
+      "description": "Upload binary content for an attachment. Create the attachment metadata first by using Create case attachment. The maximum file size is 100 MB. Upload files in chunks of no more than 1 MB. For files larger than 1 MB, send one PUT request for each chunk until all byte ranges are uploaded.",
       "resource": "security"
     },
     {
       "path": "/security/caseManagement/cases/{case-id}/relations",
       "method": "GET",
       "summary": "List case relations",
-      "description": "Get a list of external resource relation objects for a case.",
+      "description": "Get a list of external resource relation objects for a case. Each relation is an incidentRelation, recommendationRelation, or workspaceIndicatorRelation, identified by @odata.type.",
       "resource": "security"
     },
     {
       "path": "/security/caseManagement/cases/{case-id}/relations",
       "method": "POST",
       "summary": "Create case relation",
-      "description": "Create an external resource relation for a case.",
+      "description": "Create a concrete external resource relation for a case.",
       "resource": "security"
     },
     {
@@ -137265,21 +137597,22 @@
     {
       "path": "/security/caseManagement/cases/{case-id}/relations/{relation-id}",
       "method": "DELETE",
-      "summary": "Delete navigation property relations for security",
+      "summary": "Delete relation",
+      "description": "Delete a concrete relation from a case.",
       "resource": "security"
     },
     {
       "path": "/security/caseManagement/cases/{case-id}/relations/{relation-id}",
       "method": "GET",
-      "summary": "Get relations from security",
-      "description": "Links from the case to related security resources. Supports $expand.",
+      "summary": "Get relation",
+      "description": "Read a concrete relation from a case. The response is an incidentRelation, recommendationRelation, or workspaceIndicatorRelation, identified by @odata.type.",
       "resource": "security"
     },
     {
       "path": "/security/caseManagement/cases/{case-id}/relations/{relation-id}",
       "method": "PATCH",
       "summary": "Update relation",
-      "description": "Update the properties of a relation object.",
+      "description": "Update the properties of a concrete relation object.",
       "resource": "security"
     },
     {
@@ -137305,7 +137638,8 @@
     {
       "path": "/security/caseManagement/cases/{case-id}/tasks/{task-id}",
       "method": "DELETE",
-      "summary": "Delete navigation property tasks for security",
+      "summary": "Delete task",
+      "description": "Delete a task from a case.",
       "resource": "security"
     },
     {
@@ -143017,6 +143351,48 @@
       "resource": "serviceprincipals"
     },
     {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle",
+      "method": "DELETE",
+      "summary": "Delete navigation property lifecycle for servicePrincipals",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle",
+      "method": "GET",
+      "summary": "Get lifecycle from servicePrincipals",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle",
+      "method": "PATCH",
+      "summary": "Update the navigation property lifecycle in servicePrincipals",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle/complianceIssues",
+      "method": "GET",
+      "summary": "Get complianceIssues from servicePrincipals",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle/complianceIssues/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle/complianceIssues/{complianceIssue-id}",
+      "method": "GET",
+      "summary": "Get complianceIssues from servicePrincipals",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle/effectiveGoverningPolicy",
+      "method": "GET",
+      "summary": "Get effectiveGoverningPolicy from servicePrincipals",
+      "resource": "serviceprincipals"
+    },
+    {
       "path": "/servicePrincipals/{servicePrincipal-id}/memberOf",
       "method": "GET",
       "summary": "List servicePrincipal memberOf",
@@ -143088,6 +143464,12 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/memberOf/{directoryObject-id}/graph.group",
       "method": "GET",
       "summary": "Get the item of type microsoft.graph.directoryObject as microsoft.graph.group",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/microsoft.graph.identityGovernance.attest",
+      "method": "POST",
+      "summary": "Invoke action attest",
       "resource": "serviceprincipals"
     },
     {
@@ -179093,6 +179475,12 @@
       "resource": "users"
     },
     {
+      "path": "/users/{user-id}/devices/provision",
+      "method": "POST",
+      "summary": "Invoke action provision",
+      "resource": "users"
+    },
+    {
       "path": "/users/{user-id}/devices/{device-id}",
       "method": "DELETE",
       "summary": "Delete navigation property devices for users",
@@ -179686,6 +180074,33 @@
       "path": "/users/{user-id}/distributionLists/{distributionList-id}/deleteMembers",
       "method": "POST",
       "summary": "Invoke action deleteMembers",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/distributionLists/{distributionList-id}/members",
+      "method": "GET",
+      "summary": "Get members from users",
+      "description": "The members of the distribution list. Not returned by default; use $expand=members to include. Read-only.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/distributionLists/{distributionList-id}/members/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/distributionLists/{distributionList-id}/members/{distributionListMember-id}",
+      "method": "GET",
+      "summary": "Get members from users",
+      "description": "The members of the distribution list. Not returned by default; use $expand=members to include. Read-only.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/distributionLists/{distributionList-id}/members/{distributionListMember-id}/contact",
+      "method": "GET",
+      "summary": "Get contact from users",
+      "description": "The contact associated with the distribution list member. Read-only.",
       "resource": "users"
     },
     {
@@ -182118,6 +182533,13 @@
       "resource": "users"
     },
     {
+      "path": "/users/{user-id}/managedDevices/{managedDevice-id}/cancelEnhancedLogCollection",
+      "method": "POST",
+      "summary": "Invoke action cancelEnhancedLogCollection",
+      "description": "Cancels an in-progress enhanced log collection session on a supervised Apple device.",
+      "resource": "users"
+    },
+    {
       "path": "/users/{user-id}/managedDevices/{managedDevice-id}/changeAssignments",
       "method": "POST",
       "summary": "Invoke action changeAssignments",
@@ -182738,6 +183160,13 @@
       "method": "POST",
       "summary": "Invoke action triggerConfigurationManagerAction",
       "description": "Trigger action on ConfigurationManager client",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/managedDevices/{managedDevice-id}/triggerEnhancedLogCollection",
+      "method": "POST",
+      "summary": "Invoke action triggerEnhancedLogCollection",
+      "description": "Triggers an AppleCare-authorized enhanced log collection session on a supervised Apple device.",
       "resource": "users"
     },
     {
@@ -189327,6 +189756,13 @@
       "resource": "users"
     },
     {
+      "path": "/users/{user-id}/teamwork/sections/reorder",
+      "method": "POST",
+      "summary": "Invoke action reorder",
+      "description": "Reorder the sections in a user's teamwork. The sectionsOrder collection must contain every section ID returned by List sections, exactly once. If the collection contains the *QuickViews* system section, that section must be first.",
+      "resource": "users"
+    },
+    {
       "path": "/users/{user-id}/teamwork/sections/{teamworkSection-id}",
       "method": "DELETE",
       "summary": "Delete teamworkSection",
@@ -189365,6 +189801,13 @@
       "path": "/users/{user-id}/teamwork/sections/{teamworkSection-id}/items/$count",
       "method": "GET",
       "summary": "Get the number of the resource",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/teamwork/sections/{teamworkSection-id}/items/reorder",
+      "method": "POST",
+      "summary": "Invoke action reorder",
+      "description": "Reorder the items in a user-defined section in a user's teamwork. The section must have sortType set to userDefinedCustomOrder, and the itemsOrder collection must contain every item ID returned by List items, exactly once.",
       "resource": "users"
     },
     {
