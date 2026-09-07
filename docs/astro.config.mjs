@@ -1,8 +1,11 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
   site: 'https://graph.pm',
+
   integrations: [
     starlight({
       title: 'Microsoft Graph Skill',
@@ -106,4 +109,6 @@ export default defineConfig({
       ],
     }),
   ],
+
+  adapter: cloudflare()
 });
