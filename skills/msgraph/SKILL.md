@@ -216,6 +216,7 @@ msgraph graph-call PATCH /me --body '{"jobTitle":"Engineer"}' --allow-writes
 |---|---|---|
 | `MSGRAPH_CLIENT_ID` | Custom Entra ID app client ID | Microsoft Graph CLI Tools app |
 | `MSGRAPH_TENANT_ID` | Target tenant ID (required for app-only) | `common` |
+| `MSGRAPH_CLOUD` | Cloud to target: `global`, `usgov`, `usgovdod`, `china` | `global` |
 | `MSGRAPH_API_VERSION` | Default API version | `beta` |
 | `MSGRAPH_INDEX_DB_PATH` | Path to OpenAPI index database | Auto-detected |
 | `MSGRAPH_SAMPLES_DB_PATH` | Path to samples index database | Auto-detected |
@@ -226,7 +227,7 @@ For the full list of authentication environment variables, see [references/docs/
 
 ## Compatibility
 
-Search tools run fully offline with no network access required. Direct API execution requires network access to `login.microsoftonline.com` and `graph.microsoft.com`. A system browser is used for interactive auth; falls back to device code flow in headless environments.
+Search tools run fully offline with no network access required. For direct API execution, the login and Graph hosts depend on `MSGRAPH_CLOUD`; the commercial-cloud hosts `login.microsoftonline.com` and `graph.microsoft.com` are the defaults. A system browser is used for interactive auth; falls back to device code flow in headless environments.
 
 ## Reference Files
 
