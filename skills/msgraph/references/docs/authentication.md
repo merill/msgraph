@@ -59,7 +59,7 @@ This happens transparently — no manual scope management needed.
 
 ### Session-Scoped Cache
 
-Tokens are cached in a session-scoped temporary file (`os.TempDir()`) for the duration of the session. The cache is keyed by client ID and tenant ID. No credentials are persisted permanently. The cache file is automatically cleaned up on sign-out.
+Tokens are cached in a session-scoped temporary file (`os.TempDir()`) for the duration of the session. The cache is keyed by client ID, tenant ID, and cloud. No credentials are persisted permanently. The cache file is automatically cleaned up on sign-out.
 
 ## App-Only Auth
 
@@ -67,7 +67,7 @@ For automation, CI/CD pipelines, and service-to-service scenarios.
 
 **IMPORTANT**: App-only auth requires `MSGRAPH_TENANT_ID` set to a specific tenant (not `common`). The tool errors early with a clear message if this is missing. Incremental consent is not available — all permissions must be pre-configured and admin-consented in the Entra ID app registration.
 
-All pre-granted application permissions are used via the `https://graph.microsoft.com/.default` scope. The `--device-code` and `--scopes` flags are ignored for app-only auth.
+All pre-granted application permissions are used via the configured cloud's Microsoft Graph host with the `/.default` scope. The `--device-code` and `--scopes` flags are ignored for app-only auth.
 
 ### Client Secret
 
@@ -179,12 +179,33 @@ export MSGRAPH_CLIENT_ID="your-custom-app-id"
 msgraph auth signin
 ```
 
+## National Clouds
+
+Set `MSGRAPH_CLOUD` to select the Microsoft Entra ID authority and Microsoft Graph host:
+
+| Value | Microsoft Entra ID authority | Microsoft Graph host |
+|---|---|---|
+| `global` | `https://login.microsoftonline.com/` | `https://graph.microsoft.com` |
+| `usgov` | `https://login.microsoftonline.us/` | `https://graph.microsoft.us` |
+| `usgovdod` | `https://login.microsoftonline.us/` | `https://dod-graph.microsoft.us` |
+| `china` | `https://login.chinacloudapi.cn/` | `https://microsoftgraph.chinacloudapi.cn` |
+
+For example, to target GCC High:
+
+```
+export MSGRAPH_CLOUD="usgov"
+msgraph auth signin
+```
+
+The app registration must live in the selected cloud. Set `MSGRAPH_CLIENT_ID` if the default first-party Microsoft Graph Command Line Tools app is not available there.
+
 ## All Authentication Environment Variables
 
 | Variable | Description | Default |
 |---|---|---|
 | `MSGRAPH_CLIENT_ID` | Custom Entra ID app client ID | Microsoft Graph CLI Tools app |
 | `MSGRAPH_TENANT_ID` | Target tenant ID (required for app-only) | `common` |
+| `MSGRAPH_CLOUD` | Cloud to target: `global`, `usgov`, `usgovdod`, `china` | `global` |
 | `MSGRAPH_CLIENT_SECRET` | App registration client secret | — |
 | `MSGRAPH_CLIENT_CERTIFICATE_PATH` | Path to PEM certificate file | — |
 | `MSGRAPH_CLIENT_CERTIFICATE_PASSWORD` | Password for encrypted certificate key | — |

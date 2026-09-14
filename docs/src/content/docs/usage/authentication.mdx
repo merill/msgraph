@@ -62,7 +62,7 @@ If none of these are set, delegated auth is used.
 
 **Important notes for all app-only methods:**
 - `MSGRAPH_TENANT_ID` must be set to a specific tenant (not `common`). The tool errors early with a clear message if this is missing.
-- All pre-granted application permissions are used via the `https://graph.microsoft.com/.default` scope.
+- All pre-granted application permissions are used via the configured cloud's Microsoft Graph host with the `/.default` scope.
 - Incremental consent is not available — permissions must be pre-configured in the Entra ID app registration.
 - `auth signin` verifies credentials work (acquires a token and shows status). The `--device-code` and `--scopes` flags are ignored.
 
@@ -199,8 +199,28 @@ export MSGRAPH_CLIENT_ID="your-app-id"
 msgraph auth signin
 ```
 
+## National Clouds
+
+Set `MSGRAPH_CLOUD` to select the Microsoft Entra ID authority and Microsoft Graph host:
+
+| Value | Microsoft Entra ID authority | Microsoft Graph host |
+|---|---|---|
+| `global` | `https://login.microsoftonline.com/` | `https://graph.microsoft.com` |
+| `usgov` | `https://login.microsoftonline.us/` | `https://graph.microsoft.us` |
+| `usgovdod` | `https://login.microsoftonline.us/` | `https://dod-graph.microsoft.us` |
+| `china` | `https://login.chinacloudapi.cn/` | `https://microsoftgraph.chinacloudapi.cn` |
+
+For example, to target GCC High:
+
+```bash
+export MSGRAPH_CLOUD="usgov"
+msgraph auth signin
+```
+
+The app registration must live in the selected cloud. Set `MSGRAPH_CLIENT_ID` if the default first-party Microsoft Graph Command Line Tools app is not available there.
+
 ## Token Cache
 
-Tokens are cached in a session-scoped temporary file (`os.TempDir()`) for the duration of the session. The cache is keyed by client ID and tenant ID. No credentials are persisted permanently.
+Tokens are cached in a session-scoped temporary file (`os.TempDir()`) for the duration of the session. The cache is keyed by client ID, tenant ID, and cloud. No credentials are persisted permanently.
 
 The cache file is automatically cleaned up on sign-out.
