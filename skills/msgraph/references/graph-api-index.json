@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-10-06T12:19:23Z",
-  "count": 29581,
+  "generated": "2026-10-07T12:10:54Z",
+  "count": 29585,
   "endpoints": [
     {
       "path": "/accessReviewDecisions",
@@ -36860,6 +36860,7 @@
       "path": "/deviceManagement/virtualEndpoint/reports/retrieveCloudPcPerformanceMetricsReport",
       "method": "POST",
       "summary": "Invoke action retrieveCloudPcPerformanceMetricsReport",
+      "description": "Get VM-level utilization and performance metrics for a specific Cloud PC from the cloudPcReports resource, including CPU, memory, and network metrics. The metrics are returned as flattened time-series data. This API supports only Windows 365 Enterprise Cloud PCs and Windows 365 Frontline Cloud PC...",
       "resource": "devicemanagement"
     },
     {
@@ -38235,6 +38236,7 @@
       "path": "/devices/provision",
       "method": "POST",
       "summary": "Invoke action provision",
+      "description": "Provision a device on behalf of an approved Virtual Desktop Infrastructure (VDI) provider. This action wraps the Zero Touch Deployment (ZTD) protocol to create a device in a pending state in the customer's directory. The device can't be used for authentication until it completes its registration....",
       "resource": "devices"
     },
     {
@@ -39877,18 +39879,21 @@
       "path": "/directory/impactedResources/{impactedResource-id}/acceptRisk",
       "method": "POST",
       "summary": "Invoke action acceptRisk",
+      "description": "Accept the risk for an impactedResource object and update its status to riskAccepted.",
       "resource": "directory"
     },
     {
       "path": "/directory/impactedResources/{impactedResource-id}/addTag",
       "method": "POST",
       "summary": "Invoke action addTag",
+      "description": "Add a user-defined tag to an impactedResource object. To add the same tag to multiple impacted resources in a single request, use the addTag action on the impactedResources collection.",
       "resource": "directory"
     },
     {
       "path": "/directory/impactedResources/{impactedResource-id}/applyAlternateMitigation",
       "method": "POST",
       "summary": "Invoke action applyAlternateMitigation",
+      "description": "Apply an alternate mitigation for an impactedResource object and update its status to alternateMitigation.",
       "resource": "directory"
     },
     {
@@ -39909,6 +39914,7 @@
       "path": "/directory/impactedResources/{impactedResource-id}/markPlanned",
       "method": "POST",
       "summary": "Invoke action markPlanned",
+      "description": "Mark an impactedResource object as planned and update its status to planned.",
       "resource": "directory"
     },
     {
@@ -39929,12 +39935,14 @@
       "path": "/directory/impactedResources/{impactedResource-id}/removeTag",
       "method": "POST",
       "summary": "Invoke action removeTag",
+      "description": "Remove a user-defined tag from an impactedResource object. To remove the same tag from multiple impacted resources in a single request, use the removeTag action on the impactedResources collection.",
       "resource": "directory"
     },
     {
       "path": "/directory/impactedResources/{impactedResource-id}/tags",
       "method": "GET",
       "summary": "Get tags from directory",
+      "description": "The user-defined free-form labels applied to the impactedResource. The collection isn't directly writable; tags are created and removed through the addTag and removeTag actions.",
       "resource": "directory"
     },
     {
@@ -39959,6 +39967,7 @@
       "path": "/directory/impactedResources/{impactedResource-id}/tags/{recommendationTag-id}",
       "method": "GET",
       "summary": "Get tags from directory",
+      "description": "The user-defined free-form labels applied to the impactedResource. The collection isn't directly writable; tags are created and removed through the addTag and removeTag actions.",
       "resource": "directory"
     },
     {
@@ -40352,18 +40361,21 @@
       "path": "/directory/recommendations/{recommendation-id}/acceptRisk",
       "method": "POST",
       "summary": "Invoke action acceptRisk",
+      "description": "Accept the risk for a recommendation object and update its status to riskAccepted.",
       "resource": "directory"
     },
     {
       "path": "/directory/recommendations/{recommendation-id}/addTag",
       "method": "POST",
       "summary": "Invoke action addTag",
+      "description": "Add a user-defined tag to a recommendation object. Tags help you organize, group, and filter recommendations in the Microsoft Entra admin center.",
       "resource": "directory"
     },
     {
       "path": "/directory/recommendations/{recommendation-id}/applyAlternateMitigation",
       "method": "POST",
       "summary": "Invoke action applyAlternateMitigation",
+      "description": "Apply an alternate mitigation for a recommendation object and update its status to alternateMitigation.",
       "resource": "directory"
     },
     {
@@ -40434,18 +40446,21 @@
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/acceptRisk",
       "method": "POST",
       "summary": "Invoke action acceptRisk",
+      "description": "Accept the risk for an impactedResource object and update its status to riskAccepted.",
       "resource": "directory"
     },
     {
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/addTag",
       "method": "POST",
       "summary": "Invoke action addTag",
+      "description": "Add a user-defined tag to an impactedResource object. To add the same tag to multiple impacted resources in a single request, use the addTag action on the impactedResources collection.",
       "resource": "directory"
     },
     {
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/applyAlternateMitigation",
       "method": "POST",
       "summary": "Invoke action applyAlternateMitigation",
+      "description": "Apply an alternate mitigation for an impactedResource object and update its status to alternateMitigation.",
       "resource": "directory"
     },
     {
@@ -40466,6 +40481,7 @@
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/markPlanned",
       "method": "POST",
       "summary": "Invoke action markPlanned",
+      "description": "Mark an impactedResource object as planned and update its status to planned.",
       "resource": "directory"
     },
     {
@@ -40486,12 +40502,14 @@
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/removeTag",
       "method": "POST",
       "summary": "Invoke action removeTag",
+      "description": "Remove a user-defined tag from an impactedResource object. To remove the same tag from multiple impacted resources in a single request, use the removeTag action on the impactedResources collection.",
       "resource": "directory"
     },
     {
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/tags",
       "method": "GET",
       "summary": "Get tags from directory",
+      "description": "The user-defined free-form labels applied to the impactedResource. The collection isn't directly writable; tags are created and removed through the addTag and removeTag actions.",
       "resource": "directory"
     },
     {
@@ -40516,6 +40534,7 @@
       "path": "/directory/recommendations/{recommendation-id}/impactedResources/{impactedResource-id}/tags/{recommendationTag-id}",
       "method": "GET",
       "summary": "Get tags from directory",
+      "description": "The user-defined free-form labels applied to the impactedResource. The collection isn't directly writable; tags are created and removed through the addTag and removeTag actions.",
       "resource": "directory"
     },
     {
@@ -40528,6 +40547,7 @@
       "path": "/directory/recommendations/{recommendation-id}/markPlanned",
       "method": "POST",
       "summary": "Invoke action markPlanned",
+      "description": "Mark a recommendation object as planned and update its status to planned.",
       "resource": "directory"
     },
     {
@@ -40548,12 +40568,14 @@
       "path": "/directory/recommendations/{recommendation-id}/removeTag",
       "method": "POST",
       "summary": "Invoke action removeTag",
+      "description": "Remove a user-defined tag from a recommendation object.",
       "resource": "directory"
     },
     {
       "path": "/directory/recommendations/{recommendation-id}/tags",
       "method": "GET",
       "summary": "Get tags from directory",
+      "description": "The user-defined free-form labels applied to the recommendation. The collection isn't directly writable; tags are created and removed through the addTag and removeTag actions.",
       "resource": "directory"
     },
     {
@@ -40578,6 +40600,7 @@
       "path": "/directory/recommendations/{recommendation-id}/tags/{recommendationTag-id}",
       "method": "GET",
       "summary": "Get tags from directory",
+      "description": "The user-defined free-form labels applied to the recommendation. The collection isn't directly writable; tags are created and removed through the addTag and removeTag actions.",
       "resource": "directory"
     },
     {
@@ -41053,15 +41076,15 @@
     {
       "path": "/directory/tenantGovernance/governancePolicyTemplates",
       "method": "GET",
-      "summary": "List governancePolicyTemplates",
-      "description": "Get a list of the governancePolicyTemplate objects and their properties. Policy templates define the configuration that is applied when establishing governance relationships.",
+      "summary": "List tenantGovernancePolicyTemplates",
+      "description": "Get a list of the tenantGovernancePolicyTemplate objects and their properties. Policy templates define the configuration that is applied when establishing governance relationships.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/governancePolicyTemplates",
       "method": "POST",
-      "summary": "Create governancePolicyTemplate",
-      "description": "Create a new governancePolicyTemplate that defines the configuration for establishing governance relationships, including role assignments and applications to provision.",
+      "summary": "Create tenantGovernancePolicyTemplate",
+      "description": "Create a new tenantGovernancePolicyTemplate that defines the configuration for establishing governance relationships, including role assignments and applications to provision.",
       "resource": "directory"
     },
     {
@@ -41073,22 +41096,22 @@
     {
       "path": "/directory/tenantGovernance/governancePolicyTemplates/{tenantGovernancePolicyTemplate-id}",
       "method": "DELETE",
-      "summary": "Delete governancePolicyTemplate",
-      "description": "Delete a governancePolicyTemplate object. You can't delete the default template or templates currently used by active relationships.",
+      "summary": "Delete tenantGovernancePolicyTemplate",
+      "description": "Delete a tenantGovernancePolicyTemplate object. You can't delete the default template or templates currently used by active relationships.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/governancePolicyTemplates/{tenantGovernancePolicyTemplate-id}",
       "method": "GET",
-      "summary": "Get governancePolicyTemplate",
-      "description": "Read the properties of a governancePolicyTemplate object.",
+      "summary": "Get tenantGovernancePolicyTemplate",
+      "description": "Read the properties of a tenantGovernancePolicyTemplate object.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/governancePolicyTemplates/{tenantGovernancePolicyTemplate-id}",
       "method": "PATCH",
-      "summary": "Update governancePolicyTemplate",
-      "description": "Update the properties of a governancePolicyTemplate object.",
+      "summary": "Update tenantGovernancePolicyTemplate",
+      "description": "Update the properties of a tenantGovernancePolicyTemplate object.",
       "resource": "directory"
     },
     {
@@ -41174,6 +41197,7 @@
       "path": "/directory/tenantGovernance/governanceRequests/{governanceRequest-id}/governancePolicyTemplate",
       "method": "GET",
       "summary": "Get governancePolicyTemplate from directory",
+      "description": "The governance policy template associated with this request.",
       "resource": "directory"
     },
     {
@@ -41219,7 +41243,7 @@
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}",
       "method": "GET",
       "summary": "Get relatedTenant",
-      "description": "Read the properties and relationships of microsoft.graph.tenantGovernanceServices.relatedTenant object.",
+      "description": "Read the properties and relationships of microsoft.graph.relatedTenant object.",
       "resource": "directory"
     },
     {
@@ -41232,30 +41256,35 @@
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/appB2BSignInActivityMetrics",
       "method": "GET",
       "summary": "Get appB2BSignInActivityMetrics from directory",
+      "description": "B2B sign-in activity metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/b2BRegistrationMetrics",
       "method": "GET",
       "summary": "Get b2BRegistrationMetrics from directory",
+      "description": "B2B registration metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/b2BSignInActivityMetrics",
       "method": "GET",
       "summary": "Get b2BSignInActivityMetrics from directory",
+      "description": "B2B sign-in activity metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/billingMetrics",
       "method": "GET",
       "summary": "Get billingMetrics from directory",
+      "description": "Billing metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
       "path": "/directory/tenantGovernance/relatedTenants/{relatedTenant-id}/multiTenantApplicationMetrics",
       "method": "GET",
       "summary": "Get multiTenantApplicationMetrics from directory",
+      "description": "Multi-tenant application usage metrics for this related tenant. Expanded by default.",
       "resource": "directory"
     },
     {
@@ -81088,7 +81117,7 @@
       "path": "/identityGovernance/accessReviews/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -81528,7 +81557,7 @@
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -81704,7 +81733,7 @@
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -82151,7 +82180,7 @@
       "path": "/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -82496,7 +82525,7 @@
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -82671,7 +82700,7 @@
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -83116,7 +83145,7 @@
       "path": "/identityGovernance/accessReviews/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -83474,7 +83503,7 @@
       "path": "/identityGovernance/accessReviews/unified/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -83911,7 +83940,7 @@
       "path": "/identityGovernance/accessReviews/unified/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -84086,7 +84115,7 @@
       "path": "/identityGovernance/accessReviews/unified/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -84531,7 +84560,7 @@
       "path": "/identityGovernance/accessReviews/unified/definitions/{accessReviewScheduleDefinition-id}/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -84792,7 +84821,7 @@
       "path": "/identityGovernance/accessReviews/unified/instances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -84967,7 +84996,7 @@
       "path": "/identityGovernance/accessReviews/unified/instances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -85412,7 +85441,7 @@
       "path": "/identityGovernance/accessReviews/unified/instances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "identitygovernance"
     },
     {
@@ -106372,6 +106401,7 @@
       "path": "/me/devices/provision",
       "method": "POST",
       "summary": "Invoke action provision",
+      "description": "Provision a device on behalf of an approved Virtual Desktop Infrastructure (VDI) provider. This action wraps the Zero Touch Deployment (ZTD) protocol to create a device in a pending state in the customer's directory. The device can't be used for authentication until it completes its registration....",
       "resource": "me"
     },
     {
@@ -113111,7 +113141,7 @@
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "me"
     },
     {
@@ -113286,7 +113316,7 @@
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "me"
     },
     {
@@ -113731,7 +113761,7 @@
       "path": "/me/pendingAccessReviewInstances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "me"
     },
     {
@@ -116358,14 +116388,14 @@
       "path": "/me/settings/workHoursAndLocations",
       "method": "GET",
       "summary": "Get workHoursAndLocationsSetting",
-      "description": "Get the properties and relationships of your own workHoursAndLocationsSetting.",
+      "description": "Get the properties and relationships of a user's workHoursAndLocationsSetting.",
       "resource": "me"
     },
     {
       "path": "/me/settings/workHoursAndLocations",
       "method": "PATCH",
       "summary": "Update workHoursAndLocationsSetting",
-      "description": "Update the properties of your own workHoursAndLocationsSetting.",
+      "description": "Update the properties of a user's workHoursAndLocationsSetting.",
       "resource": "me"
     },
     {
@@ -116379,7 +116409,7 @@
       "path": "/me/settings/workHoursAndLocations/occurrences",
       "method": "POST",
       "summary": "Create workPlanOccurrence",
-      "description": "Create a new workPlanOccurrence object in your own work plan. Only time-off occurrences can be created directly. The workLocationType must be set to timeOff. Other occurrences are autogenerated from recurrences.",
+      "description": "Create a new workPlanOccurrence object in a user's work plan. Only time-off occurrences can be created directly. The workLocationType must be set to timeOff. Other occurrences are autogenerated from recurrences.",
       "resource": "me"
     },
     {
@@ -116392,7 +116422,7 @@
       "path": "/me/settings/workHoursAndLocations/occurrences/setCurrentLocation",
       "method": "POST",
       "summary": "Invoke action setCurrentLocation",
-      "description": "Update your work location for the current day or current active segment. This action allows you to quickly update your work location without modifying individual occurrences.",
+      "description": "Update a user's work location for the current day or current active segment. This action quickly updates the user's work location without modifying individual occurrences.",
       "resource": "me"
     },
     {
@@ -116418,21 +116448,21 @@
       "path": "/me/settings/workHoursAndLocations/occurrencesView(startDateTime='{startDateTime}',endDateTime='{endDateTime}')",
       "method": "GET",
       "summary": "Invoke function occurrencesView",
-      "description": "Get work plan occurrences from your own work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.",
+      "description": "Get work plan occurrences from a user's work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.",
       "resource": "me"
     },
     {
       "path": "/me/settings/workHoursAndLocations/recurrences",
       "method": "GET",
       "summary": "List recurrences",
-      "description": "Get the recurrences from your own work plan via the recurrences navigation property.",
+      "description": "Get the recurrences from a user's work plan via the recurrences navigation property.",
       "resource": "me"
     },
     {
       "path": "/me/settings/workHoursAndLocations/recurrences",
       "method": "POST",
       "summary": "Create workPlanRecurrence",
-      "description": "Create a new workPlanRecurrence object in your own work plan.",
+      "description": "Create a new workPlanRecurrence object in a user's work plan.",
       "resource": "me"
     },
     {
@@ -140070,6 +140100,13 @@
       "resource": "security"
     },
     {
+      "path": "/security/microsoft.graph.security.getHuntingSchemaTables(workspaceId=@workspaceId)",
+      "method": "GET",
+      "summary": "Invoke function getHuntingSchemaTables",
+      "description": "Retrieve only the advanced hunting tables that the signed-in user is authorized to query in advanced hunting with Microsoft Defender XDR. The returned tables reflect the user's effective permissions. Each user within a tenant might have a different effective set of tables depending on their role ...",
+      "resource": "security"
+    },
+    {
       "path": "/security/microsoft.graph.security.getRunHuntingQuery(query='{query}',timespan='@timespan',workspaceId=@workspaceId)",
       "method": "GET",
       "summary": "Invoke function getRunHuntingQuery",
@@ -147600,8 +147637,8 @@
     {
       "path": "/sites/{site-id}/lists/{list-id}/items/{listItem-id}/permissions",
       "method": "GET",
-      "summary": "Get permissions from sites",
-      "description": "The set of permissions for the item. Read-only. Nullable.",
+      "summary": "List permissions on a listItem",
+      "description": "Get a list of the permission objects associated with a listItem.",
       "resource": "sites"
     },
     {
@@ -147785,8 +147822,8 @@
     {
       "path": "/sites/{site-id}/lists/{list-id}/permissions",
       "method": "GET",
-      "summary": "Get permissions from sites",
-      "description": "The set of permissions for the item. Read-only. Nullable.",
+      "summary": "List permissions on a list",
+      "description": "Get a list of the permission objects associated with a list.",
       "resource": "sites"
     },
     {
@@ -166478,26 +166515,45 @@
       "resource": "teamwork"
     },
     {
-      "path": "/teamwork/messaging/customEmojis/$count",
-      "method": "GET",
-      "summary": "Get the number of the resource",
-      "resource": "teamwork"
-    },
-    {
-      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-displayName}",
+      "path": "/teamwork/messaging/customEmojis(displayName='{displayName}')",
       "method": "DELETE",
       "summary": "Delete navigation property customEmojis for teamwork",
       "resource": "teamwork"
     },
     {
-      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-displayName}",
+      "path": "/teamwork/messaging/customEmojis(displayName='{displayName}')",
       "method": "GET",
       "summary": "Get customEmojis from teamwork",
       "description": "The collection of custom emojis available in organization messaging.",
       "resource": "teamwork"
     },
     {
-      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-displayName}",
+      "path": "/teamwork/messaging/customEmojis(displayName='{displayName}')",
+      "method": "PATCH",
+      "summary": "Update the navigation property customEmojis in teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/messaging/customEmojis/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property customEmojis for teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}",
+      "method": "GET",
+      "summary": "Get customEmojis from teamwork",
+      "description": "The collection of custom emojis available in organization messaging.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}",
       "method": "PATCH",
       "summary": "Update the navigation property customEmojis in teamwork",
       "resource": "teamwork"
@@ -179211,6 +179267,7 @@
       "path": "/users/{user-id}/devices/provision",
       "method": "POST",
       "summary": "Invoke action provision",
+      "description": "Provision a device on behalf of an approved Virtual Desktop Infrastructure (VDI) provider. This action wraps the Zero Touch Deployment (ZTD) protocol to create a device in a pending state in the customer's directory. The device can't be used for authentication until it completes its registration....",
       "resource": "users"
     },
     {
@@ -185899,7 +185956,7 @@
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "users"
     },
     {
@@ -186074,7 +186131,7 @@
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "users"
     },
     {
@@ -186519,7 +186576,7 @@
       "path": "/users/{user-id}/pendingAccessReviewInstances/{accessReviewInstance-id}/stages/{accessReviewStage-id}/decisions/{accessReviewInstanceDecisionItem-id}/instance/batchApplyCustomDataProvidedResourceDecisions",
       "method": "POST",
       "summary": "Invoke action batchApplyCustomDataProvidedResourceDecisions",
-      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state.",
+      "description": "Enables reviewers to set the applyResult and applyDescription on all accessReviewInstanceDecisionItem objects in a specific accessReviewInstance in batches by using customDataProvidedResourceId. NOTE: The access review instance must be in an Applying state. This action is part of the unified acce...",
       "resource": "users"
     },
     {
@@ -189143,7 +189200,7 @@
       "path": "/users/{user-id}/settings/workHoursAndLocations/occurrences/setCurrentLocation",
       "method": "POST",
       "summary": "Invoke action setCurrentLocation",
-      "description": "Update your work location for the current day or current active segment. This action allows you to quickly update your work location without modifying individual occurrences.",
+      "description": "Update a user's work location for the current day or current active segment. This action quickly updates the user's work location without modifying individual occurrences.",
       "resource": "users"
     },
     {
@@ -189169,7 +189226,7 @@
       "path": "/users/{user-id}/settings/workHoursAndLocations/occurrencesView(startDateTime='{startDateTime}',endDateTime='{endDateTime}')",
       "method": "GET",
       "summary": "Invoke function occurrencesView",
-      "description": "Get work plan occurrences from your own work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.",
+      "description": "Get work plan occurrences from a user's work plan within a specified date range. This function requires the startDateTime and endDateTime parameters.",
       "resource": "users"
     },
     {
