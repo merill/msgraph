@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-10-12T13:42:08Z",
+  "generated": "2026-10-13T13:03:32Z",
   "endpointCount": 6545,
-  "resourceCount": 4603,
+  "resourceCount": 4638,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -91488,6 +91488,15 @@
       ]
     },
     {
+      "name": "a365AiGuardrail",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "aadSource",
       "properties": [
         {
@@ -96851,6 +96860,15 @@
         {
           "name": "version",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "aiGuardrail",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -117522,7 +117540,7 @@
       "properties": [
         {
           "name": "action",
-          "type": "microsoft.graph.security.caseAction"
+          "type": "microsoft.graph.ediscovery.caseAction"
         },
         {
           "name": "completedDateTime",
@@ -117551,7 +117569,7 @@
         },
         {
           "name": "status",
-          "type": "microsoft.graph.security.caseOperationStatus"
+          "type": "microsoft.graph.ediscovery.caseOperationStatus"
         }
       ]
     },
@@ -124247,6 +124265,33 @@
       ]
     },
     {
+      "name": "cloudSecurityConnector",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "cloudSecurityEnablement",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "cloudSecurityManagement",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "cloudVideoInteropInfo",
       "properties": [
         {
@@ -125167,6 +125212,24 @@
         {
           "name": "lastModifiedDateTime",
           "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "complianceEndpointEvaluationIncomplete",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "complianceEvaluationIncomplete",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -127275,7 +127338,7 @@
       "name": "contentInfo",
       "properties": [
         {
-          "name": "contentFormat",
+          "name": "format",
           "type": "String"
         },
         {
@@ -127288,7 +127351,7 @@
         },
         {
           "name": "state",
-          "type": "contentState"
+          "type": "String"
         }
       ]
     },
@@ -128934,6 +128997,15 @@
           "name": "pfsGroup",
           "type": "perfectForwardSecrecyGroup",
           "notes": "Possible values are: pfs1, pfs2, pfs2048, ecp256, ecp384, pfsMM, pfs24"
+        }
+      ]
+    },
+    {
+      "name": "cscContentMetadata",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -131471,6 +131543,15 @@
       ]
     },
     {
+      "name": "defenderAutomationRule",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "defenderDetectedMalwareActions",
       "properties": [
         {
@@ -131488,6 +131569,24 @@
         {
           "name": "severeSeverity",
           "type": "defenderThreatAction"
+        }
+      ]
+    },
+    {
+      "name": "defenderGeneratedPlaybook",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "defenderIntegration",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -134411,16 +134510,16 @@
           "notes": "Read-only"
         },
         {
-          "name": "Onboarding",
-          "type": ""
-        },
-        {
           "name": "displayName",
           "type": "String"
         },
         {
           "name": "description",
           "type": "String"
+        },
+        {
+          "name": "roleScopeTagIds",
+          "type": "String collection"
         }
       ]
     },
@@ -140582,6 +140681,14 @@
       "name": "deviceManagementScript",
       "properties": [
         {
+          "name": "enforceSignatureCheck",
+          "type": "Boolean"
+        },
+        {
+          "name": "runAs32Bit",
+          "type": "Boolean"
+        },
+        {
           "name": "id",
           "type": "String"
         },
@@ -140612,20 +140719,12 @@
           "type": "runAsAccountType"
         },
         {
-          "name": "enforceSignatureCheck",
-          "type": "Boolean"
-        },
-        {
           "name": "fileName",
           "type": "String"
         },
         {
           "name": "roleScopeTagIds",
           "type": "String collection"
-        },
-        {
-          "name": "runAs32Bit",
-          "type": "Boolean"
         }
       ]
     },
@@ -143882,6 +143981,15 @@
       ]
     },
     {
+      "name": "dspmAdminActivity",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "durationDrivenRolloutSettings",
       "properties": [
         {
@@ -144044,6 +144152,15 @@
         {
           "name": "customDomainName",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "ecsContentMetadata",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -152515,6 +152632,15 @@
         {
           "name": "ruleType",
           "type": "microsoft.graph.networkaccess.networkDestinationType"
+        }
+      ]
+    },
+    {
+      "name": "filteringTeamsMessageFileInfo",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -166361,7 +166487,7 @@
         },
         {
           "name": "contentType",
-          "type": "microsoft.graph.windowsUpdates.bodyType"
+          "type": "bodyType"
         }
       ]
     },
@@ -167620,7 +167746,7 @@
         },
         {
           "name": "labelId",
-          "type": "GUID"
+          "type": "Guid"
         }
       ]
     },
@@ -177186,6 +177312,15 @@
       ]
     },
     {
+      "name": "mcsRawEmailContentMetadata",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "mdmWindowsInformationProtectionPolicy",
       "properties": [
         {
@@ -178262,6 +178397,15 @@
       ]
     },
     {
+      "name": "mesRawEmailContentMetadata",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "message",
       "properties": [
         {
@@ -179010,6 +179154,24 @@
       ]
     },
     {
+      "name": "microsoftSecurityForAiConfiguration",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "microsoftSecurityForAiRealTimeProtection",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "microsoftStoreForBusinessApp",
       "properties": [
         {
@@ -179147,6 +179309,15 @@
         {
           "name": "appUserModelId",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "microsoftTeamsMoveMessages",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -180809,6 +180980,15 @@
         {
           "name": "identifier",
           "type": "microsoft.graph.security.emailEntityIdentifier"
+        }
+      ]
+    },
+    {
+      "name": "mtpContentMetadata",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -184217,6 +184397,15 @@
         {
           "name": "priority",
           "type": "Int32"
+        }
+      ]
+    },
+    {
+      "name": "onDemandExchangeClassification",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -188408,6 +188597,15 @@
       ]
     },
     {
+      "name": "p4AiDagSitePermissionsRecord",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "pageLinks",
       "properties": [
         {
@@ -189566,6 +189764,24 @@
         {
           "name": "id",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "peopleSkillsAdmin",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "peopleSkillsUser",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -191343,11 +191559,47 @@
       ]
     },
     {
+      "name": "plannerCustomFieldDefinition",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "plannerCustomFieldDefinitionList",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "plannerDelta",
       "properties": [
         {
           "name": "id",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "plannerDependency",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "plannerDependencyList",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -207514,6 +207766,15 @@
       ]
     },
     {
+      "name": "sharePointFileArchivePolicy",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "sharePointGroup",
       "properties": [
         {
@@ -213704,6 +213965,15 @@
       ]
     },
     {
+      "name": "syntheticMediaDetectionEvent",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "syntheticMediaDetectionInfo",
       "properties": [
         {
@@ -214365,28 +214635,20 @@
       "name": "task",
       "properties": [
         {
-          "name": "assignedTo",
-          "type": "String"
+          "name": "textbody",
+          "type": "itemBody"
         },
         {
-          "name": "category",
-          "type": "microsoft.graph.security.caseManagement.caseTaskCategory"
+          "name": "bodyLastModifiedDateTime",
+          "type": "DateTimeOffset"
         },
         {
-          "name": "closingNotes",
-          "type": "String"
-        },
-        {
-          "name": "createdBy",
-          "type": "String"
+          "name": "completedDateTime",
+          "type": "DateTimeOffset"
         },
         {
           "name": "createdDateTime",
           "type": "DateTimeOffset"
-        },
-        {
-          "name": "description",
-          "type": "String"
         },
         {
           "name": "displayName",
@@ -214394,27 +214656,35 @@
         },
         {
           "name": "dueDateTime",
-          "type": "DateTimeOffset"
+          "type": "dateTimeTimeZone"
         },
         {
           "name": "id",
           "type": "String"
         },
         {
-          "name": "lastModifiedBy",
-          "type": "String"
+          "name": "importance",
+          "type": "importance"
         },
         {
           "name": "lastModifiedDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "priority",
-          "type": "microsoft.graph.security.caseManagement.caseTaskPriority"
+          "name": "viewpoint",
+          "type": "taskViewpoint"
+        },
+        {
+          "name": "recurrence",
+          "type": "patternedRecurrence"
+        },
+        {
+          "name": "startDateTime",
+          "type": "dateTimeTimeZone"
         },
         {
           "name": "status",
-          "type": "microsoft.graph.security.caseManagement.taskStatus"
+          "type": "taskStatus_v2"
         }
       ]
     },
@@ -221589,6 +221859,15 @@
       ]
     },
     {
+      "name": "universalPrintSecureScan",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
       "name": "unknownSource",
       "properties": [
         {
@@ -228404,6 +228683,33 @@
         {
           "name": "body",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "vivaGlintClientConfiguration",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "vivaGlintDataRetention",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
+        }
+      ]
+    },
+    {
+      "name": "vivaGlintVivaInsightsIntegration",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
@@ -242649,6 +242955,15 @@
         {
           "name": "maxSharedWorkLocationDetails",
           "type": "maxWorkLocationDetails"
+        }
+      ]
+    },
+    {
+      "name": "workIQAdminActivity",
+      "properties": [
+        {
+          "name": "dynamicProperties",
+          "type": "microsoft.graph.security.auditRecordTypeDictionary"
         }
       ]
     },
