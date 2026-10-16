@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-10-15T10:27:43Z",
-  "endpointCount": 6545,
-  "resourceCount": 4638,
+  "generated": "2026-10-16T10:14:58Z",
+  "endpointCount": 6646,
+  "resourceCount": 4670,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -6813,20 +6813,20 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28673,22 +28673,22 @@
         "delegatedWork": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28700,16 +28700,16 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -45028,6 +45028,43 @@
       }
     },
     {
+      "path": "/groups/{groupsId}/planner",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/groups/{groupsId}/planner",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/groups/{groupsId}/planner/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/groups/{groupsId}/planner/plans_v2",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/groups/{groupsId}/planner/plans_v2/$ref",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/groups/{groupsId}/planner/plans_v2/{id}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
       "path": "/groups/{id}",
       "method": "DELETE",
       "permissions": {
@@ -45206,14 +45243,14 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "Group-Conversation.Read.All",
           "Group.Read.All",
-          "Group.ReadWrite.All"
+          "Group.ReadWrite.All",
+          "Group-Conversation.Read.All"
         ],
         "application": [
-          "Group-Conversation.Read.All",
           "Group.Read.All",
-          "Group.ReadWrite.All"
+          "Group.ReadWrite.All",
+          "Group-Conversation.Read.All"
         ]
       },
       "queryParams": [
@@ -59065,6 +59102,11 @@
       }
     },
     {
+      "path": "/me/planner/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
       "path": "/me/planner/all/delta",
       "method": "GET",
       "permissions": {
@@ -59102,6 +59144,231 @@
           "Tasks.Read"
         ]
       }
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/buckets",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/buckets",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/buckets/{bucketId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/buckets/{bucketId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/buckets/{bucketId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/contexts",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/contexts",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/contexts/{planContextLinkId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/contexts/{planContextLinkId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/contexts/{planContextLinkId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions/{customChoiceOptionId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions/{customChoiceOptionId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions/{customChoiceOptionId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/dependencies",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/dependencies",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/dependencies/{dependencyId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/dependencies/{dependencyId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/dependencies/{dependencyId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/goals",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/goals",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/goals/{goalId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/goals/{goalId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/goals/{goalId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/historyItems",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/historyItems",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/historyItems/{historyItemId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/historyItems/{historyItemId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/historyItems/{historyItemId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/links/{contentLinkId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/links/{contentLinkId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/checklist/{checklistItemV4Id}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/checklist/{checklistItemV4Id}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/customFieldValues/{customFieldValueId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/customFieldValues/{customFieldValueId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/messages/{plannerChatMessageId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/messages/{plannerChatMessageId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/userAssignments/{userAssignmentId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/userAssignments/{userAssignmentId}",
+      "method": "PATCH",
+      "permissions": {}
     },
     {
       "path": "/me/planner/recentPlans",
@@ -64588,6 +64855,41 @@
       }
     },
     {
+      "path": "/planView/categories",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/planView/categories",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/planView/categories/{categoryDefinitionId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/planView/categories/{categoryDefinitionId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/planView/categories/{categoryDefinitionId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/planner",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/planner",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
       "path": "/planner/buckets",
       "method": "GET",
       "permissions": {
@@ -64862,6 +65164,45 @@
           "Tasks.Read"
         ]
       }
+    },
+    {
+      "path": "/planner/plans_v2",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/planner/plans_v2",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/planner/plans_v2/{planId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/planner/plans_v2/{planId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/planner/plans_v2/{planId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
     },
     {
       "path": "/planner/rosters",
@@ -65224,6 +65565,45 @@
           "Tasks.ReadWrite"
         ]
       }
+    },
+    {
+      "path": "/planner/tasks_v2",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/planner/tasks_v2",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/planner/tasks_v2/{taskId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/planner/tasks_v2/{taskId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/planner/tasks_v2/{taskId}/$ref",
+      "method": "DELETE",
+      "permissions": {}
     },
     {
       "path": "/policies/accessReviewPolicy",
@@ -77222,6 +77602,72 @@
       ]
     },
     {
+      "path": "/security/workbooks",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Workbooks.Read.All"
+        ],
+        "application": [
+          "Workbooks.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/workbooks",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "Workbooks.ReadWrite.All"
+        ],
+        "application": [
+          "Workbooks.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/security/workbooks/{workbookId}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "Workbooks.ReadWrite.All"
+        ],
+        "application": [
+          "Workbooks.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/security/workbooks/{workbookId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Workbooks.Read.All"
+        ],
+        "application": [
+          "Workbooks.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/security/workbooks/{workbookId}",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "Workbooks.ReadWrite.All"
+        ],
+        "application": [
+          "Workbooks.ReadWrite.All"
+        ]
+      }
+    },
+    {
       "path": "/security/zones",
       "method": "GET",
       "permissions": {
@@ -86116,6 +86562,43 @@
       }
     },
     {
+      "path": "/teams/{teamsId}/channels/{channelId}/planner",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/teams/{teamsId}/channels/{channelId}/planner",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/teams/{teamsId}/channels/{channelId}/planner/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/teams/{teamsId}/channels/{channelId}/planner/plans_v2",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/teams/{teamsId}/channels/{channelId}/planner/plans_v2/$ref",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/teams/{teamsId}/channels/{channelId}/planner/plans_v2/{id}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
       "path": "/teams/{teamsId}/schedule/dayNotes",
       "method": "GET",
       "permissions": {
@@ -88230,26 +88713,26 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "User.ReadBasic.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "User.ReadBasic.All"
         ],
         "application": [
-          "User.Read.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "User.Read.All"
         ]
       },
       "queryParams": [
@@ -88266,8 +88749,8 @@
         "ConsistencyLevel: eventual"
       ],
       "notes": [
-        "Guest users cannot call this API. For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?.",
-        "The Microsoft Graph API for Intune requires an active Intune license for the tenant."
+        "The Microsoft Graph API for Intune requires an active Intune license for the tenant.",
+        "Guest users cannot call this API. For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?."
       ]
     },
     {
@@ -88461,34 +88944,34 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "User.Read",
+          "UserAuthenticationMethod.Read",
           "UserAuthMethod-ResourceKey.Read.All",
           "Calendars.ReadBasic",
-          "UserAuthenticationMethod.Read",
-          "User.Read",
           "AppRoleAssignment.ReadWrite.All"
         ],
         "delegatedPersonal": [
-          "Calendars.ReadBasic",
-          "User.Read"
+          "User.Read",
+          "Calendars.ReadBasic"
         ],
         "application": [
-          "UserAuthMethod-ResourceKey.Read.All",
-          "Chat.Read.All",
-          "Calendars.ReadBasic",
-          "UserAuthenticationMethod.Read",
           "User.Read.All",
+          "Chat.Read.All",
+          "UserAuthenticationMethod.Read",
+          "UserAuthMethod-ResourceKey.Read.All",
+          "Calendars.ReadBasic",
           "Directory.Read.All"
         ]
       },
       "queryParams": [
         "$select",
-        "$top",
-        "$skip",
+        "$expand",
         "$count",
         "$filter",
-        "$expand",
         "$orderby",
-        "$search"
+        "$search",
+        "$top",
+        "$skip"
       ],
       "notes": [
         "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
@@ -88501,9 +88984,9 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
+          "UserAuthMethod-Phone.ReadWrite",
           "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthenticationMethod.ReadWrite",
-          "UserAuthMethod-Phone.ReadWrite"
+          "UserAuthenticationMethod.ReadWrite"
         ],
         "application": [
           "UserAuthenticationMethod.ReadWrite.All",
@@ -88516,24 +88999,24 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-Email.ReadWrite",
-          "Sites.ReadWrite.All",
-          "UserAuthenticationMethod.ReadWrite.All",
-          "AppRoleAssignment.ReadWrite.All",
           "UserAuthMethod-TAP.Read",
-          "UserAuthMethod-Phone.ReadWrite",
+          "UserAuthenticationMethod.ReadWrite.All",
           "LicenseAssignment.ReadWrite.All",
+          "UserAuthMethod-Phone.ReadWrite",
+          "Sites.ReadWrite.All",
+          "AppRoleAssignment.ReadWrite.All",
+          "UserAuthMethod-Email.ReadWrite",
           "Mail.Send"
         ],
         "delegatedPersonal": [
           "Mail.Send"
         ],
         "application": [
+          "UserAuthMethod-TAP.Read.All",
+          "LicenseAssignment.ReadWrite.All",
           "UserAuthenticationMethod.ReadWrite.All",
           "Sites.ReadWrite.All",
           "AppRoleAssignment.ReadWrite.All",
-          "UserAuthMethod-TAP.Read.All",
-          "LicenseAssignment.ReadWrite.All",
           "Mail.Send"
         ]
       }
@@ -88825,8 +89308,8 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "TeamsAppInstallation.ReadWriteSelfForUser",
-          "TeamworkTargetedMessage.ReadWrite"
+          "TeamworkTargetedMessage.ReadWrite",
+          "TeamsAppInstallation.ReadWriteSelfForUser"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -89279,15 +89762,15 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
@@ -89302,22 +89785,22 @@
         "delegatedWork": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -89329,16 +89812,16 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "notes": [
@@ -90049,6 +90532,100 @@
       }
     },
     {
+      "path": "/users/{usersId}/planner/plans_v2",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ]
+      }
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/$ref",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{id}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/goals/{goalId}/tasks",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/goals/{goalId}/tasks/$ref",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/goals/{goalId}/tasks/{id}/$ref",
+      "method": "DELETE",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/links",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/links",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/checklist",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/checklist",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/customFieldValues",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/customFieldValues",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/links",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/links",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/messages",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/messages",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/userAssignments",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/userAssignments",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
       "path": "/users/{usersId}/planner/rosterPlans",
       "method": "GET",
       "permissions": {
@@ -90062,6 +90639,28 @@
       "queryParams": [
         "$select"
       ]
+    },
+    {
+      "path": "/users/{usersId}/planner/tasks_v2",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/users/{usersId}/planner/tasks_v2/$ref",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/users/{usersId}/planner/tasks_v2/{id}/$ref",
+      "method": "DELETE",
+      "permissions": {}
     },
     {
       "path": "/users/{usersId}/removeAllDevicesFromManagement",
@@ -116171,6 +116770,48 @@
       ]
     },
     {
+      "name": "bucket",
+      "properties": [
+        {
+          "name": "capabilities",
+          "type": "bucketCapability",
+          "notes": "Read-only"
+        },
+        {
+          "name": "creationInfo",
+          "type": "creationInfo",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "planId",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "bucketAggregationDefinition",
       "properties": [
         {
@@ -116205,6 +116846,15 @@
         {
           "name": "to",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "bucketCapability",
+      "properties": [
+        {
+          "name": "extensions",
+          "type": "Boolean"
         }
       ]
     },
@@ -117669,6 +118319,38 @@
       ]
     },
     {
+      "name": "categoryDefinition",
+      "properties": [
+        {
+          "name": "capabilities",
+          "type": "categoryDefinitionCapability",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "categoryDefinitionCapability",
+      "properties": [
+        {
+          "name": "extensions",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
       "name": "categoryTemplate",
       "properties": [
         {
@@ -118528,6 +119210,23 @@
       ]
     },
     {
+      "name": "chatMention",
+      "properties": [
+        {
+          "name": "index",
+          "type": "Int32"
+        },
+        {
+          "name": "mentioned",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "chatMentionType"
+        }
+      ]
+    },
+    {
       "name": "chatMessage",
       "properties": [
         {
@@ -118905,6 +119604,19 @@
       ]
     },
     {
+      "name": "chatMessageProperties",
+      "properties": [
+        {
+          "name": "mentions",
+          "type": "chatMention collection"
+        },
+        {
+          "name": "reactions",
+          "type": "chatReaction collection"
+        }
+      ]
+    },
+    {
       "name": "chatMessageReaction",
       "properties": [
         {
@@ -118943,6 +119655,19 @@
         {
           "name": "user",
           "type": "identity"
+        }
+      ]
+    },
+    {
+      "name": "chatReaction",
+      "properties": [
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "users",
+          "type": "creationTimestamp collection"
         }
       ]
     },
@@ -119003,6 +119728,15 @@
       ]
     },
     {
+      "name": "checklistCapability",
+      "properties": [
+        {
+          "name": "extensions",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
       "name": "checklistItem",
       "properties": [
         {
@@ -119024,6 +119758,56 @@
         {
           "name": "isChecked",
           "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "checklistItemV4",
+      "properties": [
+        {
+          "name": "capabilities",
+          "type": "checklistCapability",
+          "notes": "Read-only"
+        },
+        {
+          "name": "completedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "completedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "createdBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "isChecked",
+          "type": "Boolean"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         }
       ]
     },
@@ -127338,7 +128122,7 @@
       "name": "contentInfo",
       "properties": [
         {
-          "name": "format",
+          "name": "contentFormat",
           "type": "String"
         },
         {
@@ -127351,7 +128135,7 @@
         },
         {
           "name": "state",
-          "type": "String"
+          "type": "contentState"
         }
       ]
     },
@@ -127365,6 +128149,61 @@
         {
           "name": "creationDateTime",
           "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "contentLink",
+      "properties": [
+        {
+          "name": "capabilities",
+          "type": "contentLinkCapability",
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "linkType",
+          "type": "contentLinkType"
+        },
+        {
+          "name": "webUrl",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "contentLinkCapability",
+      "properties": [
+        {
+          "name": "extensions",
+          "type": "Boolean"
         }
       ]
     },
@@ -128074,6 +128913,52 @@
         {
           "name": "templateId",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "creationInfo",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "externalId",
+          "type": "String"
+        },
+        {
+          "name": "externalUrl",
+          "type": "String"
+        },
+        {
+          "name": "externalVersion",
+          "type": "String"
+        },
+        {
+          "name": "scenarioId",
+          "type": "String"
+        },
+        {
+          "name": "scope",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "creationTimestamp",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
         }
       ]
     },
@@ -129301,6 +130186,24 @@
       ]
     },
     {
+      "name": "customChoiceOption",
+      "properties": [
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "customClaim",
       "properties": [
         {
@@ -129802,8 +130705,26 @@
       "name": "customFieldDefinition",
       "properties": [
         {
-          "name": "description",
-          "type": "String"
+          "name": "archivalInfo",
+          "type": "plannerArchivalInfo"
+        },
+        {
+          "name": "createdBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "deletedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "deletedDateTime",
+          "type": "DateTimeOffset"
         },
         {
           "name": "displayName",
@@ -129815,12 +130736,26 @@
           "notes": "Read-only"
         },
         {
-          "name": "isDisabled",
-          "type": "Boolean"
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
         },
         {
-          "name": "isRequired",
-          "type": "Boolean"
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "planId",
+          "type": "String"
+        },
+        {
+          "name": "rollupType",
+          "type": "customFieldRollupType"
+        },
+        {
+          "name": "valueType",
+          "type": "customFieldValueType"
         }
       ]
     },
@@ -129845,6 +130780,24 @@
     {
       "name": "customFieldStringValue",
       "properties": [
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "customFieldValue",
+      "properties": [
+        {
+          "name": "customFieldDefinitionId",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
         {
           "name": "value",
           "type": "String"
@@ -130926,6 +131879,27 @@
         {
           "name": "dateTime",
           "type": "String"
+        },
+        {
+          "name": "timeZone",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "dateWithOptionalTime",
+      "properties": [
+        {
+          "name": "date",
+          "type": "Date"
+        },
+        {
+          "name": "isTimeSpecified",
+          "type": "Boolean"
+        },
+        {
+          "name": "time",
+          "type": "TimeOfDay"
         },
         {
           "name": "timeZone",
@@ -132933,6 +133907,51 @@
           "name": "id",
           "type": "String",
           "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "dependency",
+      "properties": [
+        {
+          "name": "archivalInfo",
+          "type": "plannerArchivalInfo"
+        },
+        {
+          "name": "constraint",
+          "type": "dependencyType"
+        },
+        {
+          "name": "creationInfo",
+          "type": "creationInfo",
+          "notes": "Read-only"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "sourceItemId",
+          "type": "String"
+        },
+        {
+          "name": "targetItemId",
+          "type": "String"
         }
       ]
     },
@@ -151782,11 +152801,11 @@
       "name": "fileHash",
       "properties": [
         {
-          "name": "hashType",
-          "type": "fileHashType enum"
+          "name": "algorithm",
+          "type": "microsoft.graph.security.fileHashAlgorithm"
         },
         {
-          "name": "hashValue",
+          "name": "value",
           "type": "String"
         }
       ]
@@ -153703,6 +154722,77 @@
         {
           "name": "profileId",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "goal",
+      "properties": [
+        {
+          "name": "archivalInfo",
+          "type": "plannerArchivalInfo"
+        },
+        {
+          "name": "capabilities",
+          "type": "goalCapability",
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "finishDate",
+          "type": "Date"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "notes",
+          "type": "itemBody"
+        },
+        {
+          "name": "planId",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "Int32"
+        },
+        {
+          "name": "startDate",
+          "type": "Date"
+        },
+        {
+          "name": "status",
+          "type": "plannerGoalStatus"
         }
       ]
     },
@@ -157390,6 +158480,49 @@
       "properties": [
         {
           "name": "id",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "historyItem",
+      "properties": [
+        {
+          "name": "actor",
+          "type": "identitySet"
+        },
+        {
+          "name": "entityId",
+          "type": "String"
+        },
+        {
+          "name": "entityType",
+          "type": "historyEntityType"
+        },
+        {
+          "name": "eventType",
+          "type": "historyEventType"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "newData",
+          "type": "String"
+        },
+        {
+          "name": "occurredDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "oldData",
+          "type": "String"
+        },
+        {
+          "name": "planId",
           "type": "String"
         }
       ]
@@ -163668,11 +164801,13 @@
       "properties": [
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "expirationDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "default": true
         },
         {
           "name": "payloadFileName",
@@ -191253,6 +192388,178 @@
       ]
     },
     {
+      "name": "plan",
+      "properties": [
+        {
+          "name": "archivalInfo",
+          "type": "plannerArchivalInfo"
+        },
+        {
+          "name": "calendar",
+          "type": "planCalendar"
+        },
+        {
+          "name": "capabilities",
+          "type": "planCapability",
+          "notes": "Read-only"
+        },
+        {
+          "name": "container",
+          "type": "planContainer"
+        },
+        {
+          "name": "contentSensitivityLabelAssignment",
+          "type": "contentSensitivityLabelAssignment"
+        },
+        {
+          "name": "creationInfo",
+          "type": "creationInfo",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "duration",
+          "type": "Int32"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "hasChat",
+          "type": "Boolean"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "planView",
+          "type": "planView"
+        },
+        {
+          "name": "sharedWithContainers",
+          "type": "plannerSharedWithContainer collection"
+        }
+      ]
+    },
+    {
+      "name": "planCalendar",
+      "properties": [
+        {
+          "name": "timeZone",
+          "type": "String"
+        },
+        {
+          "name": "workDayDefaults",
+          "type": "workDayDefaults"
+        }
+      ]
+    },
+    {
+      "name": "planCapability",
+      "properties": [
+        {
+          "name": "calendar",
+          "type": "Boolean"
+        },
+        {
+          "name": "customFields",
+          "type": "Boolean"
+        },
+        {
+          "name": "extensions",
+          "type": "Boolean"
+        },
+        {
+          "name": "goals",
+          "type": "Boolean"
+        },
+        {
+          "name": "undo",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "planContainer",
+      "properties": [
+        {
+          "name": "containerId",
+          "type": "String"
+        },
+        {
+          "name": "containerType",
+          "type": "plannerContainerType"
+        }
+      ]
+    },
+    {
+      "name": "planContextLink",
+      "properties": [
+        {
+          "name": "associationType",
+          "type": "String"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "customLinkText",
+          "type": "String"
+        },
+        {
+          "name": "displayAs",
+          "type": "plannerPlanContextType"
+        },
+        {
+          "name": "displayNameSegments",
+          "type": "String collection"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "isActive",
+          "type": "Boolean"
+        },
+        {
+          "name": "isCreation",
+          "type": "Boolean"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "ownerAppId",
+          "type": "String"
+        },
+        {
+          "name": "webUrl",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "planUsageRight",
       "properties": [
         {
@@ -191303,6 +192610,21 @@
         },
         {
           "name": "statusChangedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "isArchived",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
+          "name": "modifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "modifiedDateTime",
           "type": "DateTimeOffset",
           "notes": "Read-only"
         }
@@ -191519,6 +192841,62 @@
         {
           "name": "category25",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "plannerChatMessage",
+      "properties": [
+        {
+          "name": "content",
+          "type": "String"
+        },
+        {
+          "name": "createdBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "deletedTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "editedTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "isDeleted",
+          "type": "Boolean"
+        },
+        {
+          "name": "isEdited",
+          "type": "Boolean"
+        },
+        {
+          "name": "messageType",
+          "type": "plannerChatMessageType"
+        },
+        {
+          "name": "parentEntityId",
+          "type": "String"
+        },
+        {
+          "name": "properties",
+          "type": "chatMessageProperties"
+        },
+        {
+          "name": "threadType",
+          "type": "plannerChatThreadType"
         }
       ]
     },
@@ -201758,6 +203136,10 @@
           "type": "DateTimeOffset"
         },
         {
+          "name": "restoreJobType",
+          "type": "restoreJobType"
+        },
+        {
           "name": "restoreSessionId",
           "type": "String"
         },
@@ -201776,10 +203158,6 @@
         {
           "name": "severity",
           "type": "activityLogSeverity"
-        },
-        {
-          "name": "tags",
-          "type": "restorePointTags"
         }
       ]
     },
@@ -207684,8 +209062,28 @@
           "notes": "Read-only"
         },
         {
+          "name": "billedHeavyRequestCount",
+          "type": "Int64",
+          "notes": "Read-only"
+        },
+        {
+          "name": "billedStandardRequestCount",
+          "type": "Int64",
+          "notes": "Read-only"
+        },
+        {
+          "name": "heavyRequestCount",
+          "type": "Int64",
+          "notes": "Read-only"
+        },
+        {
           "name": "serviceArea",
           "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "standardRequestCount",
+          "type": "Int64",
           "notes": "Read-only"
         },
         {
@@ -214635,20 +216033,30 @@
       "name": "task",
       "properties": [
         {
-          "name": "textbody",
-          "type": "itemBody"
+          "name": "archivalInfo",
+          "type": "plannerArchivalInfo"
         },
         {
-          "name": "bodyLastModifiedDateTime",
-          "type": "DateTimeOffset"
+          "name": "bucketId",
+          "type": "String"
+        },
+        {
+          "name": "capabilities",
+          "type": "taskCapability",
+          "notes": "Read-only"
+        },
+        {
+          "name": "completedBy",
+          "type": "identitySet"
         },
         {
           "name": "completedDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "createdDateTime",
-          "type": "DateTimeOffset"
+          "name": "creationInfo",
+          "type": "creationInfo",
+          "notes": "Read-only"
         },
         {
           "name": "displayName",
@@ -214656,35 +216064,103 @@
         },
         {
           "name": "dueDateTime",
-          "type": "dateTimeTimeZone"
+          "type": "dateWithOptionalTime"
+        },
+        {
+          "name": "extensions",
+          "type": "extensionFieldCollection"
+        },
+        {
+          "name": "finishDateTime",
+          "type": "dateWithOptionalTime"
+        },
+        {
+          "name": "goalIds",
+          "type": "String collection"
+        },
+        {
+          "name": "hasChat",
+          "type": "Boolean"
+        },
+        {
+          "name": "hasChildren",
+          "type": "Boolean"
         },
         {
           "name": "id",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
-          "name": "importance",
-          "type": "importance"
+          "name": "isCritical",
+          "type": "Boolean"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
         },
         {
           "name": "lastModifiedDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         },
         {
-          "name": "viewpoint",
-          "type": "taskViewpoint"
+          "name": "notes",
+          "type": "itemBody"
+        },
+        {
+          "name": "parentTaskId",
+          "type": "String"
+        },
+        {
+          "name": "percentComplete",
+          "type": "Int32"
+        },
+        {
+          "name": "personalView",
+          "type": "taskPersonalView"
+        },
+        {
+          "name": "planId",
+          "type": "String"
+        },
+        {
+          "name": "planView",
+          "type": "taskPlanView"
+        },
+        {
+          "name": "priority",
+          "type": "Int32"
         },
         {
           "name": "recurrence",
-          "type": "patternedRecurrence"
+          "type": "plannerTaskRecurrence"
         },
         {
           "name": "startDateTime",
-          "type": "dateTimeTimeZone"
+          "type": "dateWithOptionalTime"
         },
         {
           "name": "status",
-          "type": "taskStatus_v2"
+          "type": "plannerTaskStatus"
+        }
+      ]
+    },
+    {
+      "name": "taskCapability",
+      "properties": [
+        {
+          "name": "assignedPriorityForTaskPersonalView",
+          "type": "Boolean"
+        },
+        {
+          "name": "dependencies",
+          "type": "Boolean"
+        },
+        {
+          "name": "history",
+          "type": "Boolean"
         }
       ]
     },
@@ -214822,6 +216298,24 @@
           "name": "id",
           "type": "String",
           "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "taskPersonalView",
+      "properties": [
+        {
+          "name": "isOnMyDay",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "taskPlanView",
+      "properties": [
+        {
+          "name": "appliedCategoryIds",
+          "type": "String collection"
         }
       ]
     },
@@ -223587,6 +225081,42 @@
         {
           "name": "notInstalledDeviceCount",
           "type": "Int32"
+        }
+      ]
+    },
+    {
+      "name": "userAssignment",
+      "properties": [
+        {
+          "name": "assignedBy",
+          "type": "identitySet"
+        },
+        {
+          "name": "assignedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "capabilities",
+          "type": "userAssignmentCapability",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "user",
+          "type": "identity"
+        }
+      ]
+    },
+    {
+      "name": "userAssignmentCapability",
+      "properties": [
+        {
+          "name": "extensions",
+          "type": "Boolean"
         }
       ]
     },
@@ -242950,6 +244480,19 @@
       ]
     },
     {
+      "name": "workDayDefaults",
+      "properties": [
+        {
+          "name": "endTime",
+          "type": "TimeOfDay"
+        },
+        {
+          "name": "startTime",
+          "type": "TimeOfDay"
+        }
+      ]
+    },
+    {
       "name": "workHoursAndLocationsSetting",
       "properties": [
         {
@@ -243083,6 +244626,48 @@
         {
           "name": "source",
           "type": "personDataSource"
+        }
+      ]
+    },
+    {
+      "name": "workbook",
+      "properties": [
+        {
+          "name": "content",
+          "type": "microsoft.graph.security.workbookContent"
+        },
+        {
+          "name": "createdAtDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdByUpn",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "etag",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastUpdatedByUpn",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updatedAtDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         }
       ]
     },
