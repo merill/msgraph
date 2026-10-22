@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-10-21T10:43:41Z",
-  "count": 29585,
+  "generated": "2026-10-22T10:45:14Z",
+  "count": 29934,
   "endpoints": [
     {
       "path": "/accessReviewDecisions",
@@ -1106,7 +1106,7 @@
       "path": "/admin/exchange/mailboxes/{mailbox-id}/folders",
       "method": "GET",
       "summary": "List folders",
-      "description": "Get all the mailboxFolder objects in the specified mailbox, including any search folders.",
+      "description": "Get all the mailboxFolder objects in the specified mailbox, including any search folders. By default, hidden folders aren't returned. To include them, specify includeHiddenFolders=true.",
       "resource": "admin"
     },
     {
@@ -1154,7 +1154,7 @@
       "path": "/admin/exchange/mailboxes/{mailbox-id}/folders/{mailboxFolder-id}/childFolders",
       "method": "GET",
       "summary": "List childFolders",
-      "description": "Get the mailboxFolder collection under the specified mailboxFolder in a mailbox.",
+      "description": "Get the mailboxFolder collection under the specified mailboxFolder in a mailbox. By default, hidden child folders aren't returned. To include them, specify includeHiddenFolders=true.",
       "resource": "admin"
     },
     {
@@ -1779,7 +1779,7 @@
       "path": "/admin/reportSettings/sharePoint/apiUsageReportMetrics",
       "method": "GET",
       "summary": "List apiUsageReportMetrics",
-      "description": "Get the list of SharePoint API usage report metrics and their enablement status for the tenant. The supported metrics are egressReport and throttlingReport.",
+      "description": "Get the list of SharePoint API usage report metrics and their enablement status for the tenant. The supported metrics are egressReport, sharePointServicePrioritizationReport, and throttlingReport.",
       "resource": "admin"
     },
     {
@@ -13826,6 +13826,193 @@
       "method": "POST",
       "summary": "Invoke action chatOverStream",
       "description": "Chat with Copilot in this conversation. This endpoint streams its results over Server-Sent Events (SSE).",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies",
+      "method": "GET",
+      "summary": "Get spendingPolicies from copilot",
+      "description": "The spending policies that govern Copilot Credits consumption.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies",
+      "method": "POST",
+      "summary": "Create new navigation property to spendingPolicies for copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property spendingPolicies for copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}",
+      "method": "GET",
+      "summary": "Get spendingPolicies from copilot",
+      "description": "The spending policies that govern Copilot Credits consumption.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property spendingPolicies in copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings",
+      "method": "DELETE",
+      "summary": "Delete navigation property emailThresholdSettings for copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings",
+      "method": "GET",
+      "summary": "Get emailThresholdSettings from copilot",
+      "description": "Notify-only email threshold configuration for the policy. Alerts are delivered by email only. Addressed beneath the policy rather than returned inline in the policy response.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings",
+      "method": "PATCH",
+      "summary": "Update the navigation property emailThresholdSettings in copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients",
+      "method": "GET",
+      "summary": "Get recipients from copilot",
+      "description": "The directory users notified when a threshold is crossed. The address is resolved at send time, so a recipient survives a mailbox change. Managed with $ref add and remove. A reference that does not resolve to a user in the tenant is rejected with alertRecipientNotFound.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients",
+      "method": "POST",
+      "summary": "Create new navigation property to recipients for copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients(userPrincipalName='{userPrincipalName}')",
+      "method": "DELETE",
+      "summary": "Delete navigation property recipients for copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients(userPrincipalName='{userPrincipalName}')",
+      "method": "GET",
+      "summary": "Get recipients from copilot",
+      "description": "The directory users notified when a threshold is crossed. The address is resolved at send time, so a recipient survives a mailbox change. Managed with $ref add and remove. A reference that does not resolve to a user in the tenant is rejected with alertRecipientNotFound.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients/{user-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property recipients for copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients/{user-id}",
+      "method": "GET",
+      "summary": "Get recipients from copilot",
+      "description": "The directory users notified when a threshold is crossed. The address is resolved at send time, so a recipient survives a mailbox change. Managed with $ref add and remove. A reference that does not resolve to a user in the tenant is rejected with alertRecipientNotFound.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients/{user-id}/mailboxSettings",
+      "method": "GET",
+      "summary": "Get mailboxSettings property value",
+      "description": "Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. For more information, see User preferences for languages and regional formats. Requires $select to retrieve.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients/{user-id}/mailboxSettings",
+      "method": "PATCH",
+      "summary": "Update property mailboxSettings value.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients/{user-id}/serviceProvisioningErrors",
+      "method": "GET",
+      "summary": "Get serviceProvisioningErrors property value",
+      "description": "Errors published by a federated service describing a nontransient, service-specific error regarding the properties or link from a user object.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/emailThresholdSettings/recipients/{user-id}/serviceProvisioningErrors/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/serviceSettings",
+      "method": "GET",
+      "summary": "Get serviceSettings from copilot",
+      "description": "Per-service settings contained by the policy. Add a service with POST; remove one by setting its state to disabled, which retains the entry in that state.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/serviceSettings",
+      "method": "POST",
+      "summary": "Create new navigation property to serviceSettings for copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/serviceSettings/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/serviceSettings/{spendingPolicyServiceSetting-serviceId}",
+      "method": "GET",
+      "summary": "Get serviceSettings from copilot",
+      "description": "Per-service settings contained by the policy. Add a service with POST; remove one by setting its state to disabled, which retains the entry in that state.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/spendingPolicies/{spendingPolicy-id}/serviceSettings/{spendingPolicyServiceSetting-serviceId}",
+      "method": "PATCH",
+      "summary": "Update the navigation property serviceSettings in copilot",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/userBalances/{costManagementUserBalance-id}",
+      "method": "GET",
+      "summary": "Get userBalances from copilot",
+      "description": "Per-user consumption balances, addressed by the user's identifier.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/userBalances/{costManagementUserBalance-id}/serviceBalances",
+      "method": "GET",
+      "summary": "Get serviceBalances from copilot",
+      "description": "Per-service balance rows for the user. Services listed in unevaluatedServices are omitted. Expand to inline them.",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/userBalances/{costManagementUserBalance-id}/serviceBalances/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/costManagement/userBalances/{costManagementUserBalance-id}/serviceBalances/{costManagementUserServiceBalance-serviceId}",
+      "method": "GET",
+      "summary": "Get serviceBalances from copilot",
+      "description": "Per-service balance rows for the user. Services listed in unevaluatedServices are omitted. Expand to inline them.",
       "resource": "copilot"
     },
     {
@@ -36628,6 +36815,18 @@
       "resource": "devicemanagement"
     },
     {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/bulkCreateUserProfileSnapshot",
+      "method": "POST",
+      "summary": "Invoke action bulkCreateUserProfileSnapshot",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/bulkExportUserProfileSnapshot",
+      "method": "POST",
+      "summary": "Invoke action bulkExportUserProfileSnapshot",
+      "resource": "devicemanagement"
+    },
+    {
       "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/retrieveUserSettingsPersistenceProfileUsage(configurationId='{configurationId}')",
       "method": "GET",
       "summary": "Invoke function retrieveUserSettingsPersistenceProfileUsage",
@@ -36637,6 +36836,48 @@
       "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/retrieveUserSettingsPersistenceProfiles(configurationId='{configurationId}')",
       "method": "GET",
       "summary": "Invoke function retrieveUserSettingsPersistenceProfiles",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots",
+      "method": "GET",
+      "summary": "Get userProfileSnapshots from deviceManagement",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots",
+      "method": "POST",
+      "summary": "Create new navigation property to userProfileSnapshots for deviceManagement",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots/{cloudPcUserProfileSnapshot-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property userProfileSnapshots for deviceManagement",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots/{cloudPcUserProfileSnapshot-id}",
+      "method": "GET",
+      "summary": "Get userProfileSnapshots from deviceManagement",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots/{cloudPcUserProfileSnapshot-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property userProfileSnapshots in deviceManagement",
+      "resource": "devicemanagement"
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots/{cloudPcUserProfileSnapshot-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
       "resource": "devicemanagement"
     },
     {
@@ -43072,7 +43313,7 @@
       "path": "/drives/{drive-id}/items/{driveItem-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "drives"
     },
     {
@@ -55610,7 +55851,7 @@
       "path": "/drives/{drive-id}/list/items/{listItem-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "drives"
     },
     {
@@ -55795,7 +56036,7 @@
       "path": "/drives/{drive-id}/list/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "drives"
     },
     {
@@ -67801,20 +68042,22 @@
     {
       "path": "/groups/{group-id}/planner",
       "method": "DELETE",
-      "summary": "Delete navigation property planner for groups",
+      "summary": "Delete plannerGroup",
+      "description": "Delete a plannerGroup object.",
       "resource": "groups"
     },
     {
       "path": "/groups/{group-id}/planner",
       "method": "GET",
-      "summary": "Get planner from groups",
-      "description": "Selective Planner services available to the group. Read-only. Nullable.",
+      "summary": "Get plannerGroup",
+      "description": "Read the properties and relationships of plannerGroup object.",
       "resource": "groups"
     },
     {
       "path": "/groups/{group-id}/planner",
       "method": "PATCH",
-      "summary": "Update the navigation property planner in groups",
+      "summary": "Update plannerGroup",
+      "description": "Update the properties of a plannerGroup object.",
       "resource": "groups"
     },
     {
@@ -68107,6 +68350,12 @@
       "resource": "groups"
     },
     {
+      "path": "/groups/{group-id}/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "groups"
+    },
+    {
       "path": "/groups/{group-id}/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -68355,6 +68604,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/planner/plans_v2",
+      "method": "GET",
+      "summary": "List plans_v2 for a group",
+      "description": "Get a list of the plan objects owned by the group.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from groups",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the group.",
       "resource": "groups"
     },
     {
@@ -70743,7 +71012,7 @@
       "path": "/groups/{group-id}/sites/{site-id}/lists/{list-id}/items/{listItem-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "groups"
     },
     {
@@ -70928,7 +71197,7 @@
       "path": "/groups/{group-id}/sites/{site-id}/lists/{list-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "groups"
     },
     {
@@ -72890,7 +73159,7 @@
       "path": "/groups/{group-id}/sites/{site-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "groups"
     },
     {
@@ -75704,6 +75973,12 @@
       "resource": "groups"
     },
     {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "groups"
+    },
+    {
       "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -75952,6 +76227,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from groups",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/channels/{channel-id}/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from groups",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "groups"
     },
     {
@@ -77278,6 +77573,12 @@
       "resource": "groups"
     },
     {
+      "path": "/groups/{group-id}/team/primaryChannel/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "groups"
+    },
+    {
       "path": "/groups/{group-id}/team/primaryChannel/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -77526,6 +77827,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from groups",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "groups"
+    },
+    {
+      "path": "/groups/{group-id}/team/primaryChannel/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from groups",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "groups"
     },
     {
@@ -96263,6 +96584,188 @@
       "resource": "identitygovernance"
     },
     {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies",
+      "method": "GET",
+      "summary": "Get lifecyclePolicies from identityGovernance",
+      "description": "Deleted lifecycle policies that can be restored.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property lifecyclePolicies for identityGovernance",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}",
+      "method": "GET",
+      "summary": "Get lifecyclePolicies from identityGovernance",
+      "description": "Deleted lifecycle policies that can be restored.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/createdBy",
+      "method": "GET",
+      "summary": "Get createdBy from identityGovernance",
+      "description": "The user or service principal that created the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/lastModifiedBy",
+      "method": "GET",
+      "summary": "Get lastModifiedBy from identityGovernance",
+      "description": "The user or service principal that last modified the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/microsoft.graph.identityGovernance.impact(startDateTime=@startDateTime,endDateTime=@endDateTime)",
+      "method": "GET",
+      "summary": "Invoke function impact",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/microsoft.graph.identityGovernance.restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted lifecyclePolicy object. Use this action to recover a policy that was removed with the delete operation and still appears in the deleted items container.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/report",
+      "method": "GET",
+      "summary": "Get report from identityGovernance",
+      "description": "The latest processing report for the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/report/subjects",
+      "method": "GET",
+      "summary": "Get subjects from identityGovernance",
+      "description": "The processing results for subjects included in the report.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/report/subjects/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/report/subjects/{lifecyclePolicySubjectReport-id}",
+      "method": "GET",
+      "summary": "Get subjects from identityGovernance",
+      "description": "The processing results for subjects included in the report.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/rules",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "description": "The collection of inline compliance rules evaluated for the policy. Rules are combined with AND logic. A maximum of 10 rules are allowed per policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/rules/{lifecyclePolicyRule-id}",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "description": "The collection of inline compliance rules evaluated for the policy. Rules are combined with AND logic. A maximum of 10 rules are allowed per policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions",
+      "method": "GET",
+      "summary": "Get versions from identityGovernance",
+      "description": "The collection of previous versions of the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}",
+      "method": "GET",
+      "summary": "Get versions from identityGovernance",
+      "description": "The collection of previous versions of the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/createdBy",
+      "method": "GET",
+      "summary": "Get createdBy from identityGovernance",
+      "description": "The user or service principal that created the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/lastModifiedBy",
+      "method": "GET",
+      "summary": "Get lastModifiedBy from identityGovernance",
+      "description": "The user or service principal that last modified the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/microsoft.graph.identityGovernance.impact(startDateTime=@startDateTime,endDateTime=@endDateTime)",
+      "method": "GET",
+      "summary": "Invoke function impact",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/microsoft.graph.identityGovernance.restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted lifecyclePolicy object. Use this action to recover a policy that was removed with the delete operation and still appears in the deleted items container.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/report",
+      "method": "GET",
+      "summary": "Get report from identityGovernance",
+      "description": "The latest processing report for the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/report/subjects",
+      "method": "GET",
+      "summary": "Get subjects from identityGovernance",
+      "description": "The processing results for subjects included in the report.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/report/subjects/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/report/subjects/{lifecyclePolicySubjectReport-id}",
+      "method": "GET",
+      "summary": "Get subjects from identityGovernance",
+      "description": "The processing results for subjects included in the report.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "description": "The collection of inline compliance rules evaluated for the policy. Rules are combined with AND logic. A maximum of 10 rules are allowed per policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/deletedItems/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules/{lifecyclePolicyRule-id}",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "description": "The collection of inline compliance rules evaluated for the policy. Rules are combined with AND logic. A maximum of 10 rules are allowed per policy.",
+      "resource": "identitygovernance"
+    },
+    {
       "path": "/identityGovernance/lifecycleWorkflows/deletedItems/workflows",
       "method": "GET",
       "summary": "List deletedItems (deleted lifecycle workflows)",
@@ -97575,6 +98078,222 @@
       "method": "GET",
       "summary": "Invoke function workflowsProcessedSummary",
       "description": "Provide a summary from the insights resource of workflow objects processed within a tenant for a specified period. Because the list returned by List workflows doesn't indicate which workflows were processed, this summary gives you a quick overview based on counts.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies",
+      "method": "GET",
+      "summary": "List lifecyclePolicies",
+      "description": "Get a list of the lifecyclePolicy objects and their properties in the lifecycle workflows container. Use $filter on the policySource property to distinguish system-managed default policies from user-created policies.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies",
+      "method": "POST",
+      "summary": "Create lifecyclePolicy",
+      "description": "Create a new lifecyclePolicy object in the lifecycle workflows container. A policy is created for a specific subject type and takes effect according to its priority order.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}",
+      "method": "DELETE",
+      "summary": "Delete lifecyclePolicy",
+      "description": "Delete a lifecyclePolicy object. This is a soft-delete operation: the policy can be restored with the restore action and appears under the deleted items container until it's permanently removed.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}",
+      "method": "GET",
+      "summary": "Get lifecyclePolicy",
+      "description": "Read the properties and relationships of microsoft.graph.identityGovernance.lifecyclePolicy object.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/createdBy",
+      "method": "GET",
+      "summary": "Get createdBy from identityGovernance",
+      "description": "The user or service principal that created the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/lastModifiedBy",
+      "method": "GET",
+      "summary": "Get lastModifiedBy from identityGovernance",
+      "description": "The user or service principal that last modified the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/microsoft.graph.identityGovernance.impact(startDateTime=@startDateTime,endDateTime=@endDateTime)",
+      "method": "GET",
+      "summary": "Invoke function impact",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/microsoft.graph.identityGovernance.restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted lifecyclePolicy object. Use this action to recover a policy that was removed with the delete operation and still appears in the deleted items container.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/report",
+      "method": "GET",
+      "summary": "Get report from identityGovernance",
+      "description": "The latest processing report for the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/report/subjects",
+      "method": "GET",
+      "summary": "Get subjects from identityGovernance",
+      "description": "The processing results for subjects included in the report.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/report/subjects/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/report/subjects/{lifecyclePolicySubjectReport-id}",
+      "method": "GET",
+      "summary": "Get subjects from identityGovernance",
+      "description": "The processing results for subjects included in the report.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/rules",
+      "method": "GET",
+      "summary": "List rules",
+      "description": "Get a list of the lifecyclePolicyRule objects and their properties for a lifecyclePolicy. Rules are evaluated together with AND logic.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/rules/{lifecyclePolicyRule-id}",
+      "method": "GET",
+      "summary": "Get lifecyclePolicyRule",
+      "description": "Read the properties and relationships of microsoft.graph.identityGovernance.lifecyclePolicyRule object.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions",
+      "method": "GET",
+      "summary": "Get versions from identityGovernance",
+      "description": "The collection of previous versions of the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}",
+      "method": "GET",
+      "summary": "Get versions from identityGovernance",
+      "description": "The collection of previous versions of the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/createdBy",
+      "method": "GET",
+      "summary": "Get createdBy from identityGovernance",
+      "description": "The user or service principal that created the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/lastModifiedBy",
+      "method": "GET",
+      "summary": "Get lastModifiedBy from identityGovernance",
+      "description": "The user or service principal that last modified the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/microsoft.graph.identityGovernance.impact(startDateTime=@startDateTime,endDateTime=@endDateTime)",
+      "method": "GET",
+      "summary": "Invoke function impact",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/microsoft.graph.identityGovernance.restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted lifecyclePolicy object. Use this action to recover a policy that was removed with the delete operation and still appears in the deleted items container.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/report",
+      "method": "GET",
+      "summary": "Get report from identityGovernance",
+      "description": "The latest processing report for the policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/report/subjects",
+      "method": "GET",
+      "summary": "Get subjects from identityGovernance",
+      "description": "The processing results for subjects included in the report.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/report/subjects/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/report/subjects/{lifecyclePolicySubjectReport-id}",
+      "method": "GET",
+      "summary": "Get subjects from identityGovernance",
+      "description": "The processing results for subjects included in the report.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "description": "The collection of inline compliance rules evaluated for the policy. Rules are combined with AND logic. A maximum of 10 rules are allowed per policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/versions/{lifecyclePolicy-id1}/rules/{lifecyclePolicyRule-id}",
+      "method": "GET",
+      "summary": "Get rules from identityGovernance",
+      "description": "The collection of inline compliance rules evaluated for the policy. Rules are combined with AND logic. A maximum of 10 rules are allowed per policy.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicyPriorityConfigurations",
+      "method": "GET",
+      "summary": "List lifecyclePolicyPriorityConfigurations",
+      "description": "Get a list of the lifecyclePolicyPriorityConfiguration objects and their properties in the lifecycle workflows container. Each configuration defines the policy evaluation order for one subject type.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicyPriorityConfigurations/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicyPriorityConfigurations/{lifecyclePolicyPriorityConfiguration-id}",
+      "method": "GET",
+      "summary": "Get lifecyclePolicyPriorityConfigurations from identityGovernance",
+      "description": "The priority ordering of lifecycle policies per subject type.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicyPriorityConfigurations/{lifecyclePolicyPriorityConfiguration-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property lifecyclePolicyPriorityConfigurations in identityGovernance",
       "resource": "identitygovernance"
     },
     {
@@ -103394,7 +104113,7 @@
       "path": "/me/calendarGroups/{calendarGroup-id}/calendars/delta()",
       "method": "GET",
       "summary": "Invoke function delta",
-      "description": "Typically, synchronizing calendars in a mailbox in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the incremental changes (additions, deletions, or updates). Using deltas allows you...",
+      "description": "Get a set of calendar resources added, updated, or deleted in a user's mailbox. Typically, synchronizing calendars in a mailbox in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the...",
       "resource": "me"
     },
     {
@@ -103724,7 +104443,7 @@
       "path": "/me/calendars/delta()",
       "method": "GET",
       "summary": "Invoke function delta",
-      "description": "Typically, synchronizing calendars in a mailbox in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the incremental changes (additions, deletions, or updates). Using deltas allows you...",
+      "description": "Get a set of calendar resources added, updated, or deleted in a user's mailbox. Typically, synchronizing calendars in a mailbox in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the...",
       "resource": "me"
     },
     {
@@ -108426,6 +109145,52 @@
       "resource": "me"
     },
     {
+      "path": "/me/lifecycle",
+      "method": "DELETE",
+      "summary": "Delete navigation property lifecycle for me",
+      "resource": "me"
+    },
+    {
+      "path": "/me/lifecycle",
+      "method": "GET",
+      "summary": "Get lifecycle from me",
+      "description": "Lifecycle information for the user. Read-only.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/lifecycle",
+      "method": "PATCH",
+      "summary": "Update the navigation property lifecycle in me",
+      "resource": "me"
+    },
+    {
+      "path": "/me/lifecycle/complianceIssues",
+      "method": "GET",
+      "summary": "Get complianceIssues from me",
+      "description": "The collection of compliance issues that describe why the identity is currently non-compliant with its governing policy.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/lifecycle/complianceIssues/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "me"
+    },
+    {
+      "path": "/me/lifecycle/complianceIssues/{complianceIssue-id}",
+      "method": "GET",
+      "summary": "Get complianceIssues from me",
+      "description": "The collection of compliance issues that describe why the identity is currently non-compliant with its governing policy.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/lifecycle/effectiveGoverningPolicy",
+      "method": "GET",
+      "summary": "Get effectiveGoverningPolicy from me",
+      "description": "The highest-priority lifecycle policy that currently governs the identity. Supports $expand.",
+      "resource": "me"
+    },
+    {
       "path": "/me/mailFolders",
       "method": "GET",
       "summary": "List mailFolders",
@@ -108524,6 +109289,12 @@
       "method": "POST",
       "summary": "Invoke action copy",
       "description": "Copy a mail folder and its contents to another mail folder.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/importMime",
+      "method": "POST",
+      "summary": "Invoke action importMime",
       "resource": "me"
     },
     {
@@ -108902,6 +109673,12 @@
       "method": "POST",
       "summary": "Invoke action copy",
       "description": "Copy a mail folder and its contents to another mail folder.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/mailFolders/{mailFolder-id}/importMime",
+      "method": "POST",
+      "summary": "Invoke action importMime",
       "resource": "me"
     },
     {
@@ -110577,6 +111354,24 @@
       "method": "POST",
       "summary": "Invoke action unsubscribe",
       "description": "Submits an email request on behalf of the signed-in user to unsubscribe from an email distribution list. Uses the information in the List-Unsubscribe header. Message senders can use mailing lists in a user-friendly way by including an option for recipients to opt out. They can do so by specifying...",
+      "resource": "me"
+    },
+    {
+      "path": "/me/microsoft.graph.identityGovernance.addSelfAsSponsor",
+      "method": "POST",
+      "summary": "Invoke action addSelfAsSponsor",
+      "resource": "me"
+    },
+    {
+      "path": "/me/microsoft.graph.identityGovernance.attest",
+      "method": "POST",
+      "summary": "Invoke action attest",
+      "resource": "me"
+    },
+    {
+      "path": "/me/microsoft.graph.identityGovernance.removeSelfAsSponsor",
+      "method": "POST",
+      "summary": "Invoke action removeSelfAsSponsor",
       "resource": "me"
     },
     {
@@ -114091,14 +114886,15 @@
     {
       "path": "/me/planner",
       "method": "DELETE",
-      "summary": "Delete navigation property planner for me",
+      "summary": "Delete plannerUser",
+      "description": "Delete a plannerUser object.",
       "resource": "me"
     },
     {
       "path": "/me/planner",
       "method": "GET",
       "summary": "Get plannerUser",
-      "description": "Retrieve the properties and relationships of a plannerUser object. The returned properties include the user's favorite plans and recently viewed plans.",
+      "description": "Read the properties and relationships of plannerUser object.",
       "resource": "me"
     },
     {
@@ -114480,6 +115276,12 @@
       "resource": "me"
     },
     {
+      "path": "/me/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "me"
+    },
+    {
       "path": "/me/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -114731,6 +115533,26 @@
       "resource": "me"
     },
     {
+      "path": "/me/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from me",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans associated with the user.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "me"
+    },
+    {
+      "path": "/me/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from me",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans associated with the user.",
+      "resource": "me"
+    },
+    {
       "path": "/me/planner/recentPlans",
       "method": "GET",
       "summary": "List recentPlans",
@@ -114941,6 +115763,26 @@
       "path": "/me/planner/tasks/{plannerTask-id}/progressTaskBoardFormat",
       "method": "PATCH",
       "summary": "Update the navigation property progressTaskBoardFormat in me",
+      "resource": "me"
+    },
+    {
+      "path": "/me/planner/tasks_v2",
+      "method": "GET",
+      "summary": "Get tasks_v2 from me",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 tasks assigned to the user.",
+      "resource": "me"
+    },
+    {
+      "path": "/me/planner/tasks_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "me"
+    },
+    {
+      "path": "/me/planner/tasks_v2/{task-id}",
+      "method": "GET",
+      "summary": "Get tasks_v2 from me",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 tasks assigned to the user.",
       "resource": "me"
     },
     {
@@ -119176,7 +120018,7 @@
       "resource": "networkaccess"
     },
     {
-      "path": "/networkAccess/reports/microsoft.graph.networkaccess.getDiscoveredApplicationSegmentReport(startDateTime={startDateTime},endDateTime={endDateTime},userId='@userId')",
+      "path": "/networkAccess/reports/microsoft.graph.networkaccess.getDiscoveredApplicationSegmentReport(startDateTime={startDateTime},endDateTime={endDateTime},userId='@userId',groupingId='@groupingId')",
       "method": "GET",
       "summary": "Invoke function getDiscoveredApplicationSegmentReport",
       "description": "Returns a collection of discovered application segments based on aggregated traffic logs for a given period.",
@@ -122314,12 +123156,14 @@
       "path": "/planner",
       "method": "GET",
       "summary": "Get planner",
+      "description": "Read the properties and relationships of planner object.",
       "resource": "planner"
     },
     {
       "path": "/planner",
       "method": "PATCH",
       "summary": "Update planner",
+      "description": "Update the properties of a planner object.",
       "resource": "planner"
     },
     {
@@ -122895,6 +123739,12 @@
       "resource": "planner"
     },
     {
+      "path": "/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "planner"
+    },
+    {
       "path": "/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -123143,6 +123993,261 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2",
+      "method": "GET",
+      "summary": "List plans_v2",
+      "description": "Get a list of the plan objects and their properties.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2",
+      "method": "POST",
+      "summary": "Create plan_v2",
+      "description": "Create a new plan object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}",
+      "method": "DELETE",
+      "summary": "Delete plan",
+      "description": "Delete a plan object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plan",
+      "description": "Read the properties and relationships of plan object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}",
+      "method": "PATCH",
+      "summary": "Update plan",
+      "description": "Update the properties of a plan object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/buckets",
+      "method": "GET",
+      "summary": "Get buckets from planner",
+      "description": "The collection of buckets in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/buckets",
+      "method": "POST",
+      "summary": "Create new navigation property to buckets for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/buckets/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/buckets/{bucket-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property buckets for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/buckets/{bucket-id}",
+      "method": "GET",
+      "summary": "Get buckets from planner",
+      "description": "The collection of buckets in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/buckets/{bucket-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property buckets in planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/contexts",
+      "method": "GET",
+      "summary": "Get contexts from planner",
+      "description": "The collection of context links describing where the plan is surfaced. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/contexts",
+      "method": "POST",
+      "summary": "Create new navigation property to contexts for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/contexts/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/contexts/{planContextLink-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property contexts for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/contexts/{planContextLink-id}",
+      "method": "GET",
+      "summary": "Get contexts from planner",
+      "description": "The collection of context links describing where the plan is surfaced. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/contexts/{planContextLink-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property contexts in planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/customFieldDefinitions",
+      "method": "GET",
+      "summary": "Get customFieldDefinitions from planner",
+      "description": "The collection of custom field definitions in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/customFieldDefinitions/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/customFieldDefinitions/{customFieldDefinition-id}",
+      "method": "GET",
+      "summary": "Get customFieldDefinitions from planner",
+      "description": "The collection of custom field definitions in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/dependencies",
+      "method": "GET",
+      "summary": "Get dependencies from planner",
+      "description": "The collection of dependencies between items in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/dependencies/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/dependencies/{dependency-id}",
+      "method": "GET",
+      "summary": "Get dependencies from planner",
+      "description": "The collection of dependencies between items in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/goals",
+      "method": "GET",
+      "summary": "Get goals from planner",
+      "description": "The collection of goals in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/goals/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/goals/{goal-id}",
+      "method": "GET",
+      "summary": "Get goals from planner",
+      "description": "The collection of goals in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/historyItems",
+      "method": "GET",
+      "summary": "Get historyItems from planner",
+      "description": "The collection of history (audit) items for the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/historyItems/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/historyItems/{historyItem-id}",
+      "method": "GET",
+      "summary": "Get historyItems from planner",
+      "description": "The collection of history (audit) items for the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/links",
+      "method": "GET",
+      "summary": "Get links from planner",
+      "description": "The collection of content links attached to the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/links",
+      "method": "POST",
+      "summary": "Create new navigation property to links for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/links/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/links/{contentLink-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property links for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/links/{contentLink-id}",
+      "method": "GET",
+      "summary": "Get links from planner",
+      "description": "The collection of content links attached to the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/links/{contentLink-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property links in planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/tasks",
+      "method": "GET",
+      "summary": "Get tasks from planner",
+      "description": "The collection of tasks in the plan. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/tasks/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/plans_v2/{plan-id}/tasks/{task-id}",
+      "method": "GET",
+      "summary": "Get tasks from planner",
+      "description": "The collection of tasks in the plan. Read-only. Nullable.",
       "resource": "planner"
     },
     {
@@ -123433,6 +124538,237 @@
       "method": "PATCH",
       "summary": "Update plannerProgressTaskBoardTaskFormat",
       "description": "Update the properties of plannerProgressTaskBoardTaskFormat object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2",
+      "method": "GET",
+      "summary": "List task objects",
+      "description": "Get a list of the task objects and their properties.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2",
+      "method": "POST",
+      "summary": "Create task",
+      "description": "Create a new task object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}",
+      "method": "DELETE",
+      "summary": "Delete task_v2",
+      "description": "Delete a task object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}",
+      "method": "GET",
+      "summary": "Get task_v2",
+      "description": "Read the properties and relationships of task object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}",
+      "method": "PATCH",
+      "summary": "Update task_v2",
+      "description": "Update the properties of a task object.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/checklist",
+      "method": "GET",
+      "summary": "Get checklist from planner",
+      "description": "The collection of checklist items on the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/checklist",
+      "method": "POST",
+      "summary": "Create new navigation property to checklist for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/checklist/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/checklist/{checklistItemV4-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property checklist for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/checklist/{checklistItemV4-id}",
+      "method": "GET",
+      "summary": "Get checklist from planner",
+      "description": "The collection of checklist items on the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/checklist/{checklistItemV4-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property checklist in planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/customFieldValues",
+      "method": "GET",
+      "summary": "Get customFieldValues from planner",
+      "description": "The collection of custom field values set on the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/customFieldValues",
+      "method": "POST",
+      "summary": "Create new navigation property to customFieldValues for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/customFieldValues/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/customFieldValues/{customFieldValue-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property customFieldValues for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/customFieldValues/{customFieldValue-id}",
+      "method": "GET",
+      "summary": "Get customFieldValues from planner",
+      "description": "The collection of custom field values set on the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/customFieldValues/{customFieldValue-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property customFieldValues in planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/links",
+      "method": "GET",
+      "summary": "Get links from planner",
+      "description": "The collection of content links attached to the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/links",
+      "method": "POST",
+      "summary": "Create new navigation property to links for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/links/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/links/{contentLink-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property links for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/links/{contentLink-id}",
+      "method": "GET",
+      "summary": "Get links from planner",
+      "description": "The collection of content links attached to the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/links/{contentLink-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property links in planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/messages",
+      "method": "GET",
+      "summary": "Get messages from planner",
+      "description": "The collection of chat messages associated with the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/messages",
+      "method": "POST",
+      "summary": "Create new navigation property to messages for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/messages/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/messages/{plannerChatMessage-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property messages for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/messages/{plannerChatMessage-id}",
+      "method": "GET",
+      "summary": "Get messages from planner",
+      "description": "The collection of chat messages associated with the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/messages/{plannerChatMessage-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property messages in planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/userAssignments",
+      "method": "GET",
+      "summary": "Get userAssignments from planner",
+      "description": "The collection of user assignments on the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/userAssignments",
+      "method": "POST",
+      "summary": "Create new navigation property to userAssignments for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/userAssignments/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/userAssignments/{userAssignment-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property userAssignments for planner",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/userAssignments/{userAssignment-id}",
+      "method": "GET",
+      "summary": "Get userAssignments from planner",
+      "description": "The collection of user assignments on the task. Read-only. Nullable.",
+      "resource": "planner"
+    },
+    {
+      "path": "/planner/tasks_v2/{task-id}/userAssignments/{userAssignment-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property userAssignments in planner",
       "resource": "planner"
     },
     {
@@ -130638,6 +131974,51 @@
       "resource": "reports"
     },
     {
+      "path": "/reports/partners/billing/aggregatedUsage",
+      "method": "DELETE",
+      "summary": "Delete navigation property aggregatedUsage for reports",
+      "resource": "reports"
+    },
+    {
+      "path": "/reports/partners/billing/aggregatedUsage",
+      "method": "GET",
+      "summary": "Get aggregatedUsage from reports",
+      "description": "Represents aggregated Azure usage data for partner billing.",
+      "resource": "reports"
+    },
+    {
+      "path": "/reports/partners/billing/aggregatedUsage",
+      "method": "PATCH",
+      "summary": "Update the navigation property aggregatedUsage in reports",
+      "resource": "reports"
+    },
+    {
+      "path": "/reports/partners/billing/aggregatedUsage/billed",
+      "method": "DELETE",
+      "summary": "Delete navigation property billed for reports",
+      "resource": "reports"
+    },
+    {
+      "path": "/reports/partners/billing/aggregatedUsage/billed",
+      "method": "GET",
+      "summary": "Get billed from reports",
+      "description": "The billed aggregated usage data that can be exported.",
+      "resource": "reports"
+    },
+    {
+      "path": "/reports/partners/billing/aggregatedUsage/billed",
+      "method": "PATCH",
+      "summary": "Update the navigation property billed in reports",
+      "resource": "reports"
+    },
+    {
+      "path": "/reports/partners/billing/aggregatedUsage/billed/microsoft.graph.partners.billing.export",
+      "method": "POST",
+      "summary": "Invoke action export",
+      "description": "Export billed aggregated Azure usage data for a specific invoice from a billedAggregatedUsage resource.",
+      "resource": "reports"
+    },
+    {
       "path": "/reports/partners/billing/manifests",
       "method": "GET",
       "summary": "Get manifest",
@@ -132147,14 +133528,14 @@
       "path": "/roleManagement/cloudPC/roleDefinitions/{unifiedRoleDefinition-id}",
       "method": "DELETE",
       "summary": "Delete unifiedRoleDefinition",
-      "description": "Delete a unifiedRoleDefinition object for an RBAC provider. You cannot delete built-in roles. This feature requires a Microsoft Entra ID P1 or P2 license. The following RBAC providers are currently supported: - Cloud PC - device management (Intune) - Defender (Microsoft Defender XDR Unified RBAC)...",
+      "description": "Delete a unifiedRoleDefinition object for an RBAC provider. You cannot delete built-in roles. For the directory provider, deleting an active custom role definition soft-deletes it. You can then restore the role or permanently delete it from the deleted-items collection. This feature requires a Mi...",
       "resource": "rolemanagement"
     },
     {
       "path": "/roleManagement/cloudPC/roleDefinitions/{unifiedRoleDefinition-id}",
       "method": "GET",
       "summary": "Get unifiedRoleDefinition",
-      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. The following RBAC providers are currently supported: - Cloud PC - device management (Intune) - Defender (Microsoft Defender XDR Unified RBAC) - directory (Microsoft Entra directory roles) - entitlement ma...",
+      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. For the directory provider, you can also get a soft-deleted custom role definition from the deleted-items collection. The following RBAC providers are currently supported: - Cloud PC - device management (I...",
       "resource": "rolemanagement"
     },
     {
@@ -132214,6 +133595,20 @@
       "method": "GET",
       "summary": "Invoke function assignedPrincipals",
       "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/cloudPC/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/cloudPC/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
       "resource": "rolemanagement"
     },
     {
@@ -132507,14 +133902,14 @@
       "path": "/roleManagement/defender/roleDefinitions/{unifiedRoleDefinition-id}",
       "method": "DELETE",
       "summary": "Delete unifiedRoleDefinition",
-      "description": "Delete a unifiedRoleDefinition object for an RBAC provider. You cannot delete built-in roles. This feature requires a Microsoft Entra ID P1 or P2 license. The following RBAC providers are currently supported: - Cloud PC - device management (Intune) - Defender (Microsoft Defender XDR Unified RBAC)...",
+      "description": "Delete a unifiedRoleDefinition object for an RBAC provider. You cannot delete built-in roles. For the directory provider, deleting an active custom role definition soft-deletes it. You can then restore the role or permanently delete it from the deleted-items collection. This feature requires a Mi...",
       "resource": "rolemanagement"
     },
     {
       "path": "/roleManagement/defender/roleDefinitions/{unifiedRoleDefinition-id}",
       "method": "GET",
       "summary": "Get unifiedRoleDefinition",
-      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. The following RBAC providers are currently supported: - Cloud PC - device management (Intune) - Defender (Microsoft Defender XDR Unified RBAC) - directory (Microsoft Entra directory roles) - entitlement ma...",
+      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. For the directory provider, you can also get a soft-deleted custom role definition from the deleted-items collection. The following RBAC providers are currently supported: - Cloud PC - device management (I...",
       "resource": "rolemanagement"
     },
     {
@@ -132573,6 +133968,20 @@
       "method": "GET",
       "summary": "Invoke function assignedPrincipals",
       "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/defender/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/defender/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
       "resource": "rolemanagement"
     },
     {
@@ -132913,6 +134322,20 @@
       "resource": "rolemanagement"
     },
     {
+      "path": "/roleManagement/deviceManagement/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/deviceManagement/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
       "path": "/roleManagement/directory",
       "method": "DELETE",
       "summary": "Delete navigation property directory for roleManagement",
@@ -132928,6 +134351,130 @@
       "path": "/roleManagement/directory",
       "method": "PATCH",
       "summary": "Update the navigation property directory in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems",
+      "method": "DELETE",
+      "summary": "Delete navigation property deletedItems for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems",
+      "method": "GET",
+      "summary": "Get deletedItems from roleManagement",
+      "description": "Container for soft-deleted directory role management resources.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems",
+      "method": "PATCH",
+      "summary": "Update the navigation property deletedItems in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions",
+      "method": "GET",
+      "summary": "List roleDefinitions",
+      "description": "List custom unifiedRoleDefinition objects that have been soft-deleted from Microsoft Entra directory role management. Built-in role definitions can't be deleted and aren't returned.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions",
+      "method": "POST",
+      "summary": "Create new navigation property to roleDefinitions for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "DELETE",
+      "summary": "Delete unifiedRoleDefinition",
+      "description": "Delete a unifiedRoleDefinition object for an RBAC provider. You cannot delete built-in roles. For the directory provider, deleting an active custom role definition soft-deletes it. You can then restore the role or permanently delete it from the deleted-items collection. This feature requires a Mi...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "GET",
+      "summary": "Get unifiedRoleDefinition",
+      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. For the directory provider, you can also get a soft-deleted custom role definition from the deleted-items collection. The following RBAC providers are currently supported: - Cloud PC - device management (I...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property roleDefinitions in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/assignedPrincipals(transitive=@transitive,directoryScopeType='@directoryScopeType',directoryScopeId='@directoryScopeId')",
+      "method": "GET",
+      "summary": "Invoke function assignedPrincipals",
+      "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom",
+      "method": "GET",
+      "summary": "Get inheritsPermissionsFrom from roleManagement",
+      "description": "Read-only collection of role definitions that the given role definition inherits from. Only Microsoft Entra built-in roles support this attribute.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom",
+      "method": "POST",
+      "summary": "Create new navigation property to inheritsPermissionsFrom for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "DELETE",
+      "summary": "Delete navigation property inheritsPermissionsFrom for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "GET",
+      "summary": "Get inheritsPermissionsFrom from roleManagement",
+      "description": "Read-only collection of role definitions that the given role definition inherits from. Only Microsoft Entra built-in roles support this attribute.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "PATCH",
+      "summary": "Update the navigation property inheritsPermissionsFrom in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/assignedPrincipals(transitive=@transitive,directoryScopeType='@directoryScopeType',directoryScopeId='@directoryScopeId')",
+      "method": "GET",
+      "summary": "Invoke function assignedPrincipals",
+      "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
       "resource": "rolemanagement"
     },
     {
@@ -133476,14 +135023,14 @@
       "path": "/roleManagement/directory/roleDefinitions/{unifiedRoleDefinition-id}",
       "method": "DELETE",
       "summary": "Delete unifiedRoleDefinition",
-      "description": "Delete a unifiedRoleDefinition object for an RBAC provider. You cannot delete built-in roles. This feature requires a Microsoft Entra ID P1 or P2 license. The following RBAC providers are currently supported: - Cloud PC - device management (Intune) - Defender (Microsoft Defender XDR Unified RBAC)...",
+      "description": "Delete a unifiedRoleDefinition object for an RBAC provider. You cannot delete built-in roles. For the directory provider, deleting an active custom role definition soft-deletes it. You can then restore the role or permanently delete it from the deleted-items collection. This feature requires a Mi...",
       "resource": "rolemanagement"
     },
     {
       "path": "/roleManagement/directory/roleDefinitions/{unifiedRoleDefinition-id}",
       "method": "GET",
       "summary": "Get unifiedRoleDefinition",
-      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. The following RBAC providers are currently supported: - Cloud PC - device management (Intune) - Defender (Microsoft Defender XDR Unified RBAC) - directory (Microsoft Entra directory roles) - entitlement ma...",
+      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. For the directory provider, you can also get a soft-deleted custom role definition from the deleted-items collection. The following RBAC providers are currently supported: - Cloud PC - device management (I...",
       "resource": "rolemanagement"
     },
     {
@@ -133543,6 +135090,20 @@
       "method": "GET",
       "summary": "Invoke function assignedPrincipals",
       "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/directory/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
       "resource": "rolemanagement"
     },
     {
@@ -133904,6 +135465,129 @@
       "path": "/roleManagement/enterpriseApps/{rbacApplication-id}",
       "method": "PATCH",
       "summary": "Update the navigation property enterpriseApps in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems",
+      "method": "DELETE",
+      "summary": "Delete navigation property deletedItems for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems",
+      "method": "GET",
+      "summary": "Get deletedItems from roleManagement",
+      "description": "Container for soft-deleted directory role management resources.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems",
+      "method": "PATCH",
+      "summary": "Update the navigation property deletedItems in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions",
+      "method": "GET",
+      "summary": "Get roleDefinitions from roleManagement",
+      "description": "The soft-deleted custom role definitions in the directory.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions",
+      "method": "POST",
+      "summary": "Create new navigation property to roleDefinitions for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property roleDefinitions for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "GET",
+      "summary": "Get roleDefinitions from roleManagement",
+      "description": "The soft-deleted custom role definitions in the directory.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property roleDefinitions in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/assignedPrincipals(transitive=@transitive,directoryScopeType='@directoryScopeType',directoryScopeId='@directoryScopeId')",
+      "method": "GET",
+      "summary": "Invoke function assignedPrincipals",
+      "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom",
+      "method": "GET",
+      "summary": "Get inheritsPermissionsFrom from roleManagement",
+      "description": "Read-only collection of role definitions that the given role definition inherits from. Only Microsoft Entra built-in roles support this attribute.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom",
+      "method": "POST",
+      "summary": "Create new navigation property to inheritsPermissionsFrom for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "DELETE",
+      "summary": "Delete navigation property inheritsPermissionsFrom for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "GET",
+      "summary": "Get inheritsPermissionsFrom from roleManagement",
+      "description": "Read-only collection of role definitions that the given role definition inherits from. Only Microsoft Entra built-in roles support this attribute.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "PATCH",
+      "summary": "Update the navigation property inheritsPermissionsFrom in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/assignedPrincipals(transitive=@transitive,directoryScopeType='@directoryScopeType',directoryScopeId='@directoryScopeId')",
+      "method": "GET",
+      "summary": "Invoke function assignedPrincipals",
+      "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
       "resource": "rolemanagement"
     },
     {
@@ -134504,6 +136188,20 @@
       "resource": "rolemanagement"
     },
     {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
       "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/roleEligibilityScheduleInstances",
       "method": "GET",
       "summary": "Get roleEligibilityScheduleInstances from roleManagement",
@@ -134837,6 +136535,129 @@
       "path": "/roleManagement/entitlementManagement",
       "method": "PATCH",
       "summary": "Update the navigation property entitlementManagement in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems",
+      "method": "DELETE",
+      "summary": "Delete navigation property deletedItems for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems",
+      "method": "GET",
+      "summary": "Get deletedItems from roleManagement",
+      "description": "Container for soft-deleted directory role management resources.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems",
+      "method": "PATCH",
+      "summary": "Update the navigation property deletedItems in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions",
+      "method": "GET",
+      "summary": "Get roleDefinitions from roleManagement",
+      "description": "The soft-deleted custom role definitions in the directory.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions",
+      "method": "POST",
+      "summary": "Create new navigation property to roleDefinitions for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property roleDefinitions for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "GET",
+      "summary": "Get roleDefinitions from roleManagement",
+      "description": "The soft-deleted custom role definitions in the directory.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property roleDefinitions in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/assignedPrincipals(transitive=@transitive,directoryScopeType='@directoryScopeType',directoryScopeId='@directoryScopeId')",
+      "method": "GET",
+      "summary": "Invoke function assignedPrincipals",
+      "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom",
+      "method": "GET",
+      "summary": "Get inheritsPermissionsFrom from roleManagement",
+      "description": "Read-only collection of role definitions that the given role definition inherits from. Only Microsoft Entra built-in roles support this attribute.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom",
+      "method": "POST",
+      "summary": "Create new navigation property to inheritsPermissionsFrom for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "DELETE",
+      "summary": "Delete navigation property inheritsPermissionsFrom for roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "GET",
+      "summary": "Get inheritsPermissionsFrom from roleManagement",
+      "description": "Read-only collection of role definitions that the given role definition inherits from. Only Microsoft Entra built-in roles support this attribute.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}",
+      "method": "PATCH",
+      "summary": "Update the navigation property inheritsPermissionsFrom in roleManagement",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/assignedPrincipals(transitive=@transitive,directoryScopeType='@directoryScopeType',directoryScopeId='@directoryScopeId')",
+      "method": "GET",
+      "summary": "Invoke function assignedPrincipals",
+      "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/deletedItems/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
       "resource": "rolemanagement"
     },
     {
@@ -135379,7 +137200,7 @@
       "path": "/roleManagement/entitlementManagement/roleDefinitions/{unifiedRoleDefinition-id}",
       "method": "GET",
       "summary": "Get unifiedRoleDefinition",
-      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. The following RBAC providers are currently supported: - Cloud PC - device management (Intune) - Defender (Microsoft Defender XDR Unified RBAC) - directory (Microsoft Entra directory roles) - entitlement ma...",
+      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. For the directory provider, you can also get a soft-deleted custom role definition from the deleted-items collection. The following RBAC providers are currently supported: - Cloud PC - device management (I...",
       "resource": "rolemanagement"
     },
     {
@@ -135438,6 +137259,20 @@
       "method": "GET",
       "summary": "Invoke function assignedPrincipals",
       "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
       "resource": "rolemanagement"
     },
     {
@@ -136031,7 +137866,7 @@
       "path": "/roleManagement/exchange/roleDefinitions/{unifiedRoleDefinition-id}",
       "method": "GET",
       "summary": "Get unifiedRoleDefinition",
-      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. The following RBAC providers are currently supported: - Cloud PC - device management (Intune) - Defender (Microsoft Defender XDR Unified RBAC) - directory (Microsoft Entra directory roles) - entitlement ma...",
+      "description": "Get the properties and relationships of a unifiedRoleDefinition object of an RBAC provider. For the directory provider, you can also get a soft-deleted custom role definition from the deleted-items collection. The following RBAC providers are currently supported: - Cloud PC - device management (I...",
       "resource": "rolemanagement"
     },
     {
@@ -136090,6 +137925,20 @@
       "method": "GET",
       "summary": "Invoke function assignedPrincipals",
       "description": "Get the list of security principals (users, groups, and service principals) that are assigned to a specific role for different scopes either directly or transitively. You can use the $count query parameter to also get the count. This API is supported for the directory (Microsoft Entra ID) provide...",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/exchange/roleDefinitions/{unifiedRoleDefinition-id}/inheritsPermissionsFrom/{unifiedRoleDefinition-id1}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/exchange/roleDefinitions/{unifiedRoleDefinition-id}/restore",
+      "method": "POST",
+      "summary": "Invoke action restore",
+      "description": "Restore a soft-deleted custom unifiedRoleDefinition object to the active role definitions collection for Microsoft Entra directory role management.",
       "resource": "rolemanagement"
     },
     {
@@ -142495,6 +144344,47 @@
       "resource": "security"
     },
     {
+      "path": "/security/workbooks",
+      "method": "GET",
+      "summary": "List workbook objects",
+      "description": "Get the workbooks in the tenant. The response omits content by default. To retrieve workbook documents in the collection response, explicitly select content, for example, $select=id,name,content.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/workbooks",
+      "method": "POST",
+      "summary": "Create workbook",
+      "description": "Create a workbook with a server-generated ID. To deploy a workbook with a stable, client-selected GUID, use Update workbook instead.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/workbooks/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "security"
+    },
+    {
+      "path": "/security/workbooks/{workbook-id}",
+      "method": "DELETE",
+      "summary": "Delete workbook",
+      "description": "Delete a workbook by its ID.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/workbooks/{workbook-id}",
+      "method": "GET",
+      "summary": "Get workbook",
+      "description": "Get a workbook by its ID.",
+      "resource": "security"
+    },
+    {
+      "path": "/security/workbooks/{workbook-id}",
+      "method": "PATCH",
+      "summary": "Update workbook",
+      "description": "Create or replace a workbook using a client-selected ID. Supply a GUID in the request URL. Without a conditional header, this method creates the workbook if that ID doesn't exist, or replaces its name and content if it does. Reusing the same GUID preserves the workbook's identity. Updates preserv...",
+      "resource": "security"
+    },
+    {
       "path": "/security/zones",
       "method": "GET",
       "summary": "List zones",
@@ -143143,6 +145033,53 @@
       "resource": "serviceprincipals"
     },
     {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle",
+      "method": "DELETE",
+      "summary": "Delete navigation property lifecycle for servicePrincipals",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle",
+      "method": "GET",
+      "summary": "Get identityLifecycle",
+      "description": "Read the properties and relationships of an microsoft.graph.identityGovernance.identityLifecycle object for a servicePrincipal. Use $expand=effectiveGoverningPolicy to retrieve the highest-priority policy governing the identity. The lastAttestationDateTime property can be null for an identity tha...",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle",
+      "method": "PATCH",
+      "summary": "Update identityLifecycle",
+      "description": "Update the properties of an identityLifecycle object for a servicePrincipal.",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle/complianceIssues",
+      "method": "GET",
+      "summary": "List complianceIssues",
+      "description": "Get a list of the complianceIssue objects and their properties for the identityLifecycle of a servicePrincipal. Each issue includes the ruleType that generated it.",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle/complianceIssues/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle/complianceIssues/{complianceIssue-id}",
+      "method": "GET",
+      "summary": "Get complianceIssue",
+      "description": "Read the properties and relationships of a microsoft.graph.identityGovernance.complianceIssue object for the identityLifecycle of a servicePrincipal. The ruleType property indicates which rule caused the noncompliance.",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/lifecycle/effectiveGoverningPolicy",
+      "method": "GET",
+      "summary": "Get effectiveGoverningPolicy from servicePrincipals",
+      "description": "The highest-priority lifecycle policy that currently governs the identity. Supports $expand.",
+      "resource": "serviceprincipals"
+    },
+    {
       "path": "/servicePrincipals/{servicePrincipal-id}/memberOf",
       "method": "GET",
       "summary": "List servicePrincipal memberOf",
@@ -143214,6 +145151,13 @@
       "path": "/servicePrincipals/{servicePrincipal-id}/memberOf/{directoryObject-id}/graph.group",
       "method": "GET",
       "summary": "Get the item of type microsoft.graph.directoryObject as microsoft.graph.group",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/microsoft.graph.identityGovernance.attest",
+      "method": "POST",
+      "summary": "Invoke action attest",
+      "description": "Attest an agent identity through its servicePrincipal to confirm it still meets the requirements of its governing lifecyclePolicy. Attestation updates the identity's lifecycle state and can clear attestation-related compliance issues.",
       "resource": "serviceprincipals"
     },
     {
@@ -145113,7 +147057,7 @@
       "path": "/shares/{sharedDriveItem-id}/list/items/{listItem-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "shares"
     },
     {
@@ -145298,7 +147242,7 @@
       "path": "/shares/{sharedDriveItem-id}/list/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "shares"
     },
     {
@@ -145390,7 +147334,7 @@
       "path": "/shares/{sharedDriveItem-id}/permission/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "shares"
     },
     {
@@ -147683,7 +149627,7 @@
       "path": "/sites/{site-id}/lists/{list-id}/items/{listItem-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "sites"
     },
     {
@@ -147869,7 +149813,7 @@
       "path": "/sites/{site-id}/lists/{list-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "sites"
     },
     {
@@ -149795,7 +151739,7 @@
       "path": "/sites/{site-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "sites"
     },
     {
@@ -151877,7 +153821,8 @@
     {
       "path": "/solutions/backupRestore/activityLogs",
       "method": "GET",
-      "summary": "Get activityLogs from solutions",
+      "summary": "List activityLogs",
+      "description": "Get a list of activityLogBase objects and their properties.",
       "resource": "solutions"
     },
     {
@@ -151902,6 +153847,7 @@
       "path": "/solutions/backupRestore/activityLogs/{activityLogBase-id}",
       "method": "GET",
       "summary": "Get activityLogs from solutions",
+      "description": "The list of activity logs in the tenant.",
       "resource": "solutions"
     },
     {
@@ -152173,6 +154119,42 @@
       "method": "POST",
       "summary": "Invoke action enable",
       "description": "Enable the Microsoft 365 Backup Storage service for a tenant.",
+      "resource": "solutions"
+    },
+    {
+      "path": "/solutions/backupRestore/entraProtectionPolicies",
+      "method": "GET",
+      "summary": "Get entraProtectionPolicies from solutions",
+      "resource": "solutions"
+    },
+    {
+      "path": "/solutions/backupRestore/entraProtectionPolicies",
+      "method": "POST",
+      "summary": "Create new navigation property to entraProtectionPolicies for solutions",
+      "resource": "solutions"
+    },
+    {
+      "path": "/solutions/backupRestore/entraProtectionPolicies/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "solutions"
+    },
+    {
+      "path": "/solutions/backupRestore/entraProtectionPolicies/{entraProtectionPolicy-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property entraProtectionPolicies for solutions",
+      "resource": "solutions"
+    },
+    {
+      "path": "/solutions/backupRestore/entraProtectionPolicies/{entraProtectionPolicy-id}",
+      "method": "GET",
+      "summary": "Get entraProtectionPolicies from solutions",
+      "resource": "solutions"
+    },
+    {
+      "path": "/solutions/backupRestore/entraProtectionPolicies/{entraProtectionPolicy-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property entraProtectionPolicies in solutions",
       "resource": "solutions"
     },
     {
@@ -156387,7 +158369,7 @@
       "path": "/storage/fileStorage/containerTypes/{fileStorageContainerType-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "storage"
     },
     {
@@ -156658,7 +158640,7 @@
       "path": "/storage/fileStorage/containers/{fileStorageContainer-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "storage"
     },
     {
@@ -157232,7 +159214,7 @@
       "path": "/storage/fileStorage/deletedContainers/{fileStorageContainer-id}/permissions/{permission-id}/revokeGrants",
       "method": "POST",
       "summary": "Invoke action revokeGrants",
-      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified recipient from the link.",
+      "description": "Revoke access to a listItem or driveItem granted via a sharing link by removing the specified driveRecipient entries from the link. Recipients who already redeemed the link and recipients who only received an invitation both lose access. Revoking a grant removes the recipient from this sharing li...",
       "resource": "storage"
     },
     {
@@ -158675,6 +160657,12 @@
       "resource": "teamtemplatedefinition"
     },
     {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "teamtemplatedefinition"
+    },
+    {
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -158923,6 +160911,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamTemplateDefinition",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamTemplateDefinition",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "teamtemplatedefinition"
     },
     {
@@ -160249,6 +162257,12 @@
       "resource": "teamtemplatedefinition"
     },
     {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "teamtemplatedefinition"
+    },
+    {
       "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -160497,6 +162511,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamTemplateDefinition",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamtemplatedefinition"
+    },
+    {
+      "path": "/teamTemplateDefinition/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamTemplateDefinition",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "teamtemplatedefinition"
     },
     {
@@ -161965,20 +163999,22 @@
     {
       "path": "/teams/{team-id}/channels/{channel-id}/planner",
       "method": "DELETE",
-      "summary": "Delete navigation property planner for teams",
+      "summary": "Delete teamsChannelPlanner",
+      "description": "Delete a teamsChannelPlanner object.",
       "resource": "teams"
     },
     {
       "path": "/teams/{team-id}/channels/{channel-id}/planner",
       "method": "GET",
-      "summary": "Get planner from teams",
-      "description": "Selective Planner services available to this channel. Currently, only shared channels are supported. Read-only. Nullable.",
+      "summary": "Get teamsChannelPlanner",
+      "description": "Read the properties and relationships of teamsChannelPlanner object.",
       "resource": "teams"
     },
     {
       "path": "/teams/{team-id}/channels/{channel-id}/planner",
       "method": "PATCH",
-      "summary": "Update the navigation property planner in teams",
+      "summary": "Update teamsChannelPlanner",
+      "description": "Update the properties of a teamsChannelPlanner object.",
       "resource": "teams"
     },
     {
@@ -162271,6 +164307,12 @@
       "resource": "teams"
     },
     {
+      "path": "/teams/{team-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "teams"
+    },
+    {
       "path": "/teams/{team-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -162519,6 +164561,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/planner/plans_v2",
+      "method": "GET",
+      "summary": "List plans_v2 for a Teams channel",
+      "description": "Get a list of the plan objects owned by the Teams channel.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/channels/{channel-id}/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from teams",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "teams"
     },
     {
@@ -163852,6 +165914,12 @@
       "resource": "teams"
     },
     {
+      "path": "/teams/{team-id}/primaryChannel/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "teams"
+    },
+    {
       "path": "/teams/{team-id}/primaryChannel/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -164100,6 +166168,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from teams",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teams"
+    },
+    {
+      "path": "/teams/{team-id}/primaryChannel/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from teams",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "teams"
     },
     {
@@ -165933,6 +168021,12 @@
       "resource": "teamwork"
     },
     {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "teamwork"
+    },
+    {
       "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -166181,6 +168275,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamwork",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/deletedTeams/{deletedTeam-id}/channels/{channel-id}/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamwork",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "teamwork"
     },
     {
@@ -167586,6 +169700,12 @@
       "resource": "teamwork"
     },
     {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "teamwork"
+    },
+    {
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -167834,6 +169954,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamwork",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/channels/{channel-id}/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamwork",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "teamwork"
     },
     {
@@ -169160,6 +171300,12 @@
       "resource": "teamwork"
     },
     {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "teamwork"
+    },
+    {
       "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -169408,6 +171554,26 @@
       "method": "POST",
       "summary": "Invoke action unarchive",
       "description": "Unarchive a plannerPlan object. Unarchiving a plan, also unarchives the plannerTasks and plannerBuckets in the plan. Only a plan that is archived can be unarchived.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans_v2",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamwork",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/teamTemplates/{teamTemplate-id}/definitions/{teamTemplateDefinition-id}/teamDefinition/primaryChannel/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from teamwork",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans owned by the Teams channel. Currently, only shared channels are supported.",
       "resource": "teamwork"
     },
     {
@@ -176268,7 +178434,7 @@
       "path": "/users/{user-id}/calendarGroups/{calendarGroup-id}/calendars/delta()",
       "method": "GET",
       "summary": "Invoke function delta",
-      "description": "Typically, synchronizing calendars in a mailbox in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the incremental changes (additions, deletions, or updates). Using deltas allows you...",
+      "description": "Get a set of calendar resources added, updated, or deleted in a user's mailbox. Typically, synchronizing calendars in a mailbox in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the...",
       "resource": "users"
     },
     {
@@ -176597,7 +178763,7 @@
       "path": "/users/{user-id}/calendars/delta()",
       "method": "GET",
       "summary": "Invoke function delta",
-      "description": "Typically, synchronizing calendars in a mailbox in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the incremental changes (additions, deletions, or updates). Using deltas allows you...",
+      "description": "Get a set of calendar resources added, updated, or deleted in a user's mailbox. Typically, synchronizing calendars in a mailbox in a local store entails a round of multiple delta function calls. The initial call is a full synchronization, and every subsequent delta call in the same round gets the...",
       "resource": "users"
     },
     {
@@ -181280,6 +183446,52 @@
       "resource": "users"
     },
     {
+      "path": "/users/{user-id}/lifecycle",
+      "method": "DELETE",
+      "summary": "Delete navigation property lifecycle for users",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/lifecycle",
+      "method": "GET",
+      "summary": "Get lifecycle from users",
+      "description": "Lifecycle information for the user. Read-only.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/lifecycle",
+      "method": "PATCH",
+      "summary": "Update the navigation property lifecycle in users",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/lifecycle/complianceIssues",
+      "method": "GET",
+      "summary": "Get complianceIssues from users",
+      "description": "The collection of compliance issues that describe why the identity is currently non-compliant with its governing policy.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/lifecycle/complianceIssues/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/lifecycle/complianceIssues/{complianceIssue-id}",
+      "method": "GET",
+      "summary": "Get complianceIssues from users",
+      "description": "The collection of compliance issues that describe why the identity is currently non-compliant with its governing policy.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/lifecycle/effectiveGoverningPolicy",
+      "method": "GET",
+      "summary": "Get effectiveGoverningPolicy from users",
+      "description": "The highest-priority lifecycle policy that currently governs the identity. Supports $expand.",
+      "resource": "users"
+    },
+    {
       "path": "/users/{user-id}/mailFolders",
       "method": "GET",
       "summary": "Get mailFolders from users",
@@ -181374,6 +183586,12 @@
       "method": "POST",
       "summary": "Invoke action copy",
       "description": "Copy a mail folder and its contents to another mail folder.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/importMime",
+      "method": "POST",
+      "summary": "Invoke action importMime",
       "resource": "users"
     },
     {
@@ -181752,6 +183970,12 @@
       "method": "POST",
       "summary": "Invoke action copy",
       "description": "Copy a mail folder and its contents to another mail folder.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/mailFolders/{mailFolder-id}/importMime",
+      "method": "POST",
+      "summary": "Invoke action importMime",
       "resource": "users"
     },
     {
@@ -183422,6 +185646,24 @@
       "method": "POST",
       "summary": "Invoke action unsubscribe",
       "description": "Submits an email request on behalf of the signed-in user to unsubscribe from an email distribution list. Uses the information in the List-Unsubscribe header. Message senders can use mailing lists in a user-friendly way by including an option for recipients to opt out. They can do so by specifying...",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/microsoft.graph.identityGovernance.addSelfAsSponsor",
+      "method": "POST",
+      "summary": "Invoke action addSelfAsSponsor",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/microsoft.graph.identityGovernance.attest",
+      "method": "POST",
+      "summary": "Invoke action attest",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/microsoft.graph.identityGovernance.removeSelfAsSponsor",
+      "method": "POST",
+      "summary": "Invoke action removeSelfAsSponsor",
       "resource": "users"
     },
     {
@@ -187291,6 +189533,12 @@
       "resource": "users"
     },
     {
+      "path": "/users/{user-id}/planner/plans/{plannerPlan-id}/extendExpiry",
+      "method": "POST",
+      "summary": "Invoke action extendExpiry",
+      "resource": "users"
+    },
+    {
       "path": "/users/{user-id}/planner/plans/{plannerPlan-id}/getUsageRights()",
       "method": "GET",
       "summary": "Invoke function getUsageRights",
@@ -187542,6 +189790,26 @@
       "resource": "users"
     },
     {
+      "path": "/users/{user-id}/planner/plans_v2",
+      "method": "GET",
+      "summary": "List plans_v2 for a user",
+      "description": "Get a list of the plan objects associated with the user.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/planner/plans_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/planner/plans_v2/{plan-id}",
+      "method": "GET",
+      "summary": "Get plans_v2 from users",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 plans associated with the user.",
+      "resource": "users"
+    },
+    {
       "path": "/users/{user-id}/planner/recentPlans",
       "method": "GET",
       "summary": "Get recentPlans from users",
@@ -187752,6 +190020,26 @@
       "path": "/users/{user-id}/planner/tasks/{plannerTask-id}/progressTaskBoardFormat",
       "method": "PATCH",
       "summary": "Update the navigation property progressTaskBoardFormat in users",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/planner/tasks_v2",
+      "method": "GET",
+      "summary": "List tasks_v2 for a user",
+      "description": "Get a list of the task objects assigned to the user.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/planner/tasks_v2/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/planner/tasks_v2/{task-id}",
+      "method": "GET",
+      "summary": "Get tasks_v2 from users",
+      "description": "Read-only. Nullable. The collection of Planner Graph V4 tasks assigned to the user.",
       "resource": "users"
     },
     {

@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-10-21T10:43:52Z",
+  "generated": "2026-10-22T10:45:26Z",
   "endpointCount": 6651,
-  "resourceCount": 4683,
+  "resourceCount": 4687,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -135736,16 +135736,16 @@
           "notes": "Read-only"
         },
         {
-          "name": "Onboarding",
-          "type": ""
-        },
-        {
           "name": "displayName",
           "type": "String"
         },
         {
           "name": "description",
           "type": "String"
+        },
+        {
+          "name": "roleScopeTagIds",
+          "type": "String collection"
         }
       ]
     },
@@ -153134,11 +153134,11 @@
       "name": "fileHash",
       "properties": [
         {
-          "name": "hashType",
-          "type": "fileHashType enum"
+          "name": "algorithm",
+          "type": "microsoft.graph.security.fileHashAlgorithm"
         },
         {
-          "name": "hashValue",
+          "name": "value",
           "type": "String"
         }
       ]
@@ -165159,13 +165159,11 @@
       "properties": [
         {
           "name": "id",
-          "type": "String",
-          "notes": "Read-only"
+          "type": "String"
         },
         {
           "name": "expirationDateTime",
-          "type": "DateTimeOffset",
-          "default": true
+          "type": "DateTimeOffset"
         },
         {
           "name": "payloadFileName",
@@ -167980,7 +167978,7 @@
         },
         {
           "name": "contentType",
-          "type": "bodyType"
+          "type": "microsoft.graph.windowsUpdates.bodyType"
         }
       ]
     },
@@ -169239,7 +169237,7 @@
         },
         {
           "name": "labelId",
-          "type": "Guid"
+          "type": "GUID"
         }
       ]
     },
@@ -169979,6 +169977,10 @@
     {
       "name": "lifecyclePolicyRule",
       "properties": [
+        {
+          "name": "gracePeriodInDays",
+          "type": "Int32"
+        },
         {
           "name": "id",
           "type": "String"
@@ -182418,15 +182420,15 @@
       "name": "modifiedProperty",
       "properties": [
         {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
           "name": "newValue",
-          "type": "microsoft.graph.security.caseManagement.valueProperty"
+          "type": "String"
         },
         {
           "name": "oldValue",
-          "type": "microsoft.graph.security.caseManagement.valueProperty"
-        },
-        {
-          "name": "propertyName",
           "type": "String"
         }
       ]
@@ -186130,6 +186132,81 @@
         {
           "name": "handler",
           "type": "onPasswordSubmitHandler"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "Int32"
+        }
+      ]
+    },
+    {
+      "name": "onPasswordUpdateCustomExtension",
+      "properties": [
+        {
+          "name": "authenticationConfiguration",
+          "type": "customExtensionAuthenticationConfiguration"
+        },
+        {
+          "name": "behaviorOnError",
+          "type": "customExtensionBehaviorOnError"
+        },
+        {
+          "name": "clientConfiguration",
+          "type": "customExtensionClientConfiguration"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "endpointConfiguration",
+          "type": "customExtensionEndpointConfiguration"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "onPasswordUpdateCustomExtensionHandler",
+      "properties": [
+        {
+          "name": "configuration",
+          "type": "customExtensionOverwriteConfiguration"
+        },
+        {
+          "name": "expirationDateTime",
+          "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "onPasswordUpdateListener",
+      "properties": [
+        {
+          "name": "authenticationEventsFlowId",
+          "type": "String"
+        },
+        {
+          "name": "conditions",
+          "type": "authenticationConditions"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "handler",
+          "type": "onPasswordUpdateHandler"
         },
         {
           "name": "id",
@@ -207495,6 +207572,15 @@
       ]
     },
     {
+      "name": "selectedAgentBuilderPlatformsSubjectSet",
+      "properties": [
+        {
+          "name": "includedAgentBuilderPlatforms",
+          "type": "microsoft.graph.identityGovernance.agentBuilderPlatforms"
+        }
+      ]
+    },
+    {
       "name": "selfServiceSignUp",
       "properties": [
         {
@@ -222896,6 +222982,11 @@
           "notes": "Read-only"
         },
         {
+          "name": "deletedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
           "name": "description",
           "type": "String",
           "notes": "Read-only"
@@ -232403,8 +232494,8 @@
       "name": "win32LobAppAutoUpdateSettings",
       "properties": [
         {
-          "name": "autoUpdateSupersededApps",
-          "type": "win32LobAppAutoUpdateSupersededApps"
+          "name": "autoUpdateSupersededAppsState",
+          "type": "win32LobAutoUpdateSupersededAppsState"
         }
       ]
     },
