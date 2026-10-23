@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-10-22T10:45:26Z",
-  "endpointCount": 6651,
-  "resourceCount": 4687,
+  "generated": "2026-10-23T10:36:58Z",
+  "endpointCount": 6672,
+  "resourceCount": 4701,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -1841,6 +1841,197 @@
       ]
     },
     {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries/{applicableCatalogSummaryId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries/{applicableCatalogSummaryId}/aggregatedDevices",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/deviceProfiles",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/deviceProfiles/{deviceProfileId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers/{driverUpdateReportId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers/{driverUpdateReportId}/deviceStatuses",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers/{driverUpdateReportId}/deviceStatuses/{driverUpdateDeviceStatusId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/policyAssignments",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$expand",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/data/policyAssignments/{policyAssignmentId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$expand",
+        "$select"
+      ]
+    },
+    {
       "path": "/admin/windows/updates/deploymentAudiences",
       "method": "GET",
       "permissions": {
@@ -1988,6 +2179,24 @@
     },
     {
       "path": "/admin/windows/updates/policies",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$count",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/policies",
       "method": "POST",
       "permissions": {
         "delegatedWork": [
@@ -2039,6 +2248,56 @@
           "WindowsUpdates.ReadWrite.All"
         ]
       }
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policyId}/applicableCatalogs",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policyId}/applicableCatalogs/{applicableCatalogId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policyId}/applicableCatalogs/{applicableCatalogId}/devices",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
     },
     {
       "path": "/admin/windows/updates/policies/{policyId}/applicableContent",
@@ -2132,6 +2391,24 @@
     },
     {
       "path": "/admin/windows/updates/policies/{policyId}/rings",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$count",
+        "$top"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policyId}/rings",
       "method": "POST",
       "permissions": {
         "delegatedWork": [
@@ -2183,24 +2460,6 @@
           "WindowsUpdates.ReadWrite.All"
         ]
       }
-    },
-    {
-      "path": "/admin/windows/updates/policies?$filter=isof('microsoft.graph.windowsUpdates.qualityUpdatePolicy')",
-      "method": "GET",
-      "permissions": {
-        "delegatedWork": [
-          "WindowsUpdates.Read.All"
-        ],
-        "application": [
-          "WindowsUpdates.Read.All"
-        ]
-      },
-      "queryParams": [
-        "$select",
-        "$filter",
-        "$count",
-        "$top"
-      ]
     },
     {
       "path": "/admin/windows/updates/products/FindByCatalogId(catalogID='catalogID')",
@@ -2319,6 +2578,81 @@
         ],
         "application": [
           "WindowsUpdates.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.ReadWrite.All"
+        ],
+        "application": [
+          "WindowsUpdates.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.ReadWrite.All"
+        ],
+        "application": [
+          "WindowsUpdates.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings/{mdmAppId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.Read.All"
+        ],
+        "application": [
+          "WindowsUpdates.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings/{mdmAppId}",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "WindowsUpdates.ReadWrite.All"
+        ],
+        "application": [
+          "WindowsUpdates.ReadWrite.All"
         ]
       }
     },
@@ -6813,20 +7147,20 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -28673,22 +29007,22 @@
         "delegatedWork": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -57430,16 +57764,16 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "Mail.ReadBasic",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic"
         ],
         "delegatedPersonal": [
-          "Mail.ReadBasic",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic"
         ],
         "application": [
-          "Mail.ReadBasic.All",
-          "Mail.Read"
+          "Mail.Read",
+          "Mail.ReadBasic.All"
         ]
       },
       "queryParams": [
@@ -63978,25 +64312,25 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All",
           "User.Read",
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All",
+          "Directory.ReadWrite.All"
+        ],
+        "application": [
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All"
-        ],
-        "application": [
+          "DeviceManagementConfiguration.ReadWrite.All",
           "Organization.Read.All",
           "Directory.Read.All",
           "Organization.ReadWrite.All",
-          "Directory.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All"
+          "Directory.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -88797,22 +89131,22 @@
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "User.ReadBasic.All"
+          "User.ReadBasic.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
-          "User.Read.All"
+          "User.Read.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -88838,18 +89172,18 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "User.Create"
+          "User.Create",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "User.Create"
+          "User.Create",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -89010,12 +89344,12 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-ResourceKey.ReadWrite.All",
-          "User.ReadWrite.All"
+          "User.ReadWrite.All",
+          "UserAuthMethod-ResourceKey.ReadWrite.All"
         ],
         "application": [
-          "UserAuthMethod-ResourceKey.ReadWrite.All",
-          "User.ReadWrite.All"
+          "User.ReadWrite.All",
+          "UserAuthMethod-ResourceKey.ReadWrite.All"
         ]
       }
     },
@@ -89025,38 +89359,38 @@
       "permissions": {
         "delegatedWork": [
           "User.Read",
-          "Calendars.ReadBasic",
           "UserAuthenticationMethod.Read",
+          "AppRoleAssignment.ReadWrite.All",
           "UserAuthMethod-ResourceKey.Read.All",
-          "AppRoleAssignment.ReadWrite.All"
+          "Calendars.ReadBasic"
         ],
         "delegatedPersonal": [
           "User.Read",
           "Calendars.ReadBasic"
         ],
         "application": [
+          "Chat.Read.All",
           "User.Read.All",
-          "Calendars.ReadBasic",
           "UserAuthenticationMethod.Read",
-          "UserAuthMethod-ResourceKey.Read.All",
           "Directory.Read.All",
-          "Chat.Read.All"
+          "UserAuthMethod-ResourceKey.Read.All",
+          "Calendars.ReadBasic"
         ]
       },
       "queryParams": [
-        "$select",
         "$top",
         "$skip",
-        "$count",
-        "$expand",
         "$filter",
+        "$select",
+        "$expand",
+        "$count",
         "$orderby",
         "$search"
       ],
       "notes": [
-        "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1.",
         "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages.",
-        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query."
+        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
+        "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1."
       ]
     },
     {
@@ -89064,13 +89398,13 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-Phone.ReadWrite",
           "UserAuthenticationMethod.ReadWrite",
-          "UserAuthenticationMethod.ReadWrite.All"
+          "UserAuthenticationMethod.ReadWrite.All",
+          "UserAuthMethod-Phone.ReadWrite"
         ],
         "application": [
-          "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthenticationMethod.ReadWrite"
+          "UserAuthenticationMethod.ReadWrite",
+          "UserAuthenticationMethod.ReadWrite.All"
         ]
       }
     },
@@ -89079,25 +89413,25 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-Email.ReadWrite",
+          "Sites.ReadWrite.All",
+          "Mail.Send",
           "AppRoleAssignment.ReadWrite.All",
           "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthMethod-TAP.Read",
-          "Sites.ReadWrite.All",
+          "UserAuthMethod-Email.ReadWrite",
           "LicenseAssignment.ReadWrite.All",
-          "Mail.Send",
-          "UserAuthMethod-Phone.ReadWrite"
+          "UserAuthMethod-Phone.ReadWrite",
+          "UserAuthMethod-TAP.Read"
         ],
         "delegatedPersonal": [
           "Mail.Send"
         ],
         "application": [
-          "UserAuthenticationMethod.ReadWrite.All",
-          "AppRoleAssignment.ReadWrite.All",
-          "UserAuthMethod-TAP.Read.All",
           "Sites.ReadWrite.All",
+          "Mail.Send",
+          "AppRoleAssignment.ReadWrite.All",
+          "UserAuthenticationMethod.ReadWrite.All",
           "LicenseAssignment.ReadWrite.All",
-          "Mail.Send"
+          "UserAuthMethod-TAP.Read.All"
         ]
       }
     },
@@ -89388,8 +89722,8 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "TeamworkTargetedMessage.ReadWrite",
-          "TeamsAppInstallation.ReadWriteSelfForUser"
+          "TeamsAppInstallation.ReadWriteSelfForUser",
+          "TeamworkTargetedMessage.ReadWrite"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -89407,15 +89741,15 @@
           "TeamsAppInstallation.ReadForUser"
         ],
         "application": [
-          "TeamsAppInstallation.ReadForUser.All",
-          "TeamworkTargetedMessage.Read.All"
+          "TeamworkTargetedMessage.Read.All",
+          "TeamsAppInstallation.ReadForUser.All"
         ]
       },
       "queryParams": [
         "$filter",
+        "$top",
         "$select",
-        "$expand",
-        "$top"
+        "$expand"
       ],
       "notes": [
         "This API works differently in one or more national clouds. For details, see Implementation differences in national clouds."
@@ -89426,8 +89760,8 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "TeamworkTargetedMessage.ReadWrite",
-          "TeamsAppInstallation.ReadWriteSelfForUser"
+          "TeamsAppInstallation.ReadWriteSelfForUser",
+          "TeamworkTargetedMessage.ReadWrite"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -89842,16 +90176,16 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -89867,20 +90201,20 @@
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -108756,6 +109090,51 @@
       ]
     },
     {
+      "name": "applicableCatalog",
+      "properties": [
+        {
+          "name": "deviceCount",
+          "type": "Int32",
+          "notes": "Read-only"
+        },
+        {
+          "name": "hasRecommendedDevice",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "applicableCatalogSummary",
+      "properties": [
+        {
+          "name": "aggregatedDeviceCount",
+          "type": "Int32",
+          "notes": "Read-only"
+        },
+        {
+          "name": "hasRecommendedDevice",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "policies",
+          "type": "String collection",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "applicableContent",
       "properties": [
         {
@@ -108774,6 +109153,21 @@
         {
           "name": "recommendedBy",
           "type": "String collection"
+        }
+      ]
+    },
+    {
+      "name": "applicableDevice",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "isRecommended",
+          "type": "Boolean",
+          "notes": "Read-only"
         }
       ]
     },
@@ -129167,16 +129561,16 @@
       "name": "credential",
       "properties": [
         {
-          "name": "fieldId",
+          "name": "displayName",
           "type": "String"
         },
         {
-          "name": "type",
-          "type": "String"
+          "name": "isValid",
+          "type": "Boolean"
         },
         {
-          "name": "value",
-          "type": "String"
+          "name": "lastValidDateTime",
+          "type": "DateTimeOffset"
         }
       ]
     },
@@ -135917,12 +136311,12 @@
       "name": "deviceCompliancePolicy",
       "properties": [
         {
-          "name": "id",
-          "type": "String"
-        },
-        {
           "name": "roleScopeTagIds",
           "type": "String collection"
+        },
+        {
+          "name": "id",
+          "type": "String"
         },
         {
           "name": "createdDateTime",
@@ -142699,6 +143093,56 @@
       ]
     },
     {
+      "name": "deviceProfile",
+      "properties": [
+        {
+          "name": "azureAdDeviceId",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "deviceModel",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "deviceName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "hotpatchReadiness",
+          "type": "windowsUpdates.hotpatchReadiness",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "osBuild",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "osStatus",
+          "type": "windowsUpdates.osStatus",
+          "notes": "Read-only"
+        },
+        {
+          "name": "osVersion",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "serialNumber",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "deviceProtectionOverview",
       "properties": [
         {
@@ -145226,6 +145670,15 @@
       ]
     },
     {
+      "name": "driverUpdateApprovalRule",
+      "properties": [
+        {
+          "name": "deferralInDays",
+          "type": "Int32"
+        }
+      ]
+    },
+    {
       "name": "driverUpdateCatalogEntry",
       "properties": [
         {
@@ -145275,6 +145728,182 @@
         {
           "name": "versionDateTime",
           "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "driverUpdateDeviceStatus",
+      "properties": [
+        {
+          "name": "aadDeviceId",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "clientState",
+          "type": "windowsUpdates.deviceClientState",
+          "notes": "Read-only"
+        },
+        {
+          "name": "clientSubstate",
+          "type": "windowsUpdates.deviceClientSubstate",
+          "notes": "Read-only"
+        },
+        {
+          "name": "deviceName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastEventDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "policyId",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "policyName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "ringId",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "ringName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "serviceState",
+          "type": "windowsUpdates.deviceServiceState",
+          "notes": "Read-only"
+        },
+        {
+          "name": "serviceSubstate",
+          "type": "windowsUpdates.deviceServiceSubstate",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "driverUpdatePolicy",
+      "properties": [
+        {
+          "name": "approvalRules",
+          "type": "microsoft.graph.windowsUpdates.approvalRule collection"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "driverUpdateReport",
+      "properties": [
+        {
+          "name": "class",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "manufacturer",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "releaseDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "driverUpdateRing",
+      "properties": [
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "deferralInDays",
+          "type": "Int32"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "excludedGroupAssignment",
+          "type": "microsoft.graph.windowsUpdates.excludedGroupAssignment"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "includedGroupAssignment",
+          "type": "microsoft.graph.windowsUpdates.includedGroupAssignment"
+        },
+        {
+          "name": "isPaused",
+          "type": "Boolean"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         }
       ]
     },
@@ -152700,6 +153329,90 @@
           "name": "version",
           "type": "String",
           "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "featureUpdatePolicy",
+      "properties": [
+        {
+          "name": "approvalRules",
+          "type": "microsoft.graph.windowsUpdates.approvalRule collection"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "featureUpdateRing",
+      "properties": [
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "deferralInDays",
+          "type": "Int32"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "excludedGroupAssignment",
+          "type": "microsoft.graph.windowsUpdates.excludedGroupAssignment"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "includedGroupAssignment",
+          "type": "microsoft.graph.windowsUpdates.includedGroupAssignment"
+        },
+        {
+          "name": "isOfferOptional",
+          "type": "Boolean"
+        },
+        {
+          "name": "isPaused",
+          "type": "Boolean"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "offerDurationInDays",
+          "type": "Int32"
+        },
+        {
+          "name": "offerIntervalInDays",
+          "type": "Int32"
         }
       ]
     },
@@ -178833,8 +179546,25 @@
       ]
     },
     {
+      "name": "mdmAppSetting",
+      "properties": [
+        {
+          "name": "isHotpatchEnabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "mdmAppId",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "mdmWindowsInformationProtectionPolicy",
       "properties": [
+        {
+          "name": "id",
+          "type": "String"
+        },
         {
           "name": "displayName",
           "type": "String"
@@ -178854,10 +179584,6 @@
         {
           "name": "roleScopeTagIds",
           "type": "String collection"
-        },
-        {
-          "name": "id",
-          "type": "String"
         },
         {
           "name": "version",
@@ -182065,11 +182791,35 @@
           "type": "String"
         },
         {
+          "name": "Troubleshooting",
+          "type": ""
+        },
+        {
+          "name": "additionalInformation",
+          "type": "keyValuePair collection"
+        },
+        {
+          "name": "applicationId",
+          "type": "String"
+        },
+        {
+          "name": "correlationId",
+          "type": "String"
+        },
+        {
           "name": "eventDateTime",
           "type": "DateTimeOffset"
         },
         {
-          "name": "correlationId",
+          "name": "eventName",
+          "type": "String"
+        },
+        {
+          "name": "history",
+          "type": "mobileAppTroubleshootingHistoryItem collection"
+        },
+        {
+          "name": "managedDeviceIdentifier",
           "type": "String"
         },
         {
@@ -182077,32 +182827,8 @@
           "type": "deviceManagementTroubleshootingErrorDetails"
         },
         {
-          "name": "eventName",
-          "type": "String"
-        },
-        {
-          "name": "additionalInformation",
-          "type": "keyValuePair collection"
-        },
-        {
-          "name": "managedDeviceIdentifier",
-          "type": "String"
-        },
-        {
-          "name": "deviceId",
-          "type": "String"
-        },
-        {
           "name": "userId",
           "type": "String"
-        },
-        {
-          "name": "applicationId",
-          "type": "String"
-        },
-        {
-          "name": "history",
-          "type": "mobileAppTroubleshootingHistoryItem collection"
         }
       ]
     },
@@ -194888,20 +195614,7 @@
       "name": "policy",
       "properties": [
         {
-          "name": "approvalRules",
-          "type": "microsoft.graph.windowsUpdates.approvalRule collection"
-        },
-        {
-          "name": "createdDateTime",
-          "type": "DateTimeOffset",
-          "notes": "Read-only"
-        },
-        {
           "name": "description",
-          "type": "String"
-        },
-        {
-          "name": "displayName",
           "type": "String"
         },
         {
@@ -194909,15 +195622,23 @@
           "type": "String"
         },
         {
-          "name": "lastModifiedDateTime",
-          "type": "DateTimeOffset",
-          "notes": "Read-only"
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "version",
+          "type": "String"
         }
       ]
     },
     {
       "name": "policyApproval",
       "properties": [
+        {
+          "name": "approvedBy",
+          "type": "windowsUpdates.approvedBy",
+          "notes": "Read-only"
+        },
         {
           "name": "catalogEntryId",
           "type": "String"
@@ -194938,8 +195659,12 @@
           "notes": "Read-only"
         },
         {
+          "name": "startDateTime",
+          "type": "DateTimeOffset"
+        },
+        {
           "name": "status",
-          "type": "microsoft.graph.windowsUpdates.approvalStatus"
+          "type": "windowsUpdates.approvalStatus"
         }
       ]
     },
@@ -219896,6 +220621,15 @@
       ]
     },
     {
+      "name": "tenantSetting",
+      "properties": [
+        {
+          "name": "areDataProcessorServiceForWindowsFeaturesEnabled",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
       "name": "tenantStatus",
       "properties": [
         {
@@ -232494,8 +233228,8 @@
       "name": "win32LobAppAutoUpdateSettings",
       "properties": [
         {
-          "name": "autoUpdateSupersededAppsState",
-          "type": "win32LobAutoUpdateSupersededAppsState"
+          "name": "autoUpdateSupersededApps",
+          "type": "win32LobAppAutoUpdateSupersededApps"
         }
       ]
     },
@@ -244210,6 +244944,37 @@
         {
           "name": "lastSyncDateTime",
           "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "windowsUpdates",
+      "properties": [
+        {
+          "name": "approvalRules",
+          "type": "microsoft.graph.windowsUpdates.approvalRule collection"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         }
       ]
     },
