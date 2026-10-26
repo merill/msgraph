@@ -22,7 +22,7 @@ type ClientSecretClient struct {
 
 // NewClientSecretClient creates a confidential client using a client secret.
 func NewClientSecretClient(cfg *config.Config) (*ClientSecretClient, error) {
-	_, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, cfg.WorkspaceRoot)
+	_, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, string(cfg.Cloud), cfg.WorkspaceRoot)
 
 	cred, err := confidential.NewCredFromSecret(cfg.ClientSecret)
 	if err != nil {
@@ -44,7 +44,7 @@ func NewClientSecretClient(cfg *config.Config) (*ClientSecretClient, error) {
 
 // AcquireToken acquires a token using client credentials.
 func (c *ClientSecretClient) AcquireToken(ctx context.Context, _ []string) (string, error) {
-	result, err := c.app.AcquireTokenByCredential(ctx, []string{config.GraphDefaultScope})
+	result, err := c.app.AcquireTokenByCredential(ctx, []string{c.cfg.GraphDefaultScope()})
 	if err != nil {
 		return "", fmt.Errorf("client secret auth failed: %w", err)
 	}
@@ -120,7 +120,7 @@ func NewClientCertificateClient(cfg *config.Config) (*ClientCertificateClient, e
 		return nil, fmt.Errorf("failed to create certificate credential: %w", err)
 	}
 
-	_, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, cfg.WorkspaceRoot)
+	_, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, string(cfg.Cloud), cfg.WorkspaceRoot)
 
 	var opts []confidential.Option
 	if !cfg.NoTokenCache {
@@ -137,7 +137,7 @@ func NewClientCertificateClient(cfg *config.Config) (*ClientCertificateClient, e
 
 // AcquireToken acquires a token using client certificate credentials.
 func (c *ClientCertificateClient) AcquireToken(ctx context.Context, _ []string) (string, error) {
-	result, err := c.app.AcquireTokenByCredential(ctx, []string{config.GraphDefaultScope})
+	result, err := c.app.AcquireTokenByCredential(ctx, []string{c.cfg.GraphDefaultScope()})
 	if err != nil {
 		return "", fmt.Errorf("certificate auth failed: %w", err)
 	}
