@@ -1,7 +1,7 @@
 {
   "version": "beta",
-  "generated": "2026-11-04T13:23:00Z",
-  "count": 29934,
+  "generated": "2026-11-05T13:37:48Z",
+  "count": 30010,
   "endpoints": [
     {
       "path": "/accessReviewDecisions",
@@ -2572,6 +2572,159 @@
       "resource": "admin"
     },
     {
+      "path": "/admin/windows/updates/data",
+      "method": "DELETE",
+      "summary": "Delete navigation property data for admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data",
+      "method": "GET",
+      "summary": "Get data from admin",
+      "description": "Read-only Windows Autopatch device, policy assignment, applicability, and driver reporting data.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data",
+      "method": "PATCH",
+      "summary": "Update the navigation property data in admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries",
+      "method": "GET",
+      "summary": "List applicableCatalogSummaries",
+      "description": "Get a list of applicableCatalogSummary resources aggregated across Windows Autopatch policies.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries/{applicableCatalogSummary-id}",
+      "method": "GET",
+      "summary": "Get applicableCatalogSummaries from admin",
+      "description": "Catalog applicability aggregated across Autopatch policies. Read-only.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries/{applicableCatalogSummary-id}/aggregatedDevices",
+      "method": "GET",
+      "summary": "List aggregatedDevices",
+      "description": "Get the applicableDevice resources included in an update applicability summary.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries/{applicableCatalogSummary-id}/aggregatedDevices/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries/{applicableCatalogSummary-id}/aggregatedDevices/{applicableDevice-id}",
+      "method": "GET",
+      "summary": "Get aggregatedDevices from admin",
+      "description": "The devices included in the applicability summary.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/applicableCatalogSummaries/{applicableCatalogSummary-id}/catalogEntry",
+      "method": "GET",
+      "summary": "Get catalogEntry from admin",
+      "description": "The associated Windows update catalog entry.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/deviceProfiles",
+      "method": "GET",
+      "summary": "List deviceProfiles",
+      "description": "Get a list of deviceProfile resources and their Windows servicing information.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/deviceProfiles/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/deviceProfiles/{deviceProfile-id}",
+      "method": "GET",
+      "summary": "Get device profile",
+      "description": "Get a deviceProfile resource and its Windows servicing information.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers",
+      "method": "GET",
+      "summary": "List drivers",
+      "description": "Get a list of driverUpdateReport resources for driver and firmware updates available in the tenant.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers/{driverUpdateReport-id}",
+      "method": "GET",
+      "summary": "Get drivers from admin",
+      "description": "Driver updates available in the tenant and their per-device rollout status. Read-only.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers/{driverUpdateReport-id}/deviceStatuses",
+      "method": "GET",
+      "summary": "List deviceStatuses",
+      "description": "Get the driverUpdateDeviceStatus resources for a driver or firmware update.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers/{driverUpdateReport-id}/deviceStatuses/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/drivers/{driverUpdateReport-id}/deviceStatuses/{driverUpdateDeviceStatus-id}",
+      "method": "GET",
+      "summary": "Get driver update device status",
+      "description": "Get a driverUpdateDeviceStatus resource for a driver or firmware update.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/policyAssignments",
+      "method": "GET",
+      "summary": "List policyAssignments",
+      "description": "Get a list of policyAssignment resources that associate Windows Autopatch policies with devices.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/policyAssignments/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/policyAssignments/{policyAssignment-id}",
+      "method": "GET",
+      "summary": "Get policy assignment",
+      "description": "Get a policyAssignment resource that associates a Windows Autopatch policy with a device.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/data/policyAssignments/{policyAssignment-id}/deviceProfile",
+      "method": "GET",
+      "summary": "Get deviceProfile from admin",
+      "description": "The profile of the assigned device.",
+      "resource": "admin"
+    },
+    {
       "path": "/admin/windows/updates/deploymentAudiences",
       "method": "GET",
       "summary": "List deploymentAudiences",
@@ -3229,14 +3382,14 @@
       "path": "/admin/windows/updates/policies",
       "method": "GET",
       "summary": "List policies",
-      "description": "Get a list of the policy objects and their properties. You can use this method with the following child object type: qualityUpdatePolicy.",
+      "description": "Get a list of the policy objects and their properties. You can use this method with the following child object types: driverUpdatePolicy, featureUpdatePolicy, and qualityUpdatePolicy.",
       "resource": "admin"
     },
     {
       "path": "/admin/windows/updates/policies",
       "method": "POST",
       "summary": "Create policy",
-      "description": "Create a new Windows update policy object. You can use this method with the following child object type: qualityUpdatePolicy.",
+      "description": "Create a new Windows update policy object. You can use this method with the following child object types: driverUpdatePolicy, featureUpdatePolicy, and qualityUpdatePolicy.",
       "resource": "admin"
     },
     {
@@ -3249,21 +3402,68 @@
       "path": "/admin/windows/updates/policies/{policy-id}",
       "method": "DELETE",
       "summary": "Delete policy",
-      "description": "Delete a Windows update policy object. You can use this method with the following child object type: qualityUpdatePolicy.",
+      "description": "Delete a Windows update policy object. You can use this method with the following child object types: driverUpdatePolicy, featureUpdatePolicy, and qualityUpdatePolicy.",
       "resource": "admin"
     },
     {
       "path": "/admin/windows/updates/policies/{policy-id}",
       "method": "GET",
       "summary": "Get policy",
-      "description": "Read the properties and relationships of a policy object. You can use this method with the following child object type: qualityUpdatePolicy.",
+      "description": "Read the properties and relationships of a policy object. You can use this method with the following child object types: driverUpdatePolicy, featureUpdatePolicy, and qualityUpdatePolicy.",
       "resource": "admin"
     },
     {
       "path": "/admin/windows/updates/policies/{policy-id}",
       "method": "PATCH",
       "summary": "Update policy",
-      "description": "Update the properties of a policy object. You can use this method with the following child object type: qualityUpdatePolicy.",
+      "description": "Update the properties of a policy object. You can use this method with the following child object types: driverUpdatePolicy, featureUpdatePolicy, and qualityUpdatePolicy.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policy-id}/applicableCatalogs",
+      "method": "GET",
+      "summary": "List applicableCatalogs",
+      "description": "List catalog entries that are applicable to devices targeted by a Windows Autopatch policy.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policy-id}/applicableCatalogs/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policy-id}/applicableCatalogs/{applicableCatalog-id}",
+      "method": "GET",
+      "summary": "Get applicableCatalogs from admin",
+      "description": "The catalog entries that apply to devices targeted by the policy.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policy-id}/applicableCatalogs/{applicableCatalog-id}/catalogEntry",
+      "method": "GET",
+      "summary": "Get catalogEntry from admin",
+      "description": "The associated Windows update catalog entry.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policy-id}/applicableCatalogs/{applicableCatalog-id}/devices",
+      "method": "GET",
+      "summary": "List applicableDevices",
+      "description": "List the devices for which a catalog entry is applicable under a Windows Autopatch policy.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policy-id}/applicableCatalogs/{applicableCatalog-id}/devices/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/policies/{policy-id}/applicableCatalogs/{applicableCatalog-id}/devices/{applicableDevice-id}",
+      "method": "GET",
+      "summary": "Get devices from admin",
+      "description": "The devices for which the catalog entry is applicable.",
       "resource": "admin"
     },
     {
@@ -3295,7 +3495,7 @@
       "path": "/admin/windows/updates/policies/{policy-id}/applicableContent/{applicableContent-catalogEntryId}",
       "method": "GET",
       "summary": "Get applicableContent from admin",
-      "description": "Represents content applicable for offering to the related collection of devices.",
+      "description": "The existing applicable-content collection. For driver and feature update applicability, use applicableCatalogs.",
       "resource": "admin"
     },
     {
@@ -3401,14 +3601,14 @@
       "path": "/admin/windows/updates/policies/{policy-id}/rings",
       "method": "GET",
       "summary": "List rings",
-      "description": "Get a list of the ring objects and their properties. You can use this method with the following child object type: qualityUpdateRing.",
+      "description": "Get a list of the ring objects and their properties. You can use this method with the following child object types: driverUpdateRing, featureUpdateRing, and qualityUpdateRing.",
       "resource": "admin"
     },
     {
       "path": "/admin/windows/updates/policies/{policy-id}/rings",
       "method": "POST",
       "summary": "Create ring",
-      "description": "Create a new ring object. You can use this method with the following child object type: qualityUpdateRing.",
+      "description": "Create a new ring object. You can use this method with the following child object types: driverUpdateRing, featureUpdateRing, and qualityUpdateRing.",
       "resource": "admin"
     },
     {
@@ -3421,21 +3621,21 @@
       "path": "/admin/windows/updates/policies/{policy-id}/rings/{ring-id}",
       "method": "DELETE",
       "summary": "Delete ring",
-      "description": "Delete a ring object. You can use this method with the following child object type: qualityUpdateRing.",
+      "description": "Delete a ring object. You can use this method with the following child object types: driverUpdateRing, featureUpdateRing, and qualityUpdateRing.",
       "resource": "admin"
     },
     {
       "path": "/admin/windows/updates/policies/{policy-id}/rings/{ring-id}",
       "method": "GET",
       "summary": "Get ring",
-      "description": "Read the properties and relationships of ring object. You can use this method with the following child object type: qualityUpdateRing.",
+      "description": "Read the properties and relationships of ring object. You can use this method with the following child object types: driverUpdateRing, featureUpdateRing, and qualityUpdateRing.",
       "resource": "admin"
     },
     {
       "path": "/admin/windows/updates/policies/{policy-id}/rings/{ring-id}",
       "method": "PATCH",
       "summary": "Update ring",
-      "description": "Update the properties of a ring object. You can use this method with the following child object type: qualityUpdateRing.",
+      "description": "Update the properties of a ring object. You can use this method with the following child object types: driverUpdateRing, featureUpdateRing, and qualityUpdateRing.",
       "resource": "admin"
     },
     {
@@ -3722,6 +3922,66 @@
       "path": "/admin/windows/updates/resourceConnections/{resourceConnection-id}",
       "method": "PATCH",
       "summary": "Update the navigation property resourceConnections in admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings",
+      "method": "DELETE",
+      "summary": "Delete navigation property tenantSettings for admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings",
+      "method": "GET",
+      "summary": "Get tenant settings",
+      "description": "Get the tenantSetting singleton for the current tenant. When no settings have been saved, this operation returns the default settings, with areDataProcessorServiceForWindowsFeaturesEnabled set to false.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings",
+      "method": "PATCH",
+      "summary": "Update tenant settings",
+      "description": "Update the tenantSetting singleton for the current tenant.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings",
+      "method": "GET",
+      "summary": "List mdmAppSettings",
+      "description": "Get the mdmAppSetting resources for the current tenant.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings",
+      "method": "POST",
+      "summary": "Create MDM app setting",
+      "description": "Create an mdmAppSetting resource for an MDM application in the current tenant.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings/{mdmAppSetting-mdmAppId}",
+      "method": "DELETE",
+      "summary": "Delete navigation property mdmAppSettings for admin",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings/{mdmAppSetting-mdmAppId}",
+      "method": "GET",
+      "summary": "Get MDM app setting",
+      "description": "Get an mdmAppSetting resource by its mdmAppId within the current tenant.",
+      "resource": "admin"
+    },
+    {
+      "path": "/admin/windows/updates/tenantSettings/mdmAppSettings/{mdmAppSetting-mdmAppId}",
+      "method": "PATCH",
+      "summary": "Update MDM app setting",
+      "description": "Update an mdmAppSetting resource within the current tenant. The mdmAppId is identified by the request URL and can't be changed by this operation.",
       "resource": "admin"
     },
     {
@@ -7061,6 +7321,44 @@
       "method": "PUT",
       "summary": "Update media content for the navigation property bulkUpload in applications",
       "description": "The bulk upload operation for the job.",
+      "resource": "applications"
+    },
+    {
+      "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections",
+      "method": "GET",
+      "summary": "Get objectConnections from applications",
+      "description": "Connector data store linkage records contained by the job. During public preview, retrieve an individual connection using a known objectId, or delete it to clear its cached linkage. Collection listing isn't supported and returns 400 Bad Request.",
+      "resource": "applications"
+    },
+    {
+      "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections",
+      "method": "POST",
+      "summary": "Create new navigation property to objectConnections for applications",
+      "resource": "applications"
+    },
+    {
+      "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "applications"
+    },
+    {
+      "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections/{objectConnection-objectId}",
+      "method": "DELETE",
+      "summary": "Delete navigation property objectConnections for applications",
+      "resource": "applications"
+    },
+    {
+      "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections/{objectConnection-objectId}",
+      "method": "GET",
+      "summary": "Get objectConnections from applications",
+      "description": "Connector data store linkage records contained by the job. During public preview, retrieve an individual connection using a known objectId, or delete it to clear its cached linkage. Collection listing isn't supported and returns 400 Bad Request.",
+      "resource": "applications"
+    },
+    {
+      "path": "/applications/{application-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections/{objectConnection-objectId}",
+      "method": "PATCH",
+      "summary": "Update the navigation property objectConnections in applications",
       "resource": "applications"
     },
     {
@@ -14058,9 +14356,21 @@
       "resource": "copilot"
     },
     {
+      "path": "/copilot/reports/getMicrosoft365CopilotEmissions()",
+      "method": "GET",
+      "summary": "Invoke function getMicrosoft365CopilotEmissions",
+      "resource": "copilot"
+    },
+    {
       "path": "/copilot/reports/getMicrosoft365CopilotUsageUserDetail(period='{period}',version='@version')",
       "method": "GET",
       "summary": "Invoke function getMicrosoft365CopilotUsageUserDetail",
+      "resource": "copilot"
+    },
+    {
+      "path": "/copilot/reports/getMicrosoft365CopilotUsageUserDetailByDate(date={date})",
+      "method": "GET",
+      "summary": "Invoke function getMicrosoft365CopilotUsageUserDetailByDate",
       "resource": "copilot"
     },
     {
@@ -36067,6 +36377,12 @@
       "resource": "devicemanagement"
     },
     {
+      "path": "/deviceManagement/virtualEndpoint/cloudPCs/{cloudPC-id}/relocate",
+      "method": "POST",
+      "summary": "Invoke action relocate",
+      "resource": "devicemanagement"
+    },
+    {
       "path": "/deviceManagement/virtualEndpoint/cloudPCs/{cloudPC-id}/rename",
       "method": "POST",
       "summary": "Invoke action rename",
@@ -36606,7 +36922,7 @@
       "path": "/deviceManagement/virtualEndpoint/onPremisesConnections/{cloudPcOnPremisesConnection-id}/updateAdDomainPassword",
       "method": "POST",
       "summary": "Invoke action updateAdDomainPassword",
-      "description": "Update the Active Directory domain password for a successful cloudPcOnPremisesConnection. This API is supported when the type of the cloudPcOnPremisesConnection object is hybridAzureADJoin.",
+      "description": "Update the Active Directory domain join credential for a successful cloudPcOnPremisesConnection. This API is supported when the connectionType of the cloudPcOnPremisesConnection object is hybridAzureADJoin.",
       "resource": "devicemanagement"
     },
     {
@@ -98172,7 +98488,7 @@
       "path": "/identityGovernance/lifecycleWorkflows/lifecyclePolicies/{lifecyclePolicy-id}/rules",
       "method": "GET",
       "summary": "List rules",
-      "description": "Get a list of the lifecyclePolicyRule objects and their properties for a lifecyclePolicy. Rules are evaluated together with AND logic.",
+      "description": "Get a list of the lifecyclePolicyRule objects and their properties for a lifecyclePolicy. Each enabled rule is evaluated independently, and any violation makes the policy noncompliant.",
       "resource": "identitygovernance"
     },
     {
@@ -100222,6 +100538,47 @@
       "resource": "identitygovernance"
     },
     {
+      "path": "/identityGovernance/privilegedAccess/customExtensions",
+      "method": "GET",
+      "summary": "List roleManagementCustomCalloutExtension objects",
+      "description": "Get a list of roleManagementCustomCalloutExtension objects configured for Privileged Identity Management (PIM).",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/privilegedAccess/customExtensions",
+      "method": "POST",
+      "summary": "Create roleManagementCustomCalloutExtension",
+      "description": "Create a roleManagementCustomCalloutExtension object for Privileged Identity Management (PIM).",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/privilegedAccess/customExtensions/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/privilegedAccess/customExtensions/{roleManagementCustomCalloutExtension-id}",
+      "method": "DELETE",
+      "summary": "Delete roleManagementCustomCalloutExtension",
+      "description": "Delete a roleManagementCustomCalloutExtension object.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/privilegedAccess/customExtensions/{roleManagementCustomCalloutExtension-id}",
+      "method": "GET",
+      "summary": "Get roleManagementCustomCalloutExtension",
+      "description": "Read the properties of a roleManagementCustomCalloutExtension object.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/privilegedAccess/customExtensions/{roleManagementCustomCalloutExtension-id}",
+      "method": "PATCH",
+      "summary": "Update roleManagementCustomCalloutExtension",
+      "description": "Update the properties of a roleManagementCustomCalloutExtension object.",
+      "resource": "identitygovernance"
+    },
+    {
       "path": "/identityGovernance/privilegedAccess/group",
       "method": "DELETE",
       "summary": "Delete navigation property group for identityGovernance",
@@ -100492,6 +100849,13 @@
       "method": "GET",
       "summary": "Get targetSchedule from identityGovernance",
       "description": "Schedule created by this request. Supports $expand.",
+      "resource": "identitygovernance"
+    },
+    {
+      "path": "/identityGovernance/privilegedAccess/group/assignmentScheduleRequests/{privilegedAccessGroupAssignmentScheduleRequest-id}/updateRequest",
+      "method": "POST",
+      "summary": "Invoke action updateRequest",
+      "description": "Update a privilegedAccessGroupAssignmentScheduleRequest object with the result of a custom extension evaluation for a group membership or ownership assignment request.",
       "resource": "identitygovernance"
     },
     {
@@ -105880,6 +106244,12 @@
       "resource": "me"
     },
     {
+      "path": "/me/cloudPCs/{cloudPC-id}/relocate",
+      "method": "POST",
+      "summary": "Invoke action relocate",
+      "resource": "me"
+    },
+    {
       "path": "/me/cloudPCs/{cloudPC-id}/rename",
       "method": "POST",
       "summary": "Invoke action rename",
@@ -107673,14 +108043,14 @@
       "path": "/me/distributionLists",
       "method": "GET",
       "summary": "List distributionLists",
-      "description": "Get a list of the distributionList objects in the user's mailbox.",
+      "description": "Get a list of the personal distribution lists in the user's mailbox.",
       "resource": "me"
     },
     {
       "path": "/me/distributionLists",
       "method": "POST",
       "summary": "Create distributionList",
-      "description": "Create a new distributionList in the user's mailbox.",
+      "description": "Create a new personal distribution list in the user's mailbox.",
       "resource": "me"
     },
     {
@@ -119957,7 +120327,7 @@
       "resource": "networkaccess"
     },
     {
-      "path": "/networkAccess/reports/microsoft.graph.networkaccess.destinationReport(startDateTime={startDateTime},endDateTime={endDateTime},aiAgentId='@aiAgentId',aiAgentName='@aiAgentName',agentTypeId='@agentTypeId',agentVirtualId='@agentVirtualId')",
+      "path": "/networkAccess/reports/microsoft.graph.networkaccess.destinationReport(startDateTime={startDateTime},endDateTime={endDateTime},aiAgentId='@aiAgentId',aiAgentName='@aiAgentName',agentTypeId='@agentTypeId',agentVirtualId='@agentVirtualId',deviceCategory='@deviceCategory')",
       "method": "GET",
       "summary": "Invoke function destinationReport",
       "resource": "networkaccess"
@@ -126640,7 +127010,7 @@
       "path": "/policies/roleManagementPolicies/{unifiedRoleManagementPolicy-id}/rules",
       "method": "GET",
       "summary": "List rules (for a role management policy)",
-      "description": "Get the rules defined for a role management policy. The rules are a collection of following types that are derived from the unifiedRoleManagementPolicyRule object: + unifiedRoleManagementPolicyApprovalRule + unifiedRoleManagementPolicyAuthenticationContextRule + unifiedRoleManagementPolicyEnablem...",
+      "description": "Get the rules defined for a role management policy. The rules are a collection of following types that are derived from the unifiedRoleManagementPolicyRule object: + unifiedRoleManagementPolicyApprovalRule + unifiedRoleManagementPolicyAuthenticationContextRule + unifiedRoleManagementPolicyCustomE...",
       "resource": "policies"
     },
     {
@@ -130956,6 +131326,12 @@
       "resource": "reports"
     },
     {
+      "path": "/reports/getMicrosoft365Emissions()",
+      "method": "GET",
+      "summary": "Invoke function getMicrosoft365Emissions",
+      "resource": "reports"
+    },
+    {
       "path": "/reports/getOffice365ActivationCounts()",
       "method": "GET",
       "summary": "Invoke function getOffice365ActivationCounts",
@@ -134840,6 +135216,13 @@
       "resource": "rolemanagement"
     },
     {
+      "path": "/roleManagement/directory/roleAssignmentScheduleRequests/{unifiedRoleAssignmentScheduleRequest-id}/updateRequest",
+      "method": "POST",
+      "summary": "Invoke action updateRequest",
+      "description": "Update a unifiedRoleAssignmentScheduleRequest object with the result of a custom extension evaluation for a Microsoft Entra role assignment request.",
+      "resource": "rolemanagement"
+    },
+    {
       "path": "/roleManagement/directory/roleAssignmentSchedules",
       "method": "GET",
       "summary": "List roleAssignmentSchedules",
@@ -135946,6 +136329,13 @@
       "resource": "rolemanagement"
     },
     {
+      "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/roleAssignmentScheduleRequests/{unifiedRoleAssignmentScheduleRequest-id}/updateRequest",
+      "method": "POST",
+      "summary": "Invoke action updateRequest",
+      "description": "Update a unifiedRoleAssignmentScheduleRequest object with the result of a custom extension evaluation for a Microsoft Entra role assignment request.",
+      "resource": "rolemanagement"
+    },
+    {
       "path": "/roleManagement/enterpriseApps/{rbacApplication-id}/roleAssignmentSchedules",
       "method": "GET",
       "summary": "Get roleAssignmentSchedules from roleManagement",
@@ -137013,6 +137403,13 @@
       "method": "GET",
       "summary": "Get targetSchedule from roleManagement",
       "description": "The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand and $select nested in $expand.",
+      "resource": "rolemanagement"
+    },
+    {
+      "path": "/roleManagement/entitlementManagement/roleAssignmentScheduleRequests/{unifiedRoleAssignmentScheduleRequest-id}/updateRequest",
+      "method": "POST",
+      "summary": "Invoke action updateRequest",
+      "description": "Update a unifiedRoleAssignmentScheduleRequest object with the result of a custom extension evaluation for a Microsoft Entra role assignment request.",
       "resource": "rolemanagement"
     },
     {
@@ -139027,6 +139424,44 @@
       "resource": "security"
     },
     {
+      "path": "/security/caseManagement/caseTypeConfigurations/{caseTypeConfiguration-id}/slaPolicies",
+      "method": "GET",
+      "summary": "Get slaPolicies from security",
+      "description": "The contained SLA policy definitions configured for this case type. Supports $filter and $orderby on createdBy, createdDateTime, description, displayName, id, isActive, lastModifiedBy, and lastModifiedDateTime on the collection endpoint. For information about supported query parameters, see List ...",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/caseTypeConfigurations/{caseTypeConfiguration-id}/slaPolicies",
+      "method": "POST",
+      "summary": "Create new navigation property to slaPolicies for security",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/caseTypeConfigurations/{caseTypeConfiguration-id}/slaPolicies/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/caseTypeConfigurations/{caseTypeConfiguration-id}/slaPolicies/{slaPolicyDefinition-id}",
+      "method": "DELETE",
+      "summary": "Delete navigation property slaPolicies for security",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/caseTypeConfigurations/{caseTypeConfiguration-id}/slaPolicies/{slaPolicyDefinition-id}",
+      "method": "GET",
+      "summary": "Get slaPolicies from security",
+      "description": "The contained SLA policy definitions configured for this case type. Supports $filter and $orderby on createdBy, createdDateTime, description, displayName, id, isActive, lastModifiedBy, and lastModifiedDateTime on the collection endpoint. For information about supported query parameters, see List ...",
+      "resource": "security"
+    },
+    {
+      "path": "/security/caseManagement/caseTypeConfigurations/{caseTypeConfiguration-id}/slaPolicies/{slaPolicyDefinition-id}",
+      "method": "PATCH",
+      "summary": "Update the navigation property slaPolicies in security",
+      "resource": "security"
+    },
+    {
       "path": "/security/caseManagement/caseTypeConfigurations/{caseTypeConfiguration-id}/statuses",
       "method": "GET",
       "summary": "Get statuses from security",
@@ -140663,7 +141098,7 @@
       "path": "/security/dataSecurityAndGovernance/processContent",
       "method": "POST",
       "summary": "Invoke action processContent",
-      "description": "Evaluate content against Microsoft Purview Data Loss Prevention (DLP) policies and return the policy actions that apply to the supplied content. Use this API when an application needs to evaluate content before or during data movement. In Agent-to-Tool (A2T) scenarios, the agent runtime calls thi...",
+      "description": "Process content from an agent interaction against tenant data protection policies. The protected agent is identified in protectedAppMetadata.applicationLocation, and the other parties in the interaction are identified in activityMetadata.participants.",
       "resource": "security"
     },
     {
@@ -140682,7 +141117,7 @@
       "path": "/security/dataSecurityAndGovernance/protectionScopes",
       "method": "GET",
       "summary": "Get protectionScopes from security",
-      "description": "Container for actions related to computing tenant-wide data protection scopes.",
+      "description": "The container for actions related to computing tenant-wide data protection scopes.",
       "resource": "security"
     },
     {
@@ -140695,6 +141130,7 @@
       "path": "/security/dataSecurityAndGovernance/protectionScopes/compute",
       "method": "POST",
       "summary": "Invoke action compute",
+      "description": "Compute tenant-wide data protection policies and actions, including user, group, or agent policy scopes.",
       "resource": "security"
     },
     {
@@ -145649,6 +146085,45 @@
       "method": "PUT",
       "summary": "Update media content for the navigation property bulkUpload in servicePrincipals",
       "description": "The bulk upload operation for the job.",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections",
+      "method": "GET",
+      "summary": "Get objectConnection",
+      "description": "Get the objectConnection cached linkage record for a known object in a synchronizationJob. During public preview, you must specify a known objectId. Collection listing isn't supported; a GET request to the objectConnections collection returns 400 Bad Request.",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections",
+      "method": "POST",
+      "summary": "Create new navigation property to objectConnections for servicePrincipals",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections/$count",
+      "method": "GET",
+      "summary": "Get the number of the resource",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections/{objectConnection-objectId}",
+      "method": "DELETE",
+      "summary": "Delete objectConnection",
+      "description": "Delete an objectConnection to clear the cached linkage record for an object in a synchronizationJob. The service clears the corresponding connector data store cache entry so the object is re-evaluated during a later synchronization cycle. This operation clears the linkage record; it doesn't delet...",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections/{objectConnection-objectId}",
+      "method": "GET",
+      "summary": "Get objectConnection",
+      "description": "Get the objectConnection cached linkage record for a known object in a synchronizationJob. During public preview, you must specify a known objectId. Collection listing isn't supported; a GET request to the objectConnections collection returns 400 Bad Request.",
+      "resource": "serviceprincipals"
+    },
+    {
+      "path": "/servicePrincipals/{servicePrincipal-id}/synchronization/jobs/{synchronizationJob-id}/objectConnections/{objectConnection-objectId}",
+      "method": "PATCH",
+      "summary": "Update the navigation property objectConnections in servicePrincipals",
       "resource": "serviceprincipals"
     },
     {
@@ -155209,7 +155684,7 @@
       "path": "/solutions/backupRestore/restorePoints/search",
       "method": "POST",
       "summary": "Invoke action search",
-      "description": "Search for the restorePoint objects associated with a protectionUnit. Optionally provide policyId to scope the search to a protection policy and validate that the specified protection units belong to that policy.",
+      "description": "Search for the restorePoint objects associated with a protectionUnit. You can also provide policyId to scope the search to a protection policy and validate that the specified protection units belong to that policy.",
       "resource": "solutions"
     },
     {
@@ -156566,15 +157041,15 @@
     {
       "path": "/solutions/migrations/crossTenantMigrationJobs",
       "method": "GET",
-      "summary": "List crossTenantMigrationJob objects",
-      "description": "Get a list of the crossTenantMigrationJob objects and their properties. By default 20 objects are returned. More can be retrieved through the @odata.nextLink url provided in the response.",
+      "summary": "List crossTenantMigrationJobs",
+      "description": "Get a list of the crossTenantMigrationJob objects and their properties. By default, 20 objects are returned. You can retrieve more objects by using the @odata.nextLink URL provided in the response.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/migrations/crossTenantMigrationJobs",
       "method": "POST",
       "summary": "Create crossTenantMigrationJob",
-      "description": "Create a new crossTenantMigrationJob. A job defines the migration batch but doesn't start validation or migration. After you create the job, call validate to verify tenant and resource configuration, then call migrate to begin the actual migration.",
+      "description": "Create a new crossTenantMigrationJob object. A job defines the migration batch but doesn't start validation or migration. After you create the job, call validate to verify tenant and resource configuration, then call migrate to begin the actual migration.",
       "resource": "solutions"
     },
     {
@@ -156587,14 +157062,14 @@
       "path": "/solutions/migrations/crossTenantMigrationJobs(displayName='{displayName}')",
       "method": "GET",
       "summary": "Get crossTenantMigrationJob",
-      "description": "Read the properties and relationships of crossTenantMigrationJob object. Includes details of the crossTenantMigrationJob , but not details of the individual crossTenantMigrationTasks of the crossTenantMigrationJob.",
+      "description": "Read the properties and relationships of a crossTenantMigrationJob object. This API provides details about the migration job, but not about the individual crossTenantMigrationTasks objects associated with the migration job.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/migrations/crossTenantMigrationJobs(displayName='{displayName}')",
       "method": "PATCH",
       "summary": "Update crossTenantMigrationJob",
-      "description": "Update the completeAfterDateTime of a crossTenantMigrationJob object. Only updates to the completeAfterDateTime are supported. Use this function to change when the crossTenantMigrationJob starts processing. If completeAfterDateTime is set to the past, the crossTenantMigrationJob starts processing.",
+      "description": "Update the completeAfterDateTime property of a crossTenantMigrationJob object. Only updates to completeAfterDateTime are supported. This property specifies when the migration job can proceed toward completion. If the value is in the past, the service treats it as already due and proceeds toward c...",
       "resource": "solutions"
     },
     {
@@ -156634,14 +157109,14 @@
       "path": "/solutions/migrations/crossTenantMigrationJobs/{crossTenantMigrationJob-id}",
       "method": "GET",
       "summary": "Get crossTenantMigrationJob",
-      "description": "Read the properties and relationships of crossTenantMigrationJob object. Includes details of the crossTenantMigrationJob , but not details of the individual crossTenantMigrationTasks of the crossTenantMigrationJob.",
+      "description": "Read the properties and relationships of a crossTenantMigrationJob object. This API provides details about the migration job, but not about the individual crossTenantMigrationTasks objects associated with the migration job.",
       "resource": "solutions"
     },
     {
       "path": "/solutions/migrations/crossTenantMigrationJobs/{crossTenantMigrationJob-id}",
       "method": "PATCH",
       "summary": "Update crossTenantMigrationJob",
-      "description": "Update the completeAfterDateTime of a crossTenantMigrationJob object. Only updates to the completeAfterDateTime are supported. Use this function to change when the crossTenantMigrationJob starts processing. If completeAfterDateTime is set to the past, the crossTenantMigrationJob starts processing.",
+      "description": "Update the completeAfterDateTime property of a crossTenantMigrationJob object. Only updates to completeAfterDateTime are supported. This property specifies when the migration job can proceed toward completion. If the value is in the past, the service treats it as already due and proceeds toward c...",
       "resource": "solutions"
     },
     {
@@ -156687,7 +157162,7 @@
       "path": "/solutions/migrations/crossTenantMigrationJobs/{crossTenantMigrationJob-id}/users/{crossTenantMigrationTask-id}",
       "method": "GET",
       "summary": "Get crossTenantMigrationTask",
-      "description": "Read the properties and relationships of crossTenantMigrationTask, which shows the details of the migration task for a single user of a crossTenantMigrationJob. The crossTenantMigrationTask contains the status details of migrations for the workloads specified in the crossTenantMigrationJob.",
+      "description": "Read the properties and relationships of a crossTenantMigrationTask object that provides details about the migration task for a single user in a crossTenantMigrationJob. The crossTenantMigrationTask contains the status details of migrations for the workloads specified in the crossTenantMigrationJob.",
       "resource": "solutions"
     },
     {
@@ -156700,7 +157175,7 @@
       "path": "/solutions/migrations/crossTenantMigrationJobs/{crossTenantMigrationJob-id}/users/{crossTenantMigrationTask-id}/cancel",
       "method": "POST",
       "summary": "Invoke action cancel",
-      "description": "Cancel a specific crossTenantMigrationTask for a User within a CrossTenantMigrationJob. If the User migration can't be canceled or is in a terminal state, a 409 CONFLICT response code is returned, and the migration continues.",
+      "description": "Cancel a specific crossTenantMigrationTask for a user in a crossTenantMigrationJob. If the user migration can't be canceled or is in a terminal state, a 409 Conflict response code is returned, and the migration continues.",
       "resource": "solutions"
     },
     {
@@ -168624,21 +169099,22 @@
     {
       "path": "/teamwork/messaging/customEmojis",
       "method": "POST",
-      "summary": "Create customEmoji",
+      "summary": "Create teamworkCustomEmoji",
       "description": "Create a new custom emoji in the teamwork messaging of the organization, which adds the custom emoji to Teams for the tenant. The emoji image is provided as base64-encoded content bytes.",
       "resource": "teamwork"
     },
     {
       "path": "/teamwork/messaging/customEmojis(displayName='{displayName}')",
       "method": "DELETE",
-      "summary": "Delete navigation property customEmojis for teamwork",
+      "summary": "Delete teamworkCustomEmoji",
+      "description": "Delete a custom emoji by display name from the teamwork messaging of the organization.",
       "resource": "teamwork"
     },
     {
       "path": "/teamwork/messaging/customEmojis(displayName='{displayName}')",
       "method": "GET",
-      "summary": "Get customEmojis from teamwork",
-      "description": "The collection of custom emojis available in organization messaging.",
+      "summary": "Get teamworkCustomEmoji",
+      "description": "Get a single custom emoji or the raw image content of a custom emoji by display name from the teamwork messaging of the organization.",
       "resource": "teamwork"
     },
     {
@@ -168656,20 +169132,42 @@
     {
       "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}",
       "method": "DELETE",
-      "summary": "Delete navigation property customEmojis for teamwork",
+      "summary": "Delete teamworkCustomEmoji",
+      "description": "Delete a custom emoji by display name from the teamwork messaging of the organization.",
       "resource": "teamwork"
     },
     {
       "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}",
       "method": "GET",
-      "summary": "Get customEmojis from teamwork",
-      "description": "The collection of custom emojis available in organization messaging.",
+      "summary": "Get teamworkCustomEmoji",
+      "description": "Get a single custom emoji or the raw image content of a custom emoji by display name from the teamwork messaging of the organization.",
       "resource": "teamwork"
     },
     {
       "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}",
       "method": "PATCH",
       "summary": "Update the navigation property customEmojis in teamwork",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}/$value",
+      "method": "DELETE",
+      "summary": "Delete teamworkCustomEmoji",
+      "description": "Delete a custom emoji by display name from the teamwork messaging of the organization.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}/$value",
+      "method": "GET",
+      "summary": "List customEmojis",
+      "description": "Get a list of custom emojis available in the teamwork messaging of the organization.",
+      "resource": "teamwork"
+    },
+    {
+      "path": "/teamwork/messaging/customEmojis/{teamworkCustomEmoji-id}/$value",
+      "method": "PUT",
+      "summary": "Update media content for the navigation property customEmojis in teamwork",
+      "description": "The unique identifier for an entity. Read-only.",
       "resource": "teamwork"
     },
     {
@@ -180199,6 +180697,12 @@
       "method": "POST",
       "summary": "Invoke action reboot",
       "description": "Reboot a specific Cloud PC.",
+      "resource": "users"
+    },
+    {
+      "path": "/users/{user-id}/cloudPCs/{cloudPC-id}/relocate",
+      "method": "POST",
+      "summary": "Invoke action relocate",
       "resource": "users"
     },
     {
