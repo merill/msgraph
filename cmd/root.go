@@ -24,6 +24,10 @@ and write safety enforcement.`,
 
 // Execute runs the root command.
 func Execute() error {
-	cfg = config.Load()
+	var err error
+	cfg, err = config.Load()
+	if err != nil {
+		return err
+	}
 	return rootCmd.Execute()
 }

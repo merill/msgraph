@@ -38,7 +38,7 @@ func NewManagedIdentityClient(cfg *config.Config) (*ManagedIdentityClient, error
 
 // AcquireToken acquires a token using managed identity.
 func (c *ManagedIdentityClient) AcquireToken(ctx context.Context, _ []string) (string, error) {
-	result, err := c.app.AcquireToken(ctx, config.GraphResource)
+	result, err := c.app.AcquireToken(ctx, c.cfg.GraphResource())
 	if err != nil {
 		return "", fmt.Errorf("managed identity auth failed: %w", err)
 	}

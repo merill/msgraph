@@ -65,7 +65,7 @@ func NewWorkloadIdentityClient(cfg *config.Config) (*WorkloadIdentityClient, err
 		},
 	)
 
-	_, cacheKey := sessionCacheKey(clientID, tenantID, cfg.WorkspaceRoot)
+	_, cacheKey := sessionCacheKey(clientID, tenantID, string(cfg.Cloud), cfg.WorkspaceRoot)
 
 	var opts []confidential.Option
 	if !cfg.NoTokenCache {
@@ -87,7 +87,7 @@ func NewWorkloadIdentityClient(cfg *config.Config) (*WorkloadIdentityClient, err
 
 // AcquireToken acquires a token using the federated assertion.
 func (c *WorkloadIdentityClient) AcquireToken(ctx context.Context, _ []string) (string, error) {
-	result, err := c.app.AcquireTokenByCredential(ctx, []string{config.GraphDefaultScope})
+	result, err := c.app.AcquireTokenByCredential(ctx, []string{c.cfg.GraphDefaultScope()})
 	if err != nil {
 		return "", fmt.Errorf("workload identity auth failed: %w", err)
 	}

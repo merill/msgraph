@@ -41,7 +41,7 @@ type SessionData struct {
 
 // NewDelegatedClient creates a new MSAL public client for delegated auth.
 func NewDelegatedClient(cfg *config.Config) (*DelegatedClient, error) {
-	workspaceRoot, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, cfg.WorkspaceRoot)
+	workspaceRoot, cacheKey := sessionCacheKey(cfg.ClientID, cfg.TenantID, string(cfg.Cloud), cfg.WorkspaceRoot)
 	cacheOpt := public.WithCache(&tokenCache{service: tokenCacheService, key: cacheKey})
 	if cfg.NoTokenCache {
 		cacheOpt = nil
@@ -229,9 +229,9 @@ func StatusJSON(ctx context.Context, provider TokenProvider) ([]byte, error) {
 }
 
 // sessionCacheKey returns the per-session cache key used for secure storage.
-// It scopes the cache by client, tenant, and current working directory so
+// It scopes the cache by client, tenant, cloud, and current working directory so
 // different folders do not share the same session.
-func sessionCacheKey(clientID, tenantID, workspaceRoot string) (string, string) {
+func sessionCacheKey(clientID, tenantID, cloud, workspaceRoot string) (string, string) {
 	cwd := workspaceRoot
 	if cwd == "" {
 		var err error
@@ -245,7 +245,7 @@ func sessionCacheKey(clientID, tenantID, workspaceRoot string) (string, string) 
 		cwd = filepath.Clean(cwd)
 	}
 
-	h := sha256.Sum256([]byte(clientID + ":" + tenantID + ":" + cwd))
+	h := sha256.Sum256([]byte(clientID + ":" + tenantID + ":" + cloud + ":" + cwd))
 	key := fmt.Sprintf("msgraph-%x", h[:16])
 
 	if debugEnabled() {
