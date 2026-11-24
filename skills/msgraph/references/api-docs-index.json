@@ -1,8 +1,8 @@
 {
   "version": "beta",
-  "generated": "2026-11-23T16:40:53Z",
-  "endpointCount": 6762,
-  "resourceCount": 4783,
+  "generated": "2026-11-24T16:36:46Z",
+  "endpointCount": 6788,
+  "resourceCount": 4829,
   "endpoints": [
     {
       "path": "/accessReviews",
@@ -402,6 +402,15 @@
       ]
     },
     {
+      "path": "/admin/configurationManagement/configurationDrifts/{configurationDrift-id}/remediate",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ]
+      }
+    },
+    {
       "path": "/admin/configurationManagement/configurationDrifts/{configurationDriftId}",
       "method": "GET",
       "permissions": {
@@ -503,7 +512,8 @@
         ]
       },
       "queryParams": [
-        "$select"
+        "$select",
+        "$expand"
       ]
     },
     {
@@ -605,6 +615,154 @@
         ],
         "application": [
           "ConfigurationMonitoring.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.Read.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$expand",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$skip",
+        "$top",
+        "$search"
+      ]
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates/{configurationTemplate-id}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates/{configurationTemplate-id}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.Read.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates/{configurationTemplate-id}",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates/{configurationTemplate-id}/versions",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.Read.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$expand",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$skip",
+        "$top",
+        "$search"
+      ]
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates/{configurationTemplate-id}/versions",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates/{configurationTemplate-id}/versions/{version}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates/{configurationTemplate-id}/versions/{version}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.Read.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/admin/configurationManagement/configurationTemplates/{configurationTemplate-id}/versions/{version}/referencedInternalMonitors",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ConfigurationMonitoring.Read.All"
+        ],
+        "application": [
+          "ConfigurationMonitoring.Read.All"
         ]
       }
     },
@@ -1459,6 +1617,319 @@
       "permissions": {
         "delegatedWork": [
           "ReportSettings.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/assignments",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyAssignment.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyAssignment.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$filter"
+      ]
+    },
+    {
+      "path": "/admin/resourcePolicy/assignments",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/assignments/{resourcePolicyAssignment-uniqueName}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/assignments/{resourcePolicyAssignment-uniqueName}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyAssignment.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyAssignment.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$expand"
+      ]
+    },
+    {
+      "path": "/admin/resourcePolicy/assignments/{resourcePolicyAssignment-uniqueName}",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/builtInDefinitions",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/configuration",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyConfiguration.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyConfiguration.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/configuration",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyConfiguration.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyConfiguration.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/configuration/getFederatedIdentityCredentialSubject(appId='{appId}')",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyConfiguration.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyConfiguration.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/definitions",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$filter",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/admin/resourcePolicy/definitions",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/definitions/{resourcePolicyDefinition-uniqueName}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/definitions/{resourcePolicyDefinition-uniqueName}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$expand"
+      ]
+    },
+    {
+      "path": "/admin/resourcePolicy/definitions/{resourcePolicyDefinition-uniqueName}",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/definitions/{resourcePolicyDefinition-uniqueName}/previousVersions",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/definitions/{resourcePolicyDefinition-uniqueName}/previousVersions/{resourcePolicyDefinitionVersion-version}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/definitions/{resourcePolicyDefinition-uniqueName}/previousVersions/{resourcePolicyDefinitionVersion-version}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/deletedItems/assignments",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyAssignment.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyAssignment.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/deletedItems/assignments/{resourcePolicyAssignment-uniqueName}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/deletedItems/assignments/{resourcePolicyAssignment-uniqueName}/restore",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyAssignment.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/deletedItems/definitions",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/deletedItems/definitions/{resourcePolicyDefinition-uniqueName}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/deletedItems/definitions/{resourcePolicyDefinition-uniqueName}/restore",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ],
+        "application": [
+          "ResourcePolicyDefinition.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/evaluateAssignedPolicies",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyEvaluation.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyEvaluation.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/admin/resourcePolicy/evaluatePolicy",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyEvaluation.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyEvaluation.Read.All"
         ]
       }
     },
@@ -4109,6 +4580,9 @@
         "$search",
         "$select",
         "$top"
+      ],
+      "requiredHeaders": [
+        "ConsistencyLevel: eventual"
       ]
     },
     {
@@ -5171,6 +5645,41 @@
         "$filter",
         "$orderby",
         "$top"
+      ]
+    },
+    {
+      "path": "/auditLogs/resourcePolicy",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyEvaluationEvent.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyEvaluationEvent.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$filter",
+        "$select",
+        "$top",
+        "$count",
+        "$orderby",
+        "$skip"
+      ]
+    },
+    {
+      "path": "/auditLogs/resourcePolicy/{resourcePolicyEvaluationEventId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ResourcePolicyEvaluationEvent.Read.All"
+        ],
+        "application": [
+          "ResourcePolicyEvaluationEvent.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
       ]
     },
     {
@@ -7202,14 +7711,14 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementApps.ReadWrite.All"
         ]
       },
       "notes": [
@@ -29037,20 +29546,20 @@
         "delegatedWork": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementApps.Read.All",
           "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementServiceConfig.Read.All",
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All"
         ]
@@ -29064,16 +29573,16 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "notes": [
@@ -34578,6 +35087,30 @@
       }
     },
     {
+      "path": "/deviceManagement/virtualEndpoint/cloudPCs/{cloudPCId}/retrieveFlexCloudPcAccessConfiguration",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.Read.All"
+        ],
+        "application": [
+          "CloudPC.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/cloudPCs/{cloudPCId}/retrieveFlexCloudPcConfigurationDetail",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.Read.All"
+        ],
+        "application": [
+          "CloudPC.Read.All"
+        ]
+      }
+    },
+    {
       "path": "/deviceManagement/virtualEndpoint/cloudPCs/{cloudPCId}/retrieveFrontlineCloudPcDetail",
       "method": "GET",
       "permissions": {
@@ -35360,6 +35893,95 @@
       }
     },
     {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.Read.All"
+        ],
+        "application": [
+          "CloudPC.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.ReadWrite.All"
+        ],
+        "application": [
+          "CloudPC.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/bulkCreateUserProfileSnapshot",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.ReadWrite.All"
+        ],
+        "application": [
+          "CloudPC.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/bulkExportUserProfileSnapshot",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.ReadWrite.All"
+        ],
+        "application": [
+          "CloudPC.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/retrieveUserSettingsPersistenceProfiles(configurationId='{value}')",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.Read.All"
+        ],
+        "application": [
+          "CloudPC.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.Read.All"
+        ],
+        "application": [
+          "CloudPC.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$top"
+      ]
+    },
+    {
+      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy-id}/assignments/{cloudPcProvisioningPolicyAssignment-id}/userSettingsPersistenceDetail/userProfileSnapshots/{cloudPcUserProfileSnapshot-id}/restore",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "CloudPC.ReadWrite.All"
+        ],
+        "application": [
+          "CloudPC.ReadWrite.All"
+        ]
+      }
+    },
+    {
       "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{id}",
       "method": "DELETE",
       "permissions": {
@@ -35437,18 +36059,6 @@
     },
     {
       "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{id}/assignments/{assignment_id}/cloudPCUserSettingsPersistence/retrieveUserSettingsPersistenceProfileUsage(configurationId='{value}')",
-      "method": "GET",
-      "permissions": {
-        "delegatedWork": [
-          "CloudPC.Read.All"
-        ],
-        "application": [
-          "CloudPC.Read.All"
-        ]
-      }
-    },
-    {
-      "path": "/deviceManagement/virtualEndpoint/provisioningPolicies/{id}/assignments/{assignment_id}/cloudPCUserSettingsPersistence/retrieveUserSettingsPersistenceProfiles(configurationId='{value}')",
       "method": "GET",
       "permissions": {
         "delegatedWork": [
@@ -40954,12 +41564,12 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "Files.Read.All",
-          "Files.ReadWrite.All"
+          "Files.ReadWrite.All",
+          "Files.Read.All"
         ],
         "application": [
-          "Files.Read.All",
-          "Files.ReadWrite.All"
+          "Files.ReadWrite.All",
+          "Files.Read.All"
         ]
       }
     },
@@ -45436,16 +46046,6 @@
       "permissions": {}
     },
     {
-      "path": "/groups/{groupsId}/planner",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/groups/{groupsId}/planner/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/groups/{groupsId}/planner/plans_v2",
       "method": "GET",
       "permissions": {
@@ -45456,16 +46056,6 @@
           "Tasks.Read.All"
         ]
       }
-    },
-    {
-      "path": "/groups/{groupsId}/planner/plans_v2/$ref",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
-      "path": "/groups/{groupsId}/planner/plans_v2/{id}/$ref",
-      "method": "DELETE",
-      "permissions": {}
     },
     {
       "path": "/groups/{id}",
@@ -53923,8 +54513,8 @@
         ]
       },
       "queryParams": [
-        "$select",
-        "$top"
+        "$top",
+        "$select"
       ],
       "notes": [
         "The createdDateTime and lastModifiedDateTime properties of event don't support $select. To get their values, simply query on calendarView without applying $select."
@@ -58137,16 +58727,16 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "Mail.Read",
-          "Mail.ReadBasic"
+          "Mail.ReadBasic",
+          "Mail.Read"
         ],
         "delegatedPersonal": [
-          "Mail.Read",
-          "Mail.ReadBasic"
+          "Mail.ReadBasic",
+          "Mail.Read"
         ],
         "application": [
-          "Mail.Read",
-          "Mail.ReadBasic.All"
+          "Mail.ReadBasic.All",
+          "Mail.Read"
         ]
       },
       "queryParams": [
@@ -59889,11 +60479,6 @@
       }
     },
     {
-      "path": "/me/planner/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/all/delta",
       "method": "GET",
       "permissions": {
@@ -59933,38 +60518,8 @@
       }
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/buckets",
-      "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/buckets",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/buckets/{bucketId}",
-      "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/buckets/{bucketId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/buckets/{bucketId}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/contexts",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/contexts",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -59973,23 +60528,8 @@
       "permissions": {}
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/contexts/{planContextLinkId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/contexts/{planContextLinkId}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -59998,23 +60538,8 @@
       "permissions": {}
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -60023,23 +60548,8 @@
       "permissions": {}
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions/{customChoiceOptionId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/customFieldDefinitions/{customFieldDefinitionId}/choiceOptions/{customChoiceOptionId}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/dependencies",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/dependencies",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -60048,23 +60558,8 @@
       "permissions": {}
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/dependencies/{dependencyId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/dependencies/{dependencyId}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/goals",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/goals",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -60073,23 +60568,8 @@
       "permissions": {}
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/goals/{goalId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/goals/{goalId}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/historyItems",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/historyItems",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -60098,23 +60578,8 @@
       "permissions": {}
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/historyItems/{historyItemId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/historyItems/{historyItemId}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/links/{contentLinkId}",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/links/{contentLinkId}",
-      "method": "PATCH",
       "permissions": {}
     },
     {
@@ -60123,18 +60588,8 @@
       "permissions": {}
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/checklist/{checklistItemV4Id}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/customFieldValues/{customFieldValueId}",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/customFieldValues/{customFieldValueId}",
-      "method": "PATCH",
       "permissions": {}
     },
     {
@@ -60143,18 +60598,8 @@
       "permissions": {}
     },
     {
-      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/messages/{plannerChatMessageId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
       "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/userAssignments/{userAssignmentId}",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/me/planner/plans_v2/{planId}/tasks/{taskId}/userAssignments/{userAssignmentId}",
-      "method": "PATCH",
       "permissions": {}
     },
     {
@@ -63210,12 +63655,26 @@
     {
       "path": "/networkAccess/filteringProfiles/{filteringProfileId}/policies",
       "method": "GET",
-      "permissions": {}
+      "permissions": {
+        "delegatedWork": [
+          "NetworkAccess.Read.All"
+        ],
+        "application": [
+          "NetworkAccess.Read.All"
+        ]
+      }
     },
     {
       "path": "/networkAccess/filteringProfiles/{filteringProfileId}/policies/{policyLinkId}",
       "method": "DELETE",
-      "permissions": {}
+      "permissions": {
+        "delegatedWork": [
+          "NetworkAccess.ReadWrite.All"
+        ],
+        "application": [
+          "NetworkAccess.ReadWrite.All"
+        ]
+      }
     },
     {
       "path": "/networkAccess/filteringProfiles/{filteringProfileId}/policies/{policyLinkId}",
@@ -63225,7 +63684,14 @@
     {
       "path": "/networkAccess/filteringProfiles/{filteringProfileId}/policies/{policyLinkId}",
       "method": "PATCH",
-      "permissions": {}
+      "permissions": {
+        "delegatedWork": [
+          "NetworkAccess.ReadWrite.All"
+        ],
+        "application": [
+          "NetworkAccess.ReadWrite.All"
+        ]
+      }
     },
     {
       "path": "/networkAccess/filteringProfiles/{filteringProfileId}/policies/{policyLinkId}/policy",
@@ -65757,38 +66223,8 @@
       }
     },
     {
-      "path": "/planView/categories",
-      "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/planView/categories",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
-      "path": "/planView/categories/{categoryDefinitionId}",
-      "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/planView/categories/{categoryDefinitionId}",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/planView/categories/{categoryDefinitionId}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/planner",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/planner",
-      "method": "PATCH",
       "permissions": {}
     },
     {
@@ -66069,19 +66505,12 @@
     },
     {
       "path": "/planner/plans_v2",
-      "method": "GET",
-      "permissions": {
-        "delegatedWork": [
-          "Tasks.Read"
-        ],
-        "application": [
-          "Tasks.Read.All"
-        ]
-      }
+      "method": "POST",
+      "permissions": {}
     },
     {
-      "path": "/planner/plans_v2",
-      "method": "POST",
+      "path": "/planner/plans_v2/{planId}",
+      "method": "DELETE",
       "permissions": {}
     },
     {
@@ -66102,9 +66531,72 @@
       "permissions": {}
     },
     {
-      "path": "/planner/plans_v2/{planId}/$ref",
+      "path": "/planner/plans_v2/{planId}/buckets",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/planner/plans_v2/{planId}/buckets",
+      "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/planner/plans_v2/{planId}/buckets/{bucketId}",
       "method": "DELETE",
       "permissions": {}
+    },
+    {
+      "path": "/planner/plans_v2/{planId}/buckets/{bucketId}",
+      "method": "GET",
+      "permissions": {}
+    },
+    {
+      "path": "/planner/plans_v2/{planId}/buckets/{bucketId}",
+      "method": "PATCH",
+      "permissions": {}
+    },
+    {
+      "path": "/planner/plans_v2/{planId}/tasks",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/planner/plans_v2/{planId}?$expand=planView($expand=categories)",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
+    },
+    {
+      "path": "/planner/plans_v2?$filter=container/containerType",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Tasks.Read"
+        ],
+        "application": [
+          "Tasks.Read.All"
+        ]
+      }
     },
     {
       "path": "/planner/rosters",
@@ -66478,11 +66970,19 @@
         "application": [
           "Tasks.Read.All"
         ]
-      }
+      },
+      "queryParams": [
+        "$filter"
+      ]
     },
     {
       "path": "/planner/tasks_v2",
       "method": "POST",
+      "permissions": {}
+    },
+    {
+      "path": "/planner/tasks_v2/{taskId}",
+      "method": "DELETE",
       "permissions": {}
     },
     {
@@ -66503,8 +67003,8 @@
       "permissions": {}
     },
     {
-      "path": "/planner/tasks_v2/{taskId}/$ref",
-      "method": "DELETE",
+      "path": "/planner/tasks_v2/{taskId}/messages",
+      "method": "GET",
       "permissions": {}
     },
     {
@@ -68954,6 +69454,18 @@
       }
     },
     {
+      "path": "/print/operations/{printOperationId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "Printer.Create"
+        ]
+      },
+      "queryParams": [
+        "$select"
+      ]
+    },
+    {
       "path": "/print/printerShares/{id}/allowedUsers/{id}/$ref",
       "method": "DELETE",
       "permissions": {
@@ -69191,6 +69703,138 @@
       }
     },
     {
+      "path": "/print/printers/{printerId}/jobs/release",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "PrintJob.ReadWriteBasic"
+        ]
+      }
+    },
+    {
+      "path": "/print/printers/{printerId}/jobs/releaseWait",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "PrintJob.ReadBasic"
+        ]
+      }
+    },
+    {
+      "path": "/print/printers/{printerId}/pullPrintPrinters",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.FullControl.All"
+        ]
+      }
+    },
+    {
+      "path": "/print/pullPrintPrinters",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.Read.All"
+        ],
+        "application": [
+          "PullPrintPrinter.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$count",
+        "$expand",
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/print/pullPrintPrinters",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.FullControl.All"
+        ]
+      }
+    },
+    {
+      "path": "/print/pullPrintPrinters/{pullPrintPrinterId}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.FullControl.All"
+        ]
+      }
+    },
+    {
+      "path": "/print/pullPrintPrinters/{pullPrintPrinterId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.Read.All"
+        ],
+        "application": [
+          "PullPrintPrinter.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/print/pullPrintPrinters/{pullPrintPrinterId}",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/print/pullPrintPrinters/{pullPrintPrinterId}/memberSuggestions",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.FullControl.All"
+        ]
+      },
+      "queryParams": [
+        "$filter",
+        "$orderby",
+        "$select",
+        "$top"
+      ]
+    },
+    {
+      "path": "/print/pullPrintPrinters/{pullPrintPrinterId}/printers/$ref",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.FullControl.All"
+        ]
+      }
+    },
+    {
+      "path": "/print/pullPrintPrinters/{pullPrintPrinterId}/printers/{printerId}/$ref",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.FullControl.All"
+        ]
+      }
+    },
+    {
+      "path": "/print/pullPrintPrinters/{pullPrintPrinterId}/restoreFactoryDefaults",
+      "method": "POST",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.ReadWrite.All"
+        ]
+      }
+    },
+    {
       "path": "/print/reports/getGroupArchivedPrintJobs(groupId='{groupId}',startDateTime='{startDateTime}',endDateTime='{endDateTime}')",
       "method": "GET",
       "permissions": {
@@ -69414,6 +70058,19 @@
         "$select",
         "$expand",
         "$count"
+      ]
+    },
+    {
+      "path": "/print/shares/{printerShareId}/pullPrintPrinter",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "PullPrintPrinter.Read.All",
+          "PrinterShare.ReadBasic.All"
+        ]
+      },
+      "queryParams": [
+        "$select"
       ]
     },
     {
@@ -76342,10 +76999,268 @@
       }
     },
     {
+      "path": "/security/contentManagement/installedPackageContents",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.Read.All"
+        ],
+        "application": [
+          "ContentHub-Installed.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$orderby",
+        "$count",
+        "$top",
+        "$skip",
+        "$search",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/installedPackages",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.Read.All"
+        ],
+        "application": [
+          "ContentHub-Installed.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$orderby",
+        "$count",
+        "$top",
+        "$expand",
+        "$skip",
+        "$search"
+      ],
+      "defaultProperties": [
+        "id",
+        "contentProductId",
+        "version",
+        "installedDateTime",
+        "lastModifiedDateTime"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/installedPackages/{packageId}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.ReadWrite.All"
+        ],
+        "application": [
+          "ContentHub-Installed.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/security/contentManagement/installedPackages/{packageId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.Read.All"
+        ],
+        "application": [
+          "ContentHub-Installed.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$search",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/installedPackages/{packageId}",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.ReadWrite.All"
+        ],
+        "application": [
+          "ContentHub-Installed.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/security/contentManagement/installedPackages/{packageId}/contents",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.Read.All"
+        ],
+        "application": [
+          "ContentHub-Installed.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$orderby",
+        "$count",
+        "$top",
+        "$skip",
+        "$search",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/installedPackages/{packageId}/contents/{contentId}",
+      "method": "DELETE",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.ReadWrite.All"
+        ],
+        "application": [
+          "ContentHub-Installed.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/security/contentManagement/installedPackages/{packageId}/contents/{contentId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.Read.All"
+        ],
+        "application": [
+          "ContentHub-Installed.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$search",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/installedPackages/{packageId}/contents/{contentId}",
+      "method": "PATCH",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Installed.ReadWrite.All"
+        ],
+        "application": [
+          "ContentHub-Installed.ReadWrite.All"
+        ]
+      }
+    },
+    {
+      "path": "/security/contentManagement/packageContents",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Catalog.Read.All"
+        ],
+        "application": [
+          "ContentHub-Catalog.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$orderby",
+        "$count",
+        "$top",
+        "$search",
+        "$skip",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/packages",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Catalog.Read.All"
+        ],
+        "application": [
+          "ContentHub-Catalog.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$orderby",
+        "$count",
+        "$top",
+        "$search",
+        "$expand",
+        "$skip"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/packages/{packageId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Catalog.Read.All"
+        ],
+        "application": [
+          "ContentHub-Catalog.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$expand",
+        "$search"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/packages/{packageId}/contents",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Catalog.Read.All"
+        ],
+        "application": [
+          "ContentHub-Catalog.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$filter",
+        "$orderby",
+        "$count",
+        "$top",
+        "$search",
+        "$skip",
+        "$expand"
+      ]
+    },
+    {
+      "path": "/security/contentManagement/packages/{packageId}/contents/{contentId}",
+      "method": "GET",
+      "permissions": {
+        "delegatedWork": [
+          "ContentHub-Catalog.Read.All"
+        ],
+        "application": [
+          "ContentHub-Catalog.Read.All"
+        ]
+      },
+      "queryParams": [
+        "$select",
+        "$search",
+        "$expand"
+      ]
+    },
+    {
       "path": "/security/contentManagement/repositories",
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "Repository.Read.All"
+        ],
+        "application": [
           "Repository.Read.All"
         ]
       },
@@ -76366,6 +77281,9 @@
       "permissions": {
         "delegatedWork": [
           "Repository.ReadWrite.All"
+        ],
+        "application": [
+          "Repository.ReadWrite.All"
         ]
       }
     },
@@ -76375,6 +77293,9 @@
       "permissions": {
         "delegatedWork": [
           "Repository.Read.All"
+        ],
+        "application": [
+          "Repository.Read.All"
         ]
       }
     },
@@ -76383,6 +77304,9 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "Repository.Read.All"
+        ],
+        "application": [
           "Repository.Read.All"
         ]
       },
@@ -76398,6 +77322,9 @@
       "permissions": {
         "delegatedWork": [
           "Repository.ReadWrite.All"
+        ],
+        "application": [
+          "Repository.ReadWrite.All"
         ]
       }
     },
@@ -76406,6 +77333,9 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
+          "Repository.ReadWrite.All"
+        ],
+        "application": [
           "Repository.ReadWrite.All"
         ]
       }
@@ -88097,16 +89027,6 @@
       "permissions": {}
     },
     {
-      "path": "/teams/{teamsId}/channels/{channelId}/planner",
-      "method": "PATCH",
-      "permissions": {}
-    },
-    {
-      "path": "/teams/{teamsId}/channels/{channelId}/planner/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/teams/{teamsId}/channels/{channelId}/planner/plans_v2",
       "method": "GET",
       "permissions": {
@@ -88117,16 +89037,6 @@
           "Tasks.Read.All"
         ]
       }
-    },
-    {
-      "path": "/teams/{teamsId}/channels/{channelId}/planner/plans_v2/$ref",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
-      "path": "/teams/{teamsId}/channels/{channelId}/planner/plans_v2/{id}/$ref",
-      "method": "DELETE",
-      "permissions": {}
     },
     {
       "path": "/teams/{teamsId}/schedule/dayNotes",
@@ -90267,26 +91177,26 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
+          "User.ReadBasic.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "User.ReadBasic.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
+          "User.Read.All",
           "DeviceManagementConfiguration.Read.All",
           "DeviceManagementConfiguration.ReadWrite.All",
+          "DeviceManagementApps.Read.All",
+          "DeviceManagementApps.ReadWrite.All",
           "DeviceManagementManagedDevices.Read.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
-          "User.Read.All",
           "DeviceManagementServiceConfig.Read.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
-          "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "queryParams": [
@@ -90303,8 +91213,8 @@
         "ConsistencyLevel: eventual"
       ],
       "notes": [
-        "The Microsoft Graph API for Intune requires an active Intune license for the tenant.",
-        "Guest users cannot call this API. For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?."
+        "Guest users cannot call this API. For more information about the permissions for member and guest users, see What are the default user permissions in Microsoft Entra ID?.",
+        "The Microsoft Graph API for Intune requires an active Intune license for the tenant."
       ]
     },
     {
@@ -90312,17 +91222,17 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "User.Create"
         ],
         "application": [
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "User.Create"
         ]
       },
@@ -90495,38 +91405,38 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "UserAuthenticationMethod.Read",
-          "Calendars.ReadBasic",
-          "AppRoleAssignment.ReadWrite.All",
+          "User.Read",
           "UserAuthMethod-ResourceKey.Read.All",
-          "User.Read"
+          "AppRoleAssignment.ReadWrite.All",
+          "UserAuthenticationMethod.Read",
+          "Calendars.ReadBasic"
         ],
         "delegatedPersonal": [
-          "Calendars.ReadBasic",
-          "User.Read"
+          "User.Read",
+          "Calendars.ReadBasic"
         ],
         "application": [
+          "User.Read.All",
+          "UserAuthMethod-ResourceKey.Read.All",
+          "Directory.Read.All",
           "Chat.Read.All",
           "UserAuthenticationMethod.Read",
-          "Calendars.ReadBasic",
-          "Directory.Read.All",
-          "UserAuthMethod-ResourceKey.Read.All",
-          "User.Read.All"
+          "Calendars.ReadBasic"
         ]
       },
       "queryParams": [
-        "$top",
-        "$filter",
         "$select",
+        "$top",
         "$skip",
         "$count",
+        "$filter",
         "$expand",
         "$orderby",
         "$search"
       ],
       "notes": [
-        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
         "To ensure complete results for users with many indirect app role assignments, use the ConsistencyLevel header set to eventual and $count, as described in Advanced query capabilities on Azure AD directory objects. For an example, see Example 1.",
+        "These filter clauses can be joined by using the or operator. A filter clause can appear more than once in a query, and it can filter on a different value each time it appears within the query.",
         "Delta only returns messages within the last eight months. You can use GET /users/{id | user-principal-name}/chats/getAllMessages to retrieve older messages."
       ]
     },
@@ -90536,8 +91446,8 @@
       "permissions": {
         "delegatedWork": [
           "UserAuthenticationMethod.ReadWrite.All",
-          "UserAuthMethod-Phone.ReadWrite",
-          "UserAuthenticationMethod.ReadWrite"
+          "UserAuthenticationMethod.ReadWrite",
+          "UserAuthMethod-Phone.ReadWrite"
         ],
         "application": [
           "UserAuthenticationMethod.ReadWrite.All",
@@ -90550,24 +91460,24 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "UserAuthMethod-Phone.ReadWrite",
+          "UserAuthenticationMethod.ReadWrite.All",
           "LicenseAssignment.ReadWrite.All",
-          "Mail.Send",
           "UserAuthMethod-Email.ReadWrite",
-          "Sites.ReadWrite.All",
+          "UserAuthMethod-Phone.ReadWrite",
           "AppRoleAssignment.ReadWrite.All",
-          "UserAuthMethod-TAP.Read",
-          "UserAuthenticationMethod.ReadWrite.All"
+          "Sites.ReadWrite.All",
+          "Mail.Send",
+          "UserAuthMethod-TAP.Read"
         ],
         "delegatedPersonal": [
           "Mail.Send"
         ],
         "application": [
-          "UserAuthenticationMethod.ReadWrite.All",
           "LicenseAssignment.ReadWrite.All",
-          "Mail.Send",
-          "Sites.ReadWrite.All",
+          "UserAuthenticationMethod.ReadWrite.All",
           "AppRoleAssignment.ReadWrite.All",
+          "Sites.ReadWrite.All",
+          "Mail.Send",
           "UserAuthMethod-TAP.Read.All"
         ]
       }
@@ -90859,8 +91769,8 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
-          "TeamsAppInstallation.ReadWriteSelfForUser",
-          "TeamworkTargetedMessage.ReadWrite"
+          "TeamworkTargetedMessage.ReadWrite",
+          "TeamsAppInstallation.ReadWriteSelfForUser"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -90897,8 +91807,8 @@
       "method": "POST",
       "permissions": {
         "delegatedWork": [
-          "TeamsAppInstallation.ReadWriteSelfForUser",
-          "TeamworkTargetedMessage.ReadWrite"
+          "TeamworkTargetedMessage.ReadWrite",
+          "TeamsAppInstallation.ReadWriteSelfForUser"
         ],
         "application": [
           "TeamsAppInstallation.ReadWriteSelfForUser.All"
@@ -91364,16 +92274,16 @@
       "method": "DELETE",
       "permissions": {
         "delegatedWork": [
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
+          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementServiceConfig.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -91385,24 +92295,24 @@
       "method": "GET",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementConfiguration.Read.All",
-          "DeviceManagementConfiguration.ReadWrite.All",
-          "DeviceManagementManagedDevices.Read.All",
-          "DeviceManagementManagedDevices.ReadWrite.All",
           "DeviceManagementServiceConfig.Read.All",
           "DeviceManagementServiceConfig.ReadWrite.All",
+          "DeviceManagementConfiguration.Read.All",
+          "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.Read.All",
-          "DeviceManagementApps.ReadWrite.All"
+          "DeviceManagementApps.ReadWrite.All",
+          "DeviceManagementManagedDevices.Read.All",
+          "DeviceManagementManagedDevices.ReadWrite.All"
         ]
       },
       "notes": [
@@ -91414,16 +92324,16 @@
       "method": "PATCH",
       "permissions": {
         "delegatedWork": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ],
         "application": [
-          "DeviceManagementServiceConfig.ReadWrite.All",
           "DeviceManagementConfiguration.ReadWrite.All",
           "DeviceManagementApps.ReadWrite.All",
-          "DeviceManagementManagedDevices.ReadWrite.All"
+          "DeviceManagementManagedDevices.ReadWrite.All",
+          "DeviceManagementServiceConfig.ReadWrite.All"
         ]
       },
       "notes": [
@@ -91431,7 +92341,7 @@
       ]
     },
     {
-      "path": "/users/{usersId}/adhocCalls/getAllRecordings",
+      "path": "/users/{usersId}/adhocCalls/getAllRecordings(userId={userId},startDateTime={startDateTime},endDateTime={endDateTime})",
       "method": "GET",
       "permissions": {
         "application": [
@@ -91440,7 +92350,7 @@
       }
     },
     {
-      "path": "/users/{usersId}/adhocCalls/getAllTranscripts",
+      "path": "/users/{usersId}/adhocCalls/getAllTranscripts(userId={userId},startDateTime={startDateTime},endDateTime={endDateTime})",
       "method": "GET",
       "permissions": {
         "application": [
@@ -92143,38 +93053,13 @@
       }
     },
     {
-      "path": "/users/{usersId}/planner/plans_v2/$ref",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
-      "path": "/users/{usersId}/planner/plans_v2/{id}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/users/{usersId}/planner/plans_v2/{planId}/goals/{goalId}/tasks",
       "method": "GET",
       "permissions": {}
     },
     {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/goals/{goalId}/tasks/$ref",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/goals/{goalId}/tasks/{id}/$ref",
-      "method": "DELETE",
-      "permissions": {}
-    },
-    {
       "path": "/users/{usersId}/planner/plans_v2/{planId}/links",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/links",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -92183,18 +93068,8 @@
       "permissions": {}
     },
     {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/checklist",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
       "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/customFieldValues",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/customFieldValues",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -92203,28 +93078,8 @@
       "permissions": {}
     },
     {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/links",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/messages",
-      "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/messages",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
       "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/userAssignments",
       "method": "GET",
-      "permissions": {}
-    },
-    {
-      "path": "/users/{usersId}/planner/plans_v2/{planId}/tasks/{taskId}/userAssignments",
-      "method": "POST",
       "permissions": {}
     },
     {
@@ -92253,16 +93108,6 @@
           "Tasks.Read.All"
         ]
       }
-    },
-    {
-      "path": "/users/{usersId}/planner/tasks_v2/$ref",
-      "method": "POST",
-      "permissions": {}
-    },
-    {
-      "path": "/users/{usersId}/planner/tasks_v2/{id}/$ref",
-      "method": "DELETE",
-      "permissions": {}
     },
     {
       "path": "/users/{usersId}/removeAllDevicesFromManagement",
@@ -94203,6 +95048,11 @@
           "name": "requestType",
           "type": "String",
           "notes": "Read-only"
+        },
+        {
+          "name": "resourceRoleRiskAnalysisResults",
+          "type": "resourceRoleRiskAnalysisResult collection",
+          "notes": "Read-only; Not nullable"
         },
         {
           "name": "schedule",
@@ -97802,6 +98652,13 @@
           "notes": "Not nullable"
         },
         {
+          "name": "clientIdMetadataDocumentUrl",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
           "name": "customSecurityAttributes",
           "type": "customSecurityAttributeValue"
         },
@@ -97824,9 +98681,45 @@
           "type": "String"
         },
         {
+          "name": "hasClientIdMetadataDocument",
+          "type": "Boolean",
+          "filter": [
+            "eq"
+          ],
+          "notes": "Read-only; Not nullable"
+        },
+        {
           "name": "id",
           "type": "String",
           "notes": "Read-only; Not nullable"
+        },
+        {
+          "name": "instanceMode",
+          "type": "instanceMode",
+          "filter": [
+            "eq"
+          ],
+          "notes": "Not nullable"
+        },
+        {
+          "name": "lifecyclePolicyComplianceState",
+          "type": "lifecyclePolicyComplianceState",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lifecyclePolicyComplianceStateLastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lifecyclePolicyComplianceStateReason",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lifecyclePolicyNonComplianceDisablementDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "managerApplications",
@@ -97908,6 +98801,14 @@
         {
           "name": "isDisabled",
           "type": "Boolean"
+        },
+        {
+          "name": "isSingleInstance",
+          "type": "Boolean",
+          "filter": [
+            "eq"
+          ],
+          "notes": "Not nullable"
         },
         {
           "name": "keyCredentials",
@@ -98030,6 +98931,26 @@
         {
           "name": "info",
           "type": "informationalUrl"
+        },
+        {
+          "name": "lifecyclePolicyComplianceState",
+          "type": "lifecyclePolicyComplianceState",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lifecyclePolicyComplianceStateLastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lifecyclePolicyComplianceStateReason",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lifecyclePolicyNonComplianceDisablementDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "managerApplications",
@@ -110757,6 +111678,14 @@
           ]
         },
         {
+          "name": "isSingleInstance",
+          "type": "Boolean",
+          "filter": [
+            "eq"
+          ],
+          "notes": "Not nullable"
+        },
+        {
           "name": "keyCredentials",
           "type": "keyCredential collection",
           "filter": [
@@ -117125,6 +118054,10 @@
         {
           "name": "resourceType",
           "type": "String"
+        },
+        {
+          "name": "resourceVersion",
+          "type": "Int32"
         }
       ]
     },
@@ -119443,6 +120376,11 @@
         {
           "name": "owner",
           "type": "emailAddress",
+          "notes": "Read-only"
+        },
+        {
+          "name": "sharingLevel",
+          "type": "sharingLevelOfDetails",
           "notes": "Read-only"
         }
       ]
@@ -123417,8 +124355,25 @@
       ]
     },
     {
+      "name": "cloudPCUserSettingsPersistenceAutoCleanupDetail",
+      "properties": [
+        {
+          "name": "autoCleanupMode",
+          "type": "cloudPcAutoCleanupMode"
+        },
+        {
+          "name": "inactiveProfileRetentionDays",
+          "type": "Int32"
+        }
+      ]
+    },
+    {
       "name": "cloudPCUserSettingsPersistenceDetail",
       "properties": [
+        {
+          "name": "autoCleanupDetail",
+          "type": "cloudPCUserSettingsPersistenceAutoCleanupDetail"
+        },
         {
           "name": "gracePeriodEndDateTime",
           "type": "DateTimeOffset",
@@ -123428,6 +124383,14 @@
           "name": "id",
           "type": "String",
           "notes": "Read-only"
+        },
+        {
+          "name": "snapshotConfiguration",
+          "type": "cloudPcUserSettingsPersistenceSnapshotConfiguration"
+        },
+        {
+          "name": "storageConfiguration",
+          "type": "cloudPcStorageConfiguration"
         }
       ]
     },
@@ -123437,6 +124400,11 @@
         {
           "name": "lastProfileAttachedDateTime",
           "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "profileDiskEncryptionType",
+          "type": "cloudPcDiskEncryptionType",
           "notes": "Read-only"
         },
         {
@@ -123455,8 +124423,28 @@
           "notes": "Read-only"
         },
         {
+          "name": "usageDetail",
+          "type": "cloudPCUserSettingsPersistenceProfileUsageDetail",
+          "notes": "Read-only"
+        },
+        {
           "name": "userPrincipalName",
           "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "cloudPCUserSettingsPersistenceProfileUsageDetail",
+      "properties": [
+        {
+          "name": "lastUsedSizeSyncDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "profileUsedSizeInGB",
+          "type": "Double",
           "notes": "Read-only"
         }
       ]
@@ -125486,6 +126474,26 @@
       ]
     },
     {
+      "name": "cloudPcFlexAccessConfiguration",
+      "properties": [
+        {
+          "name": "accessState",
+          "type": "cloudPcFlexAccessState",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "cloudPcFlexConfigurationDetail",
+      "properties": [
+        {
+          "name": "flexCloudPcAvailability",
+          "type": "cloudPcFlexAvailabilityStatus",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "cloudPcForensicStorageAccount",
       "properties": [
         {
@@ -127113,6 +128121,19 @@
       ]
     },
     {
+      "name": "cloudPcStorageConfiguration",
+      "properties": [
+        {
+          "name": "allocatedStorageSizeCategory",
+          "type": "cloudPcUserSettingsPersistenceStorageSizeCategory"
+        },
+        {
+          "name": "storageSizingType",
+          "type": "cloudPcStorageSizingType"
+        }
+      ]
+    },
+    {
       "name": "cloudPcSubscription",
       "properties": [
         {
@@ -127205,6 +128226,126 @@
       ]
     },
     {
+      "name": "cloudPcUserProfileBulkActionResult",
+      "properties": [
+        {
+          "name": "failedCount",
+          "type": "Int32",
+          "notes": "Read-only"
+        },
+        {
+          "name": "totalCount",
+          "type": "Int32",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "cloudPcUserProfileSnapshot",
+      "properties": [
+        {
+          "name": "cloudProfileId",
+          "type": "String",
+          "notes": "Read-only; Not nullable"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only; Not nullable"
+        },
+        {
+          "name": "expirationDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only; Not nullable"
+        },
+        {
+          "name": "lastRestoredDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "snapshotSizeInGB",
+          "type": "Int32",
+          "notes": "Read-only"
+        },
+        {
+          "name": "snapshotType",
+          "type": "cloudPcUserSettingsPersistenceSnapshotType",
+          "notes": "Read-only; Not nullable"
+        },
+        {
+          "name": "userPrincipalName",
+          "type": "String",
+          "notes": "Read-only; Not nullable"
+        }
+      ]
+    },
+    {
+      "name": "cloudPcUserProfileSnapshotCreateBulkActionResult",
+      "properties": [
+        {
+          "name": "failedCloudProfileIds",
+          "type": "String collection",
+          "notes": "Read-only"
+        },
+        {
+          "name": "failedCount",
+          "type": "Int32",
+          "notes": "Read-only"
+        },
+        {
+          "name": "totalCount",
+          "type": "Int32",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "cloudPcUserProfileSnapshotExportBulkActionResult",
+      "properties": [
+        {
+          "name": "failedCount",
+          "type": "Int32",
+          "notes": "Read-only"
+        },
+        {
+          "name": "failedSnapshotIds",
+          "type": "String collection",
+          "notes": "Read-only"
+        },
+        {
+          "name": "totalCount",
+          "type": "Int32",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "cloudPcUserProfileSnapshotStorageDetail",
+      "properties": [
+        {
+          "name": "accessTier",
+          "type": "cloudPcStorageAccountAccessTier",
+          "notes": "Possible values are: hot, cool, premium, cold"
+        },
+        {
+          "name": "containerName",
+          "type": "String",
+          "notes": "Not nullable"
+        },
+        {
+          "name": "storageAccountId",
+          "type": "String",
+          "notes": "Not nullable"
+        }
+      ]
+    },
+    {
       "name": "cloudPcUserRoleScopeTagInfo",
       "properties": [
         {
@@ -127293,8 +128434,17 @@
           "type": "Boolean"
         },
         {
-          "name": "userSettingsPersistenceStorageSizeCategory",
+          "name": "userSettingsPersistenceStorageSizeCategory (deprecated)",
           "type": "cloudPcUserSettingsPersistenceStorageSizeCategory"
+        }
+      ]
+    },
+    {
+      "name": "cloudPcUserSettingsPersistenceSnapshotConfiguration",
+      "properties": [
+        {
+          "name": "autoSnapshotFrequencyInDays",
+          "type": "Int32"
         }
       ]
     },
@@ -129201,6 +130351,10 @@
           ]
         },
         {
+          "name": "resourceVersion",
+          "type": "Int32"
+        },
+        {
           "name": "status",
           "type": "driftStatus",
           "filter": [
@@ -129215,6 +130369,64 @@
             "eq",
             "ne"
           ]
+        }
+      ]
+    },
+    {
+      "name": "configurationDriftRemediatedProperty",
+      "properties": [
+        {
+          "name": "currentValue",
+          "type": "Json"
+        },
+        {
+          "name": "desiredValue",
+          "type": "Json"
+        },
+        {
+          "name": "previousValue",
+          "type": "Json"
+        },
+        {
+          "name": "propertyName",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "configurationDriftRemediationResult",
+      "properties": [
+        {
+          "name": "baselineResourceDisplayName",
+          "type": "String"
+        },
+        {
+          "name": "configurationDriftId",
+          "type": "String"
+        },
+        {
+          "name": "remediatedProperties",
+          "type": "configurationDriftRemediatedProperty collection"
+        },
+        {
+          "name": "remediationFailedProperties",
+          "type": "driftedProperty collection"
+        },
+        {
+          "name": "resourceInstanceIdentifier",
+          "type": "openComplexDictionaryType"
+        },
+        {
+          "name": "resourceType",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "configurationDriftRemediationStatus"
+        },
+        {
+          "name": "tenantId",
+          "type": "String"
         }
       ]
     },
@@ -129428,12 +130640,21 @@
           "type": "openComplexDictionaryType"
         },
         {
+          "name": "runningOnBehalfOf",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
           "name": "status",
           "type": "monitorStatus",
           "filter": [
             "eq",
             "ne"
           ]
+        },
+        {
+          "name": "templateOwnerTenantId",
+          "type": "String"
         },
         {
           "name": "tenantId",
@@ -129457,6 +130678,11 @@
             "ge",
             "le"
           ]
+        },
+        {
+          "name": "driftsFixed",
+          "type": "Int32",
+          "notes": "Read-only"
         },
         {
           "name": "errorDetails",
@@ -129599,6 +130825,74 @@
             "eq",
             "ne"
           ]
+        }
+      ]
+    },
+    {
+      "name": "configurationTemplate",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "configurationTemplateVersion",
+      "properties": [
+        {
+          "name": "createdBy",
+          "type": "identitySet",
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "templateId",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "notes": "Read-only"
         }
       ]
     },
@@ -130487,6 +131781,51 @@
       ]
     },
     {
+      "name": "contentAuthor",
+      "properties": [
+        {
+          "name": "displayName",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "link",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "contentCategories",
+      "properties": [
+        {
+          "name": "domains",
+          "type": "String collection",
+          "filter": [
+            "any"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "verticals",
+          "type": "String collection",
+          "filter": [
+            "any"
+          ],
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "contentCustomization",
       "properties": [
         {
@@ -130511,7 +131850,7 @@
       "name": "contentInfo",
       "properties": [
         {
-          "name": "contentFormat",
+          "name": "format",
           "type": "String"
         },
         {
@@ -130524,7 +131863,99 @@
         },
         {
           "name": "state",
-          "type": "contentState"
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "contentItem",
+      "properties": [
+        {
+          "name": "contentProductId",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "dependencies",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "isDeprecated",
+          "type": "Boolean",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "kind",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "mainTemplate",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "packageId",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "packageVersion",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
         }
       ]
     },
@@ -130751,6 +132182,271 @@
       ]
     },
     {
+      "name": "contentPackage",
+      "properties": [
+        {
+          "name": "author",
+          "type": "microsoft.graph.security.contentManagement.contentAuthor",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "categories",
+          "type": "microsoft.graph.security.contentManagement.contentCategories",
+          "filter": [
+            "any"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "contentProductId",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "dependencies",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "descriptionHtml",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "firstPublishDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ne",
+            "gt",
+            "ge",
+            "lt",
+            "le"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "icon",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "isDeprecated",
+          "type": "Boolean",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "isFeatured",
+          "type": "Boolean",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "isNew",
+          "type": "Boolean",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "isPreview",
+          "type": "Boolean",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "kind",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastPublishDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ne",
+            "gt",
+            "ge",
+            "lt",
+            "le"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "mainTemplate",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "migratedToPackageId",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "providers",
+          "type": "String collection",
+          "filter": [
+            "any"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "publisherDisplayName",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "source",
+          "type": "microsoft.graph.security.contentManagement.contentPackageSource",
+          "notes": "Read-only"
+        },
+        {
+          "name": "support",
+          "type": "microsoft.graph.security.contentManagement.contentSupport",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "contentPackageBase",
+      "properties": [
+        {
+          "name": "author",
+          "type": "microsoft.graph.security.contentManagement.contentAuthor",
+          "notes": "Read-only"
+        },
+        {
+          "name": "categories",
+          "type": "microsoft.graph.security.contentManagement.contentCategories",
+          "notes": "Read-only"
+        },
+        {
+          "name": "contentProductId",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "descriptionHtml",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "icon",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "providers",
+          "type": "String collection",
+          "notes": "Read-only"
+        },
+        {
+          "name": "publisherDisplayName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "support",
+          "type": "microsoft.graph.security.contentManagement.contentSupport",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "contentPackageSource",
+      "properties": [
+        {
+          "name": "displayName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "kind",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "sourceId",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "contentSensitivityLabelAssignment",
       "properties": [
         {
@@ -130777,6 +132473,39 @@
         {
           "name": "id",
           "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "contentSupport",
+      "properties": [
+        {
+          "name": "displayName",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "link",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "tier",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
           "notes": "Read-only"
         }
       ]
@@ -133226,11 +134955,13 @@
         },
         {
           "name": "deletedBy",
-          "type": "identitySet"
+          "type": "identitySet",
+          "notes": "Read-only"
         },
         {
           "name": "deletedDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "displayName",
@@ -134401,15 +136132,18 @@
         },
         {
           "name": "isTimeSpecified",
-          "type": "Boolean"
+          "type": "Boolean",
+          "notes": "Read-only"
         },
         {
           "name": "time",
-          "type": "TimeOfDay"
+          "type": "TimeOfDay",
+          "notes": "Read-only"
         },
         {
           "name": "timeZone",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         }
       ]
     },
@@ -138048,16 +139782,16 @@
           "notes": "Read-only"
         },
         {
+          "name": "Onboarding",
+          "type": ""
+        },
+        {
           "name": "displayName",
           "type": "String"
         },
         {
           "name": "description",
           "type": "String"
-        },
-        {
-          "name": "roleScopeTagIds",
-          "type": "String collection"
         }
       ]
     },
@@ -144219,14 +145953,6 @@
       "name": "deviceManagementScript",
       "properties": [
         {
-          "name": "enforceSignatureCheck",
-          "type": "Boolean"
-        },
-        {
-          "name": "runAs32Bit",
-          "type": "Boolean"
-        },
-        {
           "name": "id",
           "type": "String"
         },
@@ -144257,12 +145983,20 @@
           "type": "runAsAccountType"
         },
         {
+          "name": "enforceSignatureCheck",
+          "type": "Boolean"
+        },
+        {
           "name": "fileName",
           "type": "String"
         },
         {
           "name": "roleScopeTagIds",
           "type": "String collection"
+        },
+        {
+          "name": "runAs32Bit",
+          "type": "Boolean"
         }
       ]
     },
@@ -154852,6 +156586,16 @@
       ]
     },
     {
+      "name": "externalTenantMonitors",
+      "properties": [
+        {
+          "name": "tenantId",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "externalTokenBasedSapIagConnectionInfo",
       "properties": [
         {
@@ -155437,6 +157181,36 @@
         {
           "name": "validatingDomains",
           "type": "validatingDomains"
+        }
+      ]
+    },
+    {
+      "name": "fetchDetail",
+      "properties": [
+        {
+          "name": "durationMs",
+          "type": "Int32"
+        },
+        {
+          "name": "path",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "fetchResponse",
+      "properties": [
+        {
+          "name": "code",
+          "type": "Int32"
+        },
+        {
+          "name": "data",
+          "type": "Json"
+        },
+        {
+          "name": "relativePathUri",
+          "type": "String"
         }
       ]
     },
@@ -163956,6 +165730,10 @@
           "type": "String collection"
         },
         {
+          "name": "description",
+          "type": "String"
+        },
+        {
           "name": "detectionSources",
           "type": "String collection"
         },
@@ -164772,6 +166550,206 @@
         {
           "name": "isEnabledInOrganization",
           "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "installedContentItem",
+      "properties": [
+        {
+          "name": "contentProductId",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "installedDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ne",
+            "gt",
+            "ge",
+            "lt",
+            "le"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "kind",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ne",
+            "gt",
+            "ge",
+            "lt",
+            "le"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "packageId",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "packageVersion",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ]
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "installedPackage",
+      "properties": [
+        {
+          "name": "author",
+          "type": "microsoft.graph.security.contentManagement.contentAuthor",
+          "notes": "Read-only"
+        },
+        {
+          "name": "categories",
+          "type": "microsoft.graph.security.contentManagement.contentCategories",
+          "notes": "Read-only"
+        },
+        {
+          "name": "contentProductId",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "dependencies",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "descriptionHtml",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "icon",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "installedDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ne",
+            "gt",
+            "ge",
+            "lt",
+            "le"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ne",
+            "gt",
+            "ge",
+            "lt",
+            "le"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "mainTemplate",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "providers",
+          "type": "String collection",
+          "notes": "Read-only"
+        },
+        {
+          "name": "publisherDisplayName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "source",
+          "type": "microsoft.graph.security.contentManagement.contentPackageSource",
+          "notes": "Read-only"
+        },
+        {
+          "name": "support",
+          "type": "microsoft.graph.security.contentManagement.contentSupport",
+          "notes": "Read-only"
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "filter": [
+            "eq",
+            "ne"
+          ]
         }
       ]
     },
@@ -172095,7 +174073,7 @@
         },
         {
           "name": "labelId",
-          "type": "GUID"
+          "type": "Guid"
         }
       ]
     },
@@ -185300,15 +187278,15 @@
       "name": "modifiedProperty",
       "properties": [
         {
-          "name": "displayName",
-          "type": "String"
-        },
-        {
           "name": "newValue",
-          "type": "String"
+          "type": "microsoft.graph.security.caseManagement.valueProperty"
         },
         {
           "name": "oldValue",
+          "type": "microsoft.graph.security.caseManagement.valueProperty"
+        },
+        {
+          "name": "propertyName",
           "type": "String"
         }
       ]
@@ -195756,7 +197734,8 @@
       "properties": [
         {
           "name": "archivalInfo",
-          "type": "plannerArchivalInfo"
+          "type": "plannerArchivalInfo",
+          "notes": "Read-only"
         },
         {
           "name": "calendar",
@@ -195786,7 +197765,8 @@
         },
         {
           "name": "duration",
-          "type": "Int32"
+          "type": "Int32",
+          "notes": "Read-only"
         },
         {
           "name": "extensions",
@@ -195794,7 +197774,8 @@
         },
         {
           "name": "hasChat",
-          "type": "Boolean"
+          "type": "Boolean",
+          "notes": "Read-only"
         },
         {
           "name": "id",
@@ -195907,7 +197888,8 @@
         },
         {
           "name": "isCreation",
-          "type": "Boolean"
+          "type": "Boolean",
+          "notes": "Read-only"
         },
         {
           "name": "key",
@@ -195915,7 +197897,8 @@
         },
         {
           "name": "ownerAppId",
-          "type": "String"
+          "type": "String",
+          "notes": "Read-only"
         },
         {
           "name": "webUrl",
@@ -197616,13 +199599,13 @@
       "name": "plannerUser",
       "properties": [
         {
+          "name": "favoritePlanReferences",
+          "type": "plannerFavoritePlanReferenceCollection"
+        },
+        {
           "name": "id",
           "type": "String",
           "notes": "Read-only"
-        },
-        {
-          "name": "favoritePlanReferences",
-          "type": "plannerFavoritePlanReferenceCollection"
         },
         {
           "name": "recentPlanReferences",
@@ -197827,6 +199810,81 @@
       ]
     },
     {
+      "name": "policiesEvaluationDetail",
+      "properties": [
+        {
+          "name": "appliedPolicyEffects",
+          "type": "policyEffects",
+          "notes": "Read-only"
+        },
+        {
+          "name": "assignedPolicyDisplayName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "assignmentUniqueName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "enforcementMode",
+          "type": "enforcementMode",
+          "notes": "Read-only"
+        },
+        {
+          "name": "errorDetails",
+          "type": "policyEvaluationErrorDetail",
+          "notes": "Read-only"
+        },
+        {
+          "name": "reasons",
+          "type": "String collection",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "policiesEvaluationResult",
+      "properties": [
+        {
+          "name": "appliedPoliciesEffects",
+          "type": "policyEffects",
+          "notes": "Read-only"
+        },
+        {
+          "name": "details",
+          "type": "policiesEvaluationDetail collection",
+          "notes": "Read-only"
+        },
+        {
+          "name": "httpMethod",
+          "type": "requestHttpMethod",
+          "notes": "Read-only"
+        },
+        {
+          "name": "isBlocked",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "normalizedRequestInput",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "resourceUri",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
       "name": "policy",
       "properties": [
         {
@@ -197844,6 +199902,29 @@
         {
           "name": "version",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "policyAppliesTo",
+      "properties": [
+        {
+          "name": "includeDerivedTypes",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
+          "name": "operations",
+          "type": "policyApplicableOperations",
+          "notes": "Read-only"
+        },
+        {
+          "name": "resourceName",
+          "type": "String",
+          "filter": [
+            "eq"
+          ],
+          "notes": "Read-only"
         }
       ]
     },
@@ -197950,11 +200031,97 @@
       ]
     },
     {
+      "name": "policyDefinitionReference",
+      "properties": [
+        {
+          "name": "policyUniqueName",
+          "type": "String"
+        },
+        {
+          "name": "version",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "policyDeletableItem",
       "properties": [
         {
           "name": "deletedDateTime",
           "type": "DateTimeOffset"
+        }
+      ]
+    },
+    {
+      "name": "policyEvaluationDetail",
+      "properties": [
+        {
+          "name": "applicabilityEvaluationError",
+          "type": "String"
+        },
+        {
+          "name": "appliedPolicyEffects",
+          "type": "policyEffect"
+        },
+        {
+          "name": "assignedPolicyDisplayName",
+          "type": "String"
+        },
+        {
+          "name": "assignmentUniqueName",
+          "type": "String"
+        },
+        {
+          "name": "evaluationError",
+          "type": "String"
+        },
+        {
+          "name": "fetchDetails",
+          "type": "fetchDetail collection"
+        },
+        {
+          "name": "isApplicable",
+          "type": "Boolean",
+          "notes": "Not nullable"
+        },
+        {
+          "name": "isCompliant",
+          "type": "Boolean",
+          "notes": "Not nullable"
+        },
+        {
+          "name": "isEnforced",
+          "type": "Boolean",
+          "notes": "Not nullable"
+        },
+        {
+          "name": "policyLoadingError",
+          "type": "String"
+        },
+        {
+          "name": "policyMessage",
+          "type": "String"
+        },
+        {
+          "name": "policyVersion",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "policyEvaluationErrorDetail",
+      "properties": [
+        {
+          "name": "applicabilityEvaluationError",
+          "type": "String"
+        },
+        {
+          "name": "effectEvaluationError",
+          "type": "String"
+        },
+        {
+          "name": "policyLoadingError",
+          "type": "String"
         }
       ]
     },
@@ -198837,13 +201004,13 @@
       "name": "printJob",
       "properties": [
         {
-          "name": "id",
-          "type": "String",
-          "notes": "Read-only"
+          "name": "configuration",
+          "type": "printJobConfiguration"
         },
         {
-          "name": "displayName",
-          "type": "String"
+          "name": "createdBy",
+          "type": "userIdentity",
+          "notes": "Read-only"
         },
         {
           "name": "createdDateTime",
@@ -198851,25 +201018,35 @@
           "notes": "Read-only"
         },
         {
-          "name": "status",
-          "type": "printJobStatus",
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String",
           "notes": "Read-only"
         },
         {
-          "name": "configuration",
-          "type": "printJobConfiguration"
-        },
-        {
           "name": "isFetchable",
-          "type": "Edm.Boolean"
+          "type": "Boolean"
         },
         {
           "name": "redirectedFrom",
-          "type": "Edm.String"
+          "type": "String"
         },
         {
           "name": "redirectedTo",
-          "type": "Edm.String"
+          "type": "String"
+        },
+        {
+          "name": "releasedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "status",
+          "type": "printJobStatus",
+          "notes": "Read-only"
         }
       ]
     },
@@ -199299,13 +201476,44 @@
       "name": "printer",
       "properties": [
         {
+          "name": "capabilities",
+          "type": "printerCapabilities"
+        },
+        {
+          "name": "defaults",
+          "type": "printerDefaults"
+        },
+        {
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "name": "hasPhysicalDevice",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
           "name": "id",
           "type": "String",
           "notes": "Read-only"
         },
         {
-          "name": "displayName",
-          "type": "String"
+          "name": "isAcceptingJobs",
+          "type": "Boolean"
+        },
+        {
+          "name": "isShared",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastSeenDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "location",
+          "type": "printerLocation"
         },
         {
           "name": "manufacturer",
@@ -199316,6 +201524,11 @@
           "type": "String"
         },
         {
+          "name": "printerProvidedReleaseSupport",
+          "type": "printerProvidedReleaseSupport",
+          "notes": "Read-only"
+        },
+        {
           "name": "registeredDateTime",
           "type": "DateTimeOffset",
           "notes": "Read-only"
@@ -199323,37 +201536,6 @@
         {
           "name": "status",
           "type": "printerStatus"
-        },
-        {
-          "name": "isShared",
-          "type": "Boolean",
-          "notes": "Read-only"
-        },
-        {
-          "name": "hasPhysicalDevice",
-          "type": "Boolean",
-          "notes": "Read-only"
-        },
-        {
-          "name": "isAcceptingJobs",
-          "type": "Boolean"
-        },
-        {
-          "name": "location",
-          "type": "printerLocation"
-        },
-        {
-          "name": "defaults",
-          "type": "printerDefaults"
-        },
-        {
-          "name": "capabilities",
-          "type": "printerCapabilities"
-        },
-        {
-          "name": "lastSeenDateTime",
-          "type": "DateTimeOffset",
-          "notes": "Read-only"
         }
       ]
     },
@@ -199690,6 +201872,19 @@
       ]
     },
     {
+      "name": "printerProvidedReleaseSupport",
+      "properties": [
+        {
+          "name": "isPullPrintEnabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "jobReleaseMethods",
+          "type": "printJobReleaseMethods"
+        }
+      ]
+    },
+    {
       "name": "printerShare",
       "properties": [
         {
@@ -199712,6 +201907,10 @@
         {
           "name": "displayName",
           "type": "String"
+        },
+        {
+          "name": "holdJobsForSecureRelease",
+          "type": "Boolean"
         },
         {
           "name": "id",
@@ -200827,6 +203026,15 @@
         {
           "name": "ticketInfo",
           "type": "ticketInfo"
+        }
+      ]
+    },
+    {
+      "name": "privilegedReadSetting",
+      "properties": [
+        {
+          "name": "appId",
+          "type": "String"
         }
       ]
     },
@@ -202710,6 +204918,82 @@
         {
           "name": "resourceName",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "pullPrintPrinter",
+      "properties": [
+        {
+          "name": "capabilities",
+          "type": "printerCapabilities",
+          "notes": "Read-only"
+        },
+        {
+          "name": "defaults",
+          "type": "printerDefaults"
+        },
+        {
+          "name": "displayName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "includeAllPrinters",
+          "type": "Boolean"
+        },
+        {
+          "name": "isAcceptingJobs",
+          "type": "Boolean",
+          "notes": "Read-only"
+        },
+        {
+          "name": "location",
+          "type": "printerLocation"
+        },
+        {
+          "name": "manufacturer",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "model",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "registeredDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "status",
+          "type": "printerStatus",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "pullPrintPrinterCreateOperation",
+      "properties": [
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "printOperationStatus",
+          "notes": "Read-only"
         }
       ]
     },
@@ -206352,6 +208636,329 @@
       ]
     },
     {
+      "name": "resourcePolicyAssignment",
+      "properties": [
+        {
+          "name": "assignedPolicy",
+          "type": "assignedPolicyReference"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "le",
+            "gt"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "deletedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "enforcementMode",
+          "type": "enforcementMode"
+        },
+        {
+          "name": "isEnabled",
+          "type": "Boolean",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "le",
+            "gt"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "params",
+          "type": "Json"
+        },
+        {
+          "name": "scope",
+          "type": "String"
+        },
+        {
+          "name": "uniqueName",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "resourcePolicyConfiguration",
+      "properties": [
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "privilegedReadSetting",
+          "type": "privilegedReadSetting"
+        }
+      ]
+    },
+    {
+      "name": "resourcePolicyDefinition",
+      "properties": [
+        {
+          "name": "category",
+          "type": "policyCategory",
+          "filter": [
+            "eq"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "createdDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "le",
+            "gt"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "deletedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "displayName",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "le",
+            "gt"
+          ],
+          "notes": "Read-only"
+        },
+        {
+          "name": "paramsSchema",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "rule",
+          "type": "resourcePolicyRule"
+        },
+        {
+          "name": "uniqueName",
+          "type": "String"
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "resourcePolicyDefinitionVersion",
+      "properties": [
+        {
+          "name": "lastModifiedDateTime",
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
+        },
+        {
+          "name": "paramsSchema",
+          "type": "Json",
+          "notes": "Read-only"
+        },
+        {
+          "name": "policy",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "resourcePolicyEvaluationEvent",
+      "properties": [
+        {
+          "name": "apiVersion",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "appDisplayName",
+          "type": "String"
+        },
+        {
+          "name": "appId",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "applicablePoliciesCount",
+          "type": "Int32"
+        },
+        {
+          "name": "auditPoliciesCount",
+          "type": "Int32"
+        },
+        {
+          "name": "clientRequestId",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "denyPoliciesCount",
+          "type": "Int32"
+        },
+        {
+          "name": "durationMs",
+          "type": "Int32"
+        },
+        {
+          "name": "errorPoliciesCount",
+          "type": "Int32"
+        },
+        {
+          "name": "evaluatedDateTime",
+          "type": "DateTimeOffset",
+          "filter": [
+            "eq",
+            "ge",
+            "le"
+          ]
+        },
+        {
+          "name": "evaluatedPoliciesCount",
+          "type": "Int32"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "location",
+          "type": "String"
+        },
+        {
+          "name": "operationId",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "policyDecision",
+          "type": "resourcePolicyDecision",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "policyDetails",
+          "type": "policyEvaluationDetail collection",
+          "default": true
+        },
+        {
+          "name": "requestId",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "requestMethod",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "requestUri",
+          "type": "String"
+        },
+        {
+          "name": "servicePrincipalId",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "targetResourceId",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "targetResourceName",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        },
+        {
+          "name": "tenantId",
+          "type": "String"
+        },
+        {
+          "name": "totalFetchDurationMs",
+          "type": "Int32"
+        },
+        {
+          "name": "totalPolicyEvaluationDurationMs",
+          "type": "Int32"
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "filter": [
+            "eq"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "resourcePolicyRule",
+      "properties": [
+        {
+          "name": "appliesTo",
+          "type": "policyAppliesTo",
+          "notes": "Read-only"
+        },
+        {
+          "name": "policy",
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "resourceQuota",
       "properties": [
         {
@@ -206383,6 +208990,16 @@
         {
           "name": "type",
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "resourceRoleRiskAnalysisResult",
+      "properties": [
+        {
+          "name": "riskAnalysisResults",
+          "type": "riskAnalysisResult collection",
+          "notes": "Read-only; Not nullable"
         }
       ]
     },
@@ -207421,6 +210038,36 @@
         {
           "name": "lastModifiedDateTime",
           "type": "DateTimeOffset",
+          "notes": "Read-only"
+        }
+      ]
+    },
+    {
+      "name": "riskAnalysisResult",
+      "properties": [
+        {
+          "name": "externalReferenceUrl",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "violations",
+          "type": "riskAnalysisViolation collection",
+          "notes": "Read-only; Not nullable"
+        }
+      ]
+    },
+    {
+      "name": "riskAnalysisViolation",
+      "properties": [
+        {
+          "name": "description",
+          "type": "String",
+          "notes": "Read-only"
+        },
+        {
+          "name": "level",
+          "type": "String",
           "notes": "Read-only"
         }
       ]
@@ -219950,7 +222597,8 @@
       "properties": [
         {
           "name": "archivalInfo",
-          "type": "plannerArchivalInfo"
+          "type": "plannerArchivalInfo",
+          "notes": "Read-only"
         },
         {
           "name": "bucketId",
@@ -219963,11 +222611,13 @@
         },
         {
           "name": "completedBy",
-          "type": "identitySet"
+          "type": "identitySet",
+          "notes": "Read-only"
         },
         {
           "name": "completedDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "creationInfo",
@@ -219996,11 +222646,13 @@
         },
         {
           "name": "hasChat",
-          "type": "Boolean"
+          "type": "Boolean",
+          "notes": "Read-only"
         },
         {
           "name": "hasChildren",
-          "type": "Boolean"
+          "type": "Boolean",
+          "notes": "Read-only"
         },
         {
           "name": "id",
@@ -220009,7 +222661,8 @@
         },
         {
           "name": "isCritical",
-          "type": "Boolean"
+          "type": "Boolean",
+          "notes": "Read-only"
         },
         {
           "name": "lastModifiedBy",
@@ -229153,11 +231806,13 @@
       "properties": [
         {
           "name": "assignedBy",
-          "type": "identitySet"
+          "type": "identitySet",
+          "notes": "Read-only"
         },
         {
           "name": "assignedDateTime",
-          "type": "DateTimeOffset"
+          "type": "DateTimeOffset",
+          "notes": "Read-only"
         },
         {
           "name": "capabilities",
@@ -236336,8 +238991,8 @@
       "name": "win32LobAppAutoUpdateSettings",
       "properties": [
         {
-          "name": "autoUpdateSupersededApps",
-          "type": "win32LobAppAutoUpdateSupersededApps"
+          "name": "autoUpdateSupersededAppsState",
+          "type": "win32LobAutoUpdateSupersededAppsState"
         }
       ]
     },
